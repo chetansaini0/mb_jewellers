@@ -32,7 +32,13 @@ export function PremiumCategoryCollectionPage({
                 <PremiumTiltCard className="premium-collection-card premium-glass-card">
                   <Link href={item.href} className="premium-collection-card__link">
                     <div className="premium-collection-card__media">
-                      <Image src={item.coverImage} alt={item.coverAlt} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+                      <Image
+                        src={item.coverImage}
+                        alt={item.coverAlt}
+                        fill
+                        sizes="(min-width: 1024px) 25vw, 50vw"
+                        className="object-cover"
+                      />
                       <div className="premium-collection-card__shade" aria-hidden />
                     </div>
                     <div className="premium-collection-card__body">

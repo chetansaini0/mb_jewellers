@@ -68,8 +68,7 @@ function translateGadgetMounted(): boolean {
 
 export function FooterLanguageSwitcher() {
   const selectId = useId();
-  const selected =
-    typeof window !== "undefined" ? getSelectedLanguageFromCookie() : "en";
+  const selected = typeof window !== "undefined" ? getSelectedLanguageFromCookie() : "en";
 
   useEffect(() => {
     const init = () => {
@@ -109,8 +108,7 @@ export function FooterLanguageSwitcher() {
     }
 
     const script = document.createElement("script");
-    script.src =
-      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
 
@@ -121,14 +119,11 @@ export function FooterLanguageSwitcher() {
 
   return (
     <div className="relative sm:col-span-2 lg:col-span-1">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-rose)]">
-        Languages
-      </p>
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-rose)]">Languages</p>
       <p className="mt-4 text-sm leading-relaxed text-[var(--color-ink-muted)]">
         Choose a language from the list below to translate this site.{" "}
-        <span className="text-[var(--color-ink)]">English</span> is the default. Translation is
-        powered by <span className="text-[var(--color-ink)]">Google Translate</span> and may be
-        imperfect.
+        <span className="text-[var(--color-ink)]">English</span> is the default. Translation is powered by{" "}
+        <span className="text-[var(--color-ink)]">Google Translate</span> and may be imperfect.
       </p>
 
       <div className="notranslate mt-4">

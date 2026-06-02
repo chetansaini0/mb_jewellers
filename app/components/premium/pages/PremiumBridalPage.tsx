@@ -31,8 +31,8 @@ export function PremiumBridalPage() {
             <h2 className="premium-title">Jewellery composed for every chapter of your wedding</h2>
             <p className="premium-section__lede">
               MB bridal consultations are unhurried and appointment-only. We listen to your ceremony timeline, outfit
-              palette, and family traditions — then curate gold and diamond pieces that balance heritage craft with modern
-              restraint.
+              palette, and family traditions — then curate gold and diamond pieces that balance heritage craft with
+              modern restraint.
             </p>
             <p className="premium-section__lede">
               We do not display prices online. Share your preferences and we will present options with full material
@@ -94,7 +94,13 @@ export function PremiumBridalPage() {
                 data-reveal
               >
                 <div className="premium-bridal__category-media relative min-h-[14rem]">
-                  <Image src={category.image} alt={category.alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                  <Image
+                    src={category.image}
+                    alt={category.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                   <div className="premium-bridal__category-shade" aria-hidden />
                 </div>
                 <div className="premium-bridal__category-body">

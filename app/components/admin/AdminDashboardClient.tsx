@@ -3,13 +3,7 @@
 import { useMemo, useState, useTransition } from "react";
 import type { AppointmentLead, InquiryLead, LeadStatus, AppointmentStatus } from "@/app/lib/lead-store";
 
-const appointmentStatuses: AppointmentStatus[] = [
-  "PENDING",
-  "CONFIRMED",
-  "CANCELLED",
-  "COMPLETED",
-  "NO_SHOW",
-];
+const appointmentStatuses: AppointmentStatus[] = ["PENDING", "CONFIRMED", "CANCELLED", "COMPLETED", "NO_SHOW"];
 const inquiryStatuses: LeadStatus[] = ["NEW", "CONTACTED", "QUALIFIED", "CLOSED", "SPAM"];
 
 type Props = {
@@ -62,7 +56,9 @@ export function AdminDashboardClient({ appointments, inquiries, subscribersCount
           <p className="premium-eyebrow">Admin dashboard</p>
           <h1 className="premium-title">Lead and appointment command center</h1>
           <p className="premium-section__lede">
-            {isPending ? "Saving updates..." : "Track private appointments and convert inquiries into confirmed visits."}
+            {isPending
+              ? "Saving updates..."
+              : "Track private appointments and convert inquiries into confirmed visits."}
           </p>
         </div>
 
@@ -91,8 +87,12 @@ export function AdminDashboardClient({ appointments, inquiries, subscribersCount
               {appointmentList.slice(0, 20).map((item) => (
                 <div key={item.id} className="premium-glass-card" style={{ padding: "0.85rem" }}>
                   <strong>{item.fullName}</strong>
-                  <p>{item.email} · {item.phone}</p>
-                  <p>{item.appointmentType} · {item.preferredDate.slice(0, 10)} · {item.preferredTimeSlot}</p>
+                  <p>
+                    {item.email} · {item.phone}
+                  </p>
+                  <p>
+                    {item.appointmentType} · {item.preferredDate.slice(0, 10)} · {item.preferredTimeSlot}
+                  </p>
                   <label>
                     Status
                     <select
@@ -118,7 +118,10 @@ export function AdminDashboardClient({ appointments, inquiries, subscribersCount
               {inquiryList.slice(0, 20).map((item) => (
                 <div key={item.id} className="premium-glass-card" style={{ padding: "0.85rem" }}>
                   <strong>{item.fullName}</strong>
-                  <p>{item.email}{item.phone ? ` · ${item.phone}` : ""}</p>
+                  <p>
+                    {item.email}
+                    {item.phone ? ` · ${item.phone}` : ""}
+                  </p>
                   <p>{item.message}</p>
                   <label>
                     Lead status

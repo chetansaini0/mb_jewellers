@@ -120,7 +120,9 @@ html.lenis-active body {
   background-image:
     radial-gradient(circle at 20% 30%, var(--color-accent-gold) 0 1px, transparent 1.5px),
     radial-gradient(circle at 80% 60%, var(--color-accent-gold) 0 1px, transparent 1.5px);
-  background-size: 28px 28px, 32px 32px;
+  background-size:
+    28px 28px,
+    32px 32px;
   pointer-events: none;
 }
 
@@ -182,7 +184,11 @@ html.lenis-active body {
   min-height: 44px;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease, border-color 220ms ease;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    filter 220ms ease,
+    border-color 220ms ease;
 }
 
 .luxe-button::before {
@@ -213,7 +219,11 @@ html.lenis-active body {
   min-height: 44px;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: border-color 220ms ease, color 220ms ease, transform 220ms ease, background-color 220ms ease;
+  transition:
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    background-color 220ms ease;
 }
 
 .luxe-button-ghost:hover {
@@ -230,7 +240,9 @@ html.lenis-active body {
   font-size: 16px;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: border-color 200ms ease, box-shadow 200ms ease;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
 }
 
 textarea.luxe-field {
@@ -326,7 +338,10 @@ select.luxe-field {
 .premium-card {
   border-radius: 0.25rem;
   box-shadow: 0 14px 40px rgba(33, 18, 18, 0.09);
-  transition: box-shadow 280ms ease, transform 280ms ease, border-color 280ms ease;
+  transition:
+    box-shadow 280ms ease,
+    transform 280ms ease,
+    border-color 280ms ease;
 }
 
 .premium-card:hover {
@@ -505,7 +520,9 @@ select.luxe-field {
   background-image:
     radial-gradient(circle, rgba(212, 175, 55, 0.55) 0 1px, transparent 1.5px),
     radial-gradient(circle, rgba(248, 248, 248, 0.35) 0 1px, transparent 1.5px);
-  background-size: 36px 36px, 52px 52px;
+  background-size:
+    36px 36px,
+    52px 52px;
   animation: particleFloat 18s linear infinite;
   opacity: 0.4;
 }
@@ -524,7 +541,10 @@ select.luxe-field {
   overflow: hidden;
   box-shadow: 0 14px 36px rgba(11, 11, 11, 0.12);
   transform-style: preserve-3d;
-  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
 }
 
 .luxury-collection-card:hover {
@@ -566,7 +586,10 @@ select.luxe-field {
   background: linear-gradient(150deg, rgba(18, 18, 18, 0.85), rgba(7, 7, 7, 0.8));
   padding: 0.8rem;
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.3);
-  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease,
+    border-color 280ms ease;
 }
 
 .luxury-product-card:hover {
@@ -593,7 +616,9 @@ select.luxe-field {
   backdrop-filter: blur(12px);
   box-shadow: 0 14px 30px rgba(11, 11, 11, 0.1);
   padding: 1rem;
-  transition: transform 280ms ease, box-shadow 280ms ease;
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease;
 }
 
 .luxury-glass-card:hover {
@@ -642,7 +667,9 @@ select.luxe-field {
   border-radius: 9999px;
   pointer-events: none;
   background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent 68%);
-  transition: left 120ms linear, top 120ms linear;
+  transition:
+    left 120ms linear,
+    top 120ms linear;
 }
 
 .luxury-float-actions {
@@ -880,7 +907,9 @@ select.luxe-field {
   border: 1px solid var(--color-border);
   background: #fff;
   color: var(--color-ink-muted);
-  transition: border-color 220ms ease, box-shadow 220ms ease;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .dp-search:focus-within {
@@ -918,7 +947,10 @@ select.luxe-field {
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.75);
   background: rgba(255, 255, 255, 0.35);
-  transition: transform 220ms ease, background-color 220ms ease, width 220ms ease;
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    width 220ms ease;
 }
 
 .dp-hero-dot.is-active {
@@ -969,7 +1001,10 @@ select.luxe-field {
   border: 1px solid var(--color-rose);
   background: var(--color-rose);
   color: #fff;
-  transition: background-color 220ms ease, color 220ms ease, transform 220ms ease;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
 }
 
 .dp-pill-button:hover {
@@ -989,7 +1024,10 @@ select.luxe-field {
 .dp-rail-card {
   border: 1px solid var(--color-border);
   background: #fff;
-  transition: transform 320ms ease, box-shadow 320ms ease, border-color 320ms ease;
+  transition:
+    transform 320ms ease,
+    box-shadow 320ms ease,
+    border-color 320ms ease;
 }
 
 .dp-rail-card:hover {
@@ -1002,7 +1040,10 @@ select.luxe-field {
   border: 1px solid color-mix(in srgb, var(--color-rose) 35%, var(--color-border));
   background: #fff;
   color: var(--color-rose);
-  transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease;
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease;
 }
 
 .dp-circle-arrow:hover {
@@ -1014,7 +1055,9 @@ select.luxe-field {
 .dp-product-card {
   border: 1px solid var(--color-border);
   background: #fff;
-  transition: transform 280ms ease, box-shadow 280ms ease;
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease;
 }
 
 .dp-product-card:hover {
@@ -1076,7 +1119,10 @@ select.luxe-field {
   color: var(--color-rose);
   font-size: 0.95rem;
   line-height: 1;
-  transition: background-color 220ms ease, border-color 220ms ease, transform 220ms ease;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
 }
 
 .dp-favorite-button:hover {
@@ -1097,7 +1143,10 @@ select.luxe-field {
   border-radius: 9999px;
   border: 1px solid color-mix(in srgb, var(--color-rose) 45%, var(--color-border));
   background: rgba(255, 255, 255, 0.8);
-  transition: transform 220ms ease, background-color 220ms ease, width 220ms ease;
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    width 220ms ease;
 }
 
 .dp-new-arrivals-dot.is-active {
@@ -1114,7 +1163,10 @@ select.luxe-field {
 .dp-appointment-card {
   border: 1px solid var(--color-border);
   background: linear-gradient(180deg, #fff, var(--color-rose-soft));
-  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease,
+    border-color 280ms ease;
 }
 
 .dp-appointment-card:hover {
@@ -1154,8 +1206,7 @@ select.luxe-field {
 .premium-body {
   background:
     radial-gradient(circle at 12% 0%, rgba(200, 162, 77, 0.12), transparent 28%),
-    radial-gradient(circle at 88% 12%, rgba(26, 21, 16, 0.04), transparent 24%),
-    var(--premium-bg);
+    radial-gradient(circle at 88% 12%, rgba(26, 21, 16, 0.04), transparent 24%), var(--premium-bg);
   color: var(--premium-ink);
 }
 
@@ -1221,7 +1272,9 @@ select.luxe-field {
   width: 2.5rem;
   border: 1px solid rgba(212, 175, 55, 0.45);
   opacity: 0;
-  transition: opacity 220ms ease, transform 220ms ease;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
 }
 
 .premium-cursor__ring.is-active {
@@ -1240,7 +1293,9 @@ select.luxe-field {
   z-index: 50;
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(18px);
-  transition: background-color 320ms ease, border-color 320ms ease;
+  transition:
+    background-color 320ms ease,
+    border-color 320ms ease;
 }
 
 .premium-header.is-scrolled {
@@ -1392,7 +1447,10 @@ select.luxe-field {
   border: 1px solid var(--premium-line);
   border-radius: 9999px;
   color: var(--premium-muted);
-  transition: color 220ms ease, border-color 220ms ease, background-color 220ms ease;
+  transition:
+    color 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
 }
 
 .premium-header__social-link:hover {
@@ -1416,18 +1474,26 @@ select.luxe-field {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  transition: box-shadow 280ms ease, transform 280ms ease, background-color 280ms ease, color 280ms ease;
+  transition:
+    box-shadow 280ms ease,
+    transform 280ms ease,
+    background-color 280ms ease,
+    color 280ms ease;
 }
 
 .premium-button--primary {
   background: linear-gradient(135deg, #f0d78c, #c89b3c 55%, #9f7728);
   color: #1a1408;
-  box-shadow: 0 0 0 1px rgba(255, 236, 180, 0.35), 0 18px 40px rgba(212, 175, 55, 0.22);
+  box-shadow:
+    0 0 0 1px rgba(255, 236, 180, 0.35),
+    0 18px 40px rgba(212, 175, 55, 0.22);
 }
 
 .premium-button--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 1px rgba(255, 236, 180, 0.5), 0 22px 48px rgba(212, 175, 55, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(255, 236, 180, 0.5),
+    0 22px 48px rgba(212, 175, 55, 0.28);
 }
 
 .premium-button--ghost {
@@ -1466,7 +1532,9 @@ select.luxe-field {
   background-image:
     radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.12) 0 1px, transparent 1.5px),
     radial-gradient(circle at 80% 40%, rgba(212, 175, 55, 0.18) 0 1px, transparent 1.5px);
-  background-size: 120px 120px, 160px 160px;
+  background-size:
+    120px 120px,
+    160px 160px;
   animation: premiumFloatParticles 18s linear infinite;
 }
 
@@ -2077,7 +2145,11 @@ select.luxe-field {
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  transition: border-color 220ms ease, color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+  transition:
+    border-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
 }
 
 .premium-filter-chip.is-active,
@@ -2119,7 +2191,10 @@ select.luxe-field {
   display: grid;
   gap: 0.75rem;
   padding: 1.35rem;
-  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease,
+    border-color 280ms ease;
 }
 
 .premium-trust__card:hover {
@@ -2401,7 +2476,10 @@ select.luxe-field {
   border-radius: 9999px;
   border: 1px solid rgba(200, 162, 77, 0.45);
   background: transparent;
-  transition: transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .premium-testimonials__dot.is-active {
@@ -2444,7 +2522,9 @@ select.luxe-field {
 }
 
 .premium-footer__social a {
-  transition: color 220ms ease, text-shadow 220ms ease;
+  transition:
+    color 220ms ease,
+    text-shadow 220ms ease;
 }
 
 .premium-footer__social a:hover {
@@ -2513,7 +2593,6 @@ select.luxe-field {
     grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
     align-items: start;
   }
-
 }
 
 .premium-new-arrivals {
@@ -2538,7 +2617,9 @@ select.luxe-field {
   background-image:
     radial-gradient(circle at 12% 24%, rgba(200, 162, 77, 0.22) 0 1px, transparent 1.6px),
     radial-gradient(circle at 78% 62%, rgba(255, 255, 255, 0.35) 0 1px, transparent 1.6px);
-  background-size: 120px 120px, 160px 160px;
+  background-size:
+    120px 120px,
+    160px 160px;
   animation: premiumFloatParticles 18s linear infinite;
   pointer-events: none;
 }
@@ -2576,7 +2657,9 @@ select.luxe-field {
   overflow: hidden;
   border-radius: var(--premium-radius-lg);
   box-shadow: 0 18px 44px rgba(26, 21, 16, 0.08);
-  transition: box-shadow 320ms ease, border-color 320ms ease;
+  transition:
+    box-shadow 320ms ease,
+    border-color 320ms ease;
 }
 
 .premium-new-arrivals__card.is-active {
@@ -2665,7 +2748,10 @@ select.luxe-field {
   border-radius: 9999px;
   border: 1px solid rgba(200, 162, 77, 0.45);
   background: transparent;
-  transition: transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .premium-new-arrivals__progress-dot.is-active {

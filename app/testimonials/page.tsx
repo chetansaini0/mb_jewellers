@@ -4,8 +4,7 @@ import { createPageMetadata } from "@/app/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Client Testimonials | MB Jewellers",
-  description:
-    "Read experiences from bridal and jewellery clients who trust MB Jewellers for milestone purchases.",
+  description: "Read experiences from bridal and jewellery clients who trust MB Jewellers for milestone purchases.",
   path: "/testimonials",
 });
 

@@ -79,7 +79,10 @@ export const metadata: Metadata = {
     images: ["/mb-jewellers-logo.png"],
   },
   icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/mb-jewellers-logo.png", type: "image/png" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/mb-jewellers-logo.png", type: "image/png" },
+    ],
     apple: "/mb-jewellers-logo.png",
     shortcut: "/favicon.ico",
   },
@@ -97,7 +100,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${accent.variable} premium-theme h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${accent.variable} premium-theme h-full antialiased`}
+    >
       <body suppressHydrationWarning className="premium-body flex min-h-dvh flex-col overflow-x-clip">
         <Script
           id="jewelry-store-schema"

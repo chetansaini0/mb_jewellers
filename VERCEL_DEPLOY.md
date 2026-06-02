@@ -24,13 +24,13 @@ In Vercel → **Settings → Environment Variables**, add everything from `.env.
 
 **Minimum for launch:**
 
-| Variable | Example |
-|----------|---------|
-| `NEXT_PUBLIC_SITE_URL` | `https://www.mbjewellers.in` |
-| `ADMIN_EMAIL` | your email |
-| `ADMIN_PASSWORD` | strong password |
-| `ADMIN_SESSION_SECRET` | 32+ random characters |
-| `LEAD_STORAGE_MODE` | `json` (quick) or `postgres` (recommended) |
+| Variable               | Example                                    |
+| ---------------------- | ------------------------------------------ |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.mbjewellers.in`               |
+| `ADMIN_EMAIL`          | your email                                 |
+| `ADMIN_PASSWORD`       | strong password                            |
+| `ADMIN_SESSION_SECRET` | 32+ random characters                      |
+| `LEAD_STORAGE_MODE`    | `json` (quick) or `postgres` (recommended) |
 
 If `postgres`: also set `DATABASE_URL` and run migrations (see `LAUNCH_CHECKLIST.md`).
 

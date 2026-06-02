@@ -19,15 +19,7 @@ import {
   premiumTestimonials,
 } from "@/app/lib/premiumContent";
 
-function MagneticLink({
-  href,
-  children,
-  className,
-}: {
-  href: string;
-  children: ReactNode;
-  className?: string;
-}) {
+function MagneticLink({ href, children, className }: { href: string; children: ReactNode; className?: string }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 220, damping: 18 });
@@ -74,8 +66,7 @@ const InstagramReelsSection = dynamic(
   { loading: () => <SectionSkeleton title="Studio reels" /> },
 );
 const PremiumHomeStudioMapSection = dynamic(
-  () =>
-    import("@/app/components/premium/PremiumHomeStudioMapSection").then((mod) => mod.PremiumHomeStudioMapSection),
+  () => import("@/app/components/premium/PremiumHomeStudioMapSection").then((mod) => mod.PremiumHomeStudioMapSection),
   { loading: () => <SectionSkeleton title="Studio location" /> },
 );
 
@@ -192,7 +183,13 @@ function CollectionsSection() {
             <PremiumTiltCard className="premium-glass-card">
               <Link href={item.href} className="premium-collection-card">
                 <div className="premium-collection-card__media">
-                  <Image src={item.coverImage} alt={item.coverAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 25vw" />
+                  <Image
+                    src={item.coverImage}
+                    alt={item.coverAlt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                  />
                   <span className="premium-collection-card__shine" aria-hidden />
                 </div>
                 <div className="premium-collection-card__body">

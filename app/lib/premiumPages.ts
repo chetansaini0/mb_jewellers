@@ -293,7 +293,11 @@ export const galleryItems = [
 export const contactChannels = [
   { label: "Studio email", value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
   { label: "Private line", value: siteConfig.contact.phoneDisplay, href: `tel:${siteConfig.contact.phoneE164}` },
-  { label: "WhatsApp", value: "Start chat", href: getWhatsAppUrl("Hello MB Jewellers, I would like to book an appointment.") },
+  {
+    label: "WhatsApp",
+    value: "Start chat",
+    href: getWhatsAppUrl("Hello MB Jewellers, I would like to book an appointment."),
+  },
   { label: "Visiting hours", value: "Mon–Sat, 10:00 AM – 7:00 PM" },
   { label: "Instagram", value: "@mbjewellerssikar", href: socialLinks.instagram },
 ] as const;

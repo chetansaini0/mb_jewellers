@@ -4,8 +4,7 @@ import { createPageMetadata } from "@/app/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "About MB Jewellers | Heritage Jewellery House in Sikar",
-  description:
-    "Discover the heritage, craftsmanship values, and atelier philosophy behind MB Jewellers in Sikar.",
+  description: "Discover the heritage, craftsmanship values, and atelier philosophy behind MB Jewellers in Sikar.",
   path: "/about",
 });
 

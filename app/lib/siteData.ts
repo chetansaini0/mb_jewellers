@@ -55,8 +55,7 @@ export const flagshipStudio = {
     lat: 27.603889,
     lng: 75.136667,
   },
-  mapEmbedUrl:
-    "https://www.google.com/maps?q=27.603889,75.136667&hl=en&z=17&output=embed",
+  mapEmbedUrl: "https://www.google.com/maps?q=27.603889,75.136667&hl=en&z=17&output=embed",
   directionsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=Ramlila+Maidan%2C+Mahamandir+Rd%2C+Chandpol%2C+Sikar%2C+Rajasthan+332001",
 } as const;

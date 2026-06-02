@@ -26,10 +26,18 @@ export function CookieConsent() {
           </Link>
         </p>
         <div className="premium-cookie-banner__actions">
-          <button type="button" className="premium-button premium-button--ghost" onClick={() => writeCookieConsent("declined")}>
+          <button
+            type="button"
+            className="premium-button premium-button--ghost"
+            onClick={() => writeCookieConsent("declined")}
+          >
             Decline
           </button>
-          <button type="button" className="premium-button premium-button--primary" onClick={() => writeCookieConsent("accepted")}>
+          <button
+            type="button"
+            className="premium-button premium-button--primary"
+            onClick={() => writeCookieConsent("accepted")}
+          >
             Accept
           </button>
         </div>

@@ -4,8 +4,7 @@ import { createPageMetadata } from "@/app/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Jewellery Journal | MB Jewellers Blog",
-  description:
-    "Read MB Jewellers insights on bridal styling, gold finish selection, and jewellery craftsmanship.",
+  description: "Read MB Jewellers insights on bridal styling, gold finish selection, and jewellery craftsmanship.",
   path: "/blog",
 });
 

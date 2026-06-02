@@ -5,10 +5,7 @@ import { updateInquiryStatus, type LeadStatus } from "@/app/lib/lead-store";
 
 const validStatuses = new Set<LeadStatus>(["NEW", "CONTACTED", "QUALIFIED", "CLOSED", "SPAM"]);
 
-export async function PATCH(
-  request: Request,
-  context: { params: Promise<{ id: string }> },
-) {
+export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
   const cookieStore = await cookies();
   const token = cookieStore.get(getAdminCookieName())?.value;
   const session = await verifySessionToken(token);

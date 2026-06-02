@@ -14,10 +14,7 @@ export async function POST(request: Request) {
   const limit = await checkRateLimit(`newsletter:${ip}`, 10, 10 * 60 * 1000);
 
   if (!limit.allowed) {
-    return NextResponse.json(
-      { ok: false, error: "Too many requests. Please try again later." },
-      { status: 429 },
-    );
+    return NextResponse.json({ ok: false, error: "Too many requests. Please try again later." }, { status: 429 });
   }
 
   let body: unknown;

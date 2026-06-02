@@ -17,7 +17,11 @@ export function PremiumBlogArticlePage({ slug }: { slug: string }) {
   if (!post) {
     return (
       <PremiumPageFrame>
-        <PremiumPageHero eyebrow="Journal" title="Article not found" lede="This story may have moved — return to the journal for the latest essays from the atelier." />
+        <PremiumPageHero
+          eyebrow="Journal"
+          title="Article not found"
+          lede="This story may have moved — return to the journal for the latest essays from the atelier."
+        />
         <section className="premium-section">
           <div className="site-max site-px" data-reveal>
             <Link href="/blog" className="premium-button premium-button--primary">
@@ -37,7 +41,14 @@ export function PremiumBlogArticlePage({ slug }: { slug: string }) {
           <div className="site-max site-px">
             <div className="premium-glass-card mx-auto max-w-3xl overflow-hidden rounded-2xl" data-reveal>
               <div className="relative aspect-[21/9] min-h-[220px] w-full md:aspect-[2/1]">
-                <Image src={post.image} alt={post.title} fill className="object-cover" sizes="(min-width: 1024px) 48rem, 100vw" priority />
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 48rem, 100vw"
+                  priority
+                />
               </div>
             </div>
             <div className="prose-premium mx-auto mt-10 max-w-2xl">

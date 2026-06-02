@@ -54,9 +54,7 @@ export default function AdminLoginPage() {
             <h1 className="premium-title" style={{ fontSize: "2rem" }}>
               Secure login
             </h1>
-            <p className="premium-section__lede">
-              Sign in to manage appointments and leads.
-            </p>
+            <p className="premium-section__lede">Sign in to manage appointments and leads.</p>
             {!mounted ? (
               <div className="premium-contact-form__fields" style={{ marginTop: "1rem" }} aria-hidden>
                 <div className="premium-field" style={{ minHeight: "2.75rem", opacity: 0.4 }} />

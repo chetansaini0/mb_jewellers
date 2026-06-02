@@ -21,7 +21,9 @@ export function getPrismaClient() {
   if (!prismaClientPromise) {
     prismaClientPromise = (async () => {
       try {
-        const prismaModule = (await import("@prisma/client")) as { PrismaClient?: new (...args: unknown[]) => PrismaLikeClient };
+        const prismaModule = (await import("@prisma/client")) as {
+          PrismaClient?: new (...args: unknown[]) => PrismaLikeClient;
+        };
         if (!prismaModule.PrismaClient) return null;
 
         return new prismaModule.PrismaClient({

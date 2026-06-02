@@ -15,10 +15,7 @@ export async function POST(request: Request) {
   const limit = await checkRateLimit(`contact:${ip}`, 8, 15 * 60 * 1000);
 
   if (!limit.allowed) {
-    return NextResponse.json(
-      { ok: false, error: "Too many requests. Please try again later." },
-      { status: 429 },
-    );
+    return NextResponse.json({ ok: false, error: "Too many requests. Please try again later." }, { status: 429 });
   }
 
   let body: unknown;
@@ -30,10 +27,7 @@ export async function POST(request: Request) {
 
   const parsed = parseContactInquiry(body);
   if (!parsed) {
-    return NextResponse.json(
-      { ok: false, error: "Please check your details and try again." },
-      { status: 400 },
-    );
+    return NextResponse.json({ ok: false, error: "Please check your details and try again." }, { status: 400 });
   }
 
   if (parsed.website) {

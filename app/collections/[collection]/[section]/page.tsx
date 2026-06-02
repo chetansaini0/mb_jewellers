@@ -51,7 +51,8 @@ export default async function CollectionSubsectionPage({ params }: PageProps) {
   const backLabel = parent.title.replace(/\s+Collection\s*$/i, "").trim() || parent.eyebrow;
   const cover = subsection.coverImage ?? SECTION_COVER_PLACEHOLDER;
   const galleryImages = [cover, cover, cover, cover];
-  const relatedProduct = featuredPieces.find((piece) => piece.material?.toLowerCase() === collectionSlug) ?? featuredPieces[0];
+  const relatedProduct =
+    featuredPieces.find((piece) => piece.material?.toLowerCase() === collectionSlug) ?? featuredPieces[0];
 
   return (
     <PremiumSectionPage

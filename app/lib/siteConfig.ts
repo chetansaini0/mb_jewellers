@@ -28,8 +28,6 @@ export const siteConfig = {
 } as const;
 
 export function getWhatsAppUrl(prefillMessage?: string) {
-  const message = prefillMessage
-    ? `?text=${encodeURIComponent(prefillMessage)}`
-    : "";
+  const message = prefillMessage ? `?text=${encodeURIComponent(prefillMessage)}` : "";
   return `https://wa.me/${siteConfig.contact.whatsappE164}${message}`;
 }

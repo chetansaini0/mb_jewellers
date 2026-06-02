@@ -5,8 +5,7 @@ import { createPageMetadata } from "@/app/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Silver Collection | MB Jewellers",
-  description:
-    "Shop refined silver jewellery with curated sets, chains, earrings, bangles, and gifting-ready pieces.",
+  description: "Shop refined silver jewellery with curated sets, chains, earrings, bangles, and gifting-ready pieces.",
   path: "/collections/silver",
 });
 

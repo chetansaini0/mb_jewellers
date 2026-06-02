@@ -53,14 +53,12 @@ export const premiumStory = {
     {
       title: "Forged with intention",
       copy: "Every silhouette begins as a sketch — balanced between heritage filigree and contemporary restraint.",
-      image:
-        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1400&q=85&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1400&q=85&auto=format&fit=crop",
     },
     {
       title: "Set with firelight",
       copy: "Diamonds are selected for depth, not just diameter — so each piece catches candlelight and daylight alike.",
-      image:
-        "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=1400&q=85&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=1400&q=85&auto=format&fit=crop",
     },
     {
       title: "Finished for forever",
@@ -90,7 +88,11 @@ export const premiumPromises = [
 ];
 
 export const premiumCollage = [
-  { src: "/pics/Bridal/b1.jpg", alt: "Bridal portrait in warm light", className: "col-span-6 row-span-2 md:col-span-4" },
+  {
+    src: "/pics/Bridal/b1.jpg",
+    alt: "Bridal portrait in warm light",
+    className: "col-span-6 row-span-2 md:col-span-4",
+  },
   {
     src: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=900&q=80",
     alt: "Gold necklace styling",

@@ -61,11 +61,7 @@ async function checkDistributedRateLimit(
   }
 }
 
-function checkInMemoryRateLimit(
-  key: string,
-  maxRequests: number,
-  windowMs: number,
-): RateLimitResult {
+function checkInMemoryRateLimit(key: string, maxRequests: number, windowMs: number): RateLimitResult {
   const now = Date.now();
   const current = buckets.get(key);
 
@@ -84,11 +80,7 @@ function checkInMemoryRateLimit(
   return { allowed: true, remaining: maxRequests - current.count };
 }
 
-export async function checkRateLimit(
-  key: string,
-  maxRequests: number,
-  windowMs: number,
-) {
+export async function checkRateLimit(key: string, maxRequests: number, windowMs: number) {
   const distributed = await checkDistributedRateLimit(key, maxRequests, windowMs);
   if (distributed) {
     return distributed;

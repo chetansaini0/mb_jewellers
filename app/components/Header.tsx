@@ -16,8 +16,7 @@ const navLinks = [
   { href: "/collections", label: "Collection" },
 ];
 
-const menuTop =
-  "top-[calc(env(safe-area-inset-top,0px)+9.5rem)] sm:top-[calc(env(safe-area-inset-top,0px)+10.5rem)]";
+const menuTop = "top-[calc(env(safe-area-inset-top,0px)+9.5rem)] sm:top-[calc(env(safe-area-inset-top,0px)+10.5rem)]";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,14 +40,20 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-white)] pt-[env(safe-area-inset-top)] shadow-[0_6px_24px_rgba(45,36,38,0.05)]">
       <div className="dp-utility-bar">
         <div className="site-max site-px flex items-center justify-between gap-3 py-2">
-          <Link href="tel:+0000000000" className="inline-flex items-center gap-2 transition hover:text-[var(--color-rose)]">
+          <Link
+            href="tel:+0000000000"
+            className="inline-flex items-center gap-2 transition hover:text-[var(--color-rose)]"
+          >
             <span aria-hidden>☎</span>
             <span>+00 000 000 0000</span>
           </Link>
           <p className="hidden text-center font-[family-name:var(--font-display)] text-[0.72rem] tracking-[0.24em] text-[var(--color-rose)] sm:block">
             MB JEWELLERS
           </p>
-          <button type="button" className="inline-flex items-center gap-2 uppercase transition hover:text-[var(--color-rose)]">
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 uppercase transition hover:text-[var(--color-rose)]"
+          >
             <span>Gold 24KT/1g</span>
             <span className="text-[var(--color-ink)]">₹ —</span>
             <span aria-hidden>▾</span>
@@ -68,7 +73,9 @@ export function Header() {
               className="h-12 w-auto sm:h-14"
             />
             <span className="min-w-0 sm:hidden">
-              <span className="block font-[family-name:var(--font-display)] text-xl text-[var(--color-rose)]">MB Jewellers</span>
+              <span className="block font-[family-name:var(--font-display)] text-xl text-[var(--color-rose)]">
+                MB Jewellers
+              </span>
               <span className="block text-[0.62rem] uppercase tracking-[0.24em] text-[var(--color-ink-muted)]">
                 A bond of trust
               </span>
@@ -90,7 +97,10 @@ export function Header() {
         </div>
       </div>
 
-      <nav className="site-max site-px hidden items-center justify-center gap-6 py-3 md:flex lg:gap-8" aria-label="Main">
+      <nav
+        className="site-max site-px hidden items-center justify-center gap-6 py-3 md:flex lg:gap-8"
+        aria-label="Main"
+      >
         {navLinks.map((link) => (
           <Link key={`${link.href}-${link.label}`} href={link.href} className="dp-nav-link text-sm tracking-[0.06em]">
             {link.label}

@@ -135,11 +135,7 @@ function HeaderActions({ closeMenu }: { closeMenu: () => void }) {
         </Link>
       </div>
 
-      <Link
-        href="/contact"
-        className="premium-button premium-button--ghost premium-header__cta"
-        onClick={closeMenu}
-      >
+      <Link href="/contact" className="premium-button premium-button--ghost premium-header__cta" onClick={closeMenu}>
         Private viewing
       </Link>
     </div>

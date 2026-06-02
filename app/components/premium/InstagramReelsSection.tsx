@@ -158,7 +158,12 @@ export function InstagramReelsSection() {
         ))}
       </div>
       <div className="premium-reels__cta">
-        <Link href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="premium-button premium-button--ghost">
+        <Link
+          href={socialLinks.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="premium-button premium-button--ghost"
+        >
           Follow MB Jewellers
         </Link>
       </div>

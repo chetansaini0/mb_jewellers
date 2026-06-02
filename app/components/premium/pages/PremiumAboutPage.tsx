@@ -31,8 +31,8 @@ export function PremiumAboutPage() {
               <p className="premium-eyebrow">Founder story</p>
               <h2 className="premium-title">Patience before spectacle</h2>
               <p>
-                The house was built on the belief that jewellery should feel inevitable on the skin — balanced, luminous,
-                and honest in material. Every consultation still begins with listening.
+                The house was built on the belief that jewellery should feel inevitable on the skin — balanced,
+                luminous, and honest in material. Every consultation still begins with listening.
               </p>
               <p>
                 Today the studio welcomes families, collectors, and bridal clients into a private world of sketches,

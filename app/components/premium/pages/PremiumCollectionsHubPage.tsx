@@ -65,7 +65,9 @@ export function PremiumCollectionsHubPage() {
                         <div className="premium-collection-card__shade" aria-hidden />
                       </div>
                       <div className="premium-collection-card__body">
-                        <p className="premium-collection-card__meta">{activeFilter === "All" ? "Collection" : activeFilter}</p>
+                        <p className="premium-collection-card__meta">
+                          {activeFilter === "All" ? "Collection" : activeFilter}
+                        </p>
                         <h2>{item.title}</h2>
                         <p>{item.description}</p>
                         <span className="premium-inline-link">Explore collection</span>

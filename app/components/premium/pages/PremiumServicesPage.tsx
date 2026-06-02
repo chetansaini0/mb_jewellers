@@ -23,7 +23,8 @@ export function PremiumServicesPage() {
               How we build custom work
             </h2>
             <p className="premium-section__lede" data-reveal>
-              Four studio milestones keep design decisions clear, timelines honest, and finishing at the level MB clients expect.
+              Four studio milestones keep design decisions clear, timelines honest, and finishing at the level MB
+              clients expect.
             </p>
           </div>
           <ol className="grid gap-4 md:grid-cols-2">

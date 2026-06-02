@@ -26,7 +26,11 @@ export function PremiumContactPage() {
               <article key={channel.label} className="premium-contact-card premium-glass-card" data-reveal>
                 <p className="premium-eyebrow">{channel.label}</p>
                 {"href" in channel && channel.href ? (
-                  <a href={channel.href} target={channel.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+                  <a
+                    href={channel.href}
+                    target={channel.href.startsWith("http") ? "_blank" : undefined}
+                    rel="noreferrer"
+                  >
                     {channel.value}
                   </a>
                 ) : (
@@ -35,7 +39,9 @@ export function PremiumContactPage() {
               </article>
             ))}
           </div>
-          <Suspense fallback={<div className="premium-glass-card p-6 text-sm text-[var(--premium-muted)]">Loading form…</div>}>
+          <Suspense
+            fallback={<div className="premium-glass-card p-6 text-sm text-[var(--premium-muted)]">Loading form…</div>}
+          >
             <ContactForm />
           </Suspense>
         </div>
@@ -68,9 +74,7 @@ export function PremiumContactPage() {
 function ContactForm() {
   const searchParams = useSearchParams();
   const productInterest = searchParams.get("interest")?.trim() ?? "";
-  const [mode, setMode] = useState<"INQUIRY" | "APPOINTMENT">(() =>
-    productInterest ? "INQUIRY" : "APPOINTMENT",
-  );
+  const [mode, setMode] = useState<"INQUIRY" | "APPOINTMENT">(() => (productInterest ? "INQUIRY" : "APPOINTMENT"));
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
   const todayIso = useMemo(() => new Date().toISOString().slice(0, 10), []);
@@ -182,7 +186,12 @@ function ContactForm() {
               : "Thank you. Our studio team will reach out shortly with curated options."}
           </motion.p>
         ) : (
-          <motion.div key="fields" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="premium-contact-form__fields">
+          <motion.div
+            key="fields"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="premium-contact-form__fields"
+          >
             <label htmlFor="contact-full-name">
               Name
               <input

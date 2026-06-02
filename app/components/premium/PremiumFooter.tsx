@@ -84,14 +84,13 @@ function PremiumNewsletterForm() {
 }
 
 export function PremiumFooter() {
-
   return (
     <footer className="premium-footer">
       <div className="site-max site-px premium-footer__intro" data-reveal>
         <Image src="/mb-jewellers-logo.png" alt="" width={896} height={768} className="premium-footer__logo" />
         <p className="premium-footer__tagline">
-          Fine jewellery shaped with Rajasthani heritage, meenakari-inspired colour, and modern luxury finishing. Showcase
-          site — visit our studio to purchase.
+          Fine jewellery shaped with Rajasthani heritage, meenakari-inspired colour, and modern luxury finishing.
+          Showcase site — visit our studio to purchase.
         </p>
       </div>
       <div className="site-max site-px premium-footer__grid">
@@ -126,7 +125,11 @@ export function PremiumFooter() {
           <p>{siteConfig.contact.phoneDisplay}</p>
           <p>Mon-Sat: 10:00 - 19:00</p>
           <p>
-            <a href={getWhatsAppUrl("Hello MB Jewellers, I need assistance with jewellery selection.")} target="_blank" rel="noreferrer">
+            <a
+              href={getWhatsAppUrl("Hello MB Jewellers, I need assistance with jewellery selection.")}
+              target="_blank"
+              rel="noreferrer"
+            >
               WhatsApp concierge
             </a>
           </p>

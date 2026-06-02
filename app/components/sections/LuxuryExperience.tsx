@@ -41,20 +41,17 @@ const stats = [
 
 const testimonials = [
   {
-    quote:
-      "The bridal set looked cinematic in person. Every detail felt handcrafted and premium.",
+    quote: "The bridal set looked cinematic in person. Every detail felt handcrafted and premium.",
     name: "Priyanka S.",
     meta: "Bride, Jaipur",
   },
   {
-    quote:
-      "Their diamond consultation was world-class. The finish quality is truly international.",
+    quote: "Their diamond consultation was world-class. The finish quality is truly international.",
     name: "Aarav M.",
     meta: "Private Client",
   },
   {
-    quote:
-      "From packaging to presentation, everything felt luxurious and trust-inspiring.",
+    quote: "From packaging to presentation, everything felt luxurious and trust-inspiring.",
     name: "Kriti R.",
     meta: "Collector",
   },
@@ -154,11 +151,27 @@ function InstagramReelCard({ src, title }: { src: string; title: string }) {
             className="pointer-events-auto flex h-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/35 bg-black/55 text-[var(--color-accent-gold)] backdrop-blur-md [-webkit-tap-highlight-color:transparent] transition hover:border-[var(--color-accent-gold)] hover:bg-black/65"
           >
             {muted ? (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden
+              >
                 <path d="M11 5L6 9H3v6h3l5 4V5z M23 9l-6 6M17 9l6 6" />
               </svg>
             ) : (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden
+              >
                 <path d="M11 5L6 9H3v6h3l5 4V5z M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
               </svg>
             )}
@@ -183,10 +196,7 @@ export function LuxuryExperience() {
   const [countValues, setCountValues] = useState(() => stats.map(() => 0));
   const statsRef = useRef<HTMLElement | null>(null);
   const glowRef = useRef<HTMLDivElement | null>(null);
-  const videoPoster = useMemo(
-    () => "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=1400&q=80",
-    [],
-  );
+  const videoPoster = useMemo(() => "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=1400&q=80", []);
 
   useEffect(() => {
     if (!statsRef.current) return;
@@ -239,7 +249,13 @@ export function LuxuryExperience() {
           {collectionCards.map((item) => (
             <Link key={item.title} href={item.href} className="luxury-collection-card group">
               <div className="luxury-image-wrap">
-                <Image src={item.image} alt={item.title} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-110" />
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover transition duration-700 group-hover:scale-110"
+                />
               </div>
               <div className="luxury-collection-meta">
                 <h3>{item.title}</h3>
@@ -255,25 +271,48 @@ export function LuxuryExperience() {
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
               <p className="luxury-kicker">Premium Product Showcase</p>
-              <h2 className="luxury-title mt-4 text-[var(--color-diamond-white)]">Signature pieces in cinematic detail</h2>
+              <h2 className="luxury-title mt-4 text-[var(--color-diamond-white)]">
+                Signature pieces in cinematic detail
+              </h2>
             </div>
-            <Link href="/collections" className="luxury-mini-link">Explore full catalogue</Link>
+            <Link href="/collections" className="luxury-mini-link">
+              Explore full catalogue
+            </Link>
           </div>
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {featuredPieces.map((piece) => (
               <li key={piece.name}>
                 <article className="luxury-product-card group">
-                  <button type="button" className="luxury-image-wrap h-[270px] w-full text-left sm:h-[300px]" onClick={() => setQuickView(piece)} aria-label={`Quick view ${piece.name}`}>
-                    <Image src={piece.image} alt={piece.alt} fill sizes="(max-width: 1024px) 90vw, 30vw" className="object-cover transition duration-700 group-hover:scale-110" />
+                  <button
+                    type="button"
+                    className="luxury-image-wrap h-[270px] w-full text-left sm:h-[300px]"
+                    onClick={() => setQuickView(piece)}
+                    aria-label={`Quick view ${piece.name}`}
+                  >
+                    <Image
+                      src={piece.image}
+                      alt={piece.alt}
+                      fill
+                      sizes="(max-width: 1024px) 90vw, 30vw"
+                      className="object-cover transition duration-700 group-hover:scale-110"
+                    />
                   </button>
                   <div className="mt-4">
-                    <h3 className="font-[family-name:var(--font-display)] text-xl text-[var(--color-diamond-white)]">{piece.name}</h3>
+                    <h3 className="font-[family-name:var(--font-display)] text-xl text-[var(--color-diamond-white)]">
+                      {piece.name}
+                    </h3>
                     <p className="mt-2 text-sm text-white/70">{piece.detail}</p>
                     <div className="mt-4 flex items-center gap-3">
-                      <button type="button" className="luxe-button px-4 py-2 text-xs uppercase tracking-[0.2em]" onClick={() => setQuickView(piece)}>
+                      <button
+                        type="button"
+                        className="luxe-button px-4 py-2 text-xs uppercase tracking-[0.2em]"
+                        onClick={() => setQuickView(piece)}
+                      >
                         Quick view
                       </button>
-                      <Link href="/contact" className="luxury-mini-link">Enquire now</Link>
+                      <Link href="/contact" className="luxury-mini-link">
+                        Enquire now
+                      </Link>
                     </div>
                   </div>
                 </article>
@@ -288,22 +327,33 @@ export function LuxuryExperience() {
           <p className="luxury-kicker">Craftsmanship Story</p>
           <h2 className="luxury-title mt-4">Designed with emotion, finished with precision</h2>
           <p className="mt-5 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
-            MB Jewellers blends heritage craftsmanship with a contemporary international design language. Every masterpiece is shaped through stone curation, hand detailing, and premium finishing for memorable life moments.
+            MB Jewellers blends heritage craftsmanship with a contemporary international design language. Every
+            masterpiece is shaped through stone curation, hand detailing, and premium finishing for memorable life
+            moments.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="luxury-glass-card">
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--color-emerald-accent)]">Bespoke design</p>
-              <p className="mt-2 text-sm text-[var(--color-ink-muted)]">Concept-to-creation consultation for unique pieces.</p>
+              <p className="mt-2 text-sm text-[var(--color-ink-muted)]">
+                Concept-to-creation consultation for unique pieces.
+              </p>
             </div>
             <div className="luxury-glass-card">
-              <p className="text-xs uppercase tracking-[0.18em] text-[var(--color-emerald-accent)]">Certified quality</p>
-              <p className="mt-2 text-sm text-[var(--color-ink-muted)]">Premium materials and trusted authenticity support.</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-[var(--color-emerald-accent)]">
+                Certified quality
+              </p>
+              <p className="mt-2 text-sm text-[var(--color-ink-muted)]">
+                Premium materials and trusted authenticity support.
+              </p>
             </div>
           </div>
         </div>
         <div className="luxury-video-shell">
           <video autoPlay muted loop playsInline poster={videoPoster} className="h-full w-full object-cover">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-earrings-in-close-up-40145-large.mp4" type="video/mp4" />
+            <source
+              src="https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-earrings-in-close-up-40145-large.mp4"
+              type="video/mp4"
+            />
           </video>
         </div>
       </section>
@@ -366,7 +416,8 @@ export function LuxuryExperience() {
             <p className="luxury-kicker text-[var(--color-ink)]">Luxury Membership</p>
             <h2 className="luxury-title mt-3">Join the MB Privilege Circle</h2>
             <p className="mt-3 max-w-2xl text-sm text-[var(--color-ink-muted)] sm:text-base">
-              Unlock first access to bridal launches, bespoke previews, and private events with premium concierge support.
+              Unlock first access to bridal launches, bespoke previews, and private events with premium concierge
+              support.
             </p>
           </div>
           <Link href="/contact" className="luxe-button mt-6 inline-flex rounded-sm px-7 py-3 text-sm sm:mt-0">
@@ -376,7 +427,13 @@ export function LuxuryExperience() {
       </section>
 
       <div className="luxury-float-actions">
-        <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="luxury-fab">
+        <a
+          href="https://wa.me/910000000000"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="luxury-fab"
+        >
           WA
         </a>
         <a href="tel:+0000000000" aria-label="Call MB Jewellers" className="luxury-fab">
@@ -387,11 +444,22 @@ export function LuxuryExperience() {
       {quickView ? (
         <div className="luxury-modal-backdrop" role="dialog" aria-modal="true" aria-label="Quick product view">
           <div className="luxury-modal">
-            <button type="button" className="luxury-close" onClick={() => setQuickView(null)} aria-label="Close quick view">
+            <button
+              type="button"
+              className="luxury-close"
+              onClick={() => setQuickView(null)}
+              aria-label="Close quick view"
+            >
               ×
             </button>
             <div className="relative h-64 overflow-hidden rounded-sm sm:h-80">
-              <Image src={quickView.image} alt={quickView.alt} fill sizes="(max-width: 640px) 90vw, 600px" className="object-cover" />
+              <Image
+                src={quickView.image}
+                alt={quickView.alt}
+                fill
+                sizes="(max-width: 640px) 90vw, 600px"
+                className="object-cover"
+              />
             </div>
             <h3 className="mt-5 font-[family-name:var(--font-display)] text-3xl">{quickView.name}</h3>
             <p className="mt-3 text-sm leading-relaxed text-[var(--color-ink-muted)]">{quickView.detail}</p>
@@ -399,7 +467,11 @@ export function LuxuryExperience() {
               <Link href="/contact" className="luxe-button rounded-sm px-6 py-2.5 text-sm">
                 Book consultation
               </Link>
-              <button type="button" className="luxe-button-ghost rounded-sm px-6 py-2.5 text-sm text-[var(--color-ink)]" onClick={() => setQuickView(null)}>
+              <button
+                type="button"
+                className="luxe-button-ghost rounded-sm px-6 py-2.5 text-sm text-[var(--color-ink)]"
+                onClick={() => setQuickView(null)}
+              >
                 Continue browsing
               </button>
             </div>

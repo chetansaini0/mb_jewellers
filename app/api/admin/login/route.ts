@@ -12,10 +12,7 @@ export async function POST(request: Request) {
   const limit = await checkRateLimit(`admin-login:${ip}`, 10, 15 * 60 * 1000);
 
   if (!limit.allowed) {
-    return NextResponse.json(
-      { ok: false, error: "Too many login attempts. Try again later." },
-      { status: 429 },
-    );
+    return NextResponse.json({ ok: false, error: "Too many login attempts. Try again later." }, { status: 429 });
   }
 
   let body: unknown;
@@ -26,7 +23,9 @@ export async function POST(request: Request) {
   }
 
   const payload = body as Record<string, unknown>;
-  const email = String(payload.email ?? "").trim().toLowerCase();
+  const email = String(payload.email ?? "")
+    .trim()
+    .toLowerCase();
   const password = String(payload.password ?? "");
 
   if (!isValidAdminLogin(email, password)) {

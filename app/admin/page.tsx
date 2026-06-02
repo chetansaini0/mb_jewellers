@@ -21,7 +21,10 @@ export default async function AdminDashboardPage() {
   return (
     <main className="premium-main">
       <div className="site-max site-px" style={{ paddingTop: "1.5rem" }}>
-        <div className="premium-glass-card" style={{ padding: "1rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div
+          className="premium-glass-card"
+          style={{ padding: "1rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}
+        >
           <p className="premium-section__lede">
             Signed in as {session.email} · Storage mode: {storageMode}
           </p>

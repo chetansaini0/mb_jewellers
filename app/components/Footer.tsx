@@ -23,15 +23,10 @@ export function Footer() {
 function FooterBrand() {
   return (
     <div>
-      <Image
-        src="/mb-jewellers-logo.png"
-        alt="MB Jewellers logo"
-        width={896}
-        height={768}
-        className="h-16 w-auto"
-      />
+      <Image src="/mb-jewellers-logo.png" alt="MB Jewellers logo" width={896} height={768} className="h-16 w-auto" />
       <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--color-ink-muted)]">
-        Fine jewellery shaped with Rajasthani heritage, meenakari-inspired color, and modern luxury finishing for every celebration.
+        Fine jewellery shaped with Rajasthani heritage, meenakari-inspired color, and modern luxury finishing for every
+        celebration.
       </p>
       <div className="mt-6 flex flex-wrap gap-3">
         <a

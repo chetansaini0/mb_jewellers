@@ -5,8 +5,7 @@ import { createPageMetadata } from "@/app/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Silver Accessories & Artefacts | MB Jewellers",
-  description:
-    "Explore decorative silver accessories including curated statues and premium serveware collections.",
+  description: "Explore decorative silver accessories including curated statues and premium serveware collections.",
   path: "/collections/accessories",
 });
 

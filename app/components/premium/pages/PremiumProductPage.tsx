@@ -73,7 +73,9 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
 
   const slug = slugifyProductName(product.name);
   const enquiryHref = `/contact?interest=${encodeURIComponent(product.name)}`;
-  const whatsappHref = getWhatsAppUrl(`Hello MB Jewellers, I would like a private viewing for: ${product.name} (${slug}).`);
+  const whatsappHref = getWhatsAppUrl(
+    `Hello MB Jewellers, I would like a private viewing for: ${product.name} (${slug}).`,
+  );
   const galleryImages = productGalleryBySlug[slug] ?? [product.image, product.image, product.image, product.image];
   const hasCustomGallery = Boolean(productGalleryBySlug[slug]);
   const [activeImage, setActiveImage] = useState(() => galleryImages[0] ?? product.image);
@@ -90,8 +92,18 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Image src={activeImage} alt={product.alt} fill className="object-cover" sizes="(min-width: 1024px) 45vw, 100vw" priority />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(15,13,10,0.35)] via-transparent to-transparent" aria-hidden />
+                <Image
+                  src={activeImage}
+                  alt={product.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  priority
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(15,13,10,0.35)] via-transparent to-transparent"
+                  aria-hidden
+                />
                 <div className="premium-product-card__shine" aria-hidden />
               </motion.div>
               <div className="premium-reels__rail px-0.5">
@@ -132,13 +144,18 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
                 <Link href={enquiryHref} className="premium-button premium-button--primary">
                   Request private viewing
                 </Link>
-                <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="premium-button premium-button--ghost">
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="premium-button premium-button--ghost"
+                >
                   WhatsApp enquiry
                 </a>
               </div>
               <p className="mt-6 text-sm text-[var(--premium-muted)]">
-                This website is a showcase only — we do not sell online. Pricing and availability are confirmed in studio.
-                Reference: <span className="text-[var(--premium-ink)]">{slug}</span>
+                This website is a showcase only — we do not sell online. Pricing and availability are confirmed in
+                studio. Reference: <span className="text-[var(--premium-ink)]">{slug}</span>
               </p>
             </div>
           </div>

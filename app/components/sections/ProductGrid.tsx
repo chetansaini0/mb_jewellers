@@ -9,13 +9,7 @@ type ProductGridProps = {
   products: ProductItem[];
 };
 
-export function ProductCard({
-  product,
-  headingLevel = "h2",
-}: {
-  product: ProductItem;
-  headingLevel?: "h2" | "h3";
-}) {
+export function ProductCard({ product, headingLevel = "h2" }: { product: ProductItem; headingLevel?: "h2" | "h3" }) {
   const Title = headingLevel === "h3" ? "h3" : "h2";
   return (
     <article className="group premium-card luxe-panel h-full p-3 transition duration-300 hover:-translate-y-1 sm:p-4">
@@ -49,16 +43,10 @@ export function ProductGrid({ eyebrow, title, description, products }: ProductGr
   return (
     <section className="luxe-section site-max site-px py-16 sm:py-20">
       <div className="max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-rose)]">
-          {eyebrow}
-        </p>
-        <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
-          {title}
-        </h1>
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-rose)]">{eyebrow}</p>
+        <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">{title}</h1>
         <div className="luxe-divider mt-5" />
-        <p className="mt-5 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
-          {description}
-        </p>
+        <p className="mt-5 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">{description}</p>
       </div>
       <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
         {products.map((product) => (

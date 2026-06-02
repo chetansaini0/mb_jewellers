@@ -55,7 +55,16 @@ export function PremiumHomeStudioMapSection() {
     let mounted = true;
     loadGoogleMapsScript(apiKey)
       .then(() => {
-        const googleMaps = (window as Window & { google?: { maps?: { Map: new (element: HTMLElement, options: Record<string, unknown>) => unknown; Marker: new (options: Record<string, unknown>) => unknown } } }).google?.maps;
+        const googleMaps = (
+          window as Window & {
+            google?: {
+              maps?: {
+                Map: new (element: HTMLElement, options: Record<string, unknown>) => unknown;
+                Marker: new (options: Record<string, unknown>) => unknown;
+              };
+            };
+          }
+        ).google?.maps;
         if (!mounted || !mapRef.current || !googleMaps) return;
         const center = {
           lat: flagshipStudio.coordinates.lat,
@@ -109,7 +118,12 @@ export function PremiumHomeStudioMapSection() {
           </div>
         ) : (
           <div className="premium-home-map__canvas-wrap">
-            <div ref={mapRef} className="premium-home-map__canvas" role="img" aria-label={`${flagshipStudio.name} location map`} />
+            <div
+              ref={mapRef}
+              className="premium-home-map__canvas"
+              role="img"
+              aria-label={`${flagshipStudio.name} location map`}
+            />
           </div>
         )}
         <div className="premium-contact__social">

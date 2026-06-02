@@ -29,11 +29,7 @@ export function BridalShowcase() {
   }, []);
 
   return (
-    <div
-      ref={rootRef}
-      className="bridal-showcase relative w-full"
-      data-visible={visible ? "true" : "false"}
-    >
+    <div ref={rootRef} className="bridal-showcase relative w-full" data-visible={visible ? "true" : "false"}>
       <div
         className="pointer-events-none absolute -left-6 -right-6 -top-8 bottom-0 z-0 rounded-[2rem] bg-gradient-to-br from-[color-mix(in_srgb,var(--color-accent-gold)_22%,transparent)] via-transparent to-[color-mix(in_srgb,var(--color-rose)_18%,transparent)] opacity-90 blur-3xl sm:-left-10 sm:-right-10"
         aria-hidden
@@ -62,10 +58,7 @@ export function BridalShowcase() {
                 className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/55 via-transparent to-[var(--color-ink)]/10 opacity-80 transition-opacity duration-500 group-hover:opacity-60"
                 aria-hidden
               />
-              <div
-                className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/15"
-                aria-hidden
-              />
+              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/15" aria-hidden />
             </div>
           </figure>
         ))}

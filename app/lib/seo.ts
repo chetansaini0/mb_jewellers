@@ -65,10 +65,7 @@ export const jewelryStoreSchema = {
     addressRegion: siteConfig.location.region,
     addressCountry: siteConfig.location.country,
   },
-  sameAs: [
-    "https://www.instagram.com/mbjewellerssikar/",
-    "https://www.facebook.com/mbjewellerssikar",
-  ],
+  sameAs: ["https://www.instagram.com/mbjewellerssikar/", "https://www.facebook.com/mbjewellerssikar"],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",

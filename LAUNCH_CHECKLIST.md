@@ -12,14 +12,14 @@ The codebase is ready for deployment. Below is what **you** need to provide or c
 
 Copy `.env.example` and set these on **Vercel → Project → Settings → Environment Variables**:
 
-| Variable | What to provide |
-|----------|-----------------|
+| Variable               | What to provide                                                      |
+| ---------------------- | -------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL` | Your live URL, e.g. `https://www.mbjewellers.in` (no trailing slash) |
-| `ADMIN_EMAIL` | Email you use to log into `/admin` |
-| `ADMIN_PASSWORD` | **Strong** password (not the example in `.env.example`) |
-| `ADMIN_SESSION_SECRET` | Random string **≥ 32 characters** (generate at password manager) |
-| `LEAD_STORAGE_MODE` | `postgres` for production (recommended) or `json` for testing only |
-| `DATABASE_URL` | Postgres connection string (if using `postgres` mode) |
+| `ADMIN_EMAIL`          | Email you use to log into `/admin`                                   |
+| `ADMIN_PASSWORD`       | **Strong** password (not the example in `.env.example`)              |
+| `ADMIN_SESSION_SECRET` | Random string **≥ 32 characters** (generate at password manager)     |
+| `LEAD_STORAGE_MODE`    | `postgres` for production (recommended) or `json` for testing only   |
+| `DATABASE_URL`         | Postgres connection string (if using `postgres` mode)                |
 
 ### B. Database (if using Postgres for leads)
 
@@ -46,35 +46,35 @@ Never deploy with `ChangeThisAdminPassword`. Set a unique `ADMIN_PASSWORD` in Ve
 
 ### E. Email notifications (Resend)
 
-| Variable | Purpose |
-|----------|---------|
-| `RESEND_API_KEY` | From [resend.com](https://resend.com) |
-| `RESEND_FROM_EMAIL` | Verified sender, e.g. `MB Jewellers <noreply@mbjewellers.in>` |
-| `LEADS_NOTIFICATION_EMAIL` | Where inquiry/appointment emails go |
+| Variable                   | Purpose                                                       |
+| -------------------------- | ------------------------------------------------------------- |
+| `RESEND_API_KEY`           | From [resend.com](https://resend.com)                         |
+| `RESEND_FROM_EMAIL`        | Verified sender, e.g. `MB Jewellers <noreply@mbjewellers.in>` |
+| `LEADS_NOTIFICATION_EMAIL` | Where inquiry/appointment emails go                           |
 
 Without Resend, forms still save leads (if DB/json works) but you may not get email alerts.
 
 ### F. Rate limiting (Upstash Redis)
 
-| Variable | Purpose |
-|----------|---------|
-| `UPSTASH_REDIS_REST_URL` | From [upstash.com](https://upstash.com) |
-| `UPSTASH_REDIS_REST_TOKEN` | Paired token |
+| Variable                   | Purpose                                 |
+| -------------------------- | --------------------------------------- |
+| `UPSTASH_REDIS_REST_URL`   | From [upstash.com](https://upstash.com) |
+| `UPSTASH_REDIS_REST_TOKEN` | Paired token                            |
 
 Without this, rate limits use in-memory store (weaker on serverless).
 
 ### G. Google Analytics
 
-| Variable | Purpose |
-|----------|---------|
+| Variable                        | Purpose                          |
+| ------------------------------- | -------------------------------- |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Your GA4 ID, e.g. `G-XXXXXXXXXX` |
 
 Create property at [analytics.google.com](https://analytics.google.com). Analytics loads only after cookie consent.
 
 ### H. Google Maps (studio map on contact/home)
 
-| Variable | Purpose |
-|----------|---------|
+| Variable                          | Purpose                                          |
+| --------------------------------- | ------------------------------------------------ |
 | `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | Maps JavaScript API key with domain restrictions |
 
 Optional if map embed works without it — test `/contact` after deploy.
@@ -94,13 +94,13 @@ Optional if map embed works without it — test `/contact` after deploy.
 
 ## 4. Optional polish (provide to developer later)
 
-| Item | What you can send |
-|------|-------------------|
-| OG image | One **1200×630** JPG of hero jewellery (better than auto-generated) |
-| Favicon set | `favicon.ico` + 192px and 512px PNG if you want crisper tabs |
-| Copy review | Proofread policies, FAQ, contact hours |
-| Product photos | Any new pieces to add to carousel/collections |
-| Instagram reels | New MP4s for `/public/instareel/` if replacing videos |
+| Item            | What you can send                                                   |
+| --------------- | ------------------------------------------------------------------- |
+| OG image        | One **1200×630** JPG of hero jewellery (better than auto-generated) |
+| Favicon set     | `favicon.ico` + 192px and 512px PNG if you want crisper tabs        |
+| Copy review     | Proofread policies, FAQ, contact hours                              |
+| Product photos  | Any new pieces to add to carousel/collections                       |
+| Instagram reels | New MP4s for `/public/instareel/` if replacing videos               |
 
 ---
 
@@ -132,11 +132,11 @@ npm run typecheck    # TypeScript
 
 Share with your developer:
 
-1. Vercel deployment URL or error log screenshot  
-2. Browser console errors (F12) on the failing page  
-3. Which form/action failed (contact / appointment / admin login)  
+1. Vercel deployment URL or error log screenshot
+2. Browser console errors (F12) on the failing page
+3. Which form/action failed (contact / appointment / admin login)
 4. Your env var names set (not the secret values)
 
 ---
 
-*Generated from end-to-end project check.*
+_Generated from end-to-end project check._

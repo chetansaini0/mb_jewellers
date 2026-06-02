@@ -5,8 +5,7 @@ import { createPageMetadata } from "@/app/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Diamond Collection | MB Jewellers",
-  description:
-    "Explore elegant diamond sets, necklaces, earrings, bracelets, and rings from MB Jewellers.",
+  description: "Explore elegant diamond sets, necklaces, earrings, bracelets, and rings from MB Jewellers.",
   path: "/collections/diamond",
 });
 

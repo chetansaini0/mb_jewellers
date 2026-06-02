@@ -2,12 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  animate,
-  motion,
-  useSpring,
-  type PanInfo,
-} from "framer-motion";
+import { animate, motion, useSpring, type PanInfo } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type MouseEvent } from "react";

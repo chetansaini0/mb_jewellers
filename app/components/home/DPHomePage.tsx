@@ -352,9 +352,14 @@ function NewArrivalsSection({ products }: { products: typeof featuredPieces }) {
                       </button>
                     </div>
                     <div className="space-y-2 px-4 py-4">
-                      <h3 className="font-[family-name:var(--font-display)] text-lg text-[var(--color-ink)]">{product.name}</h3>
+                      <h3 className="font-[family-name:var(--font-display)] text-lg text-[var(--color-ink)]">
+                        {product.name}
+                      </h3>
                       <p className="text-sm text-[var(--color-ink-muted)]">{product.detail}</p>
-                      <Link href="/contact" className="inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-rose)]">
+                      <Link
+                        href="/contact"
+                        className="inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-rose)]"
+                      >
                         Request details
                       </Link>
                     </div>
@@ -396,18 +401,29 @@ function ProductSection({
       <div className="site-max site-px">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <h2 className="dp-section-title">{title}</h2>
-          <Link href={ctaHref} className="dp-pill-button rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em]">
+          <Link
+            href={ctaHref}
+            className="dp-pill-button rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em]"
+          >
             View all
           </Link>
         </div>
         <SlidingRail>
           {products.map((product) => (
-            <article key={`${title}-${product.name}`} className="dp-product-card min-w-[220px] max-w-[260px] shrink-0 overflow-hidden rounded-sm">
+            <article
+              key={`${title}-${product.name}`}
+              className="dp-product-card min-w-[220px] max-w-[260px] shrink-0 overflow-hidden rounded-sm"
+            >
               <ProductImage product={product} />
               <div className="space-y-2 px-4 py-4">
-                <h3 className="font-[family-name:var(--font-display)] text-lg text-[var(--color-ink)]">{product.name}</h3>
+                <h3 className="font-[family-name:var(--font-display)] text-lg text-[var(--color-ink)]">
+                  {product.name}
+                </h3>
                 <p className="text-sm text-[var(--color-ink-muted)]">{product.detail}</p>
-                <Link href="/contact" className="inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-rose)]">
+                <Link
+                  href="/contact"
+                  className="inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-rose)]"
+                >
                   Request details
                 </Link>
               </div>
@@ -432,17 +448,22 @@ function BridalHomeSection() {
     <section className="dp-bridal bg-[var(--color-white)] py-12 sm:py-16">
       <div className="site-max site-px grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center lg:gap-14">
         <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">Bridal Studio</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+            Bridal Studio
+          </p>
           <h2 className="dp-section-title mt-3">Bespoke Bridal Jewellery</h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
-            Collaborate with our design consultants to build complete bridal sets for engagement, wedding,
-            reception, and gifting ceremonies tailored to your outfit and traditions.
+            Collaborate with our design consultants to build complete bridal sets for engagement, wedding, reception,
+            and gifting ceremonies tailored to your outfit and traditions.
           </p>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
             Explore signature bridal styling, then schedule a private consultation to curate your final look.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/bridal" className="dp-pill-button rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em]">
+            <Link
+              href="/bridal"
+              className="dp-pill-button rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em]"
+            >
               Explore bridal
             </Link>
             <Link
@@ -466,11 +487,13 @@ function AppointmentHomeSection() {
     <section className="dp-appointment bg-white py-12 sm:py-16">
       <div className="site-max site-px">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">Private Appointments</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+            Private Appointments
+          </p>
           <h2 className="dp-section-title mt-3">Book a Studio Visit</h2>
           <p className="mt-4 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
-            Share your requirements and preferred date. Our consultants respond with curated options and
-            appointment details for Sikar and Jaipur.
+            Share your requirements and preferred date. Our consultants respond with curated options and appointment
+            details for Sikar and Jaipur.
           </p>
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
@@ -482,7 +505,10 @@ function AppointmentHomeSection() {
           ))}
         </div>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link href="/contact" className="dp-pill-button rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em]">
+          <Link
+            href="/contact"
+            className="dp-pill-button rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em]"
+          >
             Request appointment
           </Link>
           <Link
@@ -500,7 +526,11 @@ function AppointmentHomeSection() {
 function CookieActions({ onAccept, onDecline }: { onAccept: () => void; onDecline: () => void }) {
   return (
     <div className="flex flex-wrap gap-3">
-      <button type="button" className="dp-pill-button rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.16em]" onClick={onAccept}>
+      <button
+        type="button"
+        className="dp-pill-button rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.16em]"
+        onClick={onAccept}
+      >
         Accept cookies
       </button>
       <button
@@ -535,11 +565,17 @@ export function DPHomePage() {
           <CuratedHeader />
           <SlidingRail>
             {curatedCollections.map((item) => (
-              <Link key={item.title} href={item.href} className="dp-rail-card min-w-[220px] max-w-[260px] shrink-0 overflow-hidden rounded-sm">
+              <Link
+                key={item.title}
+                href={item.href}
+                className="dp-rail-card min-w-[220px] max-w-[260px] shrink-0 overflow-hidden rounded-sm"
+              >
                 <div className="relative aspect-[4/5]">
                   <Image src={item.image} alt={item.title} fill className="object-cover" sizes="260px" />
                 </div>
-                <p className="px-4 py-4 text-center font-[family-name:var(--font-display)] text-lg text-[var(--color-rose)]">{item.title}</p>
+                <p className="px-4 py-4 text-center font-[family-name:var(--font-display)] text-lg text-[var(--color-rose)]">
+                  {item.title}
+                </p>
               </Link>
             ))}
           </SlidingRail>
@@ -562,9 +598,14 @@ export function DPHomePage() {
           <SlidingRail>
             {stores.map((store) => (
               <article key={store.city} className="dp-store-card min-w-[280px] max-w-[360px] shrink-0 rounded-sm p-6">
-                <h3 className="font-[family-name:var(--font-display)] text-2xl text-[var(--color-rose)]">{store.city}</h3>
+                <h3 className="font-[family-name:var(--font-display)] text-2xl text-[var(--color-rose)]">
+                  {store.city}
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[var(--color-ink-muted)]">{store.address}</p>
-                <Link href={store.href} className="mt-5 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-rose)]">
+                <Link
+                  href={store.href}
+                  className="mt-5 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-rose)]"
+                >
                   View store info
                 </Link>
               </article>
@@ -594,20 +635,17 @@ function CuratedHeader() {
   return (
     <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
       <h2 className="dp-section-title">Curated For You</h2>
-      <Link href="/collections" className="dp-pill-button rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em]">
+      <Link
+        href="/collections"
+        className="dp-pill-button rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em]"
+      >
         Collections
       </Link>
     </div>
   );
 }
 
-function CookieBanner({
-  onAccept,
-  onDecline,
-}: {
-  onAccept: () => void;
-  onDecline: () => void;
-}) {
+function CookieBanner({ onAccept, onDecline }: { onAccept: () => void; onDecline: () => void }) {
   return (
     <div className="dp-cookie-banner fixed inset-x-0 bottom-0 z-40">
       <div className="site-max flex flex-col gap-4 site-px py-4 sm:flex-row sm:items-center sm:justify-between">

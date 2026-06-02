@@ -5,8 +5,7 @@ import { createPageMetadata } from "@/app/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Disclaimer | MB Jewellers",
-  description:
-    "MB Jewellers website disclaimer — showcase and enquiries only, no online sales or checkout.",
+  description: "MB Jewellers website disclaimer — showcase and enquiries only, no online sales or checkout.",
   path: "/disclaimer",
 });
 
