@@ -1,0 +1,3066 @@
+MB Jewellers website source export
+Generated: 2026-05-13T14:30:19.0425600+05:30
+Files: 28
+
+===== app\layout.tsx =====
+import type { Metadata, Viewport } from "next";
+import { Cinzel, Playfair_Display, Poppins } from "next/font/google";
+import "./globals.css";
+
+const display = Playfair_Display({
+  variable: "--font-display-luxury",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const sans = Poppins({
+  variable: "--font-sans-luxury",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const accent = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fff6eb" },
+    { media: "(prefers-color-scheme: dark)", color: "#2f1713" },
+  ],
+};
+
+export const metadata: Metadata = {
+  title: {
+    default: "MB Jewellers | Fine jewellery",
+    template: "%s | MB Jewellers",
+  },
+  description:
+    "Discover rings, necklaces, earrings, and bespoke pieces from MB Jewellers.",
+  appleWebApp: {
+    capable: true,
+    title: "MB Jewellers",
+    statusBarStyle: "black-translucent",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${display.variable} ${sans.variable} ${accent.variable} h-full scroll-smooth antialiased`}>
+      <body className="flex min-h-dvh flex-col overflow-x-clip bg-[var(--color-white)] text-[var(--color-ink)]">
+        {children}
+      </body>
+    </html>
+  );
+}
+
+
+===== app\page.tsx =====
+import Link from "next/link";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { LuxuryExperience } from "./components/sections/LuxuryExperience";
+
+const heroVideos = [
+  {
+    src: "https://assets.mixkit.co/videos/15910/15910-720.mp4",
+    poster: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1920&q=80",
+  },
+  {
+    src: "https://assets.mixkit.co/videos/preview/mixkit-model-with-golden-earrings-39859-large.mp4",
+    poster: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1920&q=80",
+  },
+  {
+    src: "https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-earrings-in-close-up-40145-large.mp4",
+    poster: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=1920&q=80",
+  },
+];
+
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <section className="hero-glow luxury-hero relative overflow-hidden text-[var(--color-diamond-white)]">
+          <div className="luxury-particles" />
+          <div className="absolute inset-0 overflow-hidden">
+            {heroVideos.map((clip, index) => (
+              <video
+                key={clip.src}
+                className="hero-video-layer h-full w-full object-cover"
+                style={{ animationDelay: `${index * 8}s` }}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster={clip.poster}
+              >
+                <source src={clip.src} type="video/mp4" />
+              </video>
+            ))}
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[color:#040404] via-[rgba(11,11,11,0.82)] to-transparent" />
+          <div className="hero-luxe-overlay absolute inset-0" />
+          <div className="relative site-max flex min-h-[min(92dvh,920px)] flex-col justify-end site-px pb-16 pt-28 sm:pb-24 sm:pt-40">
+            <p className="fade-rise luxury-kicker">
+              International luxury jewellery house
+            </p>
+            <h1 className="fade-rise-delay luxury-reveal mt-4 max-w-4xl font-[family-name:var(--font-display)] text-4xl font-medium leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">
+              Cinematic Jewellery
+              <br />
+              Crafted for Iconic Moments
+            </h1>
+            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/78 sm:text-base">
+              Experience ultra-premium craftsmanship where royal heritage meets modern global luxury. Discover signature collections designed to feel unforgettable.
+            </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+              <Link
+                href="/collections"
+                className="luxe-button inline-flex w-full items-center justify-center rounded-sm px-7 py-3.5 text-center text-sm font-medium tracking-[0.18em] sm:w-auto"
+              >
+                Explore collections
+              </Link>
+              <Link
+                href="/contact"
+                className="luxe-button-ghost inline-flex w-full items-center justify-center rounded-sm px-7 py-3.5 text-center text-sm font-medium tracking-[0.18em] sm:w-auto"
+              >
+                Book private appointment
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <LuxuryExperience />
+
+        <section className="luxury-dark-panel py-20 text-[var(--color-diamond-white)] sm:py-24">
+          <div className="site-max flex flex-col items-start justify-between gap-10 site-px lg:flex-row lg:items-center">
+            <div>
+              <h2 className="font-[family-name:var(--font-display)] text-3xl font-medium sm:text-4xl">
+                Step into the MB private lounge
+              </h2>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
+                Experience a cinematic luxury consultation with tailored styling, bespoke recommendations, and concierge-level service.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="luxe-button shrink-0 rounded-sm px-8 py-3.5 text-sm font-medium tracking-[0.18em]"
+            >
+              Reserve your session
+            </Link>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+===== app\globals.css =====
+@import "tailwindcss";
+
+:root {
+  --color-white: #f8f8f8;
+  --color-diamond-white: #f8f8f8;
+  --color-cream: #f5e6cc;
+  --color-cream-muted: #e7d2ad;
+  --color-rose: #c89a3d;
+  --color-rose-dark: #8f6b22;
+  --color-rose-soft: #fff6e6;
+  --color-ink: #0b0b0b;
+  --color-ink-muted: #5b5751;
+  --color-border: #d8c29a;
+  --color-accent-gold: #d4af37;
+  --color-accent-gold-deep: #a9851c;
+  --color-accent-emerald: #0f8b6f;
+  --color-royal-gold: #d4af37;
+  --color-soft-silver: #c0c0c0;
+  --color-champagne: #f5e6cc;
+  --color-emerald-accent: #0f8b6f;
+  --background: var(--color-white);
+  --foreground: var(--color-ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans-luxury);
+  --font-display: var(--font-display-luxury);
+}
+
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 2%, rgba(212, 175, 55, 0.14), transparent 30%),
+    radial-gradient(circle at 88% 10%, rgba(15, 139, 111, 0.1), transparent 35%),
+    radial-gradient(circle at 82% 92%, rgba(192, 192, 192, 0.12), transparent 28%),
+    var(--background);
+  color: var(--color-ink);
+  font-family: var(--font-sans-luxury), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-rose) 28%, white);
+  color: var(--color-ink);
+}
+
+.luxe-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.luxe-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 4% 80%, rgba(177, 58, 58, 0.08), transparent 35%),
+    linear-gradient(140deg, rgba(198, 146, 47, 0.08), transparent 36%);
+  pointer-events: none;
+}
+
+.luxe-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--color-accent-gold) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 80% 60%, var(--color-accent-gold) 0 1px, transparent 1.5px);
+  background-size: 28px 28px, 32px 32px;
+  pointer-events: none;
+}
+
+.luxe-panel {
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 247, 244, 0.88));
+  box-shadow: 0 18px 40px rgba(33, 18, 18, 0.09);
+  backdrop-filter: blur(6px);
+}
+
+.luxe-divider {
+  height: 1px;
+  width: 6rem;
+  background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+}
+
+/* Horizontal padding: tighter gutters on tablet/desktop so content fills the viewport */
+.site-px {
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 640px) {
+  .site-px {
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-px {
+    padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1536px) {
+  .site-px {
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* Main content width â€” wider than Tailwind max-w-6xl to reduce side gaps on large screens */
+.site-max {
+  width: 100%;
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.luxe-button {
+  border: 1px solid var(--color-accent-gold);
+  background: linear-gradient(120deg, var(--color-rose-dark), var(--color-rose), var(--color-accent-gold));
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(127, 31, 31, 0.38);
+  position: relative;
+  overflow: hidden;
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease, border-color 220ms ease;
+}
+
+.luxe-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 28%, rgba(255, 255, 255, 0.35) 46%, transparent 66%);
+  transform: translateX(-120%);
+  transition: transform 700ms ease;
+}
+
+.luxe-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(127, 31, 31, 0.46);
+  filter: saturate(1.04);
+  border-color: var(--color-accent-gold-deep);
+}
+
+.luxe-button:hover::before {
+  transform: translateX(120%);
+}
+
+.luxe-button-ghost {
+  border: 1px solid color-mix(in srgb, var(--color-rose) 48%, #fff);
+  color: var(--color-cream);
+  background: color-mix(in srgb, var(--color-ink) 68%, transparent);
+  backdrop-filter: blur(10px);
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 220ms ease, color 220ms ease, transform 220ms ease, background-color 220ms ease;
+}
+
+.luxe-button-ghost:hover {
+  border-color: var(--color-rose);
+  color: var(--color-rose);
+  transform: translateY(-1px);
+  background: color-mix(in srgb, white 8%, var(--color-ink));
+}
+
+.luxe-field {
+  border: 1px solid var(--color-border);
+  background: #fff;
+  min-height: 44px;
+  font-size: 16px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+textarea.luxe-field {
+  min-height: 7rem;
+}
+
+select.luxe-field {
+  cursor: pointer;
+}
+
+.luxe-field:focus {
+  border-color: var(--color-rose);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-rose) 20%, transparent);
+  outline: none;
+}
+
+.hero-glow::after {
+  content: "";
+  position: absolute;
+  inset: auto -12% -45% -12%;
+  height: 60%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-rose) 42%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+  animation: premiumPulse 7s ease-in-out infinite;
+}
+
+.hero-video-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  filter: saturate(0.95) contrast(1.05) brightness(0.75);
+  animation: heroCrossfade 24s ease-in-out infinite;
+}
+
+.bridal-slide-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  padding: 0.5rem;
+  filter: saturate(1.03) contrast(1.04);
+  animation: bridalCrossfade 24s ease-in-out infinite;
+}
+
+.bridal-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(255, 235, 198, 0.14), transparent 35%),
+    radial-gradient(circle at 84% 76%, rgba(177, 58, 58, 0.2), transparent 40%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bridal-motion-overlay {
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bridal-motion-overlay::before,
+.bridal-motion-overlay::after {
+  content: "";
+  position: absolute;
+  width: 42%;
+  height: 42%;
+  border-radius: 9999px;
+  filter: blur(22px);
+  opacity: 0.2;
+}
+
+.bridal-motion-overlay::before {
+  top: -8%;
+  left: -8%;
+  background: color-mix(in srgb, var(--color-accent-gold) 65%, transparent);
+  animation: bridalOrbFloat 8s ease-in-out infinite;
+}
+
+.bridal-motion-overlay::after {
+  right: -10%;
+  bottom: -8%;
+  background: color-mix(in srgb, var(--color-rose) 62%, transparent);
+  animation: bridalOrbFloat 10s ease-in-out infinite reverse;
+}
+
+.hero-luxe-overlay {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(196, 135, 141, 0.3), transparent 45%),
+    radial-gradient(circle at 12% 85%, rgba(255, 227, 194, 0.2), transparent 38%),
+    linear-gradient(180deg, rgba(17, 12, 12, 0.3), rgba(17, 12, 12, 0.64));
+  pointer-events: none;
+}
+
+.premium-card {
+  border-radius: 0.25rem;
+  box-shadow: 0 14px 40px rgba(33, 18, 18, 0.09);
+  transition: box-shadow 280ms ease, transform 280ms ease, border-color 280ms ease;
+}
+
+.premium-card:hover {
+  box-shadow: 0 20px 50px rgba(33, 18, 18, 0.16);
+  border-color: color-mix(in srgb, var(--color-accent-gold) 58%, var(--color-border));
+}
+
+.shine-on-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 32%, rgba(255, 255, 255, 0.45) 50%, transparent 68%);
+  transform: translateX(-115%);
+  transition: transform 700ms ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.group:hover .shine-on-hover::before {
+  transform: translateX(115%);
+}
+
+.fade-rise {
+  animation: fadeRise 700ms ease both;
+}
+
+.fade-rise-delay {
+  animation: fadeRise 900ms ease both;
+}
+
+.slideshow-shell {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.slideshow-shell::before,
+.slideshow-shell::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 56px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.slideshow-shell::before {
+  left: 0;
+  background: linear-gradient(90deg, color-mix(in srgb, white 96%, transparent), transparent);
+}
+
+.slideshow-shell::after {
+  right: 0;
+  background: linear-gradient(270deg, color-mix(in srgb, white 96%, transparent), transparent);
+}
+
+.slideshow-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: slideShowMove 34s linear infinite;
+}
+
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideShowMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes premiumPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes heroCrossfade {
+  0%,
+  8% {
+    opacity: 0;
+  }
+  12%,
+  30% {
+    opacity: 0.6;
+  }
+  36%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bridalCrossfade {
+  0%,
+  10% {
+    opacity: 0;
+    transform: scale(1.05) translate3d(0, 1.8%, 0);
+  }
+  14%,
+  34% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  40%,
+  100% {
+    opacity: 0;
+    transform: scale(0.98) translate3d(0, -1%, 0);
+  }
+}
+
+@keyframes bridalOrbFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, 10px, 0) scale(1.08);
+  }
+}
+
+.luxury-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(212, 175, 55, 0.15), transparent 35%),
+    radial-gradient(circle at 85% 72%, rgba(15, 139, 111, 0.14), transparent 40%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.luxury-reveal {
+  animation: luxuryTextReveal 1.2s ease both;
+}
+
+.luxury-kicker {
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+}
+
+.luxury-title {
+  font-family: var(--font-display-luxury), serif;
+  font-size: clamp(1.9rem, 1.3rem + 2vw, 3.3rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+}
+
+.luxury-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(circle, rgba(212, 175, 55, 0.55) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(248, 248, 248, 0.35) 0 1px, transparent 1.5px);
+  background-size: 36px 36px, 52px 52px;
+  animation: particleFloat 18s linear infinite;
+  opacity: 0.4;
+}
+
+.luxury-dark-panel {
+  background:
+    linear-gradient(160deg, rgba(8, 8, 8, 0.98), rgba(18, 18, 18, 0.95)),
+    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.12), transparent 45%);
+}
+
+.luxury-collection-card {
+  position: relative;
+  border: 1px solid color-mix(in srgb, var(--color-accent-gold) 42%, #fff);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(11, 11, 11, 0.12);
+  transform-style: preserve-3d;
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.luxury-collection-card:hover {
+  transform: perspective(1100px) rotateX(3deg) rotateY(-4deg) translateY(-6px);
+  box-shadow: 0 22px 46px rgba(212, 175, 55, 0.22);
+  border-color: var(--color-accent-gold);
+}
+
+.luxury-image-wrap {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.luxury-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 11, 11, 0.03), rgba(11, 11, 11, 0.4));
+}
+
+.luxury-collection-meta {
+  padding: 1rem;
+}
+
+.luxury-collection-meta h3 {
+  font-family: var(--font-display-luxury), serif;
+  font-size: 1.45rem;
+}
+
+.luxury-collection-meta p {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+}
+
+.luxury-product-card {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: linear-gradient(150deg, rgba(18, 18, 18, 0.85), rgba(7, 7, 7, 0.8));
+  padding: 0.8rem;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.3);
+  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}
+
+.luxury-product-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.75);
+  box-shadow: 0 24px 45px rgba(212, 175, 55, 0.22);
+}
+
+.luxury-mini-link {
+  color: var(--color-accent-gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.luxury-mini-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.luxury-glass-card {
+  border: 1px solid color-mix(in srgb, var(--color-accent-gold) 42%, #fff);
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 30px rgba(11, 11, 11, 0.1);
+  padding: 1rem;
+  transition: transform 280ms ease, box-shadow 280ms ease;
+}
+
+.luxury-glass-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 36px rgba(212, 175, 55, 0.18);
+}
+
+.luxury-video-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  min-height: 380px;
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.22);
+}
+
+.luxury-video-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(circle at 76% 24%, rgba(212, 175, 55, 0.2), transparent 36%);
+}
+
+.luxury-membership-banner {
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(130deg, rgba(245, 230, 204, 0.92), rgba(248, 248, 248, 0.9)),
+    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.18), transparent 45%);
+  box-shadow: 0 16px 36px rgba(11, 11, 11, 0.12);
+  padding: clamp(1rem, 3vw, 2.2rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.luxury-cursor-glow::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--mx, 50%) - 180px);
+  top: calc(var(--my, 50%) - 180px);
+  width: 360px;
+  height: 360px;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent 68%);
+  transition: left 120ms linear, top 120ms linear;
+}
+
+.luxury-float-actions {
+  position: fixed;
+  right: max(0.85rem, env(safe-area-inset-right));
+  bottom: max(0.85rem, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.luxury-fab {
+  min-width: 54px;
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 175, 55, 0.8);
+  background: linear-gradient(140deg, #101010, #1a1a1a);
+  color: var(--color-accent-gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.34);
+}
+
+.luxury-fab:hover {
+  box-shadow: 0 18px 34px rgba(212, 175, 55, 0.25);
+  transform: translateY(-2px);
+}
+
+.luxury-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(4, 4, 4, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.luxury-modal {
+  width: min(680px, 100%);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(165deg, #fffef9, #f8efe0);
+  box-shadow: 0 28px 58px rgba(0, 0, 0, 0.32);
+  padding: 1rem;
+  position: relative;
+}
+
+.luxury-close {
+  position: absolute;
+  right: 0.7rem;
+  top: 0.3rem;
+  background: transparent;
+  border: 0;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--color-ink-muted);
+}
+
+@keyframes luxuryTextReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    letter-spacing: 0.08em;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.01em;
+    filter: blur(0);
+  }
+}
+
+@keyframes particleFloat {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-72px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video-layer,
+  .bridal-slide-layer,
+  .slideshow-track,
+  .fade-rise,
+  .fade-rise-delay,
+  .hero-glow::after,
+  .luxury-reveal,
+  .luxury-particles {
+    animation: none !important;
+  }
+
+  .bridal-motion-overlay::before,
+  .bridal-motion-overlay::after {
+    animation: none !important;
+  }
+
+  .luxe-button,
+  .luxe-button::before,
+  .premium-card,
+  .shine-on-hover::before,
+  .luxury-collection-card,
+  .luxury-product-card,
+  .luxury-glass-card,
+  .luxury-fab {
+    transition: none !important;
+  }
+
+  .bridal-showcase .bridal-photo-cell,
+  .bridal-showcase .bridal-photo-float {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Google Translate widget â€” match site typography and controls */
+.google-translate-root .goog-te-gadget {
+  font-family: var(--font-sans-luxury), system-ui, sans-serif !important;
+  font-size: 0.75rem !important;
+  color: var(--color-ink-muted) !important;
+}
+
+.google-translate-root .goog-te-gadget-simple {
+  border: none !important;
+  background: transparent !important;
+}
+
+.google-translate-root .goog-te-combo {
+  margin: 0 !important;
+  max-width: 100%;
+  border-radius: 0.125rem;
+  border: 1px solid var(--color-border) !important;
+  background: color-mix(in srgb, var(--color-white) 92%, transparent) !important;
+  padding: 0.35rem 0.5rem !important;
+  font-size: 0.75rem !important;
+  color: var(--color-ink) !important;
+}
+
+.google-translate-root .goog-te-menu-value span {
+  color: var(--color-ink-muted) !important;
+}
+
+/* Bridal showcase â€” entrance + gentle motion */
+@keyframes bridalReveal {
+  from {
+    opacity: 0;
+    transform: translateY(36px) scale(0.94);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes bridalFloatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.bridal-showcase[data-visible="true"] .bridal-photo-cell {
+  animation: bridalReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.bridal-showcase[data-visible="true"] .bridal-photo-cell:nth-child(1) {
+  animation-delay: 0ms;
+}
+.bridal-showcase[data-visible="true"] .bridal-photo-cell:nth-child(2) {
+  animation-delay: 110ms;
+}
+.bridal-showcase[data-visible="true"] .bridal-photo-cell:nth-child(3) {
+  animation-delay: 220ms;
+}
+.bridal-showcase[data-visible="true"] .bridal-photo-cell:nth-child(4) {
+  animation-delay: 330ms;
+}
+
+.bridal-showcase[data-visible="true"] .bridal-photo-float {
+  animation: bridalFloatSoft 8s ease-in-out infinite;
+}
+
+.bridal-showcase[data-visible="true"] .bridal-photo-cell:nth-child(1) .bridal-photo-float {
+  animation-duration: 9s;
+}
+.bridal-showcase[data-visible="true"] .bridal-photo-cell:nth-child(2) .bridal-photo-float {
+  animation-duration: 8.2s;
+  animation-delay: 0.4s;
+}
+.bridal-showcase[data-visible="true"] .bridal-photo-cell:nth-child(3) .bridal-photo-float {
+  animation-duration: 9.4s;
+  animation-delay: 0.8s;
+}
+.bridal-showcase[data-visible="true"] .bridal-photo-cell:nth-child(4) .bridal-photo-float {
+  animation-duration: 8.6s;
+  animation-delay: 1.2s;
+}
+
+
+===== app\bridal\page.tsx =====
+import Link from "next/link";
+import { BridalShowcase } from "@/app/components/BridalShowcase";
+import { Footer } from "@/app/components/Footer";
+import { Header } from "@/app/components/Header";
+
+export default function BridalPage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <section className="luxe-section site-max grid gap-12 site-px py-16 sm:gap-14 sm:py-20 lg:grid-cols-2 lg:items-start lg:gap-16 xl:gap-20">
+          <div className="min-w-0 lg:pt-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-rose)]">
+              Bridal Studio
+            </p>
+            <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
+              Bespoke Bridal Jewellery
+            </h1>
+            <div className="luxe-divider mt-5" />
+            <p className="mt-5 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
+              Collaborate with our design consultants to build complete bridal sets for engagement,
+              wedding, reception, and gifting ceremonies. Every detail is tailored to your outfit, style,
+              and traditions.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
+              We do not display prices online. Share your preferences and we will curate options during
+              your private consultation.
+            </p>
+            <Link
+              href="/contact"
+              className="luxe-button mt-8 inline-flex rounded-sm px-6 py-3 text-sm font-medium tracking-wide"
+            >
+              Schedule bridal consultation
+            </Link>
+          </div>
+          <div className="min-w-0 self-start lg:pt-0">
+            <BridalShowcase />
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+===== app\collections\page.tsx =====
+import { CategoryCollectionCard } from "@/app/components/CategoryCollectionCard";
+import { Footer } from "@/app/components/Footer";
+import { Header } from "@/app/components/Header";
+import { categoryShowcase } from "@/app/lib/siteData";
+
+export default function CollectionsPage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <section className="luxe-section site-max site-px py-16 sm:py-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-rose)]">
+            Collections
+          </p>
+          <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
+            Explore Our Collections
+          </h1>
+          <div className="luxe-divider mt-5" />
+          <p className="mt-5 max-w-3xl text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
+            Browse diamond, gold, silver, and accessoriesâ€”each collection has its own page with curated
+            highlights and guidance for your visit.
+          </p>
+          <ul className="mt-12 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {categoryShowcase.map((item) => (
+              <li key={item.title}>
+                <CategoryCollectionCard item={item} ctaLabel="Open section â†’" />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+===== app\collections\gold\page.tsx =====
+import { Footer } from "@/app/components/Footer";
+import { Header } from "@/app/components/Header";
+import { ProductCollectionSections } from "@/app/components/sections/ProductCollectionSections";
+import { goldCollectionPage } from "@/app/lib/collectionPages";
+
+export default function GoldPage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <ProductCollectionSections {...goldCollectionPage} collectionSlug="gold" />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+===== app\collections\diamond\page.tsx =====
+import { Footer } from "@/app/components/Footer";
+import { Header } from "@/app/components/Header";
+import { ProductCollectionSections } from "@/app/components/sections/ProductCollectionSections";
+import { diamondCollectionPage } from "@/app/lib/collectionPages";
+
+export default function DiamondPage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <ProductCollectionSections {...diamondCollectionPage} collectionSlug="diamond" />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+===== app\collections\silver\page.tsx =====
+import { Footer } from "@/app/components/Footer";
+import { Header } from "@/app/components/Header";
+import { ProductCollectionSections } from "@/app/components/sections/ProductCollectionSections";
+import { silverCollectionPage } from "@/app/lib/collectionPages";
+
+export default function SilverPage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <ProductCollectionSections {...silverCollectionPage} collectionSlug="silver" />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+===== app\collections\accessories\page.tsx =====
+import { Footer } from "@/app/components/Footer";
+import { Header } from "@/app/components/Header";
+import { ProductCollectionSections } from "@/app/components/sections/ProductCollectionSections";
+import { accessoriesCollectionPage } from "@/app/lib/collectionPages";
+
+export default function AccessoriesPage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <ProductCollectionSections {...accessoriesCollectionPage} collectionSlug="accessories" />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+===== app\collections\[collection]\[section]\page.tsx =====
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { Footer } from "@/app/components/Footer";
+import { Header } from "@/app/components/Header";
+import {
+  buildCollectionSectionParams,
+  collectionPagesBySlug,
+  getCollectionSlug,
+  resolveCollectionSection,
+} from "@/app/lib/collectionPages";
+
+export function generateStaticParams() {
+  return buildCollectionSectionParams();
+}
+
+type PageProps = {
+  params: Promise<{ collection: string; section: string }>;
+};
+
+export default async function CollectionSubsectionPage({ params }: PageProps) {
+  const { collection: collectionParam, section: sectionParam } = await params;
+  const collectionSlug = getCollectionSlug(collectionParam);
+  if (!collectionSlug) notFound();
+
+  const subsection = resolveCollectionSection(collectionSlug, sectionParam);
+  if (!subsection) notFound();
+
+  const parent = collectionPagesBySlug[collectionSlug];
+  const backLabel = parent.title.replace(/\s+Collection\s*$/i, "").trim() || parent.eyebrow;
+
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <section className="luxe-section site-max site-px py-16 sm:py-20">
+          <Link
+            href={`/collections/${collectionSlug}`}
+            className="inline-flex text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-rose-dark)] transition hover:text-[var(--color-ink)] [-webkit-tap-highlight-color:transparent]"
+          >
+            â† Back to {backLabel}
+          </Link>
+          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-rose)]">
+            {parent.eyebrow}
+          </p>
+          <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
+            {subsection.title}
+          </h1>
+          <div className="luxe-divider mt-5" />
+          <p className="mt-5 max-w-3xl text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
+            {subsection.description}
+          </p>
+          <div
+            className="mt-12 min-h-[min(50vh,560px)] rounded-sm border border-dashed border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-white)_94%,var(--color-rose-soft))]"
+            data-gallery-placeholder={subsection.id}
+            aria-label={`Image gallery for ${subsection.title}`}
+          />
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+===== app\contact\page.tsx =====
+import { Footer } from "@/app/components/Footer";
+import { Header } from "@/app/components/Header";
+import { socialLinks } from "@/app/lib/siteData";
+
+export default function ContactPage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <section className="luxe-section site-max grid gap-10 site-px py-16 sm:py-20 lg:grid-cols-2">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-rose)]">
+              Contact
+            </p>
+            <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
+              Book a Private Appointment
+            </h1>
+            <div className="luxe-divider mt-5" />
+            <p className="mt-5 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
+              Share your required category, preferred timeline, and occasion. Our consultants will respond
+              with curated options and schedule details.
+            </p>
+            <div className="mt-8 space-y-2 text-sm text-[var(--color-ink-muted)]">
+              <p>Email: hello@mbjewellers.example</p>
+              <p>Phone: +00 000 000 0000</p>
+              <p>Mon-Sat: 10:00 AM to 7:00 PM</p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4 text-sm">
+              <a
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[var(--color-rose-dark)] underline-offset-4 transition hover:text-[var(--color-ink)] hover:underline"
+              >
+                Instagram
+              </a>
+              <span className="text-[var(--color-border)]" aria-hidden>
+                Â·
+              </span>
+              <a
+                href={socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[var(--color-rose-dark)] underline-offset-4 transition hover:text-[var(--color-ink)] hover:underline"
+              >
+                Facebook
+              </a>
+            </div>
+          </div>
+          <form className="luxe-panel p-6 sm:p-8">
+            <div className="grid gap-5">
+              <label className="text-sm text-[var(--color-ink-muted)]">
+                Name
+                <input className="luxe-field mt-2 w-full px-3 py-2.5" />
+              </label>
+              <label className="text-sm text-[var(--color-ink-muted)]">
+                Email
+                <input
+                  type="email"
+                  className="luxe-field mt-2 w-full px-3 py-2.5"
+                />
+              </label>
+              <label className="text-sm text-[var(--color-ink-muted)]">
+                Jewellery Category
+                <select className="luxe-field mt-2 w-full px-3 py-2.5">
+                  <option>Diamond</option>
+                  <option>Gold</option>
+                  <option>Silver</option>
+                  <option>Accessories</option>
+                  <option>Bridal</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label className="text-sm text-[var(--color-ink-muted)]">
+                Message
+                <textarea
+                  rows={4}
+                  className="luxe-field mt-2 w-full px-3 py-2.5"
+                  placeholder="Tell us your requirements and preferred appointment date."
+                />
+              </label>
+              <button
+                type="submit"
+                className="luxe-button rounded-sm px-6 py-3 text-sm font-medium tracking-wide"
+              >
+                Submit enquiry
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+===== app\heritage\page.tsx =====
+import { Footer } from "@/app/components/Footer";
+import { Header } from "@/app/components/Header";
+
+export default function HeritagePage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <section className="luxe-section site-max site-px py-16 sm:py-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-rose)]">
+            Heritage
+          </p>
+          <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
+            Craftsmanship Behind MB Jewellers
+          </h1>
+          <div className="luxe-divider mt-5" />
+          <div className="luxe-panel mx-auto mt-8 max-w-4xl space-y-5 p-6 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:p-8 sm:text-base">
+            <p>
+              Our atelier combines traditional jewellery artistry with modern precision finishing. Each
+              design begins with material research, silhouette studies, and hand-approved prototypes to
+              ensure comfort and long-term wear.
+            </p>
+            <p>
+              We focus on premium rose-gold and polished white-toned styling for a refined, global look.
+              Every piece passes through in-house quality checks for setting strength, finish consistency,
+              and wearable balance.
+            </p>
+            <p>
+              This page is built as a dedicated section so your visitors can discover your story separate
+              from product browsing, reinforcing trust and premium positioning.
+            </p>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+===== app\components\BridalShowcase.tsx =====
+"use client";
+
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
+const BRIDAL_IMAGES = [
+  { src: "/pics/Bridal/b1.jpg", alt: "Bridal jewellery collection moment" },
+  { src: "/pics/Bridal/b2.jpg", alt: "Bridal styling and ceremony elegance" },
+  { src: "/pics/Bridal/b3.jpg", alt: "Bridal ensemble detail" },
+  { src: "/pics/Bridal/b4.jpg", alt: "Bridal celebration portrait" },
+] as const;
+
+export function BridalShowcase() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  /** Start true so images are never stuck invisible (SSR + observer quirks). */
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.05 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={rootRef}
+      className="bridal-showcase relative w-full"
+      data-visible={visible ? "true" : "false"}
+    >
+      <div
+        className="pointer-events-none absolute -left-6 -right-6 -top-8 bottom-0 z-0 rounded-[2rem] bg-gradient-to-br from-[color-mix(in_srgb,var(--color-accent-gold)_22%,transparent)] via-transparent to-[color-mix(in_srgb,var(--color-rose)_18%,transparent)] opacity-90 blur-3xl sm:-left-10 sm:-right-10"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0 rounded-lg bg-[radial-gradient(circle_at_30%_20%,rgba(212,175,55,0.12),transparent_45%)]"
+        aria-hidden
+      />
+
+      <div className="relative z-10 grid grid-cols-2 gap-3 sm:gap-4">
+        {BRIDAL_IMAGES.map((img, index) => (
+          <figure
+            key={img.src}
+            className="bridal-photo-cell group relative min-h-0 overflow-hidden rounded-sm border border-[color-mix(in_srgb,var(--color-border)_85%,var(--color-accent-gold))] bg-[var(--color-ink)] shadow-[0_16px_48px_rgba(33,18,18,0.14)]"
+          >
+            <div className="bridal-photo-float shine-on-hover relative aspect-[3/4] w-full min-h-[140px] overflow-hidden sm:min-h-[180px]">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover transition-[transform,filter] duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06] group-hover:brightness-[1.05]"
+                sizes="(max-width: 640px) 42vw, (max-width: 1024px) 38vw, 320px"
+                priority={index < 2}
+              />
+              <div
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/55 via-transparent to-[var(--color-ink)]/10 opacity-80 transition-opacity duration-500 group-hover:opacity-60"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/15"
+                aria-hidden
+              />
+            </div>
+          </figure>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+===== app\components\CategoryCollectionCard.tsx =====
+import Image from "next/image";
+import Link from "next/link";
+import type { CategoryShowcaseItem } from "@/app/lib/siteData";
+
+type Props = {
+  item: CategoryShowcaseItem;
+  ctaLabel?: string;
+};
+
+export function CategoryCollectionCard({ item, ctaLabel = "Explore â†’" }: Props) {
+  return (
+    <Link
+      href={item.href}
+      className="group premium-card relative flex min-h-[220px] overflow-hidden rounded-sm border border-[var(--color-border)] bg-[var(--color-ink)] shadow-[0_12px_36px_rgba(33,18,18,0.12)] transition duration-300 hover:-translate-y-1 hover:border-[var(--color-rose)] hover:shadow-[0_18px_44px_rgba(33,18,18,0.18)] sm:min-h-[240px] lg:min-h-[260px]"
+    >
+      <Image
+        src={item.coverImage}
+        alt={item.coverAlt}
+        fill
+        className="object-cover transition duration-700 ease-out group-hover:scale-105"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-ink)] via-[var(--color-ink)]/55 to-[var(--color-ink)]/15"
+        aria-hidden
+      />
+      <div className="relative z-10 flex min-h-[220px] flex-1 flex-col justify-end p-5 sm:min-h-[240px] sm:p-6 lg:min-h-[260px]">
+        <span className="font-[family-name:var(--font-display)] text-2xl font-medium tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:text-3xl">
+          {item.title}
+        </span>
+        <span className="mt-2 max-w-prose text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-cream)_92%,transparent)] drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
+          {item.description}
+        </span>
+        <span className="mt-5 inline-flex items-center text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-accent-gold)] transition group-hover:text-[var(--color-cream)]">
+          {ctaLabel}
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+
+===== app\components\Footer.tsx =====
+import Link from "next/link";
+import { FooterLanguageSwitcher } from "@/app/components/FooterLanguageSwitcher";
+import { SocialIconFacebook, SocialIconInstagram } from "@/app/components/SocialIcons";
+import { socialLinks } from "@/app/lib/siteData";
+
+export function Footer() {
+  return (
+    <footer className="relative overflow-hidden border-t border-[var(--color-border)] bg-[var(--color-ink)] text-[var(--color-cream)]">
+      <div className="pointer-events-none absolute inset-0 opacity-60">
+        <div className="absolute -top-14 left-[8%] h-40 w-40 rounded-full bg-[color-mix(in_srgb,var(--color-rose)_22%,transparent)] blur-3xl" />
+        <div className="absolute -bottom-20 right-[6%] h-52 w-52 rounded-full bg-[color-mix(in_srgb,var(--color-accent-gold)_25%,transparent)] blur-3xl" />
+      </div>
+      <div className="site-max grid gap-10 py-14 site-px sm:grid-cols-2 lg:grid-cols-4">
+        <div className="relative">
+          <p className="font-[family-name:var(--font-display)] text-2xl tracking-[0.12em]">
+            MB <span className="text-[var(--color-rose)]">Jewellers</span>
+          </p>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--color-cream-muted)]">
+            Fine jewellery shaped with Rajasthani heritage, meenakari-inspired color,
+            and modern luxury finishing for every celebration.
+          </p>
+          <div className="mt-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-rose)]">
+              Follow us
+            </p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/20 bg-white/5 text-[var(--color-cream)] transition hover:border-[var(--color-accent-gold)] hover:bg-white/10 hover:text-[var(--color-accent-gold)] [-webkit-tap-highlight-color:transparent]"
+                aria-label="MB Jewellers on Instagram"
+              >
+                <SocialIconInstagram className="h-5 w-5" />
+              </a>
+              <a
+                href={socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/20 bg-white/5 text-[var(--color-cream)] transition hover:border-[var(--color-accent-gold)] hover:bg-white/10 hover:text-[var(--color-accent-gold)] [-webkit-tap-highlight-color:transparent]"
+                aria-label="MB Jewellers on Facebook"
+              >
+                <SocialIconFacebook className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="relative">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-rose)]">
+            Contact
+          </p>
+          <ul className="mt-4 space-y-2 text-sm text-[var(--color-cream-muted)]">
+            <li>MB Jewellers Studio, Heritage Bazaar District</li>
+            <li>
+              <Link
+                href="mailto:hello@mbjewellers.example"
+                className="inline-block py-1 transition hover:text-[var(--color-cream)] [-webkit-tap-highlight-color:transparent]"
+              >
+                hello@mbjewellers.example
+              </Link>
+            </li>
+            <li>
+              <Link href="tel:+0000000000" className="inline-block py-1 transition hover:text-[var(--color-cream)] [-webkit-tap-highlight-color:transparent]">
+                +00 000 000 0000
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="relative lg:col-span-1">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-rose)]">
+            Rajwada Experience
+          </p>
+          <p className="mt-4 text-sm leading-relaxed text-[var(--color-cream-muted)]">
+            Mon-Sat: 10:00 - 19:00
+            <br />
+            Sunday: By appointment
+          </p>
+          <p className="mt-4 text-xs uppercase tracking-[0.22em] text-[var(--color-rose)]">
+            Private Lounge Visits Available
+          </p>
+        </div>
+        <FooterLanguageSwitcher />
+      </div>
+      <div className="relative border-t border-white/10 site-px pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-center text-xs text-[var(--color-cream-muted)]">
+        Â© {new Date().getFullYear()} MB Jewellers. All rights reserved.
+      </div>
+    </footer>
+  );
+}
+
+
+===== app\components\FooterLanguageSwitcher.tsx =====
+"use client";
+
+import { useEffect, useId } from "react";
+import { googleTranslateIncludedLanguages, translationLanguages } from "@/app/lib/siteData";
+
+const ELEMENT_ID = "google_translate_element";
+
+interface GoogleTranslateCtor {
+  new (
+    options: {
+      pageLanguage: string;
+      includedLanguages: string;
+      layout: number;
+      autoDisplay: boolean;
+    },
+    elementId: string,
+  ): unknown;
+  InlineLayout?: { SIMPLE: number };
+}
+
+declare global {
+  interface Window {
+    googleTranslateElementInit?: () => void;
+    google?: {
+      translate: {
+        TranslateElement: GoogleTranslateCtor;
+      };
+    };
+  }
+}
+
+function getGoogtransCookie(): string | null {
+  if (typeof document === "undefined") return null;
+  const m = document.cookie.match(/(?:^|;)\s*googtrans=([^;]+)/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
+function getSelectedLanguageFromCookie(): string {
+  const raw = getGoogtransCookie();
+  if (!raw) return "en";
+  const parts = raw.split("/").filter(Boolean);
+  const target = parts[parts.length - 1];
+  if (!target || target === "en") return "en";
+  const known = translationLanguages.some((l) => l.code === target);
+  return known ? target : "en";
+}
+
+function clearGoogtransCookies(): void {
+  const expires = "Thu, 01 Jan 1970 00:00:00 GMT";
+  const host = window.location.hostname;
+  document.cookie = `googtrans=;expires=${expires};path=/`;
+  document.cookie = `googtrans=;expires=${expires};path=/;domain=${host}`;
+  document.cookie = `googtrans=;expires=${expires};path=/;domain=.${host}`;
+}
+
+function applyLanguage(code: string): void {
+  if (code === "en") {
+    clearGoogtransCookies();
+  } else {
+    document.cookie = `googtrans=/en/${code};path=/`;
+  }
+  window.location.reload();
+}
+
+function translateGadgetMounted(): boolean {
+  return !!document.querySelector(`#${ELEMENT_ID} .goog-te-gadget`);
+}
+
+export function FooterLanguageSwitcher() {
+  const selectId = useId();
+  const selected =
+    typeof window !== "undefined" ? getSelectedLanguageFromCookie() : "en";
+
+  useEffect(() => {
+    const init = () => {
+      if (typeof window === "undefined" || translateGadgetMounted()) return;
+      const translate = window.google?.translate;
+      if (!translate?.TranslateElement) return;
+
+      const ctor = translate.TranslateElement;
+      const layout = ctor.InlineLayout?.SIMPLE ?? 2;
+
+      try {
+        new ctor(
+          {
+            pageLanguage: "en",
+            includedLanguages: googleTranslateIncludedLanguages,
+            layout,
+            autoDisplay: false,
+          },
+          ELEMENT_ID,
+        );
+      } catch {
+        /* duplicate init / hot reload */
+      }
+    };
+
+    window.googleTranslateElementInit = init;
+
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      'script[src*="translate.google.com/translate_a/element.js"]',
+    );
+
+    if (existingScript) {
+      if (window.google?.translate) init();
+      return () => {
+        delete window.googleTranslateElementInit;
+      };
+    }
+
+    const script = document.createElement("script");
+    script.src =
+      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      delete window.googleTranslateElementInit;
+    };
+  }, []);
+
+  return (
+    <div className="relative sm:col-span-2 lg:col-span-1">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-rose)]">
+        Languages
+      </p>
+      <p className="mt-4 text-sm leading-relaxed text-[var(--color-cream-muted)]">
+        Choose a language from the list below to translate this site.{" "}
+        <span className="text-[var(--color-cream)]">English</span> is the default. Translation is
+        powered by <span className="text-[var(--color-cream)]">Google Translate</span> and may be
+        imperfect.
+      </p>
+
+      <div className="notranslate mt-4">
+        <label
+          htmlFor={selectId}
+          className="block text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-rose)]"
+        >
+          Choose language
+        </label>
+        <select
+          id={selectId}
+          className="mt-2 w-full max-w-xs rounded-sm border border-white/25 bg-white/10 px-3 py-2.5 text-sm text-[var(--color-cream)] outline-none transition focus:border-[var(--color-accent-gold)] focus:ring-1 focus:ring-[var(--color-accent-gold)]"
+          value={selected}
+          suppressHydrationWarning
+          onChange={(e) => {
+            applyLanguage(e.target.value);
+          }}
+        >
+          {translationLanguages.map((l) => (
+            <option key={l.code} value={l.code}>
+              {l.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <p className="sr-only" id={`${ELEMENT_ID}-label`}>
+        Google Translate
+      </p>
+      <div
+        id={ELEMENT_ID}
+        aria-hidden
+        className="google-translate-root pointer-events-none fixed left-0 top-0 -z-[100] h-px w-px overflow-hidden opacity-0"
+        aria-labelledby={`${ELEMENT_ID}-label`}
+      />
+    </div>
+  );
+}
+
+
+===== app\components\Header.tsx =====
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useId, useState } from "react";
+import { SocialIconFacebook, SocialIconInstagram } from "@/app/components/SocialIcons";
+import { socialLinks } from "@/app/lib/siteData";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/collections", label: "Collections" },
+  { href: "/bridal", label: "Bridal" },
+  { href: "/heritage", label: "Heritage" },
+  { href: "/contact", label: "Contact" },
+];
+
+const menuTop =
+  "top-[calc(env(safe-area-inset-top,0px)+4rem)] sm:top-[calc(env(safe-area-inset-top,0px)+4.25rem)]";
+
+export function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const panelId = useId();
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [menuOpen]);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-[color-mix(in_srgb,var(--color-border)_78%,white)] bg-[color-mix(in_srgb,var(--color-white)_82%,transparent)] pt-[env(safe-area-inset-top)] shadow-[0_8px_30px_rgba(33,18,18,0.06)] backdrop-blur-xl">
+      <div className="site-max site-px flex h-16 items-center justify-between gap-3 sm:h-[4.25rem]">
+        <Link
+          href="/"
+          className="flex min-h-[44px] min-w-0 items-center gap-2 touch-manipulation transition hover:opacity-90 [-webkit-tap-highlight-color:transparent] sm:gap-3"
+          aria-label="MB Jewellers Home"
+        >
+          <Image
+            src="/mb-jewellers-logo.png"
+            alt="MB Jewellers logo"
+            width={896}
+            height={768}
+            priority
+            className="h-10 w-auto sm:h-12"
+          />
+          <span className="font-[family-name:var(--font-display)] text-base tracking-[0.08em] sm:text-lg">
+            MB{" "}
+            <span className="bg-gradient-to-r from-[var(--color-rose-dark)] via-[var(--color-rose)] to-[var(--color-accent-gold)] bg-clip-text text-transparent">
+              Jewellers
+            </span>
+          </span>
+        </Link>
+
+        <nav className="hidden items-center gap-6 md:flex lg:gap-8" aria-label="Main">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="relative py-3 text-sm tracking-[0.08em] text-[var(--color-ink-muted)] transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[var(--color-rose)] after:transition-transform after:duration-300 hover:text-[var(--color-ink)] hover:after:scale-x-100"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2 md:gap-3">
+          <a
+            href={socialLinks.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-[44px] min-w-[44px] touch-manipulation items-center justify-center rounded-full border border-transparent text-[var(--color-ink-muted)] transition hover:border-[var(--color-border)] hover:bg-[var(--color-rose-soft)] hover:text-[var(--color-rose-dark)] [-webkit-tap-highlight-color:transparent]"
+            aria-label="Instagram"
+          >
+            <SocialIconInstagram className="h-[22px] w-[22px]" />
+          </a>
+          <a
+            href={socialLinks.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-[44px] min-w-[44px] touch-manipulation items-center justify-center rounded-full border border-transparent text-[var(--color-ink-muted)] transition hover:border-[var(--color-border)] hover:bg-[var(--color-rose-soft)] hover:text-[var(--color-rose-dark)] [-webkit-tap-highlight-color:transparent]"
+            aria-label="Facebook"
+          >
+            <SocialIconFacebook className="h-[22px] w-[22px]" />
+          </a>
+
+          <button
+            type="button"
+            className="inline-flex h-11 min-h-[44px] min-w-[44px] touch-manipulation items-center justify-center rounded-sm border border-[var(--color-border)] bg-white/90 text-[var(--color-ink)] shadow-sm transition hover:border-[var(--color-rose)] hover:text-[var(--color-rose-dark)] md:hidden [-webkit-tap-highlight-color:transparent]"
+            aria-expanded={menuOpen}
+            aria-controls={panelId}
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            {menuOpen ? (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+
+          <Link
+            href="/contact"
+            className="luxe-button inline-flex min-h-[44px] shrink-0 touch-manipulation items-center justify-center rounded-sm px-3 py-2 text-xs font-medium tracking-wide sm:px-4 sm:text-sm"
+          >
+            Book appointment
+          </Link>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        aria-label="Dismiss menu"
+        className={`fixed inset-x-0 bottom-0 z-40 bg-[var(--color-ink)]/40 backdrop-blur-[2px] transition-opacity duration-200 md:hidden ${menuTop} ${
+          menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        tabIndex={menuOpen ? 0 : -1}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      <div
+        id={panelId}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Primary navigation"
+        className={`fixed inset-x-0 bottom-0 z-[45] flex flex-col border-t border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-white)_96%,transparent)] shadow-lg backdrop-blur-xl transition-[opacity,visibility] duration-200 ease-out md:hidden ${menuTop} ${
+          menuOpen ? "visible opacity-100" : "invisible pointer-events-none opacity-0"
+        }`}
+      >
+        <nav className="site-px flex max-h-[min(70dvh,560px)] flex-col gap-1 overflow-y-auto overscroll-contain py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="rounded-sm px-3 py-3.5 text-base font-medium tracking-[0.06em] text-[var(--color-ink)] transition hover:bg-[var(--color-rose-soft)] hover:text-[var(--color-rose-dark)] [-webkit-tap-highlight-color:transparent]"
+              onClick={() => setMenuOpen(false)}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+
+===== app\components\SocialIcons.tsx =====
+export function SocialIconInstagram({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+    </svg>
+  );
+}
+
+export function SocialIconFacebook({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    </svg>
+  );
+}
+
+
+===== app\components\sections\LuxuryExperience.tsx =====
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { featuredPieces, socialLinks } from "@/app/lib/siteData";
+
+const collectionCards = [
+  {
+    title: "Diamond Collection",
+    href: "/collections/diamond",
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1200&q=80",
+    copy: "Light-sculpted brilliance for statement elegance.",
+  },
+  {
+    title: "Gold Collection",
+    href: "/collections/gold",
+    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1200&q=80",
+    copy: "Royal silhouettes in warm, radiant craftsmanship.",
+  },
+  {
+    title: "Silver Collection",
+    href: "/collections/silver",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&q=80",
+    copy: "Contemporary luxury in cool, polished tones.",
+  },
+  {
+    title: "Accessories",
+    href: "/collections/accessories",
+    image: "https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?w=1200&q=80",
+    copy: "Rings, studs, and chains that complete every ensemble.",
+  },
+];
+
+const stats = [
+  { label: "Design Variations", value: 3200, suffix: "+" },
+  { label: "Custom Orders Delivered", value: 980, suffix: "+" },
+  { label: "Craft Expertise", value: 25, suffix: " Years" },
+  { label: "Premium Clients", value: 12000, suffix: "+" },
+];
+
+const testimonials = [
+  {
+    quote:
+      "The bridal set looked cinematic in person. Every detail felt handcrafted and premium.",
+    name: "Priyanka S.",
+    meta: "Bride, Jaipur",
+  },
+  {
+    quote:
+      "Their diamond consultation was world-class. The finish quality is truly international.",
+    name: "Aarav M.",
+    meta: "Private Client",
+  },
+  {
+    quote:
+      "From packaging to presentation, everything felt luxurious and trust-inspiring.",
+    name: "Kriti R.",
+    meta: "Collector",
+  },
+];
+
+const instagramReels = [
+  { src: "/instareel/Video-281.mp4", title: "MB Reel 281" },
+  { src: "/instareel/Video-408.mp4", title: "MB Reel 408" },
+  { src: "/instareel/Video-750.mp4", title: "MB Reel 750" },
+];
+
+function InstagramReelCard({ src, title }: { src: string; title: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(true);
+  const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const syncPlaying = () => setPlaying(!v.paused);
+    const syncMuted = () => setMuted(v.muted);
+    syncPlaying();
+    syncMuted();
+    v.addEventListener("play", syncPlaying);
+    v.addEventListener("pause", syncPlaying);
+    v.addEventListener("volumechange", syncMuted);
+    return () => {
+      v.removeEventListener("play", syncPlaying);
+      v.removeEventListener("pause", syncPlaying);
+      v.removeEventListener("volumechange", syncMuted);
+    };
+  }, [src]);
+
+  const togglePlayback = async () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) await v.play().catch(() => setPlaying(false));
+    else v.pause();
+  };
+
+  const toggleSound = async () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.muted) {
+      v.muted = false;
+      try {
+        await v.play();
+      } catch {
+        /* autoplay blocked â€” user can press play again */
+      }
+    } else {
+      v.muted = true;
+    }
+    setMuted(v.muted);
+  };
+
+  return (
+    <article className="flex w-full max-w-[min(280px,calc((100vw-3rem)/2))] shrink-0 flex-col sm:max-w-[320px]">
+      <div
+        className="relative w-full overflow-hidden rounded-lg border border-[color-mix(in_srgb,var(--color-accent-gold)_55%,transparent)] bg-black shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
+        style={{ aspectRatio: "9 / 16" }}
+      >
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover [-webkit-touch-callout:none]"
+          playsInline
+          loop
+          muted
+          autoPlay
+          preload="metadata"
+          aria-label={title}
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/85 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-3 p-3">
+          <button
+            type="button"
+            onClick={togglePlayback}
+            aria-label={playing ? "Pause reel" : "Play reel"}
+            className="pointer-events-auto flex h-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/35 bg-black/55 text-[var(--color-accent-gold)] backdrop-blur-md [-webkit-tap-highlight-color:transparent] transition hover:border-[var(--color-accent-gold)] hover:bg-black/65"
+          >
+            {playing ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={toggleSound}
+            aria-label={muted ? "Unmute reel audio" : "Mute reel audio"}
+            className="pointer-events-auto flex h-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/35 bg-black/55 text-[var(--color-accent-gold)] backdrop-blur-md [-webkit-tap-highlight-color:transparent] transition hover:border-[var(--color-accent-gold)] hover:bg-black/65"
+          >
+            {muted ? (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                <path d="M11 5L6 9H3v6h3l5 4V5z M23 9l-6 6M17 9l6 6" />
+              </svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                <path d="M11 5L6 9H3v6h3l5 4V5z M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+      <a
+        href={socialLinks.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2 text-center text-[10px] uppercase tracking-[0.2em] text-white/65 underline-offset-4 transition hover:text-[var(--color-accent-gold)] hover:underline [-webkit-tap-highlight-color:transparent]"
+      >
+        View on Instagram
+      </a>
+    </article>
+  );
+}
+
+export function LuxuryExperience() {
+  const [quickView, setQuickView] = useState<(typeof featuredPieces)[number] | null>(null);
+  const [statsVisible, setStatsVisible] = useState(false);
+  const [countValues, setCountValues] = useState(() => stats.map(() => 0));
+  const statsRef = useRef<HTMLElement | null>(null);
+  const glowRef = useRef<HTMLDivElement | null>(null);
+  const videoPoster = useMemo(
+    () => "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=1400&q=80",
+    [],
+  );
+
+  useEffect(() => {
+    if (!statsRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setStatsVisible(true);
+      },
+      { threshold: 0.35 },
+    );
+    observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!statsVisible) return;
+    let raf = 0;
+    const started = performance.now();
+    const duration = 1200;
+
+    const tick = (now: number) => {
+      const t = Math.min((now - started) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setCountValues(stats.map((item) => Math.floor(item.value * eased)));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [statsVisible]);
+
+  const handleMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!glowRef.current) return;
+    const rect = glowRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    glowRef.current.style.setProperty("--mx", `${x}px`);
+    glowRef.current.style.setProperty("--my", `${y}px`);
+  };
+
+  return (
+    <section className="relative" onMouseMove={handleMove}>
+      <div ref={glowRef} className="pointer-events-none absolute inset-0 hidden md:block luxury-cursor-glow" />
+
+      <section className="site-max site-px py-16 sm:py-24">
+        <div className="mb-10 max-w-2xl">
+          <p className="luxury-kicker">Featured Collections</p>
+          <h2 className="luxury-title mt-4">Curated luxury for every milestone</h2>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {collectionCards.map((item) => (
+            <Link key={item.title} href={item.href} className="luxury-collection-card group">
+              <div className="luxury-image-wrap">
+                <Image src={item.image} alt={item.title} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-110" />
+              </div>
+              <div className="luxury-collection-meta">
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="luxury-dark-panel border-y border-white/10 py-16 sm:py-24">
+        <div className="site-max site-px">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div className="max-w-2xl">
+              <p className="luxury-kicker">Premium Product Showcase</p>
+              <h2 className="luxury-title mt-4 text-[var(--color-diamond-white)]">Signature pieces in cinematic detail</h2>
+            </div>
+            <Link href="/collections" className="luxury-mini-link">Explore full catalogue</Link>
+          </div>
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredPieces.map((piece) => (
+              <li key={piece.name}>
+                <article className="luxury-product-card group">
+                  <button type="button" className="luxury-image-wrap h-[270px] w-full text-left sm:h-[300px]" onClick={() => setQuickView(piece)} aria-label={`Quick view ${piece.name}`}>
+                    <Image src={piece.image} alt={piece.alt} fill sizes="(max-width: 1024px) 90vw, 30vw" className="object-cover transition duration-700 group-hover:scale-110" />
+                  </button>
+                  <div className="mt-4">
+                    <h3 className="font-[family-name:var(--font-display)] text-xl text-[var(--color-diamond-white)]">{piece.name}</h3>
+                    <p className="mt-2 text-sm text-white/70">{piece.detail}</p>
+                    <div className="mt-4 flex items-center gap-3">
+                      <button type="button" className="luxe-button px-4 py-2 text-xs uppercase tracking-[0.2em]" onClick={() => setQuickView(piece)}>
+                        Quick view
+                      </button>
+                      <Link href="/contact" className="luxury-mini-link">Enquire now</Link>
+                    </div>
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="site-max grid items-center gap-12 site-px py-16 sm:py-24 lg:grid-cols-2">
+        <div>
+          <p className="luxury-kicker">Craftsmanship Story</p>
+          <h2 className="luxury-title mt-4">Designed with emotion, finished with precision</h2>
+          <p className="mt-5 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
+            MB Jewellers blends heritage craftsmanship with a contemporary international design language. Every masterpiece is shaped through stone curation, hand detailing, and premium finishing for memorable life moments.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="luxury-glass-card">
+              <p className="text-xs uppercase tracking-[0.18em] text-[var(--color-emerald-accent)]">Bespoke design</p>
+              <p className="mt-2 text-sm text-[var(--color-ink-muted)]">Concept-to-creation consultation for unique pieces.</p>
+            </div>
+            <div className="luxury-glass-card">
+              <p className="text-xs uppercase tracking-[0.18em] text-[var(--color-emerald-accent)]">Certified quality</p>
+              <p className="mt-2 text-sm text-[var(--color-ink-muted)]">Premium materials and trusted authenticity support.</p>
+            </div>
+          </div>
+        </div>
+        <div className="luxury-video-shell">
+          <video autoPlay muted loop playsInline poster={videoPoster} className="h-full w-full object-cover">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-earrings-in-close-up-40145-large.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+
+      <section ref={statsRef} className="luxury-dark-panel py-16">
+        <div className="site-max grid gap-4 site-px sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((item, index) => (
+            <article key={item.label} className="luxury-glass-card border-white/20 bg-white/5 text-center">
+              <p className="font-[family-name:var(--font-display)] text-4xl text-[var(--color-royal-gold)]">
+                {countValues[index]}
+                <span className="text-lg">{item.suffix}</span>
+              </p>
+              <p className="mt-2 text-xs uppercase tracking-[0.16em] text-white/75">{item.label}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="site-max site-px py-16 sm:py-24">
+        <div className="mb-10 max-w-2xl">
+          <p className="luxury-kicker">Client Voice</p>
+          <h2 className="luxury-title mt-4">Trusted by premium jewellery buyers</h2>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {testimonials.map((item) => (
+            <article key={item.name} className="luxury-glass-card">
+              <p className="text-sm leading-relaxed text-[var(--color-ink-muted)]">&ldquo;{item.quote}&rdquo;</p>
+              <p className="mt-6 font-[family-name:var(--font-display)] text-xl text-[var(--color-ink)]">{item.name}</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-[var(--color-ink-muted)]">{item.meta}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="luxury-dark-panel py-16 sm:py-20">
+        <div className="site-max site-px">
+          <div className="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <p className="luxury-kicker">Instagram Reel Gallery</p>
+              <h2 className="luxury-title mt-4 text-[var(--color-diamond-white)]">Social proof in motion</h2>
+            </div>
+            <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="luxury-mini-link">
+              @mbjewellerssikar
+            </a>
+          </div>
+          <p className="mb-4 text-center text-xs text-white/60 sm:text-left">
+            Reels autoplay muted (browser requirement). Tap the speaker icon to hear audio.
+          </p>
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-10 lg:justify-between lg:gap-6">
+            {instagramReels.map((reel) => (
+              <InstagramReelCard key={reel.src} src={reel.src} title={reel.title} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="site-max site-px py-16 sm:py-20">
+        <div className="luxury-membership-banner">
+          <div>
+            <p className="luxury-kicker text-[var(--color-ink)]">Luxury Membership</p>
+            <h2 className="luxury-title mt-3">Join the MB Privilege Circle</h2>
+            <p className="mt-3 max-w-2xl text-sm text-[var(--color-ink-muted)] sm:text-base">
+              Unlock first access to bridal launches, bespoke previews, and private events with premium concierge support.
+            </p>
+          </div>
+          <Link href="/contact" className="luxe-button mt-6 inline-flex rounded-sm px-7 py-3 text-sm sm:mt-0">
+            Request invitation
+          </Link>
+        </div>
+      </section>
+
+      <div className="luxury-float-actions">
+        <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="luxury-fab">
+          WA
+        </a>
+        <a href="tel:+0000000000" aria-label="Call MB Jewellers" className="luxury-fab">
+          Call
+        </a>
+      </div>
+
+      {quickView ? (
+        <div className="luxury-modal-backdrop" role="dialog" aria-modal="true" aria-label="Quick product view">
+          <div className="luxury-modal">
+            <button type="button" className="luxury-close" onClick={() => setQuickView(null)} aria-label="Close quick view">
+              Ã—
+            </button>
+            <div className="relative h-64 overflow-hidden rounded-sm sm:h-80">
+              <Image src={quickView.image} alt={quickView.alt} fill sizes="(max-width: 640px) 90vw, 600px" className="object-cover" />
+            </div>
+            <h3 className="mt-5 font-[family-name:var(--font-display)] text-3xl">{quickView.name}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-[var(--color-ink-muted)]">{quickView.detail}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/contact" className="luxe-button rounded-sm px-6 py-2.5 text-sm">
+                Book consultation
+              </Link>
+              <button type="button" className="luxe-button-ghost rounded-sm px-6 py-2.5 text-sm text-[var(--color-ink)]" onClick={() => setQuickView(null)}>
+                Continue browsing
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+
+===== app\components\sections\ProductCollectionSections.tsx =====
+import { CategoryCollectionCard } from "@/app/components/CategoryCollectionCard";
+import type { CategoryShowcaseItem } from "@/app/lib/siteData";
+import {
+  SECTION_COVER_PLACEHOLDER,
+  type CollectionPageConfig,
+  type CollectionSlug,
+} from "@/app/lib/collectionPages";
+
+type ProductCollectionSectionsProps = CollectionPageConfig & {
+  collectionSlug: CollectionSlug;
+};
+
+function subsectionToCardItem(
+  s: CollectionPageConfig["sections"][number],
+  collectionSlug: CollectionSlug,
+): CategoryShowcaseItem {
+  return {
+    title: s.title,
+    description: s.description,
+    href: `/collections/${collectionSlug}/${s.id}`,
+    coverImage: s.coverImage ?? SECTION_COVER_PLACEHOLDER,
+    coverAlt: s.coverAlt,
+  };
+}
+
+export function ProductCollectionSections({
+  eyebrow,
+  title,
+  description,
+  sections,
+  collectionSlug,
+}: ProductCollectionSectionsProps) {
+  return (
+    <section className="luxe-section site-max site-px py-16 sm:py-20">
+      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-rose)]">
+        {eyebrow}
+      </p>
+      <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
+        {title}
+      </h1>
+      <div className="luxe-divider mt-5" />
+      <p className="mt-5 max-w-3xl text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
+        {description}
+      </p>
+
+      <ul className="mt-12 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {sections.map((s) => (
+          <li key={s.id}>
+            <CategoryCollectionCard
+              item={subsectionToCardItem(s, collectionSlug)}
+              ctaLabel="Open section â†’"
+            />
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+
+===== app\components\sections\ProductGrid.tsx =====
+import Image from "next/image";
+import Link from "next/link";
+import type { ProductItem } from "@/app/lib/siteData";
+
+type ProductGridProps = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  products: ProductItem[];
+};
+
+export function ProductCard({
+  product,
+  headingLevel = "h2",
+}: {
+  product: ProductItem;
+  headingLevel?: "h2" | "h3";
+}) {
+  const Title = headingLevel === "h3" ? "h3" : "h2";
+  return (
+    <article className="group premium-card luxe-panel h-full p-3 transition duration-300 hover:-translate-y-1 sm:p-4">
+      <div className="shine-on-hover relative mx-auto h-[210px] max-w-[300px] overflow-hidden bg-[var(--color-rose-soft)] sm:h-[230px] lg:mx-0 lg:h-[240px] lg:max-w-none">
+        <Image
+          src={product.image}
+          alt={product.alt}
+          fill
+          className="object-cover transition duration-500 group-hover:scale-105"
+          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 280px"
+        />
+      </div>
+      <Title className="mt-4 font-[family-name:var(--font-display)] text-xl sm:text-2xl">{product.name}</Title>
+      <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-muted)]">{product.detail}</p>
+      {product.material ? (
+        <span className="mt-3 inline-flex rounded-full border border-[var(--color-border)] bg-[var(--color-rose-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-rose-dark)]">
+          {product.material}
+        </span>
+      ) : null}
+      <Link
+        href="/contact"
+        className="mt-5 inline-flex text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-rose-dark)] transition hover:text-[var(--color-ink)]"
+      >
+        Request details &rarr;
+      </Link>
+    </article>
+  );
+}
+
+export function ProductGrid({ eyebrow, title, description, products }: ProductGridProps) {
+  return (
+    <section className="luxe-section site-max site-px py-16 sm:py-20">
+      <div className="max-w-3xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-rose)]">
+          {eyebrow}
+        </p>
+        <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
+          {title}
+        </h1>
+        <div className="luxe-divider mt-5" />
+        <p className="mt-5 text-sm leading-relaxed text-[var(--color-ink-muted)] sm:text-base">
+          {description}
+        </p>
+      </div>
+      <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+        {products.map((product) => (
+          <li key={product.name}>
+            <ProductCard product={product} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+
+===== app\lib\collectionPages.ts =====
+/**
+ * Collection subsection pages: same card grid as `/collections`.
+ * Update `coverImage` per section when you have photography; gallery blocks below are for your images.
+ */
+export const SECTION_COVER_PLACEHOLDER =
+  "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&q=80";
+
+export type CollectionSubsection = {
+  id: string;
+  title: string;
+  description: string;
+  /** Hero image on the section card â€” defaults to SECTION_COVER_PLACEHOLDER if omitted */
+  coverImage?: string;
+  coverAlt: string;
+};
+
+export type CollectionPageConfig = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  sections: CollectionSubsection[];
+};
+
+/** Diamond â€” 5 sections */
+export const diamondCollectionPage: CollectionPageConfig = {
+  eyebrow: "Diamond",
+  title: "Diamond Collection",
+  description:
+    "Explore diamond sets, necklaces, rings, earrings, and braceletsâ€”open a section below to add your gallery.",
+  sections: [
+    {
+      id: "sets",
+      title: "Sets",
+      description: "Coordinated diamond suites for engagements, receptions, and milestones.",
+      coverImage:
+        "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=800&q=80",
+      coverAlt: "Diamond jewellery set",
+    },
+    {
+      id: "necklaces",
+      title: "Necklaces",
+      description: "Pendants and collar styles from minimal halos to statement drops.",
+      coverImage:
+        "https://images.unsplash.com/photo-1611107683227-e9060eccd846?w=800&q=80",
+      coverAlt: "Diamond necklace",
+    },
+    {
+      id: "rings",
+      title: "Rings",
+      description: "Solitaires, bands, and halo stacks with elevated finishing.",
+      coverImage:
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80",
+      coverAlt: "Diamond ring",
+    },
+    {
+      id: "earrings",
+      title: "Earrings",
+      description: "Studs, drops, and chandeliers engineered for balanced sparkle.",
+      coverImage:
+        "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=800&q=80",
+      coverAlt: "Diamond earrings",
+    },
+    {
+      id: "bracelets",
+      title: "Bracelets",
+      description: "Tennis lines and flexible cuffs that move with you.",
+      coverImage:
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80",
+      coverAlt: "Diamond bracelet",
+    },
+  ],
+};
+
+/** Gold â€” 9 sections */
+export const goldCollectionPage: CollectionPageConfig = {
+  eyebrow: "Gold",
+  title: "Gold Collection",
+  description:
+    "Traditional and contemporary goldâ€”from sets and Ranihaar to Rajputi silhouettes, chains, bangles, and rings.",
+  sections: [
+    {
+      id: "sets",
+      title: "Sets",
+      description: "Complete necklace and earring suites for weddings and festive calendars.",
+      coverImage:
+        "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=800&q=80",
+      coverAlt: "Gold bridal set",
+    },
+    {
+      id: "ranihaar",
+      title: "Ranihaar",
+      description: "Long ceremonial necklaces with regal drape and intricate detailing.",
+      coverImage:
+        "https://images.unsplash.com/photo-1611107683227-e9060eccd846?w=800&q=80",
+      coverAlt: "Gold Ranihaar",
+    },
+    {
+      id: "rajputi",
+      title: "Rajputi",
+      description: "Signature Rajputi profiles with bold geometry and heritage relief.",
+      coverImage:
+        "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=800&q=80",
+      coverAlt: "Rajputi gold jewellery",
+    },
+    {
+      id: "necklaces",
+      title: "Necklaces",
+      description: "Chokers, collars, and layered chains in warm gold tones.",
+      coverImage:
+        "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&q=80",
+      coverAlt: "Gold necklace",
+    },
+    {
+      id: "bangles",
+      title: "Bangles",
+      description: "Classic rounds, kada profiles, and stacked bridal pairs.",
+      coverImage:
+        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80",
+      coverAlt: "Gold bangles",
+    },
+    {
+      id: "earrings",
+      title: "Earrings",
+      description: "Jhumkas, chandbalis, and studs finished for ceremony light.",
+      coverImage:
+        "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=800&q=80",
+      coverAlt: "Gold earrings",
+    },
+    {
+      id: "bracelets",
+      title: "Bracelets",
+      description: "Slim cuffs, kada bracelets, and bridal pairs.",
+      coverImage:
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80",
+      coverAlt: "Gold bracelet",
+    },
+    {
+      id: "chains",
+      title: "Chains",
+      description: "Mango malas, rope chains, and layering essentials.",
+      coverImage:
+        "https://images.unsplash.com/photo-1611107683227-e9060eccd846?w=800&q=80",
+      coverAlt: "Gold chain",
+    },
+    {
+      id: "rings",
+      title: "Rings",
+      description: "Bands, signets, and cocktail silhouettes in rich yellow gold.",
+      coverImage:
+        "https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?w=800&q=80",
+      coverAlt: "Gold ring",
+    },
+  ],
+};
+
+/** Silver â€” 7 sections */
+export const silverCollectionPage: CollectionPageConfig = {
+  eyebrow: "Silver",
+  title: "Silver Collection",
+  description:
+    "Sterling finishes across sets, necklaces, bangles, earrings, bracelets, chains, and rings.",
+  sections: [
+    {
+      id: "sets",
+      title: "Sets",
+      description: "Matched silver suites for gifting and coordinated styling.",
+      coverImage:
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80",
+      coverAlt: "Silver jewellery set",
+    },
+    {
+      id: "necklaces",
+      title: "Necklaces",
+      description: "Minimal chains to ornate collars in polished sterling.",
+      coverImage:
+        "https://images.unsplash.com/photo-1611107683227-e9060eccd846?w=800&q=80",
+      coverAlt: "Silver necklace",
+    },
+    {
+      id: "bangles",
+      title: "Bangles",
+      description: "Slim stacks, engraved rounds, and kada profiles.",
+      coverImage:
+        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80",
+      coverAlt: "Silver bangles",
+    },
+    {
+      id: "earrings",
+      title: "Earrings",
+      description: "Hoops, studs, and drops with lightweight profiles.",
+      coverImage:
+        "https://images.unsplash.com/photo-1612177343582-665b6b11d2b8?w=800&q=80",
+      coverAlt: "Silver earrings",
+    },
+    {
+      id: "bracelets",
+      title: "Bracelets",
+      description: "Cuffs, charm bars, and polished silver lines.",
+      coverImage:
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80",
+      coverAlt: "Silver bracelet",
+    },
+    {
+      id: "chains",
+      title: "Chains",
+      description: "Cable, figaro, and ball chains for layering or solo wear.",
+      coverImage:
+        "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&q=80",
+      coverAlt: "Silver chain",
+    },
+    {
+      id: "rings",
+      title: "Rings",
+      description: "Bands and signets with bright sterling polish.",
+      coverImage:
+        "https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?w=800&q=80",
+      coverAlt: "Silver ring",
+    },
+  ],
+};
+
+/** Accessories â€” 2 sections */
+export const accessoriesCollectionPage: CollectionPageConfig = {
+  eyebrow: "Accessories",
+  title: "Accessories Collection",
+  description: "Decorative silver artefacts and serveware for home and hosting.",
+  sections: [
+    {
+      id: "statues",
+      title: "Statues",
+      description: "Sculptural pieces and devotional accents for curated interiors.",
+      coverImage:
+        "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80",
+      coverAlt: "Decorative statue",
+    },
+    {
+      id: "utensils",
+      title: "Utensils",
+      description: "Trays, bowls, and serving pieces for rituals and celebrations.",
+      coverImage:
+        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+      coverAlt: "Silver serveware",
+    },
+  ],
+};
+
+export const COLLECTION_SLUGS = ["diamond", "gold", "silver", "accessories"] as const;
+export type CollectionSlug = (typeof COLLECTION_SLUGS)[number];
+
+export const collectionPagesBySlug: Record<CollectionSlug, CollectionPageConfig> = {
+  diamond: diamondCollectionPage,
+  gold: goldCollectionPage,
+  silver: silverCollectionPage,
+  accessories: accessoriesCollectionPage,
+};
+
+export function getCollectionSlug(slug: string): CollectionSlug | null {
+  return COLLECTION_SLUGS.includes(slug as CollectionSlug) ? (slug as CollectionSlug) : null;
+}
+
+export function resolveCollectionSection(
+  collectionSlug: CollectionSlug,
+  sectionId: string,
+): CollectionSubsection | null {
+  return collectionPagesBySlug[collectionSlug].sections.find((s) => s.id === sectionId) ?? null;
+}
+
+export function buildCollectionSectionParams(): { collection: string; section: string }[] {
+  const out: { collection: string; section: string }[] = [];
+  for (const slug of COLLECTION_SLUGS) {
+    for (const s of collectionPagesBySlug[slug].sections) {
+      out.push({ collection: slug, section: s.id });
+    }
+  }
+  return out;
+}
+
+
+===== app\lib\siteData.ts =====
+export type ProductItem = {
+  name: string;
+  image: string;
+  alt: string;
+  detail: string;
+  material?: "Diamond" | "Gold" | "Silver";
+};
+
+/** Footer dropdown + Google Translate widget (English is default). */
+export const translationLanguages = [
+  { code: "en", label: "English" },
+  { code: "hi", label: "Hindi" },
+  { code: "gu", label: "Gujarati" },
+  { code: "pa", label: "Punjabi" },
+  { code: "mr", label: "Marathi" },
+  { code: "ta", label: "Tamil" },
+  { code: "te", label: "Telugu" },
+  { code: "bn", label: "Bengali" },
+  { code: "ur", label: "Urdu" },
+  { code: "kn", label: "Kannada" },
+  { code: "ml", label: "Malayalam" },
+  { code: "or", label: "Odia" },
+  { code: "as", label: "Assamese" },
+  { code: "ne", label: "Nepali" },
+  { code: "ar", label: "Arabic" },
+  { code: "fa", label: "Persian (Farsi)" },
+  { code: "fr", label: "French" },
+  { code: "de", label: "German" },
+  { code: "it", label: "Italian" },
+  { code: "es", label: "Spanish" },
+  { code: "pt", label: "Portuguese" },
+  { code: "zh-CN", label: "Chinese (Simplified)" },
+  { code: "ja", label: "Japanese" },
+  { code: "ko", label: "Korean" },
+  { code: "ru", label: "Russian" },
+] as const;
+
+export type TranslationLanguage = (typeof translationLanguages)[number];
+
+/** ISO 639-1 codes passed to Google Translate (comma-separated). */
+export const googleTranslateIncludedLanguages = translationLanguages.map((l) => l.code).join(",");
+
+/** Replace with your real Instagram and Facebook page URLs */
+export const socialLinks = {
+  instagram: "https://www.instagram.com/mbjewellerssikar/",
+  facebook: "https://www.facebook.com/mbjewellerssikar",
+} as const;
+
+export type CategoryShowcaseItem = {
+  title: string;
+  description: string;
+  href: string;
+  coverImage: string;
+  coverAlt: string;
+};
+
+export const categoryShowcase: CategoryShowcaseItem[] = [
+  {
+    title: "Diamond",
+    description: "Brilliant-cut pieces designed for luminous statement styling.",
+    href: "/collections/diamond",
+    coverImage: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80",
+    coverAlt: "Diamond ring and fine diamond jewellery",
+  },
+  {
+    title: "Gold",
+    description: "Classic warm-toned sets with handcrafted premium detailing.",
+    href: "/collections/gold",
+    coverImage: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&q=80",
+    coverAlt: "Gold necklace and traditional gold jewellery",
+  },
+  {
+    title: "Silver",
+    description: "Contemporary polished silver jewellery for modern elegance.",
+    href: "/collections/silver",
+    coverImage: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80",
+    coverAlt: "Sterling silver pendant jewellery",
+  },
+  {
+    title: "Accessories",
+    description: "Rings, chains, and finishing pieces that complete every look.",
+    href: "/collections/accessories",
+    coverImage: "https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?w=800&q=80",
+    coverAlt: "Fine jewellery rings and accessories",
+  },
+];
+
+export const homeSlideshow: ProductItem[] = [
+  {
+    name: "Crown Star Solitaire",
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&q=80",
+    alt: "Diamond ring",
+    detail: "Diamond",
+  },
+  {
+    name: "Aurora Halo Drops",
+    image: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=900&q=80",
+    alt: "Diamond drops",
+    detail: "Diamond",
+  },
+  {
+    name: "Luna Cluster Pendant",
+    image: "https://images.unsplash.com/photo-1611107683227-e9060eccd846?w=900&q=80",
+    alt: "Diamond pendant",
+    detail: "Diamond",
+  },
+  {
+    name: "Heritage Filigree Choker",
+    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=900&q=80",
+    alt: "Gold choker",
+    detail: "Gold",
+  },
+  {
+    name: "Kundan Bloom Set",
+    image: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=900&q=80",
+    alt: "Gold set",
+    detail: "Gold",
+  },
+  {
+    name: "Regal Twist Bangles",
+    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80",
+    alt: "Gold bangles",
+    detail: "Gold",
+  },
+  {
+    name: "Moonlight Silver Hoops",
+    image: "https://images.unsplash.com/photo-1612177343582-665b6b11d2b8?w=900&q=80",
+    alt: "Silver hoops",
+    detail: "Silver",
+  },
+  {
+    name: "Arctic Line Pendant",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=900&q=80",
+    alt: "Silver pendant",
+    detail: "Silver",
+  },
+  {
+    name: "Silver Dew Bracelet",
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=900&q=80",
+    alt: "Silver bracelet",
+    detail: "Silver",
+  },
+];
+
+export const featuredPieces: ProductItem[] = [
+  {
+    name: "Crown Star Solitaire",
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&q=80",
+    alt: "Diamond ring on velvet",
+    detail: "Signature solitaire with elevated claw setting for maximum sparkle.",
+    material: "Diamond",
+  },
+  {
+    name: "Aurora Halo Drops",
+    image: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=900&q=80",
+    alt: "Diamond drop earrings",
+    detail: "Refined halo drops balanced for ceremony and evening wear.",
+    material: "Diamond",
+  },
+  {
+    name: "Luna Cluster Pendant",
+    image: "https://images.unsplash.com/photo-1611107683227-e9060eccd846?w=900&q=80",
+    alt: "Diamond pendant necklace",
+    detail: "Light-catching cluster pendant with contemporary minimal chain.",
+    material: "Diamond",
+  },
+  {
+    name: "Heritage Filigree Choker",
+    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=900&q=80",
+    alt: "Gold choker necklace",
+    detail: "Heritage-inspired choker featuring artisanal floral filigree work.",
+    material: "Gold",
+  },
+  {
+    name: "Kundan Bloom Set",
+    image: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=900&q=80",
+    alt: "Gold necklace set",
+    detail: "Statement set with layered profile for bridal and festive styling.",
+    material: "Gold",
+  },
+  {
+    name: "Regal Twist Bangles",
+    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80",
+    alt: "Gold bangles",
+    detail: "Mirror-finish bangles with sculpted twist edge detailing.",
+    material: "Gold",
+  },
+  {
+    name: "Moonlight Silver Hoops",
+    image: "https://images.unsplash.com/photo-1612177343582-665b6b11d2b8?w=900&q=80",
+    alt: "Silver hoop earrings",
+    detail: "Polished silver hoops shaped for lightweight all-day wear.",
+    material: "Silver",
+  },
+  {
+    name: "Arctic Line Pendant",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=900&q=80",
+    alt: "Silver pendant necklace",
+    detail: "Clean geometric pendant crafted in bright sterling silver finish.",
+    material: "Silver",
+  },
+  {
+    name: "Silver Dew Bracelet",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=900&q=80",
+    alt: "Silver bracelet",
+    detail: "Slim bracelet profile with high-polish reflective detailing.",
+    material: "Silver",
+  },
+];
+
+
+===== next.config.ts =====
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
+    ],
+  },
+};
+
+export default nextConfig;
+
+
+===== postcss.config.mjs =====
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+
+
+===== eslint.config.mjs =====
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+
+
+===== package.json =====
+{
+  "name": "cursor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0 --webpack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.2.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+
+
+===== tsconfig.json =====
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+
+
