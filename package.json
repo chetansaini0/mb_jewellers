@@ -2,8 +2,10 @@
   "name": "cursor",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev -H 0.0.0.0 --webpack",
+    "dev:network": "node scripts/print-network-url.mjs && next dev -H 0.0.0.0 --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -40,6 +42,7 @@
     "prettier": "^3.8.3",
     "prisma": "^7.8.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vercel": "^54.10.3"
   }
 }

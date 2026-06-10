@@ -1,5 +1,8 @@
 # MB Jewellers Website
 
+> **Copyright © 2026 MB Jewellers / Chetan Saini. All Rights Reserved.**  
+> This repository is **proprietary**. You may view it on GitHub, but you may **not** copy, fork, modify, deploy, or use any part of this project without **written permission**. See [LICENSE](./LICENSE).
+
 Premium jewellery showcase and lead-generation website built with Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, and GSAP.
 
 ## Core capabilities
