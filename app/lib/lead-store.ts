@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 import { getPrismaClient } from "@/app/lib/db";
 import { getStorageMode } from "@/app/lib/storage-mode";
@@ -45,8 +46,12 @@ export type NewsletterSubscriber = {
   updatedAt: string;
 } & JsonRecord;
 
-const dataDir = path.join(process.cwd(), ".data");
-const leadsFile = path.join(dataDir, "leads.json");
+function getLeadsFilePath() {
+  if (process.env.VERCEL === "1") {
+    return path.join(os.tmpdir(), "mb-jewellers-leads.json");
+  }
+  return path.join(process.cwd(), ".data", "leads.json");
+}
 
 type DbInquiry = {
   id: string;
@@ -99,7 +104,7 @@ const defaultStore: LeadStore = {
 
 async function loadStore(): Promise<LeadStore> {
   try {
-    const raw = await readFile(leadsFile, "utf8");
+    const raw = await readFile(getLeadsFilePath(), "utf8");
     return { ...defaultStore, ...(JSON.parse(raw) as Partial<LeadStore>) };
   } catch {
     return defaultStore;
@@ -107,7 +112,8 @@ async function loadStore(): Promise<LeadStore> {
 }
 
 async function saveStore(store: LeadStore) {
-  await mkdir(dataDir, { recursive: true });
+  const leadsFile = getLeadsFilePath();
+  await mkdir(path.dirname(leadsFile), { recursive: true });
   await writeFile(leadsFile, JSON.stringify(store, null, 2), "utf8");
 }
 
