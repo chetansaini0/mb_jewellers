@@ -45,20 +45,24 @@ export async function POST(request: Request) {
     createdAt: new Date().toISOString(),
   };
 
-  await insertInquiry(lead);
+  try {
+    await insertInquiry(lead);
 
-  await sendLeadEmail({
-    subject: `New inquiry from ${lead.fullName}`,
-    text: [
-      `Name: ${lead.fullName}`,
-      `Email: ${lead.email}`,
-      `Phone: ${lead.phone ?? "-"}`,
-      `Category: ${lead.category ?? "-"}`,
-      "",
-      "Message:",
-      lead.message,
-    ].join("\n"),
-  });
+    await sendLeadEmail({
+      subject: `New inquiry from ${lead.fullName}`,
+      text: [
+        `Name: ${lead.fullName}`,
+        `Email: ${lead.email}`,
+        `Phone: ${lead.phone ?? "-"}`,
+        `Category: ${lead.category ?? "-"}`,
+        "",
+        "Message:",
+        lead.message,
+      ].join("\n"),
+    });
+  } catch {
+    return NextResponse.json({ ok: false, error: "Unable to save your inquiry right now." }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true, leadId: lead.id });
 }

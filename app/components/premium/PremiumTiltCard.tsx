@@ -1,12 +1,17 @@
 "use client";
 
-import { motion, useSpring } from "framer-motion";
+import { motion, useReducedMotion, useSpring } from "framer-motion";
 import type { MouseEvent, ReactNode } from "react";
 
 export function PremiumTiltCard({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const reduce = useReducedMotion();
   const rotateX = useSpring(0, { stiffness: 180, damping: 18 });
   const rotateY = useSpring(0, { stiffness: 180, damping: 18 });
   const lift = useSpring(0, { stiffness: 180, damping: 18 });
+
+  if (reduce) {
+    return <div className={className}>{children}</div>;
+  }
 
   const onMove = (event: MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();

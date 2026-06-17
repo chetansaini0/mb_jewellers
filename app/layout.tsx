@@ -70,20 +70,19 @@ export const metadata: Metadata = {
     locale: "en_IN",
     siteName: siteConfig.name,
     url: "/",
-    images: [{ url: "/mb-jewellers-logo.png", alt: "MB Jewellers luxury logo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "MB Jewellers",
     description: siteConfig.description,
-    images: ["/mb-jewellers-logo.png"],
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/mb-jewellers-logo.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icons/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icons/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
-    apple: "/mb-jewellers-logo.png",
+    apple: "/icons/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
   manifest: "/manifest.webmanifest",
@@ -100,10 +99,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${sans.variable} ${accent.variable} premium-theme h-full antialiased`}
-    >
+    <html lang="en" className={`${display.variable} ${sans.variable} ${accent.variable} premium-theme antialiased`}>
       <body suppressHydrationWarning className="premium-body flex min-h-dvh flex-col overflow-x-clip">
         <Script
           id="jewelry-store-schema"

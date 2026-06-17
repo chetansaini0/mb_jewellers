@@ -260,16 +260,21 @@ export function PremiumNewArrivalsSection() {
             A cinematic edit of the atelier&apos;s latest silhouettes — glide, pause, and explore each piece in motion.
           </p>
         </div>
-        <div ref={viewportRef} className={`premium-new-arrivals__viewport ${dragging ? "is-dragging" : ""}`}>
+        <div
+          ref={viewportRef}
+          className={`premium-new-arrivals__viewport ${dragging ? "is-dragging" : ""}`}
+          data-lenis-prevent-wheel
+        >
           <motion.div
             className="premium-new-arrivals__track"
             drag={reducedMotion ? false : "x"}
             dragElastic={0.08}
             dragMomentum={false}
+            dragPropagation={false}
             onDragStart={onDragStart}
             onDrag={onDrag}
             onDragEnd={onDragEnd}
-            style={{ x: trackX }}
+            style={{ x: trackX, touchAction: "pan-y" }}
           >
             {items.map((product, index) => (
               <NewArrivalCard

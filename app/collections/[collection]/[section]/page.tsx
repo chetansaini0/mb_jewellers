@@ -50,7 +50,13 @@ export default async function CollectionSubsectionPage({ params }: PageProps) {
   const parent = collectionPagesBySlug[collectionSlug];
   const backLabel = parent.title.replace(/\s+Collection\s*$/i, "").trim() || parent.eyebrow;
   const cover = subsection.coverImage ?? SECTION_COVER_PLACEHOLDER;
-  const galleryImages = [cover, cover, cover, cover];
+  const categoryImages = featuredPieces
+    .filter((piece) => piece.material?.toLowerCase() === collectionSlug)
+    .map((piece) => piece.image);
+  const galleryImages = Array.from(new Set([cover, ...categoryImages])).slice(0, 4);
+  while (galleryImages.length < 4) {
+    galleryImages.push(cover);
+  }
   const relatedProduct =
     featuredPieces.find((piece) => piece.material?.toLowerCase() === collectionSlug) ?? featuredPieces[0];
 

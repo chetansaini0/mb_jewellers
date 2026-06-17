@@ -33,14 +33,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  await upsertSubscriber({
-    id: randomUUID(),
-    email: parsed.email,
-    fullName: parsed.fullName,
-    source: "website-footer",
-    isActive: true,
-    updatedAt: new Date().toISOString(),
-  });
+  try {
+    await upsertSubscriber({
+      id: randomUUID(),
+      email: parsed.email,
+      fullName: parsed.fullName,
+      source: "website-footer",
+      isActive: true,
+      updatedAt: new Date().toISOString(),
+    });
+  } catch {
+    return NextResponse.json({ ok: false, error: "Unable to subscribe right now." }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }

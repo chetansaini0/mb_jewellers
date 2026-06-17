@@ -61,24 +61,28 @@ export async function POST(request: Request) {
     createdAt: new Date().toISOString(),
   };
 
-  await insertAppointment(appointment);
+  try {
+    await insertAppointment(appointment);
 
-  await sendLeadEmail({
-    subject: `New appointment request from ${appointment.fullName}`,
-    text: [
-      `Name: ${appointment.fullName}`,
-      `Email: ${appointment.email}`,
-      `Phone: ${appointment.phone}`,
-      `Type: ${appointment.appointmentType}`,
-      `Date: ${appointment.preferredDate.slice(0, 10)}`,
-      `Time slot: ${appointment.preferredTimeSlot}`,
-      `Category: ${appointment.category ?? "-"}`,
-      `Occasion: ${appointment.occasion ?? "-"}`,
-      "",
-      "Notes:",
-      appointment.notes ?? "-",
-    ].join("\n"),
-  });
+    await sendLeadEmail({
+      subject: `New appointment request from ${appointment.fullName}`,
+      text: [
+        `Name: ${appointment.fullName}`,
+        `Email: ${appointment.email}`,
+        `Phone: ${appointment.phone}`,
+        `Type: ${appointment.appointmentType}`,
+        `Date: ${appointment.preferredDate.slice(0, 10)}`,
+        `Time slot: ${appointment.preferredTimeSlot}`,
+        `Category: ${appointment.category ?? "-"}`,
+        `Occasion: ${appointment.occasion ?? "-"}`,
+        "",
+        "Notes:",
+        appointment.notes ?? "-",
+      ].join("\n"),
+    });
+  } catch {
+    return NextResponse.json({ ok: false, error: "Unable to save your appointment right now." }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true, appointmentId: appointment.id });
 }

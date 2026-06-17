@@ -45,13 +45,24 @@ export function usePremiumCounter(
   duration = 1.6,
 ) {
   useEffect(() => {
-    if (!scopeRef.current || prefersReducedMotion()) return;
+    if (!scopeRef.current) return;
+
+    const elements = scopeRef.current.querySelectorAll<HTMLElement>(selector);
+    if (prefersReducedMotion()) {
+      elements.forEach((element) => {
+        const target = Number(element.dataset.counter ?? "0");
+        element.textContent = `${target}${element.dataset.suffix ?? ""}`;
+      });
+      return;
+    }
 
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>(selector).forEach((element) => {
         const target = Number(element.dataset.counter ?? "0");
+        const suffix = element.dataset.suffix ?? "";
         const state = { value: 0 };
+
         gsap.to(state, {
           value: target,
           duration,
@@ -59,9 +70,13 @@ export function usePremiumCounter(
           scrollTrigger: {
             trigger: element,
             start: "top 90%",
+            once: true,
+            onEnter: () => {
+              element.textContent = `0${suffix}`;
+            },
           },
           onUpdate: () => {
-            element.textContent = `${Math.round(state.value)}${element.dataset.suffix ?? ""}`;
+            element.textContent = `${Math.round(state.value)}${suffix}`;
           },
         });
       });

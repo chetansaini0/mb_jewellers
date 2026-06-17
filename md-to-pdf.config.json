@@ -1,0 +1,16 @@
+{
+  "dest": "TECHNICAL_DOCUMENTATION.pdf",
+  "pdf_options": {
+    "format": "A4",
+    "printBackground": true,
+    "margin": {
+      "top": "18mm",
+      "right": "16mm",
+      "bottom": "18mm",
+      "left": "16mm"
+    }
+  },
+  "stylesheet": "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css",
+  "body_class": "markdown-body",
+  "css": "body { font-size: 11pt; line-height: 1.45; } h1 { font-size: 22pt; } h2 { font-size: 16pt; page-break-after: avoid; } h3 { font-size: 13pt; page-break-after: avoid; } table { font-size: 10pt; } pre { font-size: 9pt; }"
+}

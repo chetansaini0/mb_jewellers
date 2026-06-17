@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useClientMounted } from "@/app/hooks/useClientMounted";
 import { legalFooterLinks } from "@/app/lib/legalContent";
-import { getWhatsAppUrl, siteConfig } from "@/app/lib/siteConfig";
+import { formatShowroomPhones, getWhatsAppUrl, hasWhatsApp, siteConfig } from "@/app/lib/siteConfig";
 import { socialLinks } from "@/app/lib/siteData";
 
 function PremiumNewsletterForm() {
@@ -122,17 +122,25 @@ export function PremiumFooter() {
         <div>
           <p className="premium-footer__label">Contact</p>
           <p>{siteConfig.contact.email}</p>
-          <p>{siteConfig.contact.phoneDisplay}</p>
+          {siteConfig.showrooms.map((showroom) => (
+            <p key={showroom.id}>
+              <span className="premium-footer__showroom-name">{showroom.name}:</span> {showroom.address}
+              <br />
+              {formatShowroomPhones(showroom)}
+            </p>
+          ))}
           <p>Mon-Sat: 10:00 - 19:00</p>
-          <p>
-            <a
-              href={getWhatsAppUrl("Hello MB Jewellers, I need assistance with jewellery selection.")}
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp concierge
-            </a>
-          </p>
+          {hasWhatsApp() ? (
+            <p>
+              <a
+                href={getWhatsAppUrl("Hello MB Jewellers, I need assistance with jewellery selection.") ?? "/contact"}
+                target="_blank"
+                rel="noreferrer"
+              >
+                WhatsApp concierge
+              </a>
+            </p>
+          ) : null}
         </div>
         <div>
           <p className="premium-footer__label">Social</p>

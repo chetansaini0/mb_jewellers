@@ -4,17 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { PremiumFeaturedPieceCard } from "@/app/components/premium/PremiumFeaturedPieceCard";
+import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
-import { PremiumTiltCard } from "@/app/components/premium/PremiumTiltCard";
+import { PremiumPageSection } from "@/app/components/premium/PremiumPageSection";
 import { PremiumTrustSection } from "@/app/components/premium/PremiumTrustSection";
 import { slugifyProductName } from "@/app/lib/premiumPages";
 import { getWhatsAppUrl } from "@/app/lib/siteConfig";
 import type { ProductItem } from "@/app/lib/siteData";
 import { featuredPieces } from "@/app/lib/siteData";
-
-function productHref(piece: ProductItem) {
-  return `/products/${slugifyProductName(piece.name)}`;
-}
 
 const productGalleryBySlug: Record<string, string[]> = {
   "emerald-diamond-set": [
@@ -69,25 +67,26 @@ const productGalleryBySlug: Record<string, string[]> = {
 };
 
 export function PremiumProductPage({ product }: { product: ProductItem }) {
-  const related = featuredPieces.filter((p) => p.name !== product.name);
+  const related = featuredPieces.filter((p) => p.name !== product.name).slice(0, 6);
 
   const slug = slugifyProductName(product.name);
   const enquiryHref = `/contact?interest=${encodeURIComponent(product.name)}`;
   const whatsappHref = getWhatsAppUrl(
     `Hello MB Jewellers, I would like a private viewing for: ${product.name} (${slug}).`,
   );
+  const showWhatsApp = Boolean(whatsappHref);
   const galleryImages = productGalleryBySlug[slug] ?? [product.image, product.image, product.image, product.image];
   const hasCustomGallery = Boolean(productGalleryBySlug[slug]);
   const [activeImage, setActiveImage] = useState(() => galleryImages[0] ?? product.image);
 
   return (
     <PremiumPageFrame>
-      <section className="premium-section">
+      <section className="premium-section premium-section--warm">
         <div className="site-max site-px">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <div className="space-y-4" data-reveal>
               <motion.div
-                className="premium-glass-card relative aspect-[4/5] w-full overflow-hidden rounded-2xl"
+                className="premium-product-hero-card"
                 initial={{ opacity: 0, scale: 1.02 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -100,11 +99,8 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
                   sizes="(min-width: 1024px) 45vw, 100vw"
                   priority
                 />
-                <div
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(15,13,10,0.35)] via-transparent to-transparent"
-                  aria-hidden
-                />
-                <div className="premium-product-card__shine" aria-hidden />
+                <div className="premium-product-hero-card__overlay" aria-hidden />
+                <span className="premium-featured-card__badge">{product.material ?? "Studio piece"}</span>
               </motion.div>
               <div className="premium-reels__rail px-0.5">
                 {galleryImages.map((image, index) => (
@@ -136,63 +132,59 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
                 ))}
               </div>
             </div>
-            <div data-reveal>
-              <p className="premium-eyebrow">{product.material ?? product.detail}</p>
-              <h1 className="premium-title mt-3">{product.name}</h1>
-              <p className="premium-section__lede mt-4">{product.detail}</p>
-              <div className="mt-8 flex flex-wrap gap-3">
+
+            <div className="premium-product-copy" data-reveal>
+              <p className="premium-section-title__eyebrow">Signature piece</p>
+              <h1 className="premium-section-title__heading">{product.name}</h1>
+              <p className="premium-section-title__subtitle">{product.detail}</p>
+              <div className="premium-dark-cta__actions premium-product-copy__actions">
                 <Link href={enquiryHref} className="premium-button premium-button--primary">
                   Request private viewing
                 </Link>
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="premium-button premium-button--ghost"
-                >
-                  WhatsApp enquiry
-                </a>
+                {showWhatsApp && whatsappHref ? (
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="premium-button premium-button--ghost"
+                  >
+                    WhatsApp enquiry
+                  </a>
+                ) : (
+                  <Link href={enquiryHref} className="premium-button premium-button--ghost">
+                    Send enquiry
+                  </Link>
+                )}
               </div>
-              <p className="mt-6 text-sm text-[var(--premium-muted)]">
+              <p className="premium-product-copy__note">
                 This website is a showcase only — we do not sell online. Pricing and availability are confirmed in
-                studio. Reference: <span className="text-[var(--premium-ink)]">{slug}</span>
+                studio. Reference: <span>{slug}</span>
               </p>
             </div>
           </div>
         </div>
       </section>
+
       <PremiumTrustSection compact />
-      <section className="premium-section">
-        <div className="site-max site-px">
-          <div className="premium-section__head">
-            <p className="premium-eyebrow" data-reveal>
-              Curated with this piece
-            </p>
-            <h2 className="premium-title" data-reveal>
-              You may also love
-            </h2>
-          </div>
-          <div className="premium-reels__rail pb-2">
-            {related.map((piece) => (
-              <div key={piece.name} className="premium-reel-card w-[min(260px,72vw)] shrink-0" data-reveal>
-                <PremiumTiltCard className="premium-product-card premium-glass-card">
-                  <Link href={productHref(piece)} className="block">
-                    <div className="premium-product-card__media">
-                      <Image src={piece.image} alt={piece.alt} fill sizes="260px" className="object-cover" />
-                      <div className="premium-product-card__shine" aria-hidden />
-                    </div>
-                    <div className="premium-product-card__body">
-                      <p className="premium-product-card__meta">{piece.material ?? piece.detail}</p>
-                      <h3 className="premium-title text-[clamp(1rem,0.92rem+0.35vw,1.15rem)]">{piece.name}</h3>
-                      <span className="premium-inline-link">View piece</span>
-                    </div>
-                  </Link>
-                </PremiumTiltCard>
-              </div>
-            ))}
-          </div>
+
+      <PremiumPageSection
+        eyebrow="Curated with this piece"
+        title="You may also love"
+        subtitle="Related silhouettes from the same material families — ideal to compare side by side during your studio visit."
+      >
+        <div className="premium-featured-grid">
+          {related.map((piece, index) => (
+            <PremiumFeaturedPieceCard key={piece.name} piece={piece} index={index} />
+          ))}
         </div>
-      </section>
+      </PremiumPageSection>
+
+      <PremiumPageCtaBand
+        title={`View ${product.name} in the studio`}
+        copy="Experience weight, movement, and finish under real light with a consultant who understands your occasion and metal preference."
+        primaryHref={enquiryHref}
+        primaryLabel="Request private viewing"
+      />
     </PremiumPageFrame>
   );
 }

@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
+import { PremiumPageSection } from "@/app/components/premium/PremiumPageSection";
+import { mosaicItemClass } from "@/app/lib/galleryLayout";
 
 export function PremiumSectionPage({
   backHref,
@@ -29,31 +32,51 @@ export function PremiumSectionPage({
           ← {backLabel}
         </Link>
       </div>
+
       <PremiumPageHero eyebrow={eyebrow} title={title} lede={description} />
-      <section className="premium-section">
-        <div className="site-max site-px">
-          <div className="premium-collage__grid">
-            {galleryImages.map((src, i) => (
-              <div
-                key={`${src}-${i}`}
-                className={`premium-collage__item premium-glass-card col-span-12 ${
-                  i % 5 === 0 ? "md:col-span-7" : "md:col-span-5"
-                }`}
-                data-reveal
-              >
-                <Image src={src} alt="" fill className="object-cover" sizes="(min-width: 1024px) 40vw, 100vw" />
+
+      <PremiumPageSection
+        eyebrow="Gallery highlights"
+        title="Pieces and silhouettes from this section"
+        subtitle="Tap through the gallery, then book a private viewing to see finishing, weight, and movement in person."
+        warm
+      >
+        <div className="premium-gallery-mosaic">
+          {galleryImages.map((src, index) => (
+            <div
+              key={`${src}-${index}`}
+              className={`premium-gallery-mosaic__item ${mosaicItemClass(index, galleryImages.length)}`}
+              data-reveal
+            >
+              <div className="premium-gallery-mosaic__media">
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  className="premium-gallery-mosaic__image"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                />
               </div>
-            ))}
-          </div>
-          {productHrefProp ? (
-            <div className="mt-12 flex justify-center" data-reveal>
-              <Link href={productHrefProp} className="premium-button premium-button--primary">
-                View signature piece
-              </Link>
+              <span className="premium-gallery-mosaic__shine" aria-hidden />
             </div>
-          ) : null}
+          ))}
         </div>
-      </section>
+
+        {productHrefProp ? (
+          <div className="premium-section__cta-row">
+            <Link href={productHrefProp} className="premium-button premium-button--primary">
+              View signature piece
+            </Link>
+          </div>
+        ) : null}
+      </PremiumPageSection>
+
+      <PremiumPageCtaBand
+        title={`Discuss this ${eyebrow.toLowerCase()} selection`}
+        copy="Our consultants can shortlist pieces from this section for your occasion and arrange a studio appointment in Sikar."
+        primaryHref="/contact"
+        primaryLabel="Request private viewing"
+      />
     </PremiumPageFrame>
   );
 }

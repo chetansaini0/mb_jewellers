@@ -1,3 +1,5 @@
+import { showrooms } from "@/app/lib/siteConfig";
+
 export type ProductItem = {
   name: string;
   image: string;
@@ -46,18 +48,18 @@ export const socialLinks = {
   facebook: "https://www.facebook.com/mbjewellerssikar",
 } as const;
 
+const ramlilaShowroom = showrooms.find((showroom) => showroom.id === "ramlila") ?? showrooms[1];
+
+export { showrooms };
+
 export const flagshipStudio = {
   name: "MB Jewellers",
   city: "Sikar",
   region: "Rajasthan",
-  address: "Ramlila Maidan, Mahamandir Rd, Chandpol, Sikar, Rajasthan 332001",
-  coordinates: {
-    lat: 27.603889,
-    lng: 75.136667,
-  },
-  mapEmbedUrl: "https://www.google.com/maps?q=27.603889,75.136667&hl=en&z=17&output=embed",
-  directionsUrl:
-    "https://www.google.com/maps/dir/?api=1&destination=Ramlila+Maidan%2C+Mahamandir+Rd%2C+Chandpol%2C+Sikar%2C+Rajasthan+332001",
+  address: ramlilaShowroom.address,
+  coordinates: ramlilaShowroom.coordinates,
+  mapEmbedUrl: ramlilaShowroom.mapEmbedUrl,
+  directionsUrl: ramlilaShowroom.directionsUrl,
 } as const;
 
 export type CategoryShowcaseItem = {
@@ -159,15 +161,15 @@ export const homeSlideshow: ProductItem[] = [
 export const featuredPieces: ProductItem[] = [
   {
     name: "Emerald Diamond Set",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&q=80",
-    alt: "Emerald diamond necklace set with matching earrings",
+    image: "/pics/new-arrivals/diamond1-main.png",
+    alt: "Emerald diamond necklace set with matching earrings on black display bust",
     detail: "Elegant diamond set with emerald accents and matching earrings.",
     material: "Diamond",
   },
   {
     name: "Aurora Halo Drops",
-    image: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=900&q=80",
-    alt: "Diamond drop earrings",
+    image: "/pics/new-arrivals/diamond2-main.png",
+    alt: "Diamond necklace set with drop motifs on black display bust",
     detail: "Refined halo drops balanced for ceremony and evening wear.",
     material: "Diamond",
   },
@@ -187,15 +189,15 @@ export const featuredPieces: ProductItem[] = [
   },
   {
     name: "Royal Gold Chokar Set",
-    image: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=900&q=80",
-    alt: "Royal gold bridal chokar set",
+    image: "/pics/new-arrivals/gold5-main.png",
+    alt: "Layered heritage gold chokar necklace with pendant on teal display bust",
     detail: "Statement gold chokar set with layered profile for bridal and festive styling.",
     material: "Gold",
   },
   {
     name: "Regal Coin Chokar",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80",
-    alt: "Regal coin-motif gold chokar",
+    image: "/pics/new-arrivals/gold6-main.png",
+    alt: "Traditional gold chokar necklace with coin motifs on teal display bust",
     detail: "Coin-motif gold chokar with sculpted heritage detailing.",
     material: "Gold",
   },

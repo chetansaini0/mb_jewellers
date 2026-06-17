@@ -11,7 +11,7 @@ export function createPageMetadata(input: {
 }): Metadata {
   const canonicalPath = input.path ?? "/";
   const canonical = `${siteUrl}${canonicalPath}`;
-  const image = input.image ?? "/mb-jewellers-logo.png";
+  const image = input.image ?? "/opengraph-image";
 
   return {
     title: input.title,
@@ -49,32 +49,41 @@ export const websiteSchema = {
   },
 } as const;
 
+const openingHoursSpecification = [
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "10:00",
+    closes: "19:00",
+  },
+] as const;
+
 export const jewelryStoreSchema = {
   "@context": "https://schema.org",
-  "@type": "JewelryStore",
-  name: siteConfig.name,
-  description: siteConfig.description,
-  url: siteUrl,
-  image: `${siteUrl}/mb-jewellers-logo.png`,
-  telephone: siteConfig.contact.phoneDisplay,
-  email: siteConfig.contact.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: siteConfig.location.address,
-    addressLocality: siteConfig.location.city,
-    addressRegion: siteConfig.location.region,
-    addressCountry: siteConfig.location.country,
-  },
-  sameAs: ["https://www.instagram.com/mbjewellerssikar/", "https://www.facebook.com/mbjewellerssikar"],
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "10:00",
-      closes: "19:00",
+  "@graph": siteConfig.showrooms.map((showroom) => ({
+    "@type": "JewelryStore",
+    name: `${siteConfig.name} — ${showroom.name}`,
+    description: siteConfig.description,
+    url: siteUrl,
+    image: `${siteUrl}/mb-jewellers-logo.png`,
+    telephone: showroom.landlines.map((line) => line.display).join(", "),
+    email: siteConfig.contact.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: showroom.address,
+      addressLocality: siteConfig.location.city,
+      addressRegion: siteConfig.location.region,
+      addressCountry: siteConfig.location.country,
     },
-  ],
-  priceRange: "₹₹₹",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: showroom.coordinates.lat,
+      longitude: showroom.coordinates.lng,
+    },
+    sameAs: ["https://www.instagram.com/mbjewellerssikar/", "https://www.facebook.com/mbjewellerssikar"],
+    openingHoursSpecification,
+    priceRange: "₹₹₹",
+  })),
 } as const;
 
 export function createFaqPageSchema(items: readonly { question: string; answer: string }[]) {

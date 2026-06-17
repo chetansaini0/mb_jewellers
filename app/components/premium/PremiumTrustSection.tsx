@@ -34,7 +34,8 @@ export function PremiumTrustSection({ compact = false }: { compact?: boolean }) 
               {"counter" in item && item.counter ? (
                 <p className="premium-trust__counter">
                   <span data-counter={item.counter.value} data-suffix={item.counter.suffix}>
-                    0{item.counter.suffix}
+                    {item.counter.value}
+                    {item.counter.suffix}
                   </span>
                   <small>{item.counter.label}</small>
                 </p>

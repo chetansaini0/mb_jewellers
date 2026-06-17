@@ -2,10 +2,15 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { getAdminCookieName, verifySessionToken } from "@/app/lib/admin-auth";
 import { updateAppointmentStatus, type AppointmentStatus } from "@/app/lib/lead-store";
+import { isAllowedRequestOrigin } from "@/app/lib/request-security";
 
 const validStatuses = new Set<AppointmentStatus>(["PENDING", "CONFIRMED", "CANCELLED", "COMPLETED", "NO_SHOW"]);
 
 export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
+  if (!isAllowedRequestOrigin(request.headers)) {
+    return NextResponse.json({ ok: false, error: "Forbidden" }, { status: 403 });
+  }
+
   const cookieStore = await cookies();
   const token = cookieStore.get(getAdminCookieName())?.value;
   const session = await verifySessionToken(token);

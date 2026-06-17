@@ -47,6 +47,73 @@ export const premiumCollections = categoryShowcase.map((item) => {
   return item;
 });
 
+export type GalleryItem = {
+  src: string;
+  alt: string;
+  span: "tall" | "wide" | "square";
+};
+
+const pieceMainGalleryItems: GalleryItem[] = [
+  {
+    src: "/pics/new-arrivals/diamond1-main.png",
+    alt: "Emerald diamond set with matching earrings on black display bust",
+    span: "tall",
+  },
+  {
+    src: "/pics/new-arrivals/diamond2-main.png",
+    alt: "Diamond necklace set with drop motifs on black display bust",
+    span: "wide",
+  },
+  {
+    src: "/pics/new-arrivals/heritage-filigree-main.png",
+    alt: "Heritage filigree gold chokar necklace on display bust",
+    span: "square",
+  },
+  {
+    src: "/pics/new-arrivals/gold5-main.png",
+    alt: "Layered heritage gold chokar necklace with pendant on teal display bust",
+    span: "wide",
+  },
+  {
+    src: "/pics/new-arrivals/gold6-main.png",
+    alt: "Traditional gold chokar necklace with coin motifs on teal display bust",
+    span: "square",
+  },
+];
+
+const signatureWorldGallerySpans: GalleryItem["span"][] = ["wide", "square", "tall", "square"];
+
+const signatureWorldGalleryItems: GalleryItem[] = premiumCollections.map((collection, index) => ({
+  src: collection.coverImage,
+  alt: collection.coverAlt,
+  span: signatureWorldGallerySpans[index] ?? "square",
+}));
+
+/** Identical image files stored under different paths — map to one canonical gallery src. */
+const galleryCanonicalSrc: Record<string, string> = {
+  "/pics/new-arrivals/gold-main.png": "/pics/new-arrivals/heritage-filigree-main.png",
+  "/pics/new-arrivals/gold-4-main.png": "/pics/new-arrivals/heritage-filigree-main.png",
+};
+
+function uniqueGalleryItems(...groups: GalleryItem[][]): GalleryItem[] {
+  const seen = new Set<string>();
+  const merged: GalleryItem[] = [];
+
+  for (const group of groups) {
+    for (const item of group) {
+      const canonicalSrc = galleryCanonicalSrc[item.src] ?? item.src;
+      if (seen.has(canonicalSrc)) continue;
+      seen.add(canonicalSrc);
+      merged.push(canonicalSrc === item.src ? item : { ...item, src: canonicalSrc });
+    }
+  }
+
+  return merged;
+}
+
+/** Piece main photos plus signature-worlds collection shots (no duplicate paths or identical files). */
+export const galleryItems = uniqueGalleryItems(pieceMainGalleryItems, signatureWorldGalleryItems);
+
 export const premiumStory = {
   kicker: "Heritage in motion",
   chapters: [

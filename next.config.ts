@@ -1,9 +1,27 @@
 import type { NextConfig } from "next";
+import os from "os";
 
-const allowedDevOrigins = (process.env.NEXT_ALLOWED_DEV_ORIGINS ?? "")
+function getLocalNetworkHosts(): string[] {
+  const hosts = new Set<string>();
+
+  for (const interfaces of Object.values(os.networkInterfaces())) {
+    for (const iface of interfaces ?? []) {
+      if (iface.family === "IPv4" && !iface.internal) {
+        hosts.add(iface.address);
+      }
+    }
+  }
+
+  return [...hosts];
+}
+
+const envOrigins = (process.env.NEXT_ALLOWED_DEV_ORIGINS ?? "")
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
+
+const allowedDevOrigins =
+  process.env.NODE_ENV === "production" ? envOrigins : [...new Set([...envOrigins, ...getLocalNetworkHosts()])];
 
 const nextConfig: NextConfig = {
   allowedDevOrigins,

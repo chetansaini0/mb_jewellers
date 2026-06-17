@@ -15,9 +15,10 @@ export function PremiumPageHero({ eyebrow, title, lede, children, dark = false }
     <section className={`premium-page-hero ${dark ? "is-dark" : ""}`}>
       <HeroBackdrop />
       <div className="site-max site-px premium-page-hero__inner">
-        <p className="premium-eyebrow" data-reveal>
-          {eyebrow}
-        </p>
+        <div className="premium-page-hero__kicker-row" data-reveal>
+          <span className="premium-page-hero__kicker-line" aria-hidden />
+          <p className="premium-eyebrow">{eyebrow}</p>
+        </div>
         <h1 className="premium-title premium-page-hero__title" data-reveal>
           {title}
         </h1>

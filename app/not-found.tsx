@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
-import { createPageMetadata } from "@/app/lib/seo";
-
-export const metadata: Metadata = createPageMetadata({
+export const metadata: Metadata = {
   title: "Page Not Found | MB Jewellers",
   description: "The page you are looking for could not be found. Explore collections or book a private viewing.",
-  path: "/404",
-});
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (

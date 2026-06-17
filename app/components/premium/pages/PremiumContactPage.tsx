@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useMemo, useState, type FormEvent } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { CheckCircle, Send } from "lucide-react";
+import { PremiumContactAside } from "@/app/components/premium/PremiumContactAside";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
-import { PremiumStudioMap } from "@/app/components/premium/PremiumStudioMap";
+import { PremiumPageSection } from "@/app/components/premium/PremiumPageSection";
+import { PremiumShowroomsMap } from "@/app/components/premium/PremiumShowroomsMap";
 import { appointmentTimeSlots, appointmentTypes } from "@/app/lib/appointments";
-import { contactChannels } from "@/app/lib/premiumPages";
-import { flagshipStudio, socialLinks } from "@/app/lib/siteData";
+import { formatShowroomPhones, siteConfig } from "@/app/lib/siteConfig";
+import { showrooms, socialLinks } from "@/app/lib/siteData";
 
 export function PremiumContactPage() {
   return (
@@ -19,45 +22,44 @@ export function PremiumContactPage() {
         title="A private appointment begins with a conversation"
         lede="This site is for discovery only — tell us what caught your eye and we will arrange a private studio viewing. Purchases are completed in person, not online."
       />
-      <section className="premium-section">
-        <div className="site-max site-px premium-contact__grid">
-          <div className="premium-contact__cards">
-            {contactChannels.map((channel) => (
-              <article key={channel.label} className="premium-contact-card premium-glass-card" data-reveal>
-                <p className="premium-eyebrow">{channel.label}</p>
-                {"href" in channel && channel.href ? (
-                  <a
-                    href={channel.href}
-                    target={channel.href.startsWith("http") ? "_blank" : undefined}
-                    rel="noreferrer"
-                  >
-                    {channel.value}
-                  </a>
-                ) : (
-                  <p>{channel.value}</p>
-                )}
-              </article>
-            ))}
-          </div>
+      <PremiumPageSection
+        eyebrow="Get in Touch"
+        title="We are here for every detail"
+        subtitle="Private viewings, bridal consultations, custom design, and gifting — reach us instantly or send a structured appointment request."
+        warm
+      >
+        <div className="premium-contact__grid">
+          <PremiumContactAside />
           <Suspense
-            fallback={<div className="premium-glass-card p-6 text-sm text-[var(--premium-muted)]">Loading form…</div>}
+            fallback={
+              <div className="premium-contact-form premium-contact-form--krishan">
+                <p className="premium-contact-form__loading">Loading form…</p>
+              </div>
+            }
           >
             <ContactForm />
           </Suspense>
         </div>
-      </section>
-      <section className="premium-section">
-        <div className="site-max site-px premium-map premium-glass-card" data-reveal>
-          <p className="premium-eyebrow">Studio map</p>
-          <h2 className="premium-title">
-            Visit {flagshipStudio.name}, {flagshipStudio.city}
-          </h2>
-          <p className="premium-section__lede">{flagshipStudio.address}</p>
-          <PremiumStudioMap />
+
+        <div className="premium-contact__map" data-reveal>
+          <div className="premium-contact__map-head">
+            <h3 className="premium-contact__map-title">Our showrooms in Sikar</h3>
+            <p className="premium-contact__map-tagline">{siteConfig.tagline}</p>
+            <div className="premium-contact__map-showrooms">
+              {showrooms.map((showroom) => (
+                <div key={showroom.id} className="premium-contact__map-showroom">
+                  <p className="premium-contact__map-showroom-name">{showroom.name}</p>
+                  <p className="premium-contact__map-address">{showroom.address}</p>
+                  <p className="premium-contact__map-phones">{formatShowroomPhones(showroom)}</p>
+                  <Link href={showroom.directionsUrl} target="_blank" rel="noopener noreferrer">
+                    Directions
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+          <PremiumShowroomsMap />
           <div className="premium-contact__social">
-            <Link href={flagshipStudio.directionsUrl} target="_blank" rel="noopener noreferrer">
-              Open in Google Maps
-            </Link>
             <Link href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
               Instagram
             </Link>
@@ -66,15 +68,42 @@ export function PremiumContactPage() {
             </Link>
           </div>
         </div>
-      </section>
+      </PremiumPageSection>
     </PremiumPageFrame>
   );
 }
 
+function mapQuickCategory(value: string | null) {
+  const normalized = value?.trim().toLowerCase() ?? "";
+  if (normalized === "diamond") return "Diamond";
+  if (normalized === "gold") return "Gold";
+  if (normalized === "silver") return "Silver";
+  if (normalized === "bridal") return "Bridal";
+  return "Diamond";
+}
+
+function mapQuickOccasion(value: string | null) {
+  const normalized = value?.trim().toLowerCase() ?? "";
+  if (normalized === "bridal") return "Bridal consultation";
+  if (normalized === "engagement") return "Engagement styling";
+  if (normalized === "gifting") return "Gifting";
+  if (normalized === "custom") return "Custom design";
+  return "Private viewing";
+}
+
 function ContactForm() {
+  const reduce = useReducedMotion();
   const searchParams = useSearchParams();
   const productInterest = searchParams.get("interest")?.trim() ?? "";
-  const [mode, setMode] = useState<"INQUIRY" | "APPOINTMENT">(() => (productInterest ? "INQUIRY" : "APPOINTMENT"));
+  const quickMode = searchParams.get("mode")?.trim().toUpperCase();
+  const quickDate = searchParams.get("date")?.trim() ?? "";
+  const quickOccasion = searchParams.get("occasion");
+  const quickCategory = searchParams.get("category");
+  const [mode, setMode] = useState<"INQUIRY" | "APPOINTMENT">(() => {
+    if (quickMode === "APPOINTMENT") return "APPOINTMENT";
+    if (quickMode === "INQUIRY") return "INQUIRY";
+    return productInterest ? "INQUIRY" : "APPOINTMENT";
+  });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
   const todayIso = useMemo(() => new Date().toISOString().slice(0, 10), []);
@@ -82,12 +111,12 @@ function ContactForm() {
     fullName: "",
     email: "",
     phone: "",
-    category: "Diamond",
+    category: mapQuickCategory(quickCategory),
     message: productInterest ? `I would like a private viewing for: ${productInterest}.` : "",
     appointmentType: "CONSULTATION",
-    preferredDate: "",
+    preferredDate: quickDate,
     preferredTimeSlot: appointmentTimeSlots[2],
-    occasion: "",
+    occasion: mapQuickOccasion(quickOccasion),
     notes: "",
     website: "",
   }));
@@ -154,8 +183,19 @@ function ContactForm() {
   const errorMessageId = "contact-form-error";
 
   return (
-    <form className="premium-contact-form premium-glass-card" data-reveal onSubmit={submit}>
-      <div className="premium-filter-row">
+    <form className="premium-contact-form premium-contact-form--krishan" data-reveal onSubmit={submit}>
+      <div className="premium-contact-form__header">
+        <h3 className="premium-contact-form__title">
+          {mode === "APPOINTMENT" ? "Book a private appointment" : "Send us a message"}
+        </h3>
+        <p className="premium-contact-form__lede">
+          {mode === "APPOINTMENT"
+            ? "Share your preferred date and occasion. We confirm studio timings within 24 hours."
+            : "Tell us what you are looking for. We respond within 24 hours."}
+        </p>
+      </div>
+
+      <div className="premium-filter-row premium-contact-form__modes">
         <button
           type="button"
           className={`premium-filter-chip ${mode === "APPOINTMENT" ? "is-active" : ""}`}
@@ -171,64 +211,78 @@ function ContactForm() {
           General inquiry
         </button>
       </div>
+
       <AnimatePresence mode="wait">
         {status === "success" ? (
-          <motion.p
+          <motion.div
             key="thanks"
-            initial={{ opacity: 0, y: 12 }}
+            initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="premium-contact-form__success"
+            className="premium-contact-form__success-banner"
             role="status"
             aria-live="polite"
           >
-            {mode === "APPOINTMENT"
-              ? "Appointment request received. Our concierge team will confirm your slot shortly."
-              : "Thank you. Our studio team will reach out shortly with curated options."}
-          </motion.p>
+            <CheckCircle aria-hidden />
+            <p>
+              {mode === "APPOINTMENT"
+                ? "Appointment request received. Our concierge team will confirm your slot shortly."
+                : "Thank you. Our studio team will reach out shortly with curated options."}
+            </p>
+          </motion.div>
         ) : (
           <motion.div
             key="fields"
-            initial={{ opacity: 0 }}
+            initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             className="premium-contact-form__fields"
           >
-            <label htmlFor="contact-full-name">
-              Name
-              <input
-                id="contact-full-name"
-                className="premium-field"
-                required
-                value={form.fullName}
-                onChange={(event) => update("fullName", event.target.value)}
-              />
-            </label>
-            <label htmlFor="contact-email">
-              Email
+            <div className="premium-contact-form__row">
+              <label htmlFor="contact-full-name" className="premium-contact-form__label">
+                <span className="premium-contact-form__label-text">Name</span>
+                <input
+                  id="contact-full-name"
+                  className="premium-contact-form__input"
+                  required
+                  autoComplete="name"
+                  placeholder="Your name"
+                  value={form.fullName}
+                  onChange={(event) => update("fullName", event.target.value)}
+                />
+              </label>
+              <label htmlFor="contact-phone" className="premium-contact-form__label">
+                <span className="premium-contact-form__label-text">Phone</span>
+                <input
+                  id="contact-phone"
+                  type="tel"
+                  className="premium-contact-form__input"
+                  required={mode === "APPOINTMENT"}
+                  autoComplete="tel"
+                  placeholder={siteConfig.contact.phoneDisplay}
+                  value={form.phone}
+                  onChange={(event) => update("phone", event.target.value)}
+                />
+              </label>
+            </div>
+
+            <label htmlFor="contact-email" className="premium-contact-form__label">
+              <span className="premium-contact-form__label-text">Email</span>
               <input
                 id="contact-email"
                 type="email"
-                className="premium-field"
+                className="premium-contact-form__input"
                 required
+                autoComplete="email"
+                placeholder="your@email.com"
                 value={form.email}
                 onChange={(event) => update("email", event.target.value)}
               />
             </label>
-            <label htmlFor="contact-phone">
-              Phone
-              <input
-                id="contact-phone"
-                type="tel"
-                className="premium-field"
-                required={mode === "APPOINTMENT"}
-                value={form.phone}
-                onChange={(event) => update("phone", event.target.value)}
-              />
-            </label>
-            <label htmlFor="contact-category">
-              Jewellery category
+
+            <label htmlFor="contact-category" className="premium-contact-form__label">
+              <span className="premium-contact-form__label-text">Jewellery category</span>
               <select
                 id="contact-category"
-                className="premium-field"
+                className="premium-contact-form__input"
                 value={form.category}
                 onChange={(event) => update("category", event.target.value)}
               >
@@ -240,64 +294,69 @@ function ContactForm() {
                 <option>Other</option>
               </select>
             </label>
+
             {mode === "APPOINTMENT" ? (
               <>
-                <label htmlFor="contact-appointment-type">
-                  Consultation type
-                  <select
-                    id="contact-appointment-type"
-                    className="premium-field"
-                    value={form.appointmentType}
-                    onChange={(event) => update("appointmentType", event.target.value)}
-                  >
-                    {appointmentTypes.map((type) => (
-                      <option key={type.value} value={type.value}>
-                        {type.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label htmlFor="contact-preferred-date">
-                  Preferred date
-                  <input
-                    id="contact-preferred-date"
-                    type="date"
-                    min={todayIso}
-                    className="premium-field"
-                    required
-                    value={form.preferredDate}
-                    onChange={(event) => update("preferredDate", event.target.value)}
-                  />
-                </label>
-                <label htmlFor="contact-preferred-time-slot">
-                  Preferred time slot
-                  <select
-                    id="contact-preferred-time-slot"
-                    className="premium-field"
-                    value={form.preferredTimeSlot}
-                    onChange={(event) => update("preferredTimeSlot", event.target.value)}
-                  >
-                    {appointmentTimeSlots.map((slot) => (
-                      <option key={slot}>{slot}</option>
-                    ))}
-                  </select>
-                </label>
-                <label htmlFor="contact-occasion">
-                  Occasion
-                  <input
-                    id="contact-occasion"
-                    className="premium-field"
-                    placeholder="Wedding, anniversary, gifting..."
-                    value={form.occasion}
-                    onChange={(event) => update("occasion", event.target.value)}
-                  />
-                </label>
-                <label htmlFor="contact-notes">
-                  Notes
+                <div className="premium-contact-form__row">
+                  <label htmlFor="contact-appointment-type" className="premium-contact-form__label">
+                    <span className="premium-contact-form__label-text">Consultation type</span>
+                    <select
+                      id="contact-appointment-type"
+                      className="premium-contact-form__input"
+                      value={form.appointmentType}
+                      onChange={(event) => update("appointmentType", event.target.value)}
+                    >
+                      {appointmentTypes.map((type) => (
+                        <option key={type.value} value={type.value}>
+                          {type.label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label htmlFor="contact-preferred-date" className="premium-contact-form__label">
+                    <span className="premium-contact-form__label-text">Preferred date</span>
+                    <input
+                      id="contact-preferred-date"
+                      type="date"
+                      min={todayIso}
+                      className="premium-contact-form__input"
+                      required
+                      value={form.preferredDate}
+                      onChange={(event) => update("preferredDate", event.target.value)}
+                    />
+                  </label>
+                </div>
+                <div className="premium-contact-form__row">
+                  <label htmlFor="contact-preferred-time-slot" className="premium-contact-form__label">
+                    <span className="premium-contact-form__label-text">Preferred time slot</span>
+                    <select
+                      id="contact-preferred-time-slot"
+                      className="premium-contact-form__input"
+                      value={form.preferredTimeSlot}
+                      onChange={(event) => update("preferredTimeSlot", event.target.value)}
+                    >
+                      {appointmentTimeSlots.map((slot) => (
+                        <option key={slot}>{slot}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label htmlFor="contact-occasion" className="premium-contact-form__label">
+                    <span className="premium-contact-form__label-text">Occasion</span>
+                    <input
+                      id="contact-occasion"
+                      className="premium-contact-form__input"
+                      placeholder="Wedding, anniversary, gifting..."
+                      value={form.occasion}
+                      onChange={(event) => update("occasion", event.target.value)}
+                    />
+                  </label>
+                </div>
+                <label htmlFor="contact-notes" className="premium-contact-form__label">
+                  <span className="premium-contact-form__label-text">Notes</span>
                   <textarea
                     id="contact-notes"
-                    rows={4}
-                    className="premium-field"
+                    rows={5}
+                    className="premium-contact-form__input premium-contact-form__textarea"
                     placeholder="Tell us your requirements and jewellery preferences."
                     value={form.notes}
                     onChange={(event) => update("notes", event.target.value)}
@@ -305,12 +364,12 @@ function ContactForm() {
                 </label>
               </>
             ) : (
-              <label htmlFor="contact-message">
-                Message
+              <label htmlFor="contact-message" className="premium-contact-form__label">
+                <span className="premium-contact-form__label-text">Message</span>
                 <textarea
                   id="contact-message"
-                  rows={4}
-                  className="premium-field"
+                  rows={5}
+                  className="premium-contact-form__input premium-contact-form__textarea"
                   placeholder="Tell us your requirements."
                   required
                   value={form.message}
@@ -318,6 +377,7 @@ function ContactForm() {
                 />
               </label>
             )}
+
             <label className="sr-only" htmlFor="contact-website">
               Leave this field empty
             </label>
@@ -331,14 +391,17 @@ function ContactForm() {
               className="sr-only"
               aria-hidden="true"
             />
-            <button type="submit" className="premium-button premium-button--primary">
-              {status === "loading" ? "Submitting..." : mode === "APPOINTMENT" ? "Book appointment" : "Submit inquiry"}
-            </button>
+
             {status === "error" ? (
               <p id={errorMessageId} className="premium-contact-form__error" role="alert" aria-live="assertive">
                 {error}
               </p>
             ) : null}
+
+            <button type="submit" className="premium-contact-form__submit" disabled={status === "loading"}>
+              <Send aria-hidden />
+              {status === "loading" ? "Submitting..." : mode === "APPOINTMENT" ? "Book appointment" : "Send message"}
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

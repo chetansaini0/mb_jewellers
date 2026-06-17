@@ -10,7 +10,7 @@ export async function sendLeadEmail(payload: NotificationPayload) {
     return;
   }
 
-  await fetch("https://api.resend.com/emails", {
+  const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
@@ -23,4 +23,8 @@ export async function sendLeadEmail(payload: NotificationPayload) {
       text: payload.text,
     }),
   });
+
+  if (!response.ok) {
+    throw new Error(`Lead email failed (${response.status})`);
+  }
 }

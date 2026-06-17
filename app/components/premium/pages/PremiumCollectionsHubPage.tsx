@@ -1,12 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { PremiumAtelierStrip } from "@/app/components/premium/PremiumAtelierStrip";
+import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
-import { PremiumTiltCard } from "@/app/components/premium/PremiumTiltCard";
+import { PremiumPageSection } from "@/app/components/premium/PremiumPageSection";
+import { PremiumShowcaseCard } from "@/app/components/premium/PremiumShowcaseCard";
 import { PremiumTrustSection } from "@/app/components/premium/PremiumTrustSection";
 import { categoryShowcase } from "@/app/lib/siteData";
 
@@ -24,63 +26,72 @@ export function PremiumCollectionsHubPage() {
       <PremiumPageHero
         eyebrow="Collections"
         title="Immersive worlds of diamond, gold, silver, and finishing pieces"
-        lede="Browse cinematic category showcases with smooth filtering, hover depth, and private-viewing guidance for every collection."
+        lede="Browse cinematic category showcases with calm filtering, depth-rich cards, and private-viewing guidance for every collection."
       />
-      <section className="premium-section">
-        <div className="site-max site-px">
-          <div className="premium-filter-row">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                className={`premium-filter-chip ${activeFilter === filter ? "is-active" : ""}`}
-                onClick={() => setActiveFilter(filter)}
-                data-reveal
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-          <AnimatePresence mode="popLayout">
-            <motion.ul layout className="premium-collections-grid premium-collections-grid--hub">
-              {items.map((item) => (
-                <motion.li
-                  key={item.title}
-                  layout
-                  initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -16, scale: 0.98 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <PremiumTiltCard className="premium-collection-card premium-glass-card">
-                    <Link href={item.href} className="premium-collection-card__link">
-                      <div className="premium-collection-card__media">
-                        <Image
-                          src={item.coverImage}
-                          alt={item.coverAlt}
-                          fill
-                          sizes="(min-width: 1024px) 25vw, 50vw"
-                          className="object-cover"
-                        />
-                        <div className="premium-collection-card__shade" aria-hidden />
-                      </div>
-                      <div className="premium-collection-card__body">
-                        <p className="premium-collection-card__meta">
-                          {activeFilter === "All" ? "Collection" : activeFilter}
-                        </p>
-                        <h2>{item.title}</h2>
-                        <p>{item.description}</p>
-                        <span className="premium-inline-link">Explore collection</span>
-                      </div>
-                    </Link>
-                  </PremiumTiltCard>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </AnimatePresence>
+
+      <PremiumPageSection
+        eyebrow="Browse by world"
+        title="Choose your signature material"
+        subtitle="Each collection opens into subsection galleries and studio-led curation — purchases are completed in person at our Sikar atelier."
+      >
+        <div className="premium-filter-row">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              className={`premium-filter-chip ${activeFilter === filter ? "is-active" : ""}`}
+              onClick={() => setActiveFilter(filter)}
+            >
+              {filter}
+            </button>
+          ))}
         </div>
-      </section>
+
+        <AnimatePresence mode="popLayout">
+          <motion.div layout className="premium-showcase-grid">
+            {items.map((item, index) => (
+              <motion.div
+                key={item.title}
+                layout
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -16, scale: 0.98 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <PremiumShowcaseCard
+                  href={item.href}
+                  image={item.coverImage}
+                  alt={item.coverAlt}
+                  badge={item.title}
+                  title={item.title}
+                  description={item.description}
+                  meta="Curated selection"
+                  linkLabel="Explore collection"
+                  index={index}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="premium-section__cta-row">
+          <Link href="/contact" className="premium-section__text-link">
+            Book a private viewing &rarr;
+          </Link>
+        </div>
+      </PremiumPageSection>
+
+      <PremiumAtelierStrip />
       <PremiumTrustSection compact />
+      <PremiumPageCtaBand
+        title="Plan your collection visit"
+        copy="Walk through diamond, gold, silver, and bridal worlds with a consultant who understands your occasion, metal preference, and ceremony timeline."
+        primaryHref="/contact"
+        primaryLabel="Request appointment"
+        secondaryHref="/bridal"
+        secondaryLabel="Explore bridal"
+        useWhatsAppSecondary={false}
+      />
     </PremiumPageFrame>
   );
 }

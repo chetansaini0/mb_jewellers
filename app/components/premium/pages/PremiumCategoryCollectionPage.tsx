@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
-import { PremiumTiltCard } from "@/app/components/premium/PremiumTiltCard";
+import { PremiumPageSection } from "@/app/components/premium/PremiumPageSection";
+import { PremiumShowcaseCard } from "@/app/components/premium/PremiumShowcaseCard";
 import { PremiumTrustSection } from "@/app/components/premium/PremiumTrustSection";
 import type { CategoryShowcaseItem } from "@/app/lib/siteData";
 
@@ -24,37 +25,44 @@ export function PremiumCategoryCollectionPage({
   return (
     <PremiumPageFrame>
       <PremiumPageHero eyebrow={eyebrow} title={title} lede={description} />
-      <section className="premium-section">
-        <div className="site-max site-px">
-          <ul className="premium-collections-grid premium-collections-grid--hub">
-            {items.map((item) => (
-              <li key={item.href} data-reveal>
-                <PremiumTiltCard className="premium-collection-card premium-glass-card">
-                  <Link href={item.href} className="premium-collection-card__link">
-                    <div className="premium-collection-card__media">
-                      <Image
-                        src={item.coverImage}
-                        alt={item.coverAlt}
-                        fill
-                        sizes="(min-width: 1024px) 25vw, 50vw"
-                        className="object-cover"
-                      />
-                      <div className="premium-collection-card__shade" aria-hidden />
-                    </div>
-                    <div className="premium-collection-card__body">
-                      <p className="premium-collection-card__meta">Section</p>
-                      <h2>{item.title}</h2>
-                      <p>{item.description}</p>
-                      <span className="premium-inline-link">View highlights</span>
-                    </div>
-                  </Link>
-                </PremiumTiltCard>
-              </li>
-            ))}
-          </ul>
+
+      <PremiumPageSection
+        eyebrow={`${eyebrow} sections`}
+        title="Open a chapter below"
+        subtitle="Each section is a curated gallery of silhouettes you can discuss during a private studio appointment."
+        warm
+      >
+        <div className="premium-showcase-grid">
+          {items.map((item, index) => (
+            <PremiumShowcaseCard
+              key={item.href}
+              href={item.href}
+              image={item.coverImage}
+              alt={item.coverAlt}
+              badge="Section"
+              title={item.title}
+              description={item.description}
+              meta={eyebrow}
+              linkLabel="View highlights"
+              index={index}
+            />
+          ))}
         </div>
-      </section>
+
+        <div className="premium-section__cta-row">
+          <Link href="/collections" className="premium-section__text-link">
+            Back to all collections &rarr;
+          </Link>
+        </div>
+      </PremiumPageSection>
+
       <PremiumTrustSection compact />
+      <PremiumPageCtaBand
+        title={`Discuss your ${eyebrow.toLowerCase()} shortlist`}
+        copy="Share your occasion and preferred silhouettes. Our consultants will prepare pieces for a calm, appointment-only viewing in Sikar."
+        primaryHref="/contact"
+        primaryLabel="Book private viewing"
+      />
     </PremiumPageFrame>
   );
 }

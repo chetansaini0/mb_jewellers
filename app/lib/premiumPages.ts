@@ -1,4 +1,4 @@
-import { premiumTestimonials } from "@/app/lib/premiumContent";
+import { galleryItems, premiumTestimonials } from "@/app/lib/premiumContent";
 import { getWhatsAppUrl, siteConfig } from "@/app/lib/siteConfig";
 import { categoryShowcase, featuredPieces, socialLinks } from "@/app/lib/siteData";
 
@@ -259,48 +259,28 @@ export const blogPosts = [
   },
 ] as const;
 
-export const galleryItems = [
-  { src: "/pics/Bridal/b1.jpg", alt: "Bridal portrait in warm light", span: "tall" },
-  { src: "/pics/Bridal/b2.jpg", alt: "Bridal jewellery close-up", span: "wide" },
-  { src: "/pics/Bridal/b3.jpg", alt: "Bridal styling detail", span: "square" },
-  {
-    src: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=1200&q=80",
-    alt: "Gold necklace styling",
-    span: "square",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&q=80",
-    alt: "Gold bangles detail",
-    span: "tall",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1611107683227-e9060eccd846?w=1200&q=80",
-    alt: "Diamond pendant",
-    span: "wide",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&q=80",
-    alt: "Silver pendant styling",
-    span: "square",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612177343582-665b6b11d2b8?w=1200&q=80",
-    alt: "Silver hoops",
-    span: "tall",
-  },
-] as const;
+export { galleryItems };
+
+const showroomPhoneChannels = siteConfig.showrooms.flatMap((showroom) =>
+  showroom.landlines.map((line, index) => ({
+    label: index === 0 ? showroom.name : `${showroom.name} (line ${index + 1})`,
+    value: line.display,
+    href: `tel:${line.e164}`,
+  })),
+);
+
+const whatsappChannel = (() => {
+  const href = getWhatsAppUrl("Hello MB Jewellers, I would like to book an appointment.");
+  return href ? [{ label: "WhatsApp", value: "Start chat", href }] : [];
+})();
 
 export const contactChannels = [
   { label: "Studio email", value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
-  { label: "Private line", value: siteConfig.contact.phoneDisplay, href: `tel:${siteConfig.contact.phoneE164}` },
-  {
-    label: "WhatsApp",
-    value: "Start chat",
-    href: getWhatsAppUrl("Hello MB Jewellers, I would like to book an appointment."),
-  },
+  ...showroomPhoneChannels,
+  ...whatsappChannel,
   { label: "Visiting hours", value: "Mon–Sat, 10:00 AM – 7:00 PM" },
   { label: "Instagram", value: "@mbjewellerssikar", href: socialLinks.instagram },
-] as const;
+];
 
 export function slugifyProductName(name: string) {
   return name

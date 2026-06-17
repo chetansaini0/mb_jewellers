@@ -1,8 +1,21 @@
 # MB Jewellers — Production Readiness Audit
 
-**Audit date:** 28 May 2026  
+**Audit date:** 28 May 2026 · **Re-audit:** 10 Jun 2026  
 **Stack:** Next.js 16.2.4 · React 19 · Prisma 7 · Tailwind v4  
-**Build status:** `npm run build` — **PASS** (71 static/SSG routes)
+**Build status:** `npm run build` — **PASS** (71 static/SSG routes) · lint 0 · typecheck 0 · verify:build PASS
+
+## Re-audit changelog (10 Jun 2026)
+
+- **Fixed:** missing `public/favicon.ico` (was referenced in metadata but absent → 404 on every page)
+- **Added:** proper PWA/browser icons — `public/icons/icon-192.png`, `icon-512.png`, `apple-touch-icon.png` (generated from brand logo)
+- **Fixed:** manifest icons now point to correctly sized files (192/512 + maskable) instead of the 3532×3000 logo
+- **Fixed:** default OG/Twitter image now uses the generated 1200×630 `/opengraph-image` instead of the 372 KB logo PNG (correct aspect for social previews)
+- **Added:** `app/global-error.tsx` root error boundary (branded, with reset)
+- **Hardened:** admin login uses constant-time credential comparison
+- **Cleanup:** removed Next.js template SVGs from `public/` (next, vercel, file, globe, window)
+- **Fixed:** last remaining ESLint warning (unused import in `scripts/generate-docs-pdf.mjs`)
+
+**Launch readiness: ~95%.** Remaining items are operational only: production env vars on Vercel, domain DNS, Search Console + GA4 property, Postgres migration in production, and (optional content task) replacing the remaining Unsplash placeholders with brand photography.
 
 ---
 

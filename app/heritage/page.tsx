@@ -8,9 +8,9 @@ export const metadata: Metadata = {
     description: "Explore the heritage story, craftsmanship values, and legacy milestones behind MB Jewellers.",
     path: "/heritage",
   }),
-  alternates: { canonical: createCanonicalUrl("/about") },
+  alternates: { canonical: createCanonicalUrl("/heritage") },
 };
 
 export default function HeritagePage() {
-  return <PremiumAboutPage />;
+  return <PremiumAboutPage variant="heritage" />;
 }

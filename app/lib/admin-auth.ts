@@ -75,7 +75,21 @@ export function getAdminCookieName() {
   return ADMIN_COOKIE_NAME;
 }
 
+function constantTimeEquals(a: string, b: string) {
+  const encoder = new TextEncoder();
+  const aBytes = encoder.encode(a);
+  const bBytes = encoder.encode(b);
+  let mismatch = aBytes.length === bBytes.length ? 0 : 1;
+  const length = Math.max(aBytes.length, bBytes.length);
+  for (let i = 0; i < length; i++) {
+    mismatch |= (aBytes[i] ?? 0) ^ (bBytes[i] ?? 0);
+  }
+  return mismatch === 0;
+}
+
 export function isValidAdminLogin(email: string, password: string) {
   const config = getAdminConfig();
-  return email === config.email && password === config.password;
+  const emailMatches = constantTimeEquals(email, config.email.toLowerCase());
+  const passwordMatches = constantTimeEquals(password, config.password);
+  return emailMatches && passwordMatches;
 }
