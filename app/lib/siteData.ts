@@ -6,6 +6,8 @@ export type ProductItem = {
   alt: string;
   detail: string;
   material?: "Diamond" | "Gold" | "Silver";
+  /** When true, piece appears in new arrivals but not the homepage signature grid. */
+  newArrivalOnly?: boolean;
 };
 
 /** Footer dropdown + Google Translate widget (English is default). */
@@ -200,6 +202,24 @@ export const featuredPieces: ProductItem[] = [
     alt: "Traditional gold chokar necklace with coin motifs on teal display bust",
     detail: "Coin-motif gold chokar with sculpted heritage detailing.",
     material: "Gold",
+  },
+  {
+    name: "Rajwada Pearl Silver Suite",
+    image: "/pics/new-arrivals/silver6-main.png",
+    alt: "Rajwada oxidised silver necklace and earring set with pearl strands and magenta stone accents",
+    detail:
+      "Traditional six-part silver suite with layered pearl strands, oxidised filigree, and matching jhumka earrings.",
+    material: "Silver",
+    newArrivalOnly: true,
+  },
+  {
+    name: "Rajwada Bridal Silver Ensemble",
+    image: "/pics/new-arrivals/silver8-main.png",
+    alt: "Rajwada bridal oxidised silver set with maang tikka, choker, haar, and jhumka earrings",
+    detail:
+      "Grand bridal silver ensemble with maang tikka, choker, layered haar, and matching jhumkas in oxidised filigree.",
+    material: "Silver",
+    newArrivalOnly: true,
   },
   {
     name: "Moonlight Silver Hoops",

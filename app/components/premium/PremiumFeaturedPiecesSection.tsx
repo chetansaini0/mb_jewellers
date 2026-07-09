@@ -6,7 +6,7 @@ import { PremiumSectionTitle } from "@/app/components/premium/PremiumSectionTitl
 import { featuredPieces } from "@/app/lib/siteData";
 
 export function PremiumFeaturedPiecesSection() {
-  const pieces = featuredPieces.slice(0, 6);
+  const pieces = featuredPieces.filter((piece) => !piece.newArrivalOnly).slice(0, 6);
 
   return (
     <section className="premium-section premium-section--warm site-max site-px">

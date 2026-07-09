@@ -15,6 +15,20 @@ import type { ProductItem } from "@/app/lib/siteData";
 import { featuredPieces } from "@/app/lib/siteData";
 
 const productGalleryBySlug: Record<string, string[]> = {
+  "rajwada-bridal-silver-ensemble": [
+    "/pics/new-arrivals/silver8-main.png",
+    "/pics/new-arrivals/silver8-1-scroll.png",
+    "/pics/new-arrivals/silver8-2-scroll.png",
+    "/pics/new-arrivals/silver8-3-scroll.png",
+    "/pics/new-arrivals/silver8-4-scroll.png",
+  ],
+  "rajwada-pearl-silver-suite": [
+    "/pics/new-arrivals/silver6-main.png",
+    "/pics/new-arrivals/silver6-1-scroll.png",
+    "/pics/new-arrivals/silver6-2-scroll.png",
+    "/pics/new-arrivals/silver6-3-scroll.png",
+    "/pics/new-arrivals/silver6-4-scroll.png",
+  ],
   "emerald-diamond-set": [
     "/pics/new-arrivals/diamond1-main.png",
     "/pics/new-arrivals/diamond1-1-scroll.png",
@@ -86,7 +100,7 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <div className="space-y-4" data-reveal>
               <motion.div
-                className="premium-product-hero-card"
+                className={`premium-product-hero-card${hasCustomGallery ? " premium-product-hero-card--showcase" : ""}`}
                 initial={{ opacity: 0, scale: 1.02 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -95,7 +109,7 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
                   src={activeImage}
                   alt={product.alt}
                   fill
-                  className="object-cover"
+                  className={hasCustomGallery ? "premium-product-hero-card__image" : "object-cover"}
                   sizes="(min-width: 1024px) 45vw, 100vw"
                   priority
                 />
@@ -122,7 +136,7 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
                         src={image}
                         alt=""
                         fill
-                        className="object-cover"
+                        className={hasCustomGallery ? "object-contain p-1" : "object-cover"}
                         style={hasCustomGallery ? undefined : { objectPosition: `${25 + index * 15}% center` }}
                         sizes="88px"
                         aria-hidden

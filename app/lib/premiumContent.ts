@@ -228,5 +228,17 @@ export const premiumProducts = featuredPieces.slice(0, 8).map((piece, index) =>
                 image: "/pics/new-arrivals/gold6-main.png",
                 alt: "Traditional gold chokar necklace with coin motifs on teal display bust",
               }
-            : piece,
+            : index === 6
+              ? {
+                  ...piece,
+                  image: "/pics/new-arrivals/silver6-main.png",
+                  alt: "Rajwada oxidised silver necklace and earring set with pearl strands and magenta stone accents",
+                }
+              : index === 7
+                ? {
+                    ...piece,
+                    image: "/pics/new-arrivals/silver8-main.png",
+                    alt: "Rajwada bridal oxidised silver set with maang tikka, choker, haar, and jhumka earrings",
+                  }
+                : piece,
 );
