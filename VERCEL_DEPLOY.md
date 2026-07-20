@@ -24,15 +24,30 @@ In Vercel → **Settings → Environment Variables**, add everything from `.env.
 
 **Minimum for launch:**
 
-| Variable               | Example                                    |
-| ---------------------- | ------------------------------------------ |
-| `NEXT_PUBLIC_SITE_URL` | `https://www.mbjewellers.in`               |
-| `ADMIN_EMAIL`          | your email                                 |
-| `ADMIN_PASSWORD`       | strong password                            |
-| `ADMIN_SESSION_SECRET` | 32+ random characters                      |
-| `LEAD_STORAGE_MODE`    | `json` (quick) or `postgres` (recommended) |
+| Variable               | Example                                   |
+| ---------------------- | ----------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.mbjewellers.in`              |
+| `ADMIN_EMAIL`          | your email                                |
+| `ADMIN_PASSWORD_HASH`  | output from `npm run admin:hash-password` |
+| `ADMIN_SESSION_SECRET` | 32+ random characters                     |
+| `LEAD_STORAGE_MODE`    | `postgres`                                |
+| `DATABASE_URL`         | managed PostgreSQL connection string      |
 
-If `postgres`: also set `DATABASE_URL` and run migrations (see `LAUNCH_CHECKLIST.md`).
+Production intentionally fails closed when durable PostgreSQL storage is unavailable. The JSON store is only for local development and tests because serverless files are ephemeral.
+
+Generate the password hash locally without committing the password:
+
+```bash
+ADMIN_PASSWORD="<strong-password>" npm run admin:hash-password
+```
+
+Before the first production deployment, apply the committed migrations from a trusted environment:
+
+```bash
+npm run prisma:migrate:deploy
+```
+
+If the target database already contains these tables, do not apply the initial migration blindly. Compare the database to `prisma/schema.prisma`, back it up, and baseline the existing schema with `prisma migrate resolve --applied 20260717000000_init` only after confirming that they match.
 
 **Recommended when ready:**
 
@@ -63,7 +78,7 @@ Click **Deploy**. First build takes ~2–3 minutes.
 ## Tomorrow — tell the developer
 
 - Vercel project URL after first deploy
-- Whether you chose `json` or `postgres` for leads
+- Confirmation that PostgreSQL migrations completed
 - Your real domain name
 - GA4 ID when you have it
 

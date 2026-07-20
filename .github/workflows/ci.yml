@@ -13,9 +13,9 @@ concurrency:
 env:
   NEXT_PUBLIC_SITE_URL: https://www.mbjewellers.in
   DATABASE_URL: postgresql://postgres:postgres@localhost:5432/mb_jewellers?schema=public
-  LEAD_STORAGE_MODE: json
+  LEAD_STORAGE_MODE: postgres
   ADMIN_EMAIL: ci@example.com
-  ADMIN_PASSWORD: ci-build-password
+  ADMIN_PASSWORD_HASH: scrypt:208141148531e3029e8547ccfd24adc3:3a8ecc29b990cda8c2e46927dc3924e4cf10d4c1c4e6b167256a74cdfdaa4c01f1dd27beebe6b21a6204f282dec27e2b4cb0a4b08e89868c74662c50713a7b3b
   ADMIN_SESSION_SECRET: ci-build-secret-minimum-32-characters-long
 
 jobs:
@@ -31,9 +31,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run prisma:generate
+      - run: npm run prisma:validate
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run format:check
+      - run: npm test
 
   security:
     name: Dependency audit
@@ -46,13 +48,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # Report only (non-blocking): 1 high in Next.js has no stable 16.2.x patch yet (GHSA-8h8q-6873-q5fj).
-      - name: npm audit (report high severity)
-        continue-on-error: true
-        run: npm audit --audit-level=high 2>/dev/null || true
-      # Hard gate: fail only on critical vulnerabilities (none currently).
-      - name: npm audit (fail on critical)
-        run: npm audit --audit-level=critical
+      - name: npm audit (production dependencies)
+        run: npm audit --omit=dev --audit-level=high
 
   build:
     name: Production build

@@ -1,3 +1,5 @@
+import { PrismaPg } from "@prisma/adapter-pg";
+
 type PrismaLikeClient = {
   inquiry: {
     create: (args: unknown) => Promise<unknown>;
@@ -15,22 +17,32 @@ type PrismaLikeClient = {
   };
 };
 
-let prismaClientPromise: Promise<PrismaLikeClient | null> | null = null;
+let prismaClientPromise: Promise<PrismaLikeClient> | null = null;
 
 export function getPrismaClient() {
   if (!prismaClientPromise) {
     prismaClientPromise = (async () => {
       try {
+        const connectionString = process.env.DATABASE_URL?.trim();
+        if (!connectionString) {
+          throw new Error("DATABASE_URL is required for durable lead storage.");
+        }
+
         const prismaModule = (await import("@prisma/client")) as {
           PrismaClient?: new (...args: unknown[]) => PrismaLikeClient;
         };
-        if (!prismaModule.PrismaClient) return null;
+        if (!prismaModule.PrismaClient) {
+          throw new Error("Prisma Client is unavailable. Run npm run prisma:generate.");
+        }
 
+        const adapter = new PrismaPg({ connectionString });
         return new prismaModule.PrismaClient({
+          adapter,
           log: process.env.NODE_ENV === "development" ? ["error", "warn"] : ["error"],
         });
-      } catch {
-        return null;
+      } catch (error) {
+        prismaClientPromise = null;
+        throw new Error("Unable to initialize durable lead storage.", { cause: error });
       }
     })();
   }

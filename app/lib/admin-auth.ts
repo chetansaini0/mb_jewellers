@@ -1,5 +1,9 @@
+import { scryptSync, timingSafeEqual } from "node:crypto";
+
 const ADMIN_COOKIE_NAME = "mb_admin_session";
+const PRODUCTION_ADMIN_COOKIE_NAME = "__Host-mb_admin_session";
 const SESSION_DURATION_MS = 1000 * 60 * 60 * 12;
+const SCRYPT_KEY_LENGTH = 64;
 
 type SessionPayload = {
   email: string;
@@ -9,11 +13,12 @@ type SessionPayload = {
 function getAdminConfig() {
   const email = process.env.ADMIN_EMAIL?.trim();
   const password = process.env.ADMIN_PASSWORD;
+  const passwordHash = process.env.ADMIN_PASSWORD_HASH?.trim();
   const secret = process.env.ADMIN_SESSION_SECRET?.trim();
 
   if (process.env.NODE_ENV === "production") {
-    if (!email || !password || !secret) {
-      throw new Error("ADMIN_EMAIL, ADMIN_PASSWORD, and ADMIN_SESSION_SECRET are required in production.");
+    if (!email || !passwordHash || !secret) {
+      throw new Error("ADMIN_EMAIL, ADMIN_PASSWORD_HASH, and ADMIN_SESSION_SECRET are required in production.");
     }
     if (secret.length < 32) {
       throw new Error("ADMIN_SESSION_SECRET must be at least 32 characters in production.");
@@ -23,6 +28,7 @@ function getAdminConfig() {
   return {
     email: email ?? "mbjeweller21@gmail.com",
     password: password ?? "ChangeThisAdminPassword",
+    passwordHash,
     secret: secret ?? "replace-this-session-secret",
   };
 }
@@ -46,7 +52,7 @@ export async function createSessionToken(email: string) {
     email,
     exp: Date.now() + SESSION_DURATION_MS,
   };
-  const encoded = encodeURIComponent(JSON.stringify(payload));
+  const encoded = Buffer.from(JSON.stringify(payload), "utf8").toString("base64url");
   const signature = await sign(encoded, secret);
   return `${encoded}.${signature}`;
 }
@@ -58,11 +64,11 @@ export async function verifySessionToken(token?: string | null) {
   if (!encoded || !signature) return null;
 
   const expected = await sign(encoded, secret);
-  if (expected !== signature) return null;
+  if (!constantTimeEquals(expected, signature)) return null;
 
   let payload: SessionPayload | null = null;
   try {
-    payload = JSON.parse(decodeURIComponent(encoded)) as SessionPayload;
+    payload = JSON.parse(Buffer.from(encoded, "base64url").toString("utf8")) as SessionPayload;
   } catch {
     return null;
   }
@@ -72,7 +78,7 @@ export async function verifySessionToken(token?: string | null) {
 }
 
 export function getAdminCookieName() {
-  return ADMIN_COOKIE_NAME;
+  return process.env.NODE_ENV === "production" ? PRODUCTION_ADMIN_COOKIE_NAME : ADMIN_COOKIE_NAME;
 }
 
 function constantTimeEquals(a: string, b: string) {
@@ -87,9 +93,25 @@ function constantTimeEquals(a: string, b: string) {
   return mismatch === 0;
 }
 
+function verifyPassword(password: string, encodedHash: string) {
+  const [algorithm, saltHex, hashHex] = encodedHash.split(":");
+  if (algorithm !== "scrypt" || !saltHex || !hashHex) return false;
+
+  try {
+    const expected = Buffer.from(hashHex, "hex");
+    if (expected.length !== SCRYPT_KEY_LENGTH) return false;
+    const actual = scryptSync(password, Buffer.from(saltHex, "hex"), SCRYPT_KEY_LENGTH);
+    return timingSafeEqual(actual, expected);
+  } catch {
+    return false;
+  }
+}
+
 export function isValidAdminLogin(email: string, password: string) {
   const config = getAdminConfig();
   const emailMatches = constantTimeEquals(email, config.email.toLowerCase());
-  const passwordMatches = constantTimeEquals(password, config.password);
+  const passwordMatches = config.passwordHash
+    ? verifyPassword(password, config.passwordHash)
+    : constantTimeEquals(password, config.password);
   return emailMatches && passwordMatches;
 }

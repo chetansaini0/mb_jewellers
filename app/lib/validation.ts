@@ -49,7 +49,7 @@ export function parseContactInquiry(input: unknown): ContactInquiryInput | null 
   const phone = optionalString(payload.phone, 20);
   const category = optionalString(payload.category, 40);
   const message = normalizeString(payload.message, 1200);
-  const website = normalizeString(payload.website, 0);
+  const website = normalizeString(payload.website, 200);
 
   if (fullName.length < 2) return null;
   if (!emailRegex.test(email)) return null;
@@ -72,7 +72,7 @@ export function parseAppointment(input: unknown): AppointmentInput | null {
   const category = optionalString(payload.category, 40);
   const occasion = optionalString(payload.occasion, 100);
   const notes = optionalString(payload.notes, 1200);
-  const website = normalizeString(payload.website, 0);
+  const website = normalizeString(payload.website, 200);
 
   if (fullName.length < 2) return null;
   if (!emailRegex.test(email)) return null;
@@ -101,7 +101,7 @@ export function parseNewsletter(input: unknown): NewsletterInput | null {
 
   const email = normalizeString(payload.email, 120).toLowerCase();
   const fullName = optionalString(payload.fullName, 80);
-  const website = normalizeString(payload.website, 0);
+  const website = normalizeString(payload.website, 200);
 
   if (!emailRegex.test(email)) return null;
 
