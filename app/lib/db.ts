@@ -14,6 +14,7 @@ type PrismaLikeClient = {
   newsletterSubscriber: {
     upsert: (args: unknown) => Promise<unknown>;
     findMany: (args: unknown) => Promise<unknown[]>;
+    updateMany: (args: unknown) => Promise<unknown>;
   };
 };
 

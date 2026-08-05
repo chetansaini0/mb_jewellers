@@ -22,7 +22,6 @@ export function PremiumStorySection() {
     offset: ["start end", "end start"],
   });
   const imageY = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const heroChapter = premiumStory.chapters[2];
 
   return (
     <section ref={sectionRef} className="premium-story-section site-max site-px">
@@ -36,11 +35,12 @@ export function PremiumStorySection() {
         <motion.div style={{ y: reduce ? 0 : imageY }} className="premium-story-section__visual">
           <div className="premium-story-section__image-wrap">
             <Image
-              src={heroChapter.image}
-              alt="Bridal jewellery craftsmanship at MB Jewellers"
+              src={premiumStory.heroImage}
+              alt="Pearl and emerald bridal jewellery set from MB Jewellers"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
             />
             <div className="premium-story-section__image-overlay" aria-hidden />
           </div>

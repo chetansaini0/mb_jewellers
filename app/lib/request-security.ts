@@ -35,10 +35,24 @@ export function isAllowedRequestOrigin(headers: Headers) {
   if (allowedOrigins.has(normalizedOrigin)) return true;
 
   const requestHost = headers.get("x-forwarded-host") ?? headers.get("host");
-  const requestProtocol = headers.get("x-forwarded-proto") ?? "https";
   if (requestHost) {
+    const forwardedProto = headers.get("x-forwarded-proto");
+    const originProtocol = normalizedOrigin.startsWith("http://") ? "http" : "https";
+    const hostIsLocal =
+      requestHost.startsWith("localhost") ||
+      requestHost.startsWith("127.0.0.1") ||
+      requestHost.startsWith("[::1]");
+    const requestProtocol = forwardedProto ?? (hostIsLocal ? originProtocol : "https");
     const requestOrigin = `${requestProtocol}://${requestHost}`.toLowerCase();
     if (requestOrigin === normalizedOrigin) return true;
+
+    // Same host over http/https (common behind local proxies).
+    const requestHostOnly = requestHost.toLowerCase();
+    try {
+      if (new URL(normalizedOrigin).host === requestHostOnly) return true;
+    } catch {
+      // ignore invalid origin parsing
+    }
   }
 
   return false;

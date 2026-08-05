@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { PremiumFeaturedPieceCard } from "@/app/components/premium/PremiumFeaturedPieceCard";
 import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
@@ -13,6 +13,8 @@ import { slugifyProductName } from "@/app/lib/premiumPages";
 import { getWhatsAppUrl } from "@/app/lib/siteConfig";
 import type { ProductItem } from "@/app/lib/siteData";
 import { featuredPieces } from "@/app/lib/siteData";
+
+const GALLERY_AUTOPLAY_MS = 3000;
 
 const productGalleryBySlug: Record<string, string[]> = {
   "rajwada-bridal-silver-ensemble": [
@@ -91,7 +93,19 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
   const showWhatsApp = Boolean(whatsappHref);
   const galleryImages = productGalleryBySlug[slug] ?? [product.image, product.image, product.image, product.image];
   const hasCustomGallery = Boolean(productGalleryBySlug[slug]);
-  const [activeImage, setActiveImage] = useState(() => galleryImages[0] ?? product.image);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeImage = galleryImages[activeIndex] ?? product.image;
+
+  useEffect(() => {
+    if (galleryImages.length <= 1) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % galleryImages.length);
+    }, GALLERY_AUTOPLAY_MS);
+
+    return () => window.clearInterval(timer);
+  }, [galleryImages.length]);
 
   return (
     <PremiumPageFrame>
@@ -99,36 +113,45 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
         <div className="site-max site-px">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <div className="space-y-4" data-reveal>
-              <motion.div
+              <div
                 className={`premium-product-hero-card${hasCustomGallery ? " premium-product-hero-card--showcase" : ""}`}
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Image
-                  src={activeImage}
-                  alt={product.alt}
-                  fill
-                  className={hasCustomGallery ? "premium-product-hero-card__image" : "object-cover"}
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  priority
-                />
+                <AnimatePresence mode="sync" initial={false}>
+                  <motion.div
+                    key={`${activeImage}-${activeIndex}`}
+                    className="premium-product-hero-card__frame"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1.35, ease: "easeInOut" }}
+                  >
+                    <Image
+                      src={activeImage}
+                      alt={product.alt}
+                      fill
+                      className={hasCustomGallery ? "premium-product-hero-card__image" : "object-cover"}
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                      priority={activeIndex === 0}
+                    />
+                  </motion.div>
+                </AnimatePresence>
                 <div className="premium-product-hero-card__overlay" aria-hidden />
                 <span className="premium-featured-card__badge">{product.material ?? "Studio piece"}</span>
-              </motion.div>
+              </div>
               <div className="premium-reels__rail px-0.5">
                 {galleryImages.map((image, index) => (
                   <button
                     key={`${image}-${index}`}
                     type="button"
                     className="premium-reel-card relative w-[88px] shrink-0"
-                    onClick={() => setActiveImage(image)}
+                    onClick={() => setActiveIndex(index)}
                     aria-label={`Show product image ${index + 1}`}
+                    aria-current={activeIndex === index ? "true" : undefined}
                   >
                     <div
                       className="premium-glass-card relative aspect-square overflow-hidden rounded-xl"
                       style={{
-                        outline: activeImage === image ? "2px solid var(--premium-gold)" : "none",
+                        outline: activeIndex === index ? "2px solid var(--premium-gold)" : "none",
                         outlineOffset: "2px",
                       }}
                     >

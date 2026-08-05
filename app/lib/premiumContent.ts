@@ -116,21 +116,22 @@ export const galleryItems = uniqueGalleryItems(pieceMainGalleryItems, signatureW
 
 export const premiumStory = {
   kicker: "Heritage in motion",
+  heroImage: "/pics/story/story-1-pearl-emerald.png",
   chapters: [
     {
       title: "Forged with intention",
       copy: "Every silhouette begins as a sketch — balanced between heritage filigree and contemporary restraint.",
-      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1400&q=85&auto=format&fit=crop",
+      image: "/pics/story/story-1-gold-haram.png",
     },
     {
       title: "Set with firelight",
       copy: "Diamonds are selected for depth, not just diameter — so each piece catches candlelight and daylight alike.",
-      image: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=1400&q=85&auto=format&fit=crop",
+      image: "/pics/story/story-2-bridal-filigree.png",
     },
     {
       title: "Finished for forever",
       copy: "Polish, proportion, and presence — the final details that make MB pieces feel inevitable on the skin.",
-      image: "/pics/Bridal/b2.jpg",
+      image: "/pics/story/story-3-chandbali.png",
     },
   ],
 };

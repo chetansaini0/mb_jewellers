@@ -5,6 +5,7 @@ import Link from "next/link";
 import { animate, motion, useSpring, type PanInfo } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type MouseEvent } from "react";
 import { premiumProducts } from "@/app/lib/premiumContent";
 import { slugifyProductName } from "@/app/lib/premiumPages";
@@ -229,6 +230,14 @@ export function PremiumNewArrivalsSection() {
     return () => window.clearInterval(timer);
   }, [dragging, items.length, reducedMotion]);
 
+  const goPrev = useCallback(() => {
+    setActive((current) => (current - 1 + items.length) % items.length);
+  }, [items.length]);
+
+  const goNext = useCallback(() => {
+    setActive((current) => (current + 1) % items.length);
+  }, [items.length]);
+
   const onDragStart = () => {
     setDragging(true);
     trackX.stop();
@@ -260,32 +269,50 @@ export function PremiumNewArrivalsSection() {
             A cinematic edit of the atelier&apos;s latest silhouettes — glide, pause, and explore each piece in motion.
           </p>
         </div>
-        <div
-          ref={viewportRef}
-          className={`premium-new-arrivals__viewport ${dragging ? "is-dragging" : ""}`}
-          data-lenis-prevent-wheel
-        >
-          <motion.div
-            className="premium-new-arrivals__track"
-            drag={reducedMotion ? false : "x"}
-            dragElastic={0.08}
-            dragMomentum={false}
-            dragPropagation={false}
-            onDragStart={onDragStart}
-            onDrag={onDrag}
-            onDragEnd={onDragEnd}
-            style={{ x: trackX, touchAction: "pan-y" }}
+        <div className="premium-new-arrivals__stage">
+          <button
+            type="button"
+            className="premium-new-arrivals__arrow premium-new-arrivals__arrow--prev"
+            aria-label="Previous new arrival"
+            onClick={goPrev}
           >
-            {items.map((product, index) => (
-              <NewArrivalCard
-                key={product.name}
-                product={product}
-                active={index === active}
-                dragging={dragging}
-                onSelect={() => setActive(index)}
-              />
-            ))}
-          </motion.div>
+            <ChevronLeft aria-hidden />
+          </button>
+          <div
+            ref={viewportRef}
+            className={`premium-new-arrivals__viewport ${dragging ? "is-dragging" : ""}`}
+            data-lenis-prevent-wheel
+          >
+            <motion.div
+              className="premium-new-arrivals__track"
+              drag={reducedMotion ? false : "x"}
+              dragElastic={0.08}
+              dragMomentum={false}
+              dragPropagation={false}
+              onDragStart={onDragStart}
+              onDrag={onDrag}
+              onDragEnd={onDragEnd}
+              style={{ x: trackX, touchAction: "pan-y" }}
+            >
+              {items.map((product, index) => (
+                <NewArrivalCard
+                  key={product.name}
+                  product={product}
+                  active={index === active}
+                  dragging={dragging}
+                  onSelect={() => setActive(index)}
+                />
+              ))}
+            </motion.div>
+          </div>
+          <button
+            type="button"
+            className="premium-new-arrivals__arrow premium-new-arrivals__arrow--next"
+            aria-label="Next new arrival"
+            onClick={goNext}
+          >
+            <ChevronRight aria-hidden />
+          </button>
         </div>
         <div className="premium-new-arrivals__progress" role="tablist" aria-label="New arrivals carousel dots">
           {items.map((product, index) => (

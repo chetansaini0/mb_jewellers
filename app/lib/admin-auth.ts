@@ -15,10 +15,22 @@ function getAdminConfig() {
   const password = process.env.ADMIN_PASSWORD;
   const passwordHash = process.env.ADMIN_PASSWORD_HASH?.trim();
   const secret = process.env.ADMIN_SESSION_SECRET?.trim();
+  const onVercel = process.env.VERCEL === "1";
 
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === "production" && onVercel) {
     if (!email || !passwordHash || !secret) {
       throw new Error("ADMIN_EMAIL, ADMIN_PASSWORD_HASH, and ADMIN_SESSION_SECRET are required in production.");
+    }
+    if (secret.length < 32) {
+      throw new Error("ADMIN_SESSION_SECRET must be at least 32 characters in production.");
+    }
+  }
+
+  if (process.env.NODE_ENV === "production" && !onVercel) {
+    if (!email || !secret || (!passwordHash && !password)) {
+      throw new Error(
+        "ADMIN_EMAIL, ADMIN_SESSION_SECRET, and ADMIN_PASSWORD_HASH (or ADMIN_PASSWORD) are required in production.",
+      );
     }
     if (secret.length < 32) {
       throw new Error("ADMIN_SESSION_SECRET must be at least 32 characters in production.");
@@ -108,10 +120,14 @@ function verifyPassword(password: string, encodedHash: string) {
 }
 
 export function isValidAdminLogin(email: string, password: string) {
-  const config = getAdminConfig();
-  const emailMatches = constantTimeEquals(email, config.email.toLowerCase());
-  const passwordMatches = config.passwordHash
-    ? verifyPassword(password, config.passwordHash)
-    : constantTimeEquals(password, config.password);
-  return emailMatches && passwordMatches;
+  try {
+    const config = getAdminConfig();
+    const emailMatches = constantTimeEquals(email, config.email.toLowerCase());
+    const passwordMatches = config.passwordHash
+      ? verifyPassword(password, config.passwordHash)
+      : constantTimeEquals(password, config.password);
+    return emailMatches && passwordMatches;
+  } catch {
+    return false;
+  }
 }

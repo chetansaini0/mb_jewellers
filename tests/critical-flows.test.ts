@@ -112,6 +112,30 @@ test("appointment flow persists validated appointment requests", async () => {
   assert.equal(store.appointments[0]?.status, "PENDING");
 });
 
+test("newsletter unsubscribe soft-deactivates subscribers", async () => {
+  const { POST: subscribe } = await import("@/app/api/newsletter/route");
+  const { POST: unsubscribe } = await import("@/app/api/newsletter/unsubscribe/route");
+
+  const subscribed = await subscribe(
+    jsonRequest("/api/newsletter", { email: "unsub@example.com", website: "" }, "test-unsub-1"),
+  );
+  assert.equal(subscribed.status, 200);
+
+  const before = await getLeadStoreSnapshot();
+  assert.equal(before.subscribers.some((item) => item.email === "unsub@example.com" && item.isActive), true);
+
+  const response = await unsubscribe(
+    jsonRequest("/api/newsletter/unsubscribe", { email: "unsub@example.com", website: "" }, "test-unsub-2"),
+  );
+  assert.equal(response.status, 200);
+  assert.equal((await response.json()).ok, true);
+
+  const after = await getLeadStoreSnapshot();
+  const row = after.subscribers.find((item) => item.email === "unsub@example.com");
+  assert.ok(row);
+  assert.equal(row?.isActive, false);
+});
+
 test("admin login rejects invalid credentials and issues a verifiable session", async () => {
   const rejected = await adminLogin(
     jsonRequest("/api/admin/login", { email: "admin@example.com", password: "wrong-password" }, "test-admin-1"),

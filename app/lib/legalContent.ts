@@ -4,6 +4,9 @@ const contact = `${siteConfig.contact.email} or ${siteConfig.contact.phoneDispla
 
 export type LegalSection = { title: string; body: string };
 
+/** Shown on all policy pages */
+export const LEGAL_EFFECTIVE_DATE = "29 July 2026";
+
 /** Shown across policies: this website is a showcase, not an online store. */
 export const websiteShowcaseNotice =
   "The MB Jewellers website is a digital showcase for our collections. It does not sell jewellery online, accept online payments, or fulfil orders through the website. All purchases, pricing, and handover happen in person at our studio after a private consultation.";
@@ -69,7 +72,7 @@ export const cancellationPolicySections: LegalSection[] = [
   },
   {
     title: "Newsletter & marketing",
-    body: "You may unsubscribe from emails at any time using the link in our messages or by contacting us. Unsubscribing does not affect studio purchase agreements already in place.",
+    body: "You may unsubscribe from marketing emails at any time using the link in our messages, via /unsubscribe on this website, or by contacting us. Unsubscribing does not affect studio purchase agreements already in place.",
   },
   {
     title: "Contact",
@@ -131,4 +134,5 @@ export const legalFooterLinks = [
   { href: "/cancellation-policy", label: "Appointments policy" },
   { href: "/cookie-policy", label: "Cookie policy" },
   { href: "/disclaimer", label: "Disclaimer" },
+  { href: "/unsubscribe", label: "Unsubscribe" },
 ] as const;

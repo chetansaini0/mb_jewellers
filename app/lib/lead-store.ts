@@ -236,17 +236,19 @@ export async function upsertSubscriber(entry: Partial<NewsletterSubscriber> & { 
   }
 
   const store = await loadStore();
-  const existing = store.subscribers.findIndex((item) => item.email === entry.email);
+  const normalizedEmail = entry.email.toLowerCase();
+  const existing = store.subscribers.findIndex((item) => item.email.toLowerCase() === normalizedEmail);
   if (existing >= 0) {
     store.subscribers[existing] = {
       ...store.subscribers[existing],
       ...entry,
+      email: normalizedEmail,
       updatedAt: new Date().toISOString(),
     };
   } else {
     store.subscribers.unshift({
       id: String(entry.id ?? crypto.randomUUID()),
-      email: entry.email,
+      email: normalizedEmail,
       fullName: entry.fullName,
       source: String(entry.source ?? "website"),
       isActive: entry.isActive ?? true,
@@ -254,6 +256,32 @@ export async function upsertSubscriber(entry: Partial<NewsletterSubscriber> & { 
     });
   }
   await saveStore(store);
+}
+
+/** Soft-unsubscribe: keep the row, mark inactive. Always succeeds for privacy (no email enumeration). */
+export async function deactivateSubscriber(email: string): Promise<void> {
+  const normalized = email.trim().toLowerCase();
+  if (!normalized) return;
+
+  const prisma = shouldUsePostgres() ? await getPrismaClient() : null;
+  if (prisma) {
+    await prisma.newsletterSubscriber.updateMany({
+      where: { email: normalized },
+      data: { isActive: false },
+    });
+    return;
+  }
+
+  const store = await loadStore();
+  const index = store.subscribers.findIndex((item) => item.email.toLowerCase() === normalized);
+  if (index >= 0) {
+    store.subscribers[index] = {
+      ...store.subscribers[index],
+      isActive: false,
+      updatedAt: new Date().toISOString(),
+    };
+    await saveStore(store);
+  }
 }
 
 export async function getLeadStoreSnapshot() {

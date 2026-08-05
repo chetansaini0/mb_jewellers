@@ -157,6 +157,9 @@ export function PremiumFooter() {
           <p className="premium-footer__label">Newsletter</p>
           <p className="premium-footer__copy">Receive curated edits, bridal notes, and private viewing invitations.</p>
           <PremiumNewsletterForm />
+          <p className="premium-footer__copy mt-3">
+            <Link href="/unsubscribe">Unsubscribe from emails</Link>
+          </p>
         </div>
       </div>
       <div className="premium-footer__bar site-px">

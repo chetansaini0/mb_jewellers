@@ -8,6 +8,8 @@ const requiredRoutes = [
   "app/faq/page.tsx",
   "app/privacy-policy/page.tsx",
   "app/refund-policy/page.tsx",
+  "app/unsubscribe/page.tsx",
+  "app/api/newsletter/unsubscribe/route.ts",
   "app/sitemap.ts",
   "app/robots.ts",
   "app/manifest.ts",

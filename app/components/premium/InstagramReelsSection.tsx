@@ -6,6 +6,8 @@ import { useClientMounted } from "@/app/hooks/useClientMounted";
 import { socialLinks } from "@/app/lib/siteData";
 
 const instagramReels = [
+  { src: "/instareel/Video-11326.mp4", title: "MB Reel — new arrival" },
+  { src: "/instareel/Video-25908.mp4", title: "MB Reel — atelier moment" },
   { src: "/instareel/Video-750.mp4", title: "MB Reel 750" },
   { src: "/instareel/Video-281.mp4", title: "MB Reel 281" },
   { src: "/instareel/Video-408.mp4", title: "MB Reel 408" },

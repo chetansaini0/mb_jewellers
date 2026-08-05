@@ -29,7 +29,7 @@ const privacySections = [
   },
   {
     title: "Your rights",
-    body: "You may request correction, export, or deletion of your personal data by contacting mbjeweller21@gmail.com.",
+    body: "You may request correction, export, or deletion of your personal data by contacting mbjeweller21@gmail.com. To stop marketing emails, use /unsubscribe on this website or the link in our messages.",
   },
 ] as const;
 
