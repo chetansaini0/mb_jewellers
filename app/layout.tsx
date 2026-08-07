@@ -78,13 +78,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icons/icon-32.png?v=whitegold", type: "image/png", sizes: "32x32" },
-      { url: "/icons/icon-192.png?v=whitegold", type: "image/png", sizes: "192x192" },
-      { url: "/icons/icon-512.png?v=whitegold", type: "image/png", sizes: "512x512" },
-      { url: "/favicon.ico?v=whitegold", sizes: "any" },
+      { url: "/icons/icon-32.png?v=goldlogo", type: "image/png", sizes: "32x32" },
+      { url: "/icons/icon-192.png?v=goldlogo", type: "image/png", sizes: "192x192" },
+      { url: "/icons/icon-512.png?v=goldlogo", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico?v=goldlogo", sizes: "any" },
     ],
-    apple: [{ url: "/icons/apple-touch-icon.png?v=whitegold", sizes: "180x180", type: "image/png" }],
-    shortcut: "/favicon.ico?v=whitegold",
+    apple: [{ url: "/icons/apple-touch-icon.png?v=goldlogo", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico?v=goldlogo",
   },
   manifest: "/manifest.webmanifest",
   robots: {
