@@ -37,7 +37,7 @@ export function PremiumLocalSeoSection() {
             {openingHours.display} · {siteConfig.contact.phoneDisplay} · {siteConfig.contact.email}
           </p>
           <p className="mt-3">
-            <a href={siteConfig.showrooms[0].directionsUrl} target="_blank" rel="noopener noreferrer" className="premium-inline-link">
+            <a href={siteConfig.showrooms[0].googleMapsUrl} target="_blank" rel="noopener noreferrer" className="premium-inline-link">
               Find MB Jewellers on Google Maps
             </a>
           </p>

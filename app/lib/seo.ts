@@ -78,6 +78,7 @@ export const organizationSchema = {
     streetAddress: siteConfig.showrooms[0].streetAddress,
     addressLocality: siteConfig.location.city,
     addressRegion: siteConfig.location.region,
+    postalCode: siteConfig.location.postalCode,
     addressCountry: siteConfig.location.country,
   },
   areaServed: siteConfig.serviceArea.map((place) => ({
@@ -103,6 +104,7 @@ export const jewelryStoreSchema = {
       streetAddress: showroom.streetAddress,
       addressLocality: siteConfig.location.city,
       addressRegion: siteConfig.location.region,
+      postalCode: showroom.postalCode,
       addressCountry: siteConfig.location.country,
     },
     geo: {
@@ -110,7 +112,7 @@ export const jewelryStoreSchema = {
       latitude: showroom.coordinates.lat,
       longitude: showroom.coordinates.lng,
     },
-    hasMap: showroom.directionsUrl,
+    hasMap: showroom.googleMapsUrl,
     sameAs: socialProfiles,
     openingHoursSpecification,
     priceRange: "₹₹₹",

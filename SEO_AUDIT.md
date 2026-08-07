@@ -130,15 +130,16 @@ Website CTA copy: **Find MB Jewellers on Google Maps** (uses current directions 
 
 ## 9. Remaining TODOs
 
-- [ ] Confirm and add **postal PIN / postalCode** for both showrooms (do not guess)
-- [ ] Replace Maps query URLs with **official GBP Place links** when available
-- [ ] Confirm WhatsApp number via `NEXT_PUBLIC_WHATSAPP_E164` if used publicly
+- [x] Confirm and add **postal PIN / postalCode** for both showrooms (`332001` from public listings + domain registrant)
+- [x] Add **Google Maps Place URL** for Ghantaghar (`place_id=ChIJ7Rdec8ekbDkRIdR8r8qMf_U`)
+- [ ] Confirm **Ramlila Maidan Place ID** in Google Business Profile and replace search URL
+- [x] Set WhatsApp via `NEXT_PUBLIC_WHATSAPP_E164` (`919829231637` from public listings)
+- [ ] Complete **Google Search Console** domain verification (GoDaddy OAuth or DNS TXT) under `chetansaini0702@gmail.com`
+- [ ] Submit sitemap `https://mbjewellers.in/sitemap.xml` after verification
+- [ ] Request indexing for `/`, `/collections/gold`, `/bridal`, `/contact`
 - [ ] Replace Unsplash stock images on collection sections with real MB photography
 - [ ] Align any outdated “Chandpol / Jaipur studio” mentions in older docs/legal copy with the two Sikar showrooms
-- [ ] Set up Google Search Console + verify domain
-- [ ] Claim/verify Google Business Profile and sync NAP
-- [ ] Optional: add more care/buying guides over time
-
+- [ ] Claim/verify Google Business Profile hours against website Mon–Sat 10:00–19:00
 ---
 
 ## 10. Recommended next steps

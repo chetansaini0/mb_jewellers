@@ -29,7 +29,7 @@ export function PremiumHomeStudioMapSection() {
                 </a>
               ))}
             </p>
-            <Link href={showroom.directionsUrl} target="_blank" rel="noopener noreferrer">
+            <Link href={showroom.googleMapsUrl} target="_blank" rel="noopener noreferrer">
               Find on Google Maps
             </Link>
           </div>

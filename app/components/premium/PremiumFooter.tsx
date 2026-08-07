@@ -134,7 +134,7 @@ export function PremiumFooter() {
           ))}
           <p>Mon–Sat: 10:00 – 19:00</p>
           <p>
-            <a href={siteConfig.showrooms[0].directionsUrl} target="_blank" rel="noopener noreferrer">
+            <a href={siteConfig.showrooms[0].googleMapsUrl} target="_blank" rel="noopener noreferrer">
               Find MB Jewellers on Google Maps
             </a>
           </p>
