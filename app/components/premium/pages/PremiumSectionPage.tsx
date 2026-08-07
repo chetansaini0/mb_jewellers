@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { PremiumBreadcrumbs } from "@/app/components/premium/PremiumBreadcrumbs";
 import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
@@ -15,6 +16,8 @@ export function PremiumSectionPage({
   title,
   description,
   galleryImages,
+  galleryAlts,
+  breadcrumbs,
   productHref: productHrefProp,
 }: {
   backHref: string;
@@ -23,10 +26,13 @@ export function PremiumSectionPage({
   title: string;
   description: string;
   galleryImages: string[];
+  galleryAlts?: string[];
+  breadcrumbs?: { name: string; path: string }[];
   productHref?: string;
 }) {
   return (
     <PremiumPageFrame>
+      {breadcrumbs ? <PremiumBreadcrumbs items={breadcrumbs} /> : null}
       <div className="site-max site-px pt-6">
         <Link href={backHref} className="premium-inline-link inline-block" data-reveal>
           ← {backLabel}
@@ -38,7 +44,7 @@ export function PremiumSectionPage({
       <PremiumPageSection
         eyebrow="Gallery highlights"
         title="Pieces and silhouettes from this section"
-        subtitle="Tap through the gallery, then book a private viewing to see finishing, weight, and movement in person."
+        subtitle="Tap through the gallery, then book a private viewing in Sikar to see finishing, weight, and movement in person."
         warm
       >
         <div className="premium-gallery-mosaic">
@@ -51,7 +57,7 @@ export function PremiumSectionPage({
               <div className="premium-gallery-mosaic__media">
                 <Image
                   src={src}
-                  alt=""
+                  alt={galleryAlts?.[index] || `${title} jewellery highlight from MB Jewellers ${eyebrow} collection`}
                   fill
                   className="premium-gallery-mosaic__image"
                   sizes="(min-width: 1024px) 40vw, 100vw"

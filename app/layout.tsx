@@ -3,7 +3,7 @@ import Script from "next/script";
 import { Cinzel, Playfair_Display, Poppins } from "next/font/google";
 import { PremiumSite } from "@/app/components/premium/PremiumSite";
 import { GoogleAnalytics } from "@/app/components/analytics/GoogleAnalytics";
-import { jewelryStoreSchema, websiteSchema } from "@/app/lib/seo";
+import { jewelryStoreSchema, organizationSchema, websiteSchema } from "@/app/lib/seo";
 import { siteConfig } from "@/app/lib/siteConfig";
 import "./globals.css";
 
@@ -43,7 +43,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "MB Jewellers | Luxury Gold, Diamond and Bridal Jewellery",
+    default: "MB Jewellers | Trusted Jewellery Shop in Sikar, Rajasthan",
     template: "%s | MB Jewellers",
   },
   metadataBase: new URL(siteConfig.url),
@@ -51,11 +51,13 @@ export const metadata: Metadata = {
   applicationName: "MB Jewellers",
   keywords: [
     "MB Jewellers",
-    "jewellery in Sikar",
-    "bridal jewellery",
-    "gold jewellery",
-    "diamond jewellery",
-    "silver jewellery",
+    "jewellery shop in Sikar",
+    "jewellers in Sikar",
+    "gold jewellery Sikar",
+    "diamond jewellery Sikar",
+    "silver jewellery Sikar",
+    "bridal jewellery Sikar",
+    "jewellery showroom Shekhawati",
     "custom jewellery",
   ],
   appleWebApp: {
@@ -64,7 +66,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
   openGraph: {
-    title: "MB Jewellers | Luxury Jewellery in Sikar",
+    title: "MB Jewellers | Trusted Jewellery Shop in Sikar, Rajasthan",
     description: siteConfig.description,
     type: "website",
     locale: "en_IN",
@@ -73,7 +75,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MB Jewellers",
+    title: "MB Jewellers | Jewellery Shop in Sikar",
     description: siteConfig.description,
   },
   icons: {
@@ -106,6 +108,11 @@ export default function RootLayout({
           id="jewelry-store-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jewelryStoreSchema) }}
+        />
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <Script
           id="website-schema"

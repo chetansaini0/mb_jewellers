@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!product) return {};
 
   return createPageMetadata({
-    title: `${product.name} | MB Jewellers`,
-    description: product.detail,
+    title: `${product.name} | MB Jewellers, Sikar`,
+    description: `${product.detail} Available for private viewing at MB Jewellers showrooms in Sikar.`,
     path: `/products/${slug}`,
     image: product.image,
   });

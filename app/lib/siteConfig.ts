@@ -15,11 +15,19 @@ export type ShowroomLandline = {
 export type Showroom = {
   id: string;
   name: string;
+  /** Full display address used in UI */
   address: string;
+  /** Street/locality portion for PostalAddress.streetAddress (without city/state duplication) */
+  streetAddress: string;
   landlines: readonly ShowroomLandline[];
   coordinates: { lat: number; lng: number };
   mapEmbedUrl: string;
   directionsUrl: string;
+  /**
+   * TODO: Confirm and add official PIN / postalCode for this showroom when verified with the business.
+   * Do not invent a PIN code.
+   */
+  postalCode?: string;
 };
 
 export const showrooms: readonly Showroom[] = [
@@ -27,6 +35,7 @@ export const showrooms: readonly Showroom[] = [
     id: "ghantaghar",
     name: "Ghantaghar Showroom",
     address: "Purana Dujod Gate, Ghantaghar, Sikar, Rajasthan",
+    streetAddress: "Purana Dujod Gate, Ghantaghar",
     landlines: [{ display: "01572 491103", e164: "+911572491103" }],
     coordinates: { lat: 27.6125, lng: 75.1392 },
     mapEmbedUrl:
@@ -37,6 +46,7 @@ export const showrooms: readonly Showroom[] = [
     id: "ramlila",
     name: "Ramlila Maidan Showroom",
     address: "Ramlila Maidan, Sikar, Rajasthan",
+    streetAddress: "Ramlila Maidan",
     landlines: [
       { display: "01572 409431", e164: "+911572409431" },
       { display: "01572 250061", e164: "+911572250061" },
@@ -49,12 +59,39 @@ export const showrooms: readonly Showroom[] = [
 
 const primaryLandline = showrooms[0].landlines[0];
 
+/** Genuine service-area towns/region for local SEO — business is based in Sikar and serves Shekhawati. */
+export const serviceAreaPlaces = [
+  "Sikar",
+  "Fatehpur",
+  "Laxmangarh",
+  "Neem Ka Thana",
+  "Jhunjhunu",
+  "Churu",
+  "Khandela",
+  "Ringas",
+  "Danta Ramgarh",
+  "Shekhawati",
+] as const;
+
+export const openingHours = {
+  opens: "10:00",
+  closes: "19:00",
+  display: "Mon–Sat, 10:00 AM – 7:00 PM",
+  displayShort: "Mon–Sat: 10:00 – 19:00",
+  sundayNote: "Closed on Sundays unless a private appointment is confirmed in advance.",
+} as const;
+
+export const socialProfiles = [
+  "https://www.instagram.com/mbjewellerssikar/",
+  "https://www.facebook.com/mbjewellerssikar",
+] as const;
+
 export const siteConfig = {
   name: "MB Jewellers",
   legalName: "M.B. JEWELLERS (SIKAR) PVT. LTD.",
   tagline: "Two showrooms, one trust",
   description:
-    "Explore MB Jewellers — luxury gold, diamond, silver, and bridal collections in Sikar. Book a private studio viewing; purchases are in person, not online.",
+    "MB Jewellers is a trusted jewellery showroom in Sikar, Rajasthan — gold, diamond, silver, and bridal jewellery for families across the Shekhawati region. Showcase online; purchases are in person.",
   url: resolveSiteUrl(),
   contact: {
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "mbjeweller21@gmail.com",
@@ -66,8 +103,11 @@ export const siteConfig = {
     city: "Sikar",
     region: "Rajasthan",
     country: "India",
+    area: "Shekhawati",
     address: showrooms.map((showroom) => showroom.address).join(" · "),
   },
+  serviceArea: serviceAreaPlaces,
+  openingHours,
   showrooms,
 } as const;
 
@@ -86,4 +126,9 @@ export function getWhatsAppUrl(prefillMessage?: string) {
 
 export function formatShowroomPhones(showroom: Showroom) {
   return showroom.landlines.map((line) => line.display).join(" · ");
+}
+
+/** Primary Google Maps search for the business — prefer verifying the official GBP Place URL when available. */
+export function getGoogleMapsFindUsUrl() {
+  return showrooms[0].directionsUrl;
 }

@@ -18,6 +18,7 @@ import { PremiumStorySection } from "@/app/components/premium/PremiumStorySectio
 import { PremiumTestimonialsCarousel } from "@/app/components/premium/PremiumTestimonialsCarousel";
 import { PremiumTiltCard } from "@/app/components/premium/PremiumTiltCard";
 import { PremiumTrustSection } from "@/app/components/premium/PremiumTrustSection";
+import { PremiumLocalSeoSection } from "@/app/components/premium/PremiumLocalSeoSection";
 import { premiumCollections, premiumHero } from "@/app/lib/premiumContent";
 
 function MagneticLink({ href, children, className }: { href: string; children: ReactNode; className?: string }) {
@@ -248,6 +249,7 @@ export function PremiumHome() {
       <PremiumNewArrivalsSection />
       <PremiumAtelierStrip />
       <PremiumTrustSection />
+      <PremiumLocalSeoSection />
       <InstagramReelsSection />
       <PremiumHomeStudioMapSection />
       <PremiumTestimonialsCarousel />

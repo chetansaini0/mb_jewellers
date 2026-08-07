@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PremiumCollectionsHubPage } from "@/app/components/premium/pages/PremiumCollectionsHubPage";
 import { createPageMetadata } from "@/app/lib/seo";
+import { pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Jewellery Collections | Gold, Diamond, Silver",
-  description:
-    "Browse curated MB Jewellers collections across gold, diamond, silver, and accessories for bridal and everyday styling.",
+  title: pageSeo.collections.title,
+  description: pageSeo.collections.description,
   path: "/collections",
 });
 

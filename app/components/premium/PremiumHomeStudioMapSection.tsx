@@ -9,9 +9,12 @@ export function PremiumHomeStudioMapSection() {
   return (
     <section className="premium-section site-max site-px premium-home-map">
       <div className="premium-section__head">
-        <p className="premium-eyebrow">Studio locations</p>
+        <p className="premium-eyebrow">Studio locations · Sikar</p>
         <h2 className="premium-title">Visit MB Jewellers in Sikar</h2>
-        <p className="premium-section__lede">{siteConfig.tagline}</p>
+        <p className="premium-section__lede">
+          Two jewellery showrooms in Sikar for private, in-person selection — serving families across the Shekhawati
+          region. Hours: {siteConfig.openingHours.display}.
+        </p>
       </div>
 
       <div className="premium-home-map__showrooms">
@@ -27,7 +30,7 @@ export function PremiumHomeStudioMapSection() {
               ))}
             </p>
             <Link href={showroom.directionsUrl} target="_blank" rel="noopener noreferrer">
-              Directions
+              Find on Google Maps
             </Link>
           </div>
         ))}

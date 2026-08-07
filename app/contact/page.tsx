@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { PremiumContactPage } from "@/app/components/premium/pages/PremiumContactPage";
 import { createPageMetadata } from "@/app/lib/seo";
+import { pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Book Jewellery Appointment | MB Jewellers",
-  description:
-    "Request a private studio viewing at MB Jewellers, Sikar. Showcase website — enquire by form, phone, or WhatsApp; purchases in studio only.",
+  title: pageSeo.contact.title,
+  description: pageSeo.contact.description,
   path: "/contact",
 });
 

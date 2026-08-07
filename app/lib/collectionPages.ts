@@ -25,9 +25,9 @@ export type CollectionPageConfig = {
 /** Diamond — 5 sections */
 export const diamondCollectionPage: CollectionPageConfig = {
   eyebrow: "Diamond",
-  title: "Diamond Collection",
+  title: "Diamond Jewellery in Sikar",
   description:
-    "Explore diamond sets, necklaces, rings, earrings, and bracelets—open a section below to add your gallery.",
+    "Explore diamond sets, necklaces, rings, earrings, and bracelets at MB Jewellers in Sikar — open a section below, then view finishing in a private studio appointment.",
   sections: [
     {
       id: "sets",
@@ -70,9 +70,9 @@ export const diamondCollectionPage: CollectionPageConfig = {
 /** Gold — 9 sections */
 export const goldCollectionPage: CollectionPageConfig = {
   eyebrow: "Gold",
-  title: "Gold Collection",
+  title: "Gold Jewellery in Sikar",
   description:
-    "Traditional and contemporary gold—from sets and Ranihaar to Rajputi silhouettes, chains, bangles, and rings.",
+    "Traditional and contemporary gold jewellery for Sikar and Shekhawati families — bridal sets, Ranihaar, Rajputi silhouettes, bangles, chains, and rings.",
   sections: [
     {
       id: "sets",
@@ -143,8 +143,9 @@ export const goldCollectionPage: CollectionPageConfig = {
 /** Silver — 7 sections */
 export const silverCollectionPage: CollectionPageConfig = {
   eyebrow: "Silver",
-  title: "Silver Collection",
-  description: "Sterling finishes across sets, necklaces, bangles, earrings, bracelets, chains, and rings.",
+  title: "Silver Jewellery in Sikar",
+  description:
+    "Sterling silver jewellery at MB Jewellers, Sikar — sets, necklaces, bangles, earrings, bracelets, chains, and rings for everyday wear and gifting.",
   sections: [
     {
       id: "sets",
@@ -201,8 +202,8 @@ export const silverCollectionPage: CollectionPageConfig = {
 /** Accessories — 2 sections */
 export const accessoriesCollectionPage: CollectionPageConfig = {
   eyebrow: "Accessories",
-  title: "Accessories Collection",
-  description: "Decorative silver artefacts and serveware for home and hosting.",
+  title: "Silver Accessories in Sikar",
+  description: "Decorative silver artefacts and serveware from MB Jewellers in Sikar — for home, hosting, and thoughtful gifting.",
   sections: [
     {
       id: "statues",

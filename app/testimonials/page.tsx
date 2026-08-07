@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { PremiumTestimonialsPage } from "@/app/components/premium/pages/PremiumTestimonialsPage";
 import { createPageMetadata } from "@/app/lib/seo";
+import { pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Client Testimonials | MB Jewellers",
-  description: "Read experiences from bridal and jewellery clients who trust MB Jewellers for milestone purchases.",
+  title: pageSeo.testimonials.title,
+  description: pageSeo.testimonials.description,
   path: "/testimonials",
 });
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { PremiumBreadcrumbs } from "@/app/components/premium/PremiumBreadcrumbs";
 import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
@@ -14,6 +15,7 @@ type PremiumCategoryCollectionPageProps = {
   title: string;
   description: string;
   items: CategoryShowcaseItem[];
+  collectionPath: string;
 };
 
 export function PremiumCategoryCollectionPage({
@@ -21,15 +23,23 @@ export function PremiumCategoryCollectionPage({
   title,
   description,
   items,
+  collectionPath,
 }: PremiumCategoryCollectionPageProps) {
   return (
     <PremiumPageFrame>
+      <PremiumBreadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Collections", path: "/collections" },
+          { name: title, path: collectionPath },
+        ]}
+      />
       <PremiumPageHero eyebrow={eyebrow} title={title} lede={description} />
 
       <PremiumPageSection
         eyebrow={`${eyebrow} sections`}
         title="Open a chapter below"
-        subtitle="Each section is a curated gallery of silhouettes you can discuss during a private studio appointment."
+        subtitle="Each section is a curated gallery of silhouettes you can discuss during a private studio appointment in Sikar."
         warm
       >
         <div className="premium-showcase-grid">

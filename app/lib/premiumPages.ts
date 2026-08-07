@@ -206,19 +206,39 @@ export const bridalFeaturedQuote = {
 
 export const faqItems = [
   {
+    question: "Where is MB Jewellers located in Sikar?",
+    answer:
+      "MB Jewellers has two showrooms in Sikar, Rajasthan: Ghantaghar Showroom at Purana Dujod Gate, Ghantaghar, and Ramlila Maidan Showroom at Ramlila Maidan. Use the Contact page for maps, phone numbers, and directions.",
+  },
+  {
+    question: "What are MB Jewellers' opening hours?",
+    answer:
+      "Our showrooms are open Monday to Saturday, 10:00 AM to 7:00 PM. Sundays are typically closed unless a private appointment is confirmed in advance.",
+  },
+  {
+    question: "How can I contact MB Jewellers?",
+    answer:
+      "Call our Ghantaghar showroom on 01572 491103, or the Ramlila Maidan lines on 01572 409431 / 01572 250061. You can also email mbjeweller21@gmail.com or use the contact form on this website.",
+  },
+  {
+    question: "What types of jewellery does MB Jewellers offer?",
+    answer:
+      "We showcase gold, diamond, silver, bridal and wedding jewellery, plus silver accessories. Categories include sets, necklaces, rings, earrings, bangles, bracelets, chains, and custom atelier work.",
+  },
+  {
+    question: "Does MB Jewellers offer bridal and wedding jewellery?",
+    answer:
+      "Yes. Our bridal studio helps with engagement, wedding-day, and reception styling — including full suites or individual statement pieces. Book a bridal appointment through the Contact page.",
+  },
+  {
     question: "Can I buy jewellery on this website?",
     answer:
       "No. This website is a showcase to explore our collections. Pricing, availability, and purchase happen in studio during a private consultation.",
   },
   {
-    question: "Can I book a bridal appointment?",
-    answer:
-      "Yes. Share your timeline and ceremony details through the contact form and our bridal studio will respond with curated options.",
-  },
-  {
     question: "Do you offer custom jewellery?",
     answer:
-      "Absolutely. From heirloom resets to bespoke bridal suites, our atelier guides you through design, prototyping, and finishing.",
+      "Yes. From heirloom resets to bespoke bridal suites, our atelier guides you through design, prototyping, and finishing.",
   },
   {
     question: "What purity standards do you follow?",
@@ -230,32 +250,114 @@ export const faqItems = [
     answer:
       "Our studio offers cleaning guidance, resizing conversations, and restoration support for MB pieces over time.",
   },
+  {
+    question: "Do you serve customers from outside Sikar?",
+    answer:
+      "Yes. Families regularly visit from across the Shekhawati region — including towns such as Fatehpur, Laxmangarh, Neem Ka Thana, Jhunjhunu, Churu, Khandela, Ringas, and Danta Ramgarh — for private jewellery viewings in Sikar.",
+  },
 ] as const;
 
 export const blogPosts = [
   {
     slug: "bridal-suite-curation",
     title: "How to curate a bridal suite that feels inevitable",
-    excerpt: "A calm, cinematic approach to balancing necklace weight, earring presence, and ceremony lighting.",
+    excerpt:
+      "A calm approach to balancing necklace weight, earring presence, and ceremony lighting — for weddings planned in Sikar and across Shekhawati.",
     image: "/pics/Bridal/b1.jpg",
     date: "April 2026",
+    datePublished: "2026-04-10",
     category: "Bridal",
+    body: [
+      "Bridal jewellery works best when every piece has a job: framing the face, anchoring the neckline, or catching movement in photographs. Start with the ceremony that needs the strongest silhouette, then build lighter accents for other functions.",
+      "In our Sikar bridal studio, we often begin with necklace proportion — length, density, and how the piece sits against your outfit fabric — before choosing earrings and bangles that support rather than compete.",
+      "If you are travelling from nearby Shekhawati towns for a private viewing, share your dates, venues, and outfit palette in advance so we can shortlist suites that suit your timeline and comfort.",
+    ],
+    relatedLinks: [
+      { href: "/bridal", label: "Bridal jewellery consultations" },
+      { href: "/collections/gold", label: "Gold jewellery in Sikar" },
+      { href: "/contact", label: "Book a bridal appointment" },
+    ],
   },
   {
     slug: "gold-finish-language",
     title: "Reading gold finish like a jeweller",
-    excerpt: "Warm polish, satin glow, and filigree shadow — the details that change how gold feels on skin.",
+    excerpt:
+      "Warm polish, satin glow, and filigree shadow — the details that change how gold feels on skin and photographs in daylight.",
     image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1200&q=80",
     date: "March 2026",
+    datePublished: "2026-03-12",
     category: "Gold",
+    body: [
+      "Gold jewellery is not only about karat. Finish changes how light moves across a surface — high polish for mirror sparkle, satin for soft glow, and textured filigree for shadow depth that reads beautifully in person.",
+      "When you visit MB Jewellers in Sikar, ask to see the same silhouette in different finishes under salon lighting and near a window. The piece you love under showcase spots may feel different in natural daylight.",
+      "Hallmark documentation and clear weight notes help you compare options without guesswork. Use this website to shortlist styles, then confirm purity and finish in studio before purchase.",
+    ],
+    relatedLinks: [
+      { href: "/collections/gold", label: "Gold jewellery collection" },
+      { href: "/collections/gold/bangles", label: "Gold bangles" },
+      { href: "/faq", label: "Purity and hallmark FAQ" },
+    ],
   },
   {
     slug: "diamond-fire-in-daylight",
     title: "Why diamond fire matters beyond the showcase",
-    excerpt: "Selecting stones for movement, daylight, and the emotional rhythm of real celebrations.",
+    excerpt:
+      "Selecting diamond jewellery for movement, daylight, and the emotional rhythm of real celebrations — not only showcase brilliance.",
     image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1200&q=80",
     date: "February 2026",
+    datePublished: "2026-02-18",
     category: "Diamond",
+    body: [
+      "Diamond fire is the play of colour and sparkle you notice when a stone moves. Showcase lighting can exaggerate it; daylight and evening venues tell a more honest story.",
+      "For engagement rings and reception pieces, we look at how settings protect the stone, how the piece sits on the hand, and whether sparkle remains balanced when you gesture or dance.",
+      "Browse diamond sets, rings, and earrings on this site, then book a private viewing in Sikar to compare certified options side by side.",
+    ],
+    relatedLinks: [
+      { href: "/collections/diamond", label: "Diamond jewellery in Sikar" },
+      { href: "/collections/diamond/rings", label: "Diamond rings" },
+      { href: "/contact", label: "Request a private viewing" },
+    ],
+  },
+  {
+    slug: "choosing-gold-jewellery-in-sikar",
+    title: "How to choose gold jewellery in Sikar",
+    excerpt:
+      "A practical guide for families shopping for gold jewellery in Sikar — occasion, purity, comfort, and what to bring to a showroom appointment.",
+    image: "/pics/signature-worlds/gold-cinematic-lighting.png",
+    date: "August 2026",
+    datePublished: "2026-08-07",
+    category: "Gold",
+    body: [
+      "Choosing gold jewellery starts with the occasion: daily wear, festive gifting, or bridal ceremonies each need different weight, length, and finishing. Write down who will wear the piece and for how many hours — comfort matters as much as design.",
+      "In Sikar, ask for hallmark confirmation and a clear explanation of purity, making charges, and exchange policies before you decide. A calm private viewing helps you compare options without rush.",
+      "At MB Jewellers, you can explore gold sets, Ranihaar, Rajputi profiles, bangles, chains, and rings online, then visit our Ghantaghar or Ramlila Maidan showroom to feel the pieces in person.",
+      "If you are coming from another Shekhawati town, book ahead so consultants can prepare a shortlist aligned with your budget range and ceremony calendar.",
+    ],
+    relatedLinks: [
+      { href: "/collections/gold", label: "Gold jewellery in Sikar" },
+      { href: "/collections/gold/sets", label: "Gold sets" },
+      { href: "/contact", label: "Visit our Sikar showrooms" },
+    ],
+  },
+  {
+    slug: "bridal-jewellery-buying-guide",
+    title: "Bridal jewellery buying guide for Shekhawati weddings",
+    excerpt:
+      "How to plan bridal and wedding jewellery around multiple functions — with practical tips for families shopping in Sikar.",
+    image: "/pics/Bridal/b2.jpg",
+    date: "August 2026",
+    datePublished: "2026-08-07",
+    category: "Bridal",
+    body: [
+      "Shekhawati weddings often span engagement, wedding day, reception, and family rituals. Map jewellery to each chapter so the heaviest suite appears where photographs and ceremony lighting matter most.",
+      "Bring outfit colours, neckline references, and any heirloom pieces you want to mix. Mixing family gold with new designs is common — and works best when proportions are planned together.",
+      "MB Jewellers offers bridal consultations in Sikar for full suites or individual statement pieces. Use the bridal page to understand our process, then book an appointment with your dates ready.",
+    ],
+    relatedLinks: [
+      { href: "/bridal", label: "Bridal jewellery in Sikar" },
+      { href: "/collections/diamond/sets", label: "Diamond bridal sets" },
+      { href: "/faq", label: "Bridal appointment FAQ" },
+    ],
   },
 ] as const;
 
@@ -278,7 +380,7 @@ export const contactChannels = [
   { label: "Studio email", value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
   ...showroomPhoneChannels,
   ...whatsappChannel,
-  { label: "Visiting hours", value: "Mon–Sat, 10:00 AM – 7:00 PM" },
+  { label: "Visiting hours", value: siteConfig.openingHours.display },
   { label: "Instagram", value: "@mbjewellerssikar", href: socialLinks.instagram },
 ];
 

@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PremiumCategoryCollectionPage } from "@/app/components/premium/pages/PremiumCategoryCollectionPage";
 import { collectionSectionsToCards, diamondCollectionPage } from "@/app/lib/collectionPages";
 import { createPageMetadata } from "@/app/lib/seo";
+import { pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Diamond Collection | MB Jewellers",
-  description: "Explore elegant diamond sets, necklaces, earrings, bracelets, and rings from MB Jewellers.",
+  title: pageSeo.diamond.title,
+  description: pageSeo.diamond.description,
   path: "/collections/diamond",
 });
 
@@ -16,6 +17,7 @@ export default function DiamondPage() {
       title={diamondCollectionPage.title}
       description={diamondCollectionPage.description}
       items={collectionSectionsToCards("diamond", diamondCollectionPage)}
+      collectionPath="/collections/diamond"
     />
   );
 }

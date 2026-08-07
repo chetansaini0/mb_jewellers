@@ -2,14 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { PremiumBreadcrumbs } from "@/app/components/premium/PremiumBreadcrumbs";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
 import { blogPosts } from "@/app/lib/premiumPages";
-
-const articleSupplement = [
-  "The studio photographs each suite in natural daylight so you can anticipate how metal, stone, and skin tone respond in real celebrations — not only under showcase spots.",
-  "When you visit MB Jewellers, you are not browsing a catalogue; you are entering a conversation about proportion, ritual, and the small engineering decisions that make jewellery feel inevitable.",
-];
 
 export function PremiumBlogArticlePage({ slug }: { slug: string }) {
   const post = blogPosts.find((p) => p.slug === slug);
@@ -35,6 +31,13 @@ export function PremiumBlogArticlePage({ slug }: { slug: string }) {
 
   return (
     <PremiumPageFrame>
+      <PremiumBreadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Journal", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
+      />
       <article>
         <PremiumPageHero eyebrow={`${post.category} · ${post.date}`} title={post.title} lede={post.excerpt} />
         <section className="premium-section">
@@ -43,7 +46,7 @@ export function PremiumBlogArticlePage({ slug }: { slug: string }) {
               <div className="relative aspect-[21/9] min-h-[220px] w-full md:aspect-[2/1]">
                 <Image
                   src={post.image}
-                  alt={post.title}
+                  alt={`${post.title} — MB Jewellers jewellery journal`}
                   fill
                   className="object-cover"
                   sizes="(min-width: 1024px) 48rem, 100vw"
@@ -55,11 +58,21 @@ export function PremiumBlogArticlePage({ slug }: { slug: string }) {
               <p className="premium-section__lede text-base" data-reveal>
                 {post.excerpt}
               </p>
-              {articleSupplement.map((para, i) => (
-                <p key={i} className="mt-6 text-base leading-relaxed text-[var(--premium-muted)]" data-reveal>
+              {post.body.map((para) => (
+                <p key={para.slice(0, 48)} className="mt-6 text-base leading-relaxed text-[var(--premium-muted)]" data-reveal>
                   {para}
                 </p>
               ))}
+            </div>
+            <div className="mx-auto mt-10 max-w-2xl" data-reveal>
+              <p className="premium-footer__label">Continue exploring</p>
+              <div className="premium-footer__links mt-3">
+                {post.relatedLinks.map((link) => (
+                  <Link key={link.href} href={link.href} className="premium-inline-link block">
+                    {link.label} →
+                  </Link>
+                ))}
+              </div>
             </div>
             <div className="mx-auto mt-12 max-w-2xl" data-reveal>
               <Link href="/blog" className="premium-button premium-button--ghost">

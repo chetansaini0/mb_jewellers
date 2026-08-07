@@ -43,8 +43,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
-    image: [post.image],
+    image: [post.image.startsWith("http") ? post.image : createCanonicalUrl(post.image)],
     url: canonical,
+    datePublished: post.datePublished,
+    dateModified: post.datePublished,
     author: {
       "@type": "Organization",
       name: siteConfig.name,
@@ -56,6 +58,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
         "@type": "ImageObject",
         url: createCanonicalUrl("/mb-jewellers-logo.png"),
       },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonical,
     },
   };
 

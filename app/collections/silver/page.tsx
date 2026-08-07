@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PremiumCategoryCollectionPage } from "@/app/components/premium/pages/PremiumCategoryCollectionPage";
 import { collectionSectionsToCards, silverCollectionPage } from "@/app/lib/collectionPages";
 import { createPageMetadata } from "@/app/lib/seo";
+import { pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Silver Collection | MB Jewellers",
-  description: "Shop refined silver jewellery with curated sets, chains, earrings, bangles, and gifting-ready pieces.",
+  title: pageSeo.silver.title,
+  description: pageSeo.silver.description,
   path: "/collections/silver",
 });
 
@@ -16,6 +17,7 @@ export default function SilverPage() {
       title={silverCollectionPage.title}
       description={silverCollectionPage.description}
       items={collectionSectionsToCards("silver", silverCollectionPage)}
+      collectionPath="/collections/silver"
     />
   );
 }

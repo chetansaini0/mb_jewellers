@@ -89,8 +89,8 @@ export function PremiumFooter() {
       <div className="site-max site-px premium-footer__intro" data-reveal>
         <Image src="/mb-jewellers-logo.png" alt="" width={896} height={768} className="premium-footer__logo" />
         <p className="premium-footer__tagline">
-          Fine jewellery shaped with Rajasthani heritage, meenakari-inspired colour, and modern luxury finishing.
-          Showcase site — visit our studio to purchase.
+          Trusted jewellery showroom in Sikar, Rajasthan — gold, diamond, silver, and bridal collections for families
+          across Shekhawati. Showcase site — visit our studio to purchase.
         </p>
       </div>
       <div className="site-max site-px premium-footer__grid">
@@ -98,7 +98,10 @@ export function PremiumFooter() {
           <p className="premium-footer__label">Explore</p>
           <div className="premium-footer__links">
             <Link href="/collections">Collections</Link>
-            <Link href="/bridal">Bridal</Link>
+            <Link href="/collections/gold">Gold jewellery</Link>
+            <Link href="/collections/diamond">Diamond jewellery</Link>
+            <Link href="/collections/silver">Silver jewellery</Link>
+            <Link href="/bridal">Bridal & wedding</Link>
             <Link href="/heritage">Heritage</Link>
             <Link href="/gallery">Gallery</Link>
             <Link href="/services">Custom atelier</Link>
@@ -106,7 +109,7 @@ export function PremiumFooter() {
             <Link href="/faq">FAQ</Link>
             <Link href="/testimonials">Testimonials</Link>
             <Link href="/about">About us</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/contact">Visit our store</Link>
           </div>
         </nav>
         <nav aria-label="Legal policies">
@@ -129,7 +132,12 @@ export function PremiumFooter() {
               {formatShowroomPhones(showroom)}
             </p>
           ))}
-          <p>Mon-Sat: 10:00 - 19:00</p>
+          <p>Mon–Sat: 10:00 – 19:00</p>
+          <p>
+            <a href={siteConfig.showrooms[0].directionsUrl} target="_blank" rel="noopener noreferrer">
+              Find MB Jewellers on Google Maps
+            </a>
+          </p>
           {hasWhatsApp() ? (
             <p>
               <a

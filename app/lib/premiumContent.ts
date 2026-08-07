@@ -1,14 +1,14 @@
 import { categoryShowcase, featuredPieces } from "@/app/lib/siteData";
 
 export const premiumHero = {
-  kicker: "MB Atelier",
+  kicker: "MB Jewellers · Sikar",
   title: ["Where light", "becomes legacy"],
   subtitle:
-    "A cinematic house of diamonds, gold, and bespoke bridal artistry — crafted in Rajasthan, finished for the world.",
+    "A trusted jewellery showroom in Sikar for gold, diamond, silver, and bridal artistry — serving families across Shekhawati, Rajasthan.",
   primaryCta: { label: "Explore collections", href: "/collections" },
-  secondaryCta: { label: "Book a private viewing", href: "/contact" },
+  secondaryCta: { label: "Visit our store", href: "/contact" },
   video: "/instareel/Video-281.mp4",
-  alt: "Gold and diamond jewellery in cinematic lighting",
+  alt: "Gold and diamond jewellery at MB Jewellers showroom in Sikar",
 };
 
 export const premiumCollections = categoryShowcase.map((item) => {

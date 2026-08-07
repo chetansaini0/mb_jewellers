@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { PremiumHome } from "@/app/components/premium/PremiumHome";
 import { createPageMetadata } from "@/app/lib/seo";
+import { pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "MB Jewellers | Luxury Jewellery in Sikar",
-  description:
-    "Discover MB Jewellers collections online and book a private studio viewing in Sikar — showcase site, in-person purchases only.",
+  title: pageSeo.home.title,
+  description: pageSeo.home.description,
   path: "/",
 });
 

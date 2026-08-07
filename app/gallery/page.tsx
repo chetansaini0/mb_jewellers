@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { PremiumGalleryPage } from "@/app/components/premium/pages/PremiumGalleryPage";
 import { createPageMetadata } from "@/app/lib/seo";
+import { pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Jewellery Gallery | MB Jewellers",
-  description: "View cinematic jewellery imagery from MB Jewellers across bridal, gold, diamond, and silver showcases.",
+  title: pageSeo.gallery.title,
+  description: pageSeo.gallery.description,
   path: "/gallery",
 });
 

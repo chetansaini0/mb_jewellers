@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PremiumCategoryCollectionPage } from "@/app/components/premium/pages/PremiumCategoryCollectionPage";
-import { collectionSectionsToCards, accessoriesCollectionPage } from "@/app/lib/collectionPages";
+import { accessoriesCollectionPage, collectionSectionsToCards } from "@/app/lib/collectionPages";
 import { createPageMetadata } from "@/app/lib/seo";
+import { pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Silver Accessories & Artefacts | MB Jewellers",
-  description: "Explore decorative silver accessories including curated statues and premium serveware collections.",
+  title: pageSeo.accessories.title,
+  description: pageSeo.accessories.description,
   path: "/collections/accessories",
 });
 
@@ -16,6 +17,7 @@ export default function AccessoriesPage() {
       title={accessoriesCollectionPage.title}
       description={accessoriesCollectionPage.description}
       items={collectionSectionsToCards("accessories", accessoriesCollectionPage)}
+      collectionPath="/collections/accessories"
     />
   );
 }
