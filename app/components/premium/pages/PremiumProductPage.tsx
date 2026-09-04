@@ -112,7 +112,7 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
       <section className="premium-section premium-section--warm">
         <div className="site-max site-px">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-            <div className="space-y-4" data-reveal>
+            <div className="min-w-0 space-y-4" data-reveal>
               <div
                 className={`premium-product-hero-card${hasCustomGallery ? " premium-product-hero-card--showcase" : ""}`}
               >
@@ -138,12 +138,12 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
                 <div className="premium-product-hero-card__overlay" aria-hidden />
                 <span className="premium-featured-card__badge">{product.material ?? "Studio piece"}</span>
               </div>
-              <div className="premium-reels__rail px-0.5">
+              <div className="premium-product-thumbs">
                 {galleryImages.map((image, index) => (
                   <button
                     key={`${image}-${index}`}
                     type="button"
-                    className="premium-reel-card relative w-[88px] shrink-0"
+                    className="premium-product-thumb relative w-[72px] shrink-0 sm:w-[88px]"
                     onClick={() => setActiveIndex(index)}
                     aria-label={`Show product image ${index + 1}`}
                     aria-current={activeIndex === index ? "true" : undefined}
