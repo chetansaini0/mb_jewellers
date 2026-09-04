@@ -4919,7 +4919,7 @@ select.luxe-field {
 }
 
 .premium-product-hero-card--showcase .premium-product-hero-card__frame {
-  inset: 0.85rem 1rem;
+  inset: 1.1rem 1.15rem;
 }
 
 .premium-product-hero-card--showcase .premium-product-hero-card__image {
@@ -4929,7 +4929,7 @@ select.luxe-field {
 
 @media (min-width: 640px) {
   .premium-product-hero-card--showcase .premium-product-hero-card__frame {
-    inset: 1.1rem 1.25rem;
+    inset: 1.35rem 1.4rem;
   }
 }
 
