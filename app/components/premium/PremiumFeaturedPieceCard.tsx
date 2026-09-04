@@ -26,7 +26,7 @@ export function PremiumFeaturedPieceCard({ piece, index = 0 }: { piece: ProductI
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
           priority={index < 2}
-          className="object-cover"
+          className="object-contain"
         />
         <div className="premium-featured-card__media-overlay" aria-hidden />
         {piece.material ? <span className="premium-featured-card__badge">{piece.material}</span> : null}

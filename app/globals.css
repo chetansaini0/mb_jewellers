@@ -3893,6 +3893,7 @@ select.luxe-field {
   position: relative;
   max-width: 26rem;
   margin-inline: auto;
+  overflow: visible;
 }
 
 @media (min-width: 1024px) {
@@ -3918,33 +3919,40 @@ select.luxe-field {
 
 .premium-story-section__badge {
   position: absolute;
-  right: -1rem;
-  bottom: -1rem;
+  left: 1rem;
+  bottom: 1rem;
   z-index: 2;
+  max-width: calc(100% - 2rem);
   border-radius: 1rem;
-  background: #1a1510;
-  padding: 1.25rem 1.5rem;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(200, 162, 77, 0.4);
+  background: rgba(255, 253, 248, 0.96);
+  padding: 0.9rem 1.15rem;
+  box-shadow: 0 14px 32px rgba(26, 21, 16, 0.12);
+  backdrop-filter: blur(10px);
 }
 
 @media (min-width: 640px) {
   .premium-story-section__badge {
-    right: -1.5rem;
-    bottom: -1.5rem;
-    padding: 1.5rem 1.75rem;
+    left: auto;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    padding: 1.15rem 1.35rem;
   }
 }
 
 .premium-story-section__badge-value {
   font-family: var(--font-display-luxury), serif;
-  font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
+  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+  line-height: 1;
   color: var(--premium-gold, #c8a24d);
 }
 
 .premium-story-section__badge-label {
-  margin-top: 0.25rem;
-  font-size: 0.75rem;
-  color: rgba(250, 247, 240, 0.62);
+  margin-top: 0.3rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(26, 21, 16, 0.72);
 }
 
 .premium-story-section__copy {
@@ -4068,22 +4076,26 @@ select.luxe-field {
 .premium-featured-card__media {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
+  background: #171410;
 }
 
 .premium-featured-card__media img {
+  object-fit: contain;
+  object-position: center;
   transition: transform 700ms ease;
 }
 
 .premium-featured-card:hover .premium-featured-card__media img {
-  transform: scale(1.08);
+  transform: scale(1.04);
 }
 
 .premium-featured-card__media-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent, rgba(26, 21, 16, 0.55));
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 55%, rgba(26, 21, 16, 0.35));
 }
 
 .premium-featured-card__badge {

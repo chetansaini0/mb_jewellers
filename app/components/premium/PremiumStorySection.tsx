@@ -43,10 +43,10 @@ export function PremiumStorySection() {
               priority
             />
             <div className="premium-story-section__image-overlay" aria-hidden />
-          </div>
-          <div className="premium-story-section__badge">
-            <p className="premium-story-section__badge-value">30+</p>
-            <p className="premium-story-section__badge-label">Years in Sikar</p>
+            <div className="premium-story-section__badge">
+              <p className="premium-story-section__badge-value">30+</p>
+              <p className="premium-story-section__badge-label">Years in Sikar</p>
+            </div>
           </div>
         </motion.div>
 
