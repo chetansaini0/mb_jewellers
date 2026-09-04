@@ -76,7 +76,7 @@ export function PremiumFloatingCtas() {
         aria-label="Book appointment"
       >
         <CalendarDays aria-hidden />
-        Book
+        <span className="premium-floating-actions__book-label">Book</span>
       </Link>
     </div>
   );
