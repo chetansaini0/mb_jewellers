@@ -51,10 +51,10 @@ export function PremiumAboutPage({ variant = "about" }: Props) {
                 className="object-cover"
               />
               <div className="premium-story-section__image-overlay" aria-hidden />
-            </div>
-            <div className="premium-story-section__badge">
-              <p className="premium-story-section__badge-value">1998</p>
-              <p className="premium-story-section__badge-label">Studio founded</p>
+              <div className="premium-story-section__badge">
+                <p className="premium-story-section__badge-value">1998</p>
+                <p className="premium-story-section__badge-label">Studio founded</p>
+              </div>
             </div>
           </div>
 
