@@ -3891,6 +3891,7 @@ select.luxe-field {
 
 .premium-story-section__visual {
   position: relative;
+  width: 100%;
   max-width: 26rem;
   margin-inline: auto;
   overflow: visible;
@@ -3904,6 +3905,7 @@ select.luxe-field {
 
 .premium-story-section__image-wrap {
   position: relative;
+  width: 100%;
   aspect-ratio: 5 / 4;
   max-height: 20rem;
   overflow: hidden;
