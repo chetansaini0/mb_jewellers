@@ -211,6 +211,21 @@ export const faqItems = [
       "MB Jewellers has two showrooms in Sikar, Rajasthan: Ghantaghar Showroom at Purana Dujod Gate, Ghantaghar, and Ramlila Maidan Showroom at Ramlila Maidan. Use the Contact page for maps, phone numbers, and directions.",
   },
   {
+    question: "How do I choose a trusted jewellery shop in Sikar?",
+    answer:
+      "Compare hallmark documentation for gold, certification for diamonds, clear pricing conversations in person, after-care support, and whether the team understands bridal and family occasions. MB Jewellers operates two Sikar showrooms with private viewings for gold, diamond, silver, and bridal jewellery — purchases are completed in studio, not online.",
+  },
+  {
+    question: "Why do families choose MB Jewellers for jewellery in Sikar and Shekhawati?",
+    answer:
+      "Families across Sikar and the Shekhawati region visit MB Jewellers for hallmarked gold, certified diamonds, bridal suite curation, and calm private consultations. With showrooms at Ghantaghar and Ramlila Maidan, we serve customers from Fatehpur, Laxmangarh, Neem Ka Thana, Jhunjhunu, Churu, and nearby towns who prefer in-person selection before buying.",
+  },
+  {
+    question: "Is MB Jewellers a good jewellery store for bridal and wedding jewellery in Sikar?",
+    answer:
+      "Yes. Our bridal studio helps with engagement, wedding-day, and reception styling — including full suites or individual statement pieces. Book a bridal appointment through the Contact page so we can prepare shortlists before you visit.",
+  },
+  {
     question: "What are MB Jewellers' opening hours?",
     answer:
       "Our showrooms are open Monday to Saturday, 10:00 AM to 7:00 PM. Sundays are typically closed unless a private appointment is confirmed in advance.",
@@ -224,11 +239,6 @@ export const faqItems = [
     question: "What types of jewellery does MB Jewellers offer?",
     answer:
       "We showcase gold, diamond, silver, bridal and wedding jewellery, plus silver accessories. Categories include sets, necklaces, rings, earrings, bangles, bracelets, chains, and custom atelier work.",
-  },
-  {
-    question: "Does MB Jewellers offer bridal and wedding jewellery?",
-    answer:
-      "Yes. Our bridal studio helps with engagement, wedding-day, and reception styling — including full suites or individual statement pieces. Book a bridal appointment through the Contact page.",
   },
   {
     question: "Can I buy jewellery on this website?",
@@ -337,6 +347,27 @@ export const blogPosts = [
       { href: "/collections/gold", label: "Gold jewellery in Sikar" },
       { href: "/collections/gold/sets", label: "Gold sets" },
       { href: "/contact", label: "Visit our Sikar showrooms" },
+    ],
+  },
+  {
+    slug: "trusted-jewellery-shop-in-sikar",
+    title: "How to choose a trusted jewellery shop in Sikar",
+    excerpt:
+      "What to check before you buy gold, diamond, or bridal jewellery in Sikar — and how Shekhawati families evaluate a showroom visit.",
+    image: "/pics/signature-worlds/diamond-cinematic-lighting.png",
+    date: "September 2026",
+    datePublished: "2026-09-05",
+    category: "Guide",
+    body: [
+      "Searching for the best jewellery store in Sikar usually means looking for trust signals: hallmarked gold, certified diamonds, transparent documentation, and consultants who understand bridal and family occasions — not only showcase sparkle.",
+      "Visit more than one counter if you can, and compare how clearly each team explains purity, making charges, exchange policies, and after-care. A calm private viewing is often more useful than a crowded rush purchase.",
+      "MB Jewellers is a jewellery showroom with two Sikar locations — Ghantaghar and Ramlila Maidan — serving families from across the Shekhawati region, including Fatehpur, Laxmangarh, Neem Ka Thana, Jhunjhunu, and Churu. We showcase gold, diamond, silver, and bridal jewellery online; purchases happen in person.",
+      "Bring your occasion list, outfit references, and any heirloom pieces you want to match. Book ahead so the team can prepare a shortlist before you travel.",
+    ],
+    relatedLinks: [
+      { href: "/faq", label: "Jewellery shop FAQ" },
+      { href: "/about", label: "About MB Jewellers" },
+      { href: "/contact", label: "Book a private viewing" },
     ],
   },
   {

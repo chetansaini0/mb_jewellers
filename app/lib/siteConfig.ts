@@ -108,7 +108,7 @@ export const siteConfig = {
   legalName: "M.B. JEWELLERS (SIKAR) PVT. LTD.",
   tagline: "Two showrooms, one trust",
   description:
-    "MB Jewellers is a trusted jewellery showroom in Sikar, Rajasthan — gold, diamond, silver, and bridal jewellery for families across the Shekhawati region. Showcase online; purchases are in person.",
+    "MB Jewellers is a trusted jewellery store and showroom in Sikar, Rajasthan — gold, diamond, silver, and bridal jewellery for families across the Shekhawati region. Two showrooms; showcase online, purchases in person.",
   url: resolveSiteUrl(),
   contact: {
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "mbjeweller21@gmail.com",

@@ -67,9 +67,10 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: siteConfig.legalName,
-  alternateName: siteConfig.name,
+  alternateName: [siteConfig.name, "MB Jewellers Sikar", "MB Jewellers Shekhawati"],
   url: siteUrl,
   logo: `${siteUrl}/mb-jewellers-logo.png`,
+  description: siteConfig.description,
   email: siteConfig.contact.email,
   telephone: siteConfig.contact.phoneE164,
   sameAs: socialProfiles,
@@ -85,6 +86,13 @@ export const organizationSchema = {
     "@type": "AdministrativeArea",
     name: place,
   })),
+  knowsAbout: [
+    "Jewellery shop in Sikar",
+    "Gold jewellery",
+    "Diamond jewellery",
+    "Bridal jewellery",
+    "Shekhawati jewellery showrooms",
+  ],
 } as const;
 
 export const jewelryStoreSchema = {
@@ -94,7 +102,9 @@ export const jewelryStoreSchema = {
     "@id": `${siteUrl}/#store-${showroom.id}`,
     name: `${siteConfig.name} — ${showroom.name}`,
     legalName: siteConfig.legalName,
+    alternateName: ["MB Jewellers Sikar", "MB Jewellers Shekhawati"],
     description: siteConfig.description,
+    slogan: siteConfig.tagline,
     url: siteUrl,
     image: [`${siteUrl}/mb-jewellers-logo.png`, `${siteUrl}/icons/icon-512.png`],
     telephone: showroom.landlines.map((line) => line.e164).join(", "),
@@ -118,6 +128,16 @@ export const jewelryStoreSchema = {
     priceRange: "₹₹₹",
     currenciesAccepted: "INR",
     paymentAccepted: "Cash, UPI, Card",
+    knowsAbout: [
+      "Gold jewellery",
+      "Diamond jewellery",
+      "Silver jewellery",
+      "Bridal jewellery",
+      "Wedding jewellery",
+      "Hallmarked gold",
+      "Custom jewellery",
+      "Shekhawati bridal jewellery",
+    ],
     areaServed: siteConfig.serviceArea.map((place) => ({
       "@type": "City",
       name: place,
@@ -137,6 +157,46 @@ export function createFaqPageSchema(items: readonly { question: string; answer: 
         text: item.answer,
       },
     })),
+  } as const;
+}
+
+export function createProductSchema(input: {
+  name: string;
+  description: string;
+  image: string | readonly string[];
+  urlPath: string;
+  category?: string;
+  material?: string;
+}) {
+  const images = (Array.isArray(input.image) ? [...input.image] : [input.image]).map((src) =>
+    src.startsWith("http") ? src : createCanonicalUrl(src),
+  );
+  const canonical = createCanonicalUrl(input.urlPath);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: input.name,
+    description: input.description,
+    image: images,
+    brand: {
+      "@type": "Brand",
+      name: siteConfig.name,
+    },
+    category: input.category ?? input.material ?? "Jewellery",
+    material: input.material,
+    url: canonical,
+    isRelatedTo: {
+      "@type": "JewelryStore",
+      name: siteConfig.name,
+      url: siteUrl,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: siteConfig.location.city,
+        addressRegion: siteConfig.location.region,
+        addressCountry: siteConfig.location.country,
+      },
+    },
   } as const;
 }
 

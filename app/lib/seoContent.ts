@@ -5,9 +5,9 @@
 
 export const pageSeo = {
   home: {
-    title: "MB Jewellers | Trusted Jewellery Shop in Sikar, Rajasthan",
+    title: "MB Jewellers | Jewellery Shop in Sikar & Shekhawati, Rajasthan",
     description:
-      "Visit MB Jewellers in Sikar for gold, diamond, silver, and bridal jewellery. Two showrooms serving families across Shekhawati — book a private in-person viewing.",
+      "Looking for a trusted jewellery store in Sikar? MB Jewellers offers gold, diamond, silver, and bridal jewellery at two Sikar showrooms — serving families across the Shekhawati region. Book a private in-person viewing.",
   },
   collections: {
     title: "Jewellery Collections in Sikar | MB Jewellers",
@@ -60,9 +60,9 @@ export const pageSeo = {
       "Custom and bespoke jewellery services in Sikar — private discovery, design translation, and atelier finishing at MB Jewellers.",
   },
   faq: {
-    title: "FAQ | MB Jewellers Jewellery Shop in Sikar",
+    title: "FAQ | Jewellery Shop in Sikar — MB Jewellers",
     description:
-      "Answers about visiting MB Jewellers in Sikar — showroom locations, hours, bridal appointments, gold purity, and how purchases work.",
+      "Answers about choosing a jewellery store in Sikar and Shekhawati — MB Jewellers locations, hours, bridal appointments, hallmark purity, and in-person purchase.",
   },
   testimonials: {
     title: "Customer Experiences | MB Jewellers, Sikar",
@@ -75,27 +75,29 @@ export const pageSeo = {
       "Practical jewellery buying guides from MB Jewellers in Sikar — bridal suites, gold finishes, diamonds, and care advice for Shekhawati families.",
   },
   contact: {
-    title: "Visit Our Store in Sikar | Contact MB Jewellers",
+    title: "Visit Our Jewellery Store in Sikar | Contact MB Jewellers",
     description:
-      "Find MB Jewellers showrooms in Sikar — Ghantaghar and Ramlila Maidan. Phone, email, hours, and directions for a private jewellery viewing.",
+      "Find MB Jewellers showrooms in Sikar — Ghantaghar and Ramlila Maidan. Phone, email, hours, and directions for a private jewellery viewing across Shekhawati.",
   },
 } as const;
 
 /** Visible local SEO copy — written for customers, not keyword stuffing. */
 export const localSeoContent = {
   eyebrow: "Sikar · Shekhawati · Rajasthan",
-  title: "A jewellery destination for Sikar and the Shekhawati region",
+  title: "A trusted jewellery store for Sikar and the Shekhawati region",
   lead:
     "MB Jewellers is a jewellery showroom based in Sikar, Rajasthan. Families visit us for gold, diamond, silver, and bridal jewellery — whether they live in Sikar or travel from nearby Shekhawati towns.",
   paragraphs: [
-    "Our two Sikar showrooms — at Ghantaghar (Purana Dujod Gate) and Ramlila Maidan — are built for unhurried, appointment-friendly selection. You can explore collections on this website, then see weight, finish, and movement in person before you buy.",
-    "Customers often visit from Fatehpur, Laxmangarh, Neem Ka Thana, Jhunjhunu, Churu, Khandela, Ringas, Danta Ramgarh, and other towns across Shekhawati. If you are searching for a trusted jeweller near Sikar, we welcome you to book a private viewing and share your occasion.",
+    "If you are searching for a jewellery shop in Sikar or a reliable jeweller across Shekhawati, look for hallmarked gold, certified diamonds, clear pricing conversations in person, and unhurried selection. MB Jewellers was built around those standards — not online checkout.",
+    "Our two Sikar showrooms — at Ghantaghar (Purana Dujod Gate) and Ramlila Maidan — welcome private, appointment-friendly viewings. Explore collections on this website, then see weight, finish, and movement in person before you buy.",
+    "Customers regularly visit from Fatehpur, Laxmangarh, Neem Ka Thana, Jhunjhunu, Churu, Khandela, Ringas, Danta Ramgarh, and other towns across Shekhawati. Share your occasion and we will help you shortlist the right gold, diamond, silver, or bridal suite.",
   ],
   links: [
     { href: "/collections/gold", label: "Gold jewellery" },
     { href: "/collections/diamond", label: "Diamond jewellery" },
     { href: "/collections/silver", label: "Silver jewellery" },
     { href: "/bridal", label: "Bridal & wedding jewellery" },
+    { href: "/faq", label: "Jewellery shop FAQ" },
     { href: "/contact", label: "Visit our store" },
   ],
 } as const;

@@ -43,7 +43,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "MB Jewellers | Trusted Jewellery Shop in Sikar, Rajasthan",
+    default: "MB Jewellers | Jewellery Shop in Sikar & Shekhawati, Rajasthan",
     template: "%s | MB Jewellers",
   },
   metadataBase: new URL(siteConfig.url),
@@ -51,14 +51,22 @@ export const metadata: Metadata = {
   applicationName: "MB Jewellers",
   keywords: [
     "MB Jewellers",
+    "MB Jewellers Sikar",
     "jewellery shop in Sikar",
+    "jewellery store in Sikar",
     "jewellers in Sikar",
+    "best jewellery shop in Sikar",
+    "best jeweller in Sikar",
     "gold jewellery Sikar",
     "diamond jewellery Sikar",
     "silver jewellery Sikar",
     "bridal jewellery Sikar",
+    "wedding jewellery Shekhawati",
     "jewellery showroom Shekhawati",
-    "custom jewellery",
+    "jewellery shop in Shekhawati",
+    "trusted jeweller in Sikar",
+    "custom jewellery Sikar",
+    "hallmarked gold Sikar",
   ],
   appleWebApp: {
     capable: true,
@@ -66,7 +74,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
   openGraph: {
-    title: "MB Jewellers | Trusted Jewellery Shop in Sikar, Rajasthan",
+    title: "MB Jewellers | Jewellery Shop in Sikar & Shekhawati, Rajasthan",
     description: siteConfig.description,
     type: "website",
     locale: "en_IN",
@@ -75,7 +83,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MB Jewellers | Jewellery Shop in Sikar",
+    title: "MB Jewellers | Jewellery Store in Sikar",
     description: siteConfig.description,
   },
   icons: {
@@ -105,7 +113,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${accent.variable} premium-theme antialiased`}>
+    <html lang="en-IN" className={`${display.variable} ${sans.variable} ${accent.variable} premium-theme antialiased`}>
       <body suppressHydrationWarning className="premium-body flex min-h-dvh flex-col overflow-x-clip">
         <Script
           id="jewelry-store-schema"
