@@ -256,6 +256,11 @@ export const faqItems = [
       "Gold is hallmarked and diamonds are certified. We document material notes and finishing standards for every major purchase.",
   },
   {
+    question: "Should I choose 22K or 18K gold jewellery in Sikar?",
+    answer:
+      "22K is often preferred for traditional bridal and festive jewellery because of its warm colour; 18K is harder and frequently chosen for contemporary or high-detail settings. Compare hallmark, comfort, and occasion in a private viewing at MB Jewellers before you decide.",
+  },
+  {
     question: "Do you provide after-care support?",
     answer:
       "Our studio offers cleaning guidance, resizing conversations, and restoration support for MB pieces over time.",
@@ -388,6 +393,69 @@ export const blogPosts = [
       { href: "/bridal", label: "Bridal jewellery in Sikar" },
       { href: "/collections/diamond/sets", label: "Diamond bridal sets" },
       { href: "/faq", label: "Bridal appointment FAQ" },
+    ],
+  },
+  {
+    slug: "22k-vs-18k-gold-jewellery",
+    title: "22K vs 18K gold jewellery — what to choose in Sikar",
+    excerpt:
+      "A clear comparison of 22K and 18K gold for daily wear, gifting, and bridal jewellery — with practical tips for showroom visits in Sikar.",
+    image: "/pics/signature-worlds/gold-cinematic-lighting.png",
+    date: "September 2026",
+    datePublished: "2026-09-05",
+    category: "Gold",
+    body: [
+      "Families shopping for gold jewellery in Sikar often ask whether 22K or 18K is “better.” The useful answer depends on occasion, comfort, and how the piece will be worn — not a single rule for everyone.",
+      "22K gold (around 91.6% pure) is widely preferred for traditional Indian bridal and festive jewellery because of its warm colour and cultural familiarity. It is softer than lower-karat alloys, so heavy daily wear designs need thoughtful making and care.",
+      "18K gold (75% pure) is harder and often chosen for intricate contemporary settings, especially where durability and fine detailing matter. Colour is slightly lighter; many clients still love it for rings and modern silhouettes.",
+      "At MB Jewellers in Sikar, ask to see hallmark confirmation, weight notes, and finishing side by side under salon light. Shortlist online from our gold collection, then confirm karat, comfort, and making details in person at Ghantaghar or Ramlila Maidan before you buy.",
+    ],
+    relatedLinks: [
+      { href: "/collections/gold", label: "Gold jewellery in Sikar" },
+      { href: "/blog/choosing-gold-jewellery-in-sikar", label: "How to choose gold jewellery" },
+      { href: "/contact", label: "Book a private viewing" },
+    ],
+  },
+  {
+    slug: "how-to-check-gold-purity-hallmark",
+    title: "How to check gold purity and hallmark in Sikar",
+    excerpt:
+      "What hallmark marks mean, which questions to ask at a jewellery showroom, and how Shekhawati families can shop with more confidence.",
+    image: "/pics/signature-worlds/gold-cinematic-lighting.png",
+    date: "September 2026",
+    datePublished: "2026-09-12",
+    category: "Guide",
+    body: [
+      "When you visit a jewellery shop in Sikar, purity documentation should be part of the conversation — not an afterthought. Hallmarking helps confirm that gold content matches the karat claimed on the piece.",
+      "Ask to see the hallmark marks and a clear explanation of karat, weight, and making charges. A trustworthy jeweller will walk you through the paperwork calmly and answer exchange or buyback questions without pressure.",
+      "Bring a written list of what you need (bridal suite, daily bangles, gifting) so purity choices stay tied to use. Heavier ceremonial pieces and lighter daily wear may follow different comfort priorities even at the same karat.",
+      "MB Jewellers follows hallmarked gold standards and welcomes private viewings at our two Sikar showrooms. Explore styles on this website, then verify purity and finish in person — especially if you are travelling from Fatehpur, Laxmangarh, Jhunjhunu, or other Shekhawati towns.",
+    ],
+    relatedLinks: [
+      { href: "/faq", label: "Purity and hallmark FAQ" },
+      { href: "/collections/gold", label: "Gold jewellery collection" },
+      { href: "/blog/trusted-jewellery-shop-in-sikar", label: "Choosing a trusted jeweller" },
+    ],
+  },
+  {
+    slug: "jewellery-care-guide",
+    title: "Jewellery care guide for daily wear and bridal suites",
+    excerpt:
+      "Simple care habits that protect gold, diamond, and silver jewellery between celebrations — written for families who shop in Sikar.",
+    image: "/pics/Bridal/b1.jpg",
+    date: "September 2026",
+    datePublished: "2026-09-19",
+    category: "Care",
+    body: [
+      "Good jewellery care starts with storage and chemistry. Keep pieces dry, separate chains from stones to avoid tangling and scratches, and remove jewellery before swimming, heavy cleaning, or applying perfume and lotions.",
+      "Bridal and festive suites need a little extra planning: pack soft pouches for travel between functions, check clasps before ceremonies, and schedule a gentle clean after the wedding week so filigree and settings stay bright.",
+      "Silver can tarnish with air and moisture — a soft cloth and dry storage help between wears. Diamonds look their best when the setting is free of lotion film; a professional clean before major events makes a visible difference.",
+      "MB Jewellers offers cleaning guidance and after-care conversations for pieces purchased at our Sikar showrooms. If a clasp loosens or an heirloom needs assessment, book a private visit rather than forcing a repair at home.",
+    ],
+    relatedLinks: [
+      { href: "/services", label: "Atelier and after-care" },
+      { href: "/bridal", label: "Bridal jewellery in Sikar" },
+      { href: "/contact", label: "Visit MB Jewellers" },
     ],
   },
 ] as const;
