@@ -1310,6 +1310,36 @@ select.luxe-field {
   background: rgba(250, 247, 240, 0.92);
 }
 
+/* Keep menu usable mid-page: sticky breaks when body scroll is locked */
+.premium-header.is-menu-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 80;
+  border-color: var(--premium-line);
+  background: rgba(250, 247, 240, 0.98);
+}
+
+.premium-header__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background: rgba(26, 21, 16, 0.28);
+  backdrop-filter: blur(2px);
+}
+
+.premium-header__spacer {
+  width: 100%;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
 .premium-header__inner {
   position: relative;
   display: flex;
@@ -1413,6 +1443,9 @@ select.luxe-field {
   left: 1rem;
   right: 1rem;
   top: calc(100% - 0.35rem);
+  max-height: min(70dvh, calc(100dvh - 5.5rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 1rem;
   border: 1px solid var(--premium-line);
   border-radius: 1rem;
@@ -1420,6 +1453,7 @@ select.luxe-field {
   box-shadow: 0 22px 48px rgba(26, 21, 16, 0.12);
   backdrop-filter: blur(16px);
   z-index: 12;
+  -webkit-overflow-scrolling: touch;
 }
 
 .premium-header__link {
