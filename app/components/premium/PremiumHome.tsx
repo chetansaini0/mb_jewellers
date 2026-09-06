@@ -187,6 +187,10 @@ function HeroSection() {
         </div>
       </div>
 
+      <div className="premium-hero__widget site-max site-px">
+        <PremiumQuickEnquiryWidget />
+      </div>
+
       <div className="premium-hero__scroll-hint" aria-hidden>
         <ChevronDown />
       </div>
@@ -239,9 +243,6 @@ export function PremiumHome() {
   return (
     <div ref={revealRef}>
       <HeroSection />
-      <section className="premium-section site-max site-px" id="quick-enquiry">
-        <PremiumQuickEnquiryWidget />
-      </section>
       <PremiumStorySection />
       <CollectionsSection />
       <PremiumFeaturedPiecesSection />

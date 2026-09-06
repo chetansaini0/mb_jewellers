@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --color-white: #0f0d0a;
-  --color-diamond-white: #faf7f0;
-  --color-cream: #1a1510;
-  --color-cream-muted: #a89f92;
-  --color-rose: #f5efe3;
+  --color-white: #faf7f0;
+  --color-diamond-white: #ffffff;
+  --color-cream: #f3ead7;
+  --color-cream-muted: #8a7f72;
+  --color-rose: #1a1510;
   --color-rose-dark: #0f0d0a;
-  --color-rose-soft: #1f1a14;
-  --color-ink: #f5efe3;
-  --color-ink-muted: #a89f92;
-  --color-border: rgba(200, 162, 77, 0.22);
+  --color-rose-soft: #f7f0e3;
+  --color-ink: #1a1510;
+  --color-ink-muted: #6f655b;
+  --color-border: #e7dcc7;
   --color-accent-gold: #c8a24d;
   --color-accent-gold-deep: #9c7a32;
   --color-accent-emerald: #2d8e74;
   --color-royal-gold: #c8a24d;
-  --color-soft-silver: #cfc8bc;
-  --color-champagne: #1f1a14;
+  --color-soft-silver: #e8e2d8;
+  --color-champagne: #f5efe3;
   --color-emerald-accent: #2d8e74;
   --background: var(--color-white);
   --foreground: var(--color-ink);
@@ -1188,25 +1188,25 @@ select.luxe-field {
 }
 
 .premium-theme {
-  --premium-bg: #0f0d0a;
-  --premium-surface: #1a1510;
-  --premium-ink: #f5efe3;
-  --premium-black: #080705;
+  --premium-bg: #faf7f0;
+  --premium-surface: #fffdf8;
+  --premium-ink: #1a1510;
+  --premium-black: #0f0d0a;
   --premium-gold: #c8a24d;
   --premium-gold-soft: #e8c56d;
-  --premium-champagne: #1f1a14;
-  --premium-muted: #a89f92;
-  --premium-line: rgba(200, 162, 77, 0.22);
-  --premium-glass: rgba(26, 21, 16, 0.78);
-  --premium-radius-sm: 0.35rem;
-  --premium-radius-md: 0.5rem;
-  --premium-radius-lg: 0.75rem;
+  --premium-champagne: #f5efe3;
+  --premium-muted: #6f655b;
+  --premium-line: rgba(200, 162, 77, 0.28);
+  --premium-glass: rgba(255, 255, 255, 0.84);
+  --premium-radius-sm: 0.9rem;
+  --premium-radius-md: 1.15rem;
+  --premium-radius-lg: 1.35rem;
 }
 
 .premium-body {
   background:
-    radial-gradient(circle at 18% 0%, rgba(200, 162, 77, 0.08), transparent 32%),
-    radial-gradient(circle at 90% 8%, rgba(245, 239, 227, 0.04), transparent 28%), var(--premium-bg);
+    radial-gradient(circle at 12% 0%, rgba(200, 162, 77, 0.12), transparent 28%),
+    radial-gradient(circle at 88% 12%, rgba(26, 21, 16, 0.04), transparent 24%), var(--premium-bg);
   color: var(--premium-ink);
 }
 
