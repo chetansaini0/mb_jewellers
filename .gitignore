@@ -47,6 +47,7 @@ next-env.d.ts
 # raw source media (kept locally, not in version control)
 /mbpics/
 /instareel/
+/public/pics/_preview/
 # deployed reel videos live in public/instareel/ — keep that folder tracked
 !public/instareel/
 *.MOV

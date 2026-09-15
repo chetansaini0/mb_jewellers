@@ -33,13 +33,6 @@ const nextConfig: NextConfig = {
   },
   images: {
     unoptimized: process.env.NODE_ENV !== "production",
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/**",
-      },
-    ],
   },
   async headers() {
     if (process.env.NODE_ENV !== "production") {
@@ -61,7 +54,7 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://images.unsplash.com https://maps.googleapis.com https://maps.gstatic.com https://www.google.com https://www.googletagmanager.com; font-src 'self' data:; connect-src 'self' https: wss: https://www.google-analytics.com https://region1.google-analytics.com; frame-src https://www.google.com https://maps.google.com;",
+              "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://maps.googleapis.com https://maps.gstatic.com https://www.google.com https://www.googletagmanager.com; font-src 'self' data:; connect-src 'self' https: wss: https://www.google-analytics.com https://region1.google-analytics.com; frame-src https://www.google.com https://maps.google.com;",
           },
         ],
       },

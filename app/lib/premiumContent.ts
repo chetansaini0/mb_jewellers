@@ -162,13 +162,13 @@ export const premiumCollage = [
     className: "col-span-6 row-span-2 md:col-span-4",
   },
   {
-    src: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=900&q=80",
-    alt: "Gold necklace styling",
+    src: "/pics/studio/gold-kundan-choker-set.jpg",
+    alt: "Gold choker set at MB Jewellers, Sikar",
     className: "col-span-6 md:col-span-4",
   },
   {
-    src: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80",
-    alt: "Gold bangles detail",
+    src: "/pics/studio/gold-coin-ranihaar.jpg",
+    alt: "Gold coin haar at MB Jewellers, Sikar",
     className: "col-span-6 md:col-span-4",
   },
   {
@@ -177,8 +177,8 @@ export const premiumCollage = [
     className: "col-span-6 md:col-span-8",
   },
   {
-    src: "https://images.unsplash.com/photo-1611107683227-e9060eccd846?w=900&q=80",
-    alt: "Diamond pendant",
+    src: "/pics/studio/diamond-sapphire-choker-set.jpg",
+    alt: "Diamond and sapphire set at MB Jewellers, Sikar",
     className: "col-span-6 md:col-span-4",
   },
 ];

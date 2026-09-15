@@ -298,7 +298,7 @@ export const blogPosts = [
     title: "Reading gold finish like a jeweller",
     excerpt:
       "Warm polish, satin glow, and filigree shadow — the details that change how gold feels on skin and photographs in daylight.",
-    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1200&q=80",
+    image: "/pics/studio/gold-temple-choker-set.jpg",
     date: "March 2026",
     datePublished: "2026-03-12",
     category: "Gold",
@@ -318,7 +318,7 @@ export const blogPosts = [
     title: "Why diamond fire matters beyond the showcase",
     excerpt:
       "Selecting diamond jewellery for movement, daylight, and the emotional rhythm of real celebrations — not only showcase brilliance.",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1200&q=80",
+    image: "/pics/studio/diamond-floral-necklace-set.jpg",
     date: "February 2026",
     datePublished: "2026-02-18",
     category: "Diamond",
