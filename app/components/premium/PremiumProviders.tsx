@@ -1,11 +1,15 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function PremiumProviders({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -17,6 +21,7 @@ export function PremiumProviders({ children }: { children: ReactNode }) {
       touchMultiplier: 1.35,
       allowNestedScroll: true,
     });
+    lenisRef.current = lenis;
 
     const root = document.documentElement;
 
@@ -58,8 +63,16 @@ export function PremiumProviders({ children }: { children: ReactNode }) {
       gsap.ticker.remove(onTicker);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    lenisRef.current?.scrollTo(0, { immediate: true });
+    const refreshId = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+    return () => window.cancelAnimationFrame(refreshId);
+  }, [pathname]);
 
   return children;
 }

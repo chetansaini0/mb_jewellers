@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, type RefObject } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -9,8 +10,18 @@ export function prefersReducedMotion() {
 }
 
 export function usePremiumReveal(scopeRef: RefObject<HTMLElement | null>, selector = "[data-reveal]") {
+  const pathname = usePathname();
+
   useEffect(() => {
-    if (!scopeRef.current || prefersReducedMotion()) return;
+    const root = scopeRef.current;
+    if (!root) return;
+
+    if (prefersReducedMotion()) {
+      root.querySelectorAll<HTMLElement>(selector).forEach((element) => {
+        gsap.set(element, { clearProps: "all" });
+      });
+      return;
+    }
 
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
@@ -25,18 +36,25 @@ export function usePremiumReveal(scopeRef: RefObject<HTMLElement | null>, select
             duration: 0.95,
             delay: (index % 4) * 0.04,
             ease: "power3.out",
+            immediateRender: false,
             scrollTrigger: {
               trigger: element,
-              start: "top 88%",
-              toggleActions: "play none none reverse",
+              start: "top 92%",
+              once: true,
+              toggleActions: "play none none none",
             },
           },
         );
       });
-    }, scopeRef);
+    }, root);
 
-    return () => ctx.revert();
-  }, [scopeRef, selector]);
+    const refreshId = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+
+    return () => {
+      window.cancelAnimationFrame(refreshId);
+      ctx.revert();
+    };
+  }, [scopeRef, selector, pathname]);
 }
 
 export function usePremiumCounter(

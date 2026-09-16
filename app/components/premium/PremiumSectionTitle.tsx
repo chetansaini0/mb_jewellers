@@ -30,7 +30,7 @@ export function PremiumSectionTitle({
     <motion.div
       initial={reduce ? undefined : { opacity: 0, y: 20 }}
       whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={`premium-section-title ${centered ? "is-centered" : ""} ${dark ? "is-dark" : ""} ${className}`}
     >
