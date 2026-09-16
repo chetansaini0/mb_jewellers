@@ -50,7 +50,7 @@ export const websiteSchema = {
     "@type": "Organization",
     name: siteConfig.legalName,
     url: siteUrl,
-    logo: `${siteUrl}/mb-jewellers-logo-white.png`,
+    logo: `${siteUrl}/mb-jewellers-logo.png`,
   },
 } as const;
 
@@ -69,7 +69,7 @@ export const organizationSchema = {
   name: siteConfig.legalName,
   alternateName: [siteConfig.name, "MB Jewellers Sikar", "MB Jewellers Shekhawati"],
   url: siteUrl,
-  logo: `${siteUrl}/mb-jewellers-logo-white.png`,
+  logo: `${siteUrl}/mb-jewellers-logo.png`,
   description: siteConfig.description,
   email: siteConfig.contact.email,
   telephone: siteConfig.contact.phoneE164,
@@ -106,7 +106,7 @@ export const jewelryStoreSchema = {
     description: siteConfig.description,
     slogan: siteConfig.tagline,
     url: siteUrl,
-    image: [`${siteUrl}/mb-jewellers-logo-white.png`, `${siteUrl}/icons/icon-512.png`],
+    image: [`${siteUrl}/mb-jewellers-logo.png`, `${siteUrl}/icons/icon-512.png`],
     telephone: showroom.landlines.map((line) => line.e164).join(", "),
     email: siteConfig.contact.email,
     address: {
