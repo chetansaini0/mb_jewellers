@@ -56,7 +56,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
       name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
-        url: createCanonicalUrl("/mb-jewellers-logo.png"),
+        url: createCanonicalUrl("/mb-jewellers-logo-white.png"),
       },
     },
     mainEntityOfPage: {

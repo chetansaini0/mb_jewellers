@@ -88,13 +88,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icons/icon-32.png?v=whitelogo2", type: "image/png", sizes: "32x32" },
-      { url: "/icons/icon-192.png?v=whitelogo2", type: "image/png", sizes: "192x192" },
-      { url: "/icons/icon-512.png?v=whitelogo2", type: "image/png", sizes: "512x512" },
-      { url: "/favicon.ico?v=whitelogo2", sizes: "any" },
+      { url: "/icons/icon-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/icons/icon-96.png", type: "image/png", sizes: "96x96" },
+      { url: "/icons/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icons/icon-512.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
-    apple: [{ url: "/icons/apple-touch-icon.png?v=whitelogo2", sizes: "180x180", type: "image/png" }],
-    shortcut: "/favicon.ico?v=whitelogo2",
+    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/icons/icon-48.png",
   },
   manifest: "/manifest.webmanifest",
   robots: {
