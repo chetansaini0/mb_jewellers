@@ -118,8 +118,8 @@ export const homeSlideshow: ProductItem[] = [
   },
   {
     name: "Luna Cluster Pendant",
-    image: "/pics/studio/diamond-tennis-necklace.jpg",
-    alt: "Diamond necklace at MB Jewellers, Sikar",
+    image: "/pics/signature-worlds/diamond-cinematic-lighting.png",
+    alt: "Diamond necklace and earrings at MB Jewellers, Sikar",
     detail: "Diamond",
   },
   {
@@ -177,7 +177,7 @@ export const featuredPieces: ProductItem[] = [
   },
   {
     name: "Luna Cluster Pendant",
-    image: "/pics/studio/diamond-drop-necklace-set.jpg",
+    image: "/pics/signature-worlds/diamond-cinematic-lighting.png",
     alt: "Diamond necklace and earrings at MB Jewellers, Sikar",
     detail: "Light-catching cluster pendant with contemporary minimal chain.",
     material: "Diamond",

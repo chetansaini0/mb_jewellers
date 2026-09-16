@@ -40,8 +40,8 @@ export const diamondCollectionPage: CollectionPageConfig = {
       id: "necklaces",
       title: "Necklaces",
       description: "Pendants and collar styles from minimal halos to statement drops.",
-      coverImage: "/pics/studio/diamond-drop-necklace-set.jpg",
-      coverAlt: "Diamond drop necklace set at MB Jewellers, Sikar",
+      coverImage: "/pics/signature-worlds/diamond-cinematic-lighting.png",
+      coverAlt: "Diamond necklace at MB Jewellers, Sikar",
     },
     {
       id: "rings",

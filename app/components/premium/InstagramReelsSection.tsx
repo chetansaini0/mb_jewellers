@@ -6,13 +6,11 @@ import { useClientMounted } from "@/app/hooks/useClientMounted";
 import { socialLinks } from "@/app/lib/siteData";
 
 const instagramReels = [
-  { src: "/instareel/reel-showroom-01.mp4", title: "MB Reel — diamond set" },
-  { src: "/instareel/reel-showroom-02.mp4", title: "MB Reel — showroom" },
-  { src: "/instareel/reel-showroom-03.mp4", title: "MB Reel — gold craft" },
-  { src: "/instareel/reel-showroom-04.mp4", title: "MB Reel — atelier" },
-  { src: "/instareel/reel-showroom-05.mp4", title: "MB Reel — finishing" },
   { src: "/instareel/Video-11326.mp4", title: "MB Reel — new arrival" },
   { src: "/instareel/Video-25908.mp4", title: "MB Reel — atelier moment" },
+  { src: "/instareel/Video-750.mp4", title: "MB Reel 750" },
+  { src: "/instareel/Video-281.mp4", title: "MB Reel 281" },
+  { src: "/instareel/Video-408.mp4", title: "MB Reel 408" },
 ] as const;
 
 const InstagramReelCard = memo(function InstagramReelCard({
