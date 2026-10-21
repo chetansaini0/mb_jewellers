@@ -30,7 +30,8 @@ Ramlila Place ID: confirm in GBP, then we will add it to the website.
 - [ ] Business name: **MB Jewellers** (match Maps/signage; avoid keyword stuffing in the name)
 - [ ] Address exactly as above
 - [ ] Phone: **01572 491103**
-- [ ] Website: `https://www.mbjewellers.in/contact`
+- [ ] Website: canonical homepage with UTM — `https://mbjewellers.in/?utm_source=google&utm_medium=organic&utm_campaign=gbp`
+- [ ] Appointment action: `https://mbjewellers.in/contact?mode=APPOINTMENT&utm_source=google&utm_medium=organic&utm_campaign=gbp_appointment`
 - [ ] Hours: Mon–Sat 10:00–19:00, Sunday Closed (or “By appointment”)
 
 ### Ramlila Maidan showroom
@@ -53,10 +54,10 @@ Ramlila Place ID: confirm in GBP, then we will add it to the website.
 - [ ] Attributes: women-owned / family-owned only if true; wheelchair access only if accurate
 - [ ] Products (optional): 4–8 highlight pieces with “View in store / by appointment”
 
-### Paste-ready GBP description (≈740 chars)
+### Paste-ready GBP description
 
 ```
-MB Jewellers is a trusted jewellery showroom in Sikar, Rajasthan, serving families across the Shekhawati region. Visit our Ghantaghar and Ramlila Maidan showrooms for gold, diamond, silver, and bridal jewellery — including private viewings and custom atelier conversations. Gold is hallmarked and diamonds are certified. This website is a showcase; purchases are completed in person after consultation. Open Mon–Sat, 10:00 AM – 7:00 PM. Book a private viewing at mbjewellers.in/contact.
+MB Jewellers is a jewellery showroom in Sikar, Rajasthan, offering gold, diamond and silver jewellery selected for in-person viewing. Explore bridal jewellery, wedding collections, rings, earrings, necklaces, bangles, daily-wear designs, custom atelier work and new arrivals. Visit our Ghantaghar or Ramlila Maidan showroom for personal assistance with weddings, celebrations, gifting and everyday wear. Gold is hallmarked and diamonds are certified. Purchases are completed in the showroom, not online. Open Mon–Sat, 10:00 AM – 7:00 PM.
 ```
 
 ---

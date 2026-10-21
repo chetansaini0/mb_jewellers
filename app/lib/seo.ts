@@ -41,16 +41,14 @@ export function createPageMetadata(input: {
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
   name: siteConfig.name,
   alternateName: siteConfig.legalName,
   url: siteUrl,
   description: siteConfig.description,
   inLanguage: "en-IN",
   publisher: {
-    "@type": "Organization",
-    name: siteConfig.legalName,
-    url: siteUrl,
-    logo: `${siteUrl}/mb-jewellers-logo.png`,
+    "@id": `${siteUrl}/#organization`,
   },
 } as const;
 
@@ -66,10 +64,12 @@ const openingHoursSpecification = [
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
   name: siteConfig.legalName,
   alternateName: [siteConfig.name, "MB Jewellers Sikar", "MB Jewellers Shekhawati"],
   url: siteUrl,
   logo: `${siteUrl}/mb-jewellers-logo.png`,
+  image: `${siteUrl}/mb-jewellers-logo.png`,
   description: siteConfig.description,
   email: siteConfig.contact.email,
   telephone: siteConfig.contact.phoneE164,
@@ -98,16 +98,18 @@ export const organizationSchema = {
 export const jewelryStoreSchema = {
   "@context": "https://schema.org",
   "@graph": siteConfig.showrooms.map((showroom) => ({
-    "@type": "JewelryStore",
+    "@type": ["JewelryStore", "LocalBusiness"],
     "@id": `${siteUrl}/#store-${showroom.id}`,
-    name: `${siteConfig.name} — ${showroom.name}`,
+    name: siteConfig.name,
     legalName: siteConfig.legalName,
-    alternateName: ["MB Jewellers Sikar", "MB Jewellers Shekhawati"],
-    description: siteConfig.description,
+    branchOf: { "@id": `${siteUrl}/#organization` },
+    parentOrganization: { "@id": `${siteUrl}/#organization` },
+    alternateName: [showroom.name, "MB Jewellers Sikar", "MB Jewellers Shekhawati"],
+    description: `${showroom.name} of ${siteConfig.name} in Sikar. ${siteConfig.description}`,
     slogan: siteConfig.tagline,
-    url: siteUrl,
+    url: `${siteUrl}/showrooms#${showroom.id}`,
     image: [`${siteUrl}/mb-jewellers-logo.png`, `${siteUrl}/icons/icon-512.png`],
-    telephone: showroom.landlines.map((line) => line.e164).join(", "),
+    telephone: showroom.landlines[0]?.e164,
     email: siteConfig.contact.email,
     address: {
       "@type": "PostalAddress",
@@ -123,7 +125,16 @@ export const jewelryStoreSchema = {
       longitude: showroom.coordinates.lng,
     },
     hasMap: showroom.googleMapsUrl,
-    sameAs: socialProfiles,
+    ...(showroom.placeId
+      ? {
+          identifier: {
+            "@type": "PropertyValue",
+            propertyID: "GooglePlaceId",
+            value: showroom.placeId,
+          },
+        }
+      : {}),
+    sameAs: [showroom.googleMapsUrl, ...socialProfiles],
     openingHoursSpecification,
     priceRange: "₹₹₹",
     currenciesAccepted: "INR",

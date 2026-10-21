@@ -22,13 +22,13 @@ export function PremiumAboutPage({ variant = "about" }: Props) {
         eyebrow={isHeritage ? "Heritage" : "About MB Jewellers"}
         title={
           isHeritage
-            ? "Three decades of trust, filigree, and family-led craft"
-            : "A legacy shaped in light, trust, and ceremony"
+            ? "Heritage jewellery craft in Sikar"
+            : "About MB Jewellers, a jewellery showroom in Sikar"
         }
         lede={
           isHeritage
-            ? "Explore the milestones, values, and studio rituals that turned a family bench in Sikar into a cinematic atelier experience."
-            : "From a family bench in Sikar to a cinematic atelier experience, MB Jewellers has spent decades translating emotion into gold, diamond, and bridal artistry."
+            ? "Explore the milestones, values and studio rituals behind MB Jewellers — a family jewellery showroom in Sikar known for gold finishing, bridal curation and hallmarked trust."
+            : "MB Jewellers is a family jewellery showroom in Sikar, Rajasthan. We present hallmarked gold, certified diamonds, silver and bridal jewellery in private studio appointments — purchases happen in person."
         }
       />
 

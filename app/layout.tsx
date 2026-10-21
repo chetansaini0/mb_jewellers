@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Cinzel, Playfair_Display, Poppins } from "next/font/google";
 import { PremiumSite } from "@/app/components/premium/PremiumSite";
 import { GoogleAnalytics } from "@/app/components/analytics/GoogleAnalytics";
+import { ConversionTracker } from "@/app/components/analytics/ConversionTracker";
 import { jewelryStoreSchema, organizationSchema, websiteSchema } from "@/app/lib/seo";
 import { siteConfig } from "@/app/lib/siteConfig";
 import "./globals.css";
@@ -43,30 +44,33 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "MB Jewellers | Jewellery Shop in Sikar & Shekhawati, Rajasthan",
+    default: "Best Jewellery Shop in Sikar | Best Jewellers in Sikar – MB Jewellers",
     template: "%s | MB Jewellers",
   },
   metadataBase: new URL(siteConfig.url),
-  description: siteConfig.description,
+  description:
+    "MB Jewellers is a jewellery shop in Sikar with two showrooms — Ghantaghar and Ramlila Maidan. Hallmarked gold, certified diamonds, silver and bridal jewellery. Visit in person.",
   applicationName: "MB Jewellers",
   keywords: [
     "MB Jewellers",
-    "MB Jewellers Sikar",
-    "jewellery shop in Sikar",
-    "jewellery store in Sikar",
-    "jewellers in Sikar",
     "best jewellery shop in Sikar",
-    "best jeweller in Sikar",
-    "gold jewellery Sikar",
-    "diamond jewellery Sikar",
-    "silver jewellery Sikar",
-    "bridal jewellery Sikar",
-    "wedding jewellery Shekhawati",
-    "jewellery showroom Shekhawati",
-    "jewellery shop in Shekhawati",
+    "best jewellers in Sikar",
+    "best jewellery in Sikar",
+    "jewellery shop in Sikar",
+    "diamond jewellery in Sikar",
+    "gold jewellery in Sikar",
+    "silver jewellery in Sikar",
+    "bridal jewellery in Sikar",
+    "wedding jewellery in Sikar",
+    "gold jewellery shop in Sikar",
+    "diamond jewellery shop in Sikar",
+    "silver jewellery shop in Sikar",
+    "latest jewellery designs in Sikar",
+    "jewellery showroom in Sikar",
+    "daily wear jewellery in Sikar",
+    "custom jewellery in Sikar",
     "trusted jeweller in Sikar",
-    "custom jewellery Sikar",
-    "hallmarked gold Sikar",
+    "hallmarked gold jewellery in Sikar",
   ],
   appleWebApp: {
     capable: true,
@@ -74,8 +78,9 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
   openGraph: {
-    title: "MB Jewellers | Jewellery Shop in Sikar & Shekhawati, Rajasthan",
-    description: siteConfig.description,
+    title: "Best Jewellery Shop in Sikar | Best Jewellers in Sikar – MB Jewellers",
+    description:
+      "MB Jewellers is a jewellery shop in Sikar with showrooms at Ghantaghar and Ramlila Maidan. Gold, diamond, silver and bridal jewellery.",
     type: "website",
     locale: "en_IN",
     siteName: siteConfig.name,
@@ -83,8 +88,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MB Jewellers | Jewellery Store in Sikar",
-    description: siteConfig.description,
+    title: "Best Jewellery Shop in Sikar | MB Jewellers",
+    description:
+      "Best jewellers in Sikar — MB Jewellers showrooms at Ghantaghar and Ramlila Maidan. Gold, diamond, silver and bridal jewellery.",
   },
   icons: {
     icon: [
@@ -102,9 +108,14 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }
+      : {}),
+  },
 };
 
 export default function RootLayout({
@@ -131,6 +142,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <GoogleAnalytics />
+        <ConversionTracker />
         <PremiumSite>{children}</PremiumSite>
       </body>
     </html>

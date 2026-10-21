@@ -16,6 +16,8 @@ type PremiumCategoryCollectionPageProps = {
   description: string;
   items: CategoryShowcaseItem[];
   collectionPath: string;
+  intro?: readonly string[];
+  related?: readonly { href: string; label: string }[];
 };
 
 export function PremiumCategoryCollectionPage({
@@ -24,6 +26,8 @@ export function PremiumCategoryCollectionPage({
   description,
   items,
   collectionPath,
+  intro,
+  related,
 }: PremiumCategoryCollectionPageProps) {
   return (
     <PremiumPageFrame>
@@ -35,6 +39,27 @@ export function PremiumCategoryCollectionPage({
         ]}
       />
       <PremiumPageHero eyebrow={eyebrow} title={title} lede={description} />
+
+      {intro?.length ? (
+        <PremiumPageSection eyebrow="In Sikar" title={`Jewellery shopping for ${eyebrow.toLowerCase()}`} warm>
+          <div className="premium-glass-card mx-auto max-w-3xl space-y-5 p-6 md:p-8" data-reveal>
+            {intro.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)} className="text-base leading-relaxed text-[var(--premium-muted)]">
+                {paragraph}
+              </p>
+            ))}
+            {related?.length ? (
+              <div className="flex flex-wrap gap-3 pt-2">
+                {related.map((link) => (
+                  <Link key={link.href} href={link.href} className="premium-button premium-button--ghost">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </PremiumPageSection>
+      ) : null}
 
       <PremiumPageSection
         eyebrow={`${eyebrow} sections`}

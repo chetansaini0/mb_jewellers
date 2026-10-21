@@ -16,9 +16,9 @@ export function PremiumServicesPage() {
   return (
     <PremiumPageFrame>
       <PremiumPageHero
-        eyebrow="Atelier services"
-        title="Custom jewellery, composed like a ceremony"
-        lede="From the first sketch to the final polish, each bespoke piece moves through a quiet, appointment-only process designed around your story."
+        eyebrow="Custom jewellery in Sikar"
+        title="Custom jewellery in Sikar"
+        lede="From the first sketch to the final polish, bespoke gold, diamond and bridal pieces move through a quiet, appointment-only atelier process at MB Jewellers."
       />
 
       <PremiumPageSection

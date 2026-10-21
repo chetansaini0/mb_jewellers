@@ -32,6 +32,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["framer-motion", "lucide-react", "gsap"],
   },
   images: {
+    formats: ["image/avif", "image/webp"],
     unoptimized: process.env.NODE_ENV !== "production",
   },
   async headers() {

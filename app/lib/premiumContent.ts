@@ -1,10 +1,10 @@
 import { categoryShowcase, featuredPieces } from "@/app/lib/siteData";
 
 export const premiumHero = {
-  kicker: "MB Jewellers · Sikar",
-  title: ["Where light", "becomes legacy"],
+  kicker: "MB Jewellers · Ghantaghar & Ramlila Maidan",
+  title: ["Best jewellers", "in Sikar"],
   subtitle:
-    "A trusted jewellery showroom in Sikar for gold, diamond, silver, and bridal artistry — serving families across Shekhawati, Rajasthan.",
+    "MB Jewellers is a jewellery shop in Sikar for hallmarked gold, certified diamonds, silver and bridal suites — two showrooms, Ghantaghar and Ramlila Maidan.",
   primaryCta: { label: "Explore collections", href: "/collections" },
   secondaryCta: { label: "Visit our store", href: "/contact" },
   video: "/instareel/Video-281.mp4",

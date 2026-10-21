@@ -11,16 +11,24 @@ import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
 import { PremiumPageSection } from "@/app/components/premium/PremiumPageSection";
 import { PremiumShowroomsMap } from "@/app/components/premium/PremiumShowroomsMap";
 import { appointmentTimeSlots, appointmentTypes } from "@/app/lib/appointments";
+import { trackConversion } from "@/app/lib/analytics";
 import { formatShowroomPhones, siteConfig } from "@/app/lib/siteConfig";
 import { showrooms, socialLinks } from "@/app/lib/siteData";
+import { PremiumBreadcrumbs } from "@/app/components/premium/PremiumBreadcrumbs";
 
 export function PremiumContactPage() {
   return (
     <PremiumPageFrame>
+      <PremiumBreadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]}
+      />
       <PremiumPageHero
-        eyebrow="Contact"
-        title="A private appointment begins with a conversation"
-        lede="This site is for discovery only — tell us what caught your eye and we will arrange a private studio viewing. Purchases are completed in person, not online."
+        eyebrow="Jewellery store in Sikar"
+        title="Visit our jewellery showroom in Sikar"
+        lede="Call, WhatsApp or book a private viewing at MB Jewellers — Ghantaghar and Ramlila Maidan showrooms. This site is for discovery only; purchases are completed in person."
       />
       <PremiumPageSection
         eyebrow="Get in Touch"
@@ -167,6 +175,9 @@ function ContactForm() {
       }
 
       setStatus("success");
+      trackConversion(mode === "APPOINTMENT" ? "appointment_submit" : "contact_form_submit", {
+        jewellery_category: form.category,
+      });
       setForm((prev) => ({
         ...prev,
         message: "",

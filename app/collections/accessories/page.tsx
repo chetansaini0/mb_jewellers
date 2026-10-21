@@ -2,7 +2,7 @@
 import { PremiumCategoryCollectionPage } from "@/app/components/premium/pages/PremiumCategoryCollectionPage";
 import { accessoriesCollectionPage, collectionSectionsToCards } from "@/app/lib/collectionPages";
 import { createPageMetadata } from "@/app/lib/seo";
-import { pageSeo } from "@/app/lib/seoContent";
+import { pageIntros, pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
   title: pageSeo.accessories.title,
@@ -18,6 +18,7 @@ export default function AccessoriesPage() {
       description={accessoriesCollectionPage.description}
       items={collectionSectionsToCards("accessories", accessoriesCollectionPage)}
       collectionPath="/collections/accessories"
+      intro={pageIntros.accessories}
     />
   );
 }

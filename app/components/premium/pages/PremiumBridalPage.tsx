@@ -7,6 +7,7 @@ import { PremiumInfoCard } from "@/app/components/premium/PremiumInfoCard";
 import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
+import { PremiumBreadcrumbs } from "@/app/components/premium/PremiumBreadcrumbs";
 import { PremiumPageSection } from "@/app/components/premium/PremiumPageSection";
 import { PremiumShowcaseCard } from "@/app/components/premium/PremiumShowcaseCard";
 import { PremiumTestimonialsCarousel } from "@/app/components/premium/PremiumTestimonialsCarousel";
@@ -22,10 +23,16 @@ import {
 export function PremiumBridalPage() {
   return (
     <PremiumPageFrame>
+      <PremiumBreadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Bridal jewellery", path: "/bridal" },
+        ]}
+      />
       <PremiumPageHero
-        eyebrow="Bridal studio"
-        title="Bespoke bridal suites shaped for ceremony, light, and legacy"
-        lede="Collaborate with our consultants to build complete bridal sets for engagement, wedding, reception, and gifting ceremonies — curated in private salon appointments at our Sikar studio."
+        eyebrow="Bridal jewellery in Sikar"
+        title="Bridal jewellery in Sikar"
+        lede="Private salon appointments for engagement, wedding-day and reception suites — gold and diamond bridal jewellery chosen for ceremony, light and comfort at MB Jewellers."
       />
 
       <section className="premium-section premium-story-section site-max site-px">

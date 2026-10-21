@@ -1,103 +1,178 @@
 /**
  * Central page-level SEO copy for MB Jewellers.
- * Titles are absolute (include brand). Keep descriptions factual — no unverifiable claims.
+ * Titles are absolute (include brand). Keep descriptions factual — no unverifiable ranking claims.
  */
+
+/** Questions people type when looking for a jeweller in Sikar. Answers stay factual — no invented rankings. */
+export const sikarSearchFaqs = [
+  {
+    question: "Who are the best jewellers in Sikar?",
+    answer:
+      "People looking for the best jewellers in Sikar usually compare hallmarking, diamond certificates, showroom care, and whether they can try pieces before buying. MB Jewellers is a jewellery showroom in Sikar with two Google Business Profiles — Ghantaghar at Purana Dujod Gate, and Ramlila Maidan on Mahamandir Road. Both showrooms present gold, diamond, silver, and bridal jewellery in person. This website is a showcase; purchases are completed at the showroom.",
+  },
+  {
+    question: "Which is the best jewellery shop in Sikar?",
+    answer:
+      "The best jewellery shop in Sikar for your family is the one that shows hallmark notes, explains diamond certificates, and lets you compare weight and finish before you decide. MB Jewellers keeps two showrooms in Sikar city — Ghantaghar and Ramlila Maidan — so you can do that in person. Call either showroom or book a viewing, then shortlist gold, diamond, silver, or a bridal suite under studio light.",
+  },
+] as const;
 
 export const pageSeo = {
   home: {
-    title: "MB Jewellers | Jewellery Shop in Sikar & Shekhawati, Rajasthan",
+    title: "Best Jewellery Shop in Sikar | Best Jewellers in Sikar – MB Jewellers",
     description:
-      "Looking for a trusted jewellery store in Sikar? MB Jewellers offers gold, diamond, silver, and bridal jewellery at two Sikar showrooms — serving families across the Shekhawati region. Book a private in-person viewing.",
+      "MB Jewellers is a jewellery shop in Sikar with two showrooms — Ghantaghar and Ramlila Maidan. Hallmarked gold, certified diamonds, silver and bridal jewellery. Visit in person.",
   },
   collections: {
     title: "Jewellery Collections in Sikar | MB Jewellers",
     description:
-      "Explore gold, diamond, silver, and accessory collections at MB Jewellers, Sikar. Browse online, then visit our showrooms for private selection.",
+      "Browse gold, diamond, silver and accessory collections at MB Jewellers in Sikar. Shortlist online, then visit our jewellery showroom for private selection.",
   },
   gold: {
-    title: "Gold Jewellery in Sikar | MB Jewellers",
+    title: "Gold Jewellery Shop in Sikar | MB Jewellers",
     description:
-      "Traditional and contemporary gold jewellery in Sikar — bridal sets, Ranihaar, Rajputi profiles, bangles, chains, and rings at MB Jewellers showrooms.",
+      "Shop gold jewellery in Sikar at MB Jewellers — hallmarked gold sets, bangles, rings, Ranihaar and chains. View online, then visit our Sikar showrooms.",
   },
   silver: {
-    title: "Silver Jewellery in Sikar | MB Jewellers",
+    title: "Silver Jewellery Shop in Sikar | MB Jewellers",
     description:
-      "Refined silver jewellery and artefacts at MB Jewellers in Sikar. View collections online and shortlist pieces for a private studio appointment.",
+      "Explore silver jewellery and silver ornaments in Sikar at MB Jewellers. Polished sets, earrings and daily-wear silver pieces for private studio viewing.",
   },
   diamond: {
-    title: "Diamond Jewellery in Sikar | MB Jewellers",
+    title: "Diamond Jewellery Shop in Sikar | MB Jewellers",
     description:
-      "Diamond sets, rings, necklaces, earrings, and bracelets at MB Jewellers, Sikar. Certified stones presented in private salon lighting.",
+      "See diamond jewellery in Sikar at MB Jewellers — certified diamond sets, diamond rings, earrings and necklaces presented in a private showroom viewing.",
   },
   accessories: {
-    title: "Silver Accessories & Artefacts | MB Jewellers, Sikar",
+    title: "Silver Accessories & Gifts in Sikar | MB Jewellers",
     description:
-      "Polished silver accessories and gift-ready artefacts from MB Jewellers in Sikar — explore the selection and discuss finishing in studio.",
+      "Browse silver accessories, statues and serveware at MB Jewellers in Sikar. Gift-ready artefacts for home, hosting and celebration — view in studio.",
   },
   bridal: {
-    title: "Bridal & Wedding Jewellery in Sikar | MB Jewellers",
+    title: "Bridal Jewellery in Sikar | MB Jewellers",
     description:
-      "Bridal and wedding jewellery consultations in Sikar — curated suites for engagement, wedding day, and reception at MB Jewellers.",
+      "Plan bridal jewellery in Sikar at MB Jewellers. Private consultations for engagement, wedding-day and reception suites in our Sikar jewellery showrooms.",
+  },
+  wedding: {
+    title: "Wedding Jewellery in Sikar | MB Jewellers",
+    description:
+      "Find wedding jewellery in Sikar at MB Jewellers — gold, diamond and silver pieces for ceremonies, family gifting and reception styling. Book a showroom visit.",
+  },
+  rings: {
+    title: "Gold & Diamond Rings in Sikar | MB Jewellers",
+    description:
+      "Explore gold rings and diamond rings in Sikar at MB Jewellers. Daily-wear bands, engagement rings and statement rings for a private showroom viewing.",
+  },
+  earrings: {
+    title: "Gold, Diamond & Silver Earrings in Sikar | MB Jewellers",
+    description:
+      "Browse earrings in Sikar at MB Jewellers — jhumkas, drops, studs and hoops in gold, diamond and silver. Shortlist online, then visit our jewellery shop.",
+  },
+  necklaces: {
+    title: "Necklaces in Sikar | Gold, Diamond & Silver – MB Jewellers",
+    description:
+      "See necklaces in Sikar at MB Jewellers, from gold chokars and Ranihaar to diamond pendants and silver collars. Visit our jewellery showroom to try them on.",
+  },
+  bangles: {
+    title: "Gold & Silver Bangles in Sikar | MB Jewellers",
+    description:
+      "Discover gold and silver bangles in Sikar at MB Jewellers. Bridal stacks, kada profiles and daily-wear rounds for a calm, in-person showroom selection.",
+  },
+  dailyWear: {
+    title: "Daily Wear Jewellery in Sikar | MB Jewellers",
+    description:
+      "Find daily wear jewellery in Sikar at MB Jewellers — lighter gold, diamond and silver pieces for work, gifting and everyday styling. Visit our Sikar showrooms.",
+  },
+  newArrivals: {
+    title: "Latest Jewellery Designs in Sikar | MB Jewellers",
+    description:
+      "See the latest jewellery designs in Sikar at MB Jewellers. New gold, diamond and silver arrivals for weddings, gifting and daily wear — view in our showroom.",
   },
   about: {
     title: "About MB Jewellers | Jewellery Showroom in Sikar",
     description:
-      "Learn about MB Jewellers — a family jewellery business rooted in Sikar, Rajasthan, known for craftsmanship, hallmark purity, and private studio care.",
+      "Meet MB Jewellers, a family jewellery showroom in Sikar, Rajasthan. Hallmarked gold, certified diamonds and private studio care for Shekhawati families.",
   },
   heritage: {
-    title: "Heritage & Craftsmanship | MB Jewellers, Sikar",
+    title: "Heritage Jewellery Craft in Sikar | MB Jewellers",
     description:
-      "Discover the heritage craft and atelier traditions behind MB Jewellers in Sikar — gold finishing, bridal curation, and lasting trust.",
+      "Discover the heritage behind MB Jewellers in Sikar — gold finishing, bridal curation and family-led craftsmanship for jewellery shopping in Sikar, Rajasthan.",
   },
   gallery: {
-    title: "Jewellery Gallery | MB Jewellers, Sikar",
+    title: "Jewellery Gallery in Sikar | MB Jewellers",
     description:
-      "Browse jewellery photography from MB Jewellers in Sikar — gold, diamond, silver, and bridal silhouettes from our showrooms.",
+      "Browse jewellery photography from MB Jewellers in Sikar — gold, diamond, silver and bridal silhouettes from our Ghantaghar and Ramlila Maidan showrooms.",
   },
   services: {
-    title: "Custom Jewellery Atelier in Sikar | MB Jewellers",
+    title: "Custom Jewellery in Sikar | MB Jewellers Atelier",
     description:
-      "Custom and bespoke jewellery services in Sikar — private discovery, design translation, and atelier finishing at MB Jewellers.",
+      "Commission custom jewellery in Sikar at MB Jewellers. Private design consultations, heirloom resets and atelier finishing — purchases completed in person.",
   },
   faq: {
-    title: "FAQ | Jewellery Shop in Sikar — MB Jewellers",
+    title: "Jewellery Shop FAQ in Sikar | MB Jewellers",
     description:
-      "Answers about choosing a jewellery store in Sikar and Shekhawati — MB Jewellers locations, hours, bridal appointments, hallmark purity, and in-person purchase.",
+      "Answers about MB Jewellers, a jewellery shop in Sikar — showroom locations, hours, bridal appointments, hallmarked gold and in-person jewellery shopping.",
   },
   testimonials: {
     title: "Customer Experiences | MB Jewellers, Sikar",
     description:
-      "Read customer experiences from MB Jewellers in Sikar. Genuine reflections from bridal and family jewellery visits — no fabricated reviews.",
+      "Read customer experiences from MB Jewellers in Sikar. Genuine notes from bridal and family jewellery visits — no fabricated reviews or ratings.",
   },
   blog: {
-    title: "Jewellery Journal | Guides from MB Jewellers, Sikar",
+    title: "Jewellery Buying Guides | MB Jewellers Journal, Sikar",
     description:
-      "Practical jewellery buying guides from MB Jewellers in Sikar — bridal suites, gold finishes, diamonds, and care advice for Shekhawati families.",
+      "Practical jewellery guides from MB Jewellers in Sikar — bridal selection, gold and diamond buying, daily-wear trends and care tips for Shekhawati families.",
   },
   contact: {
-    title: "Visit Our Jewellery Store in Sikar | Contact MB Jewellers",
+    title: "Jewellery Store Near Me in Sikar | Contact MB Jewellers",
     description:
-      "Find MB Jewellers showrooms in Sikar — Ghantaghar and Ramlila Maidan. Phone, email, hours, and directions for a private jewellery viewing across Shekhawati.",
+      "Visit MB Jewellers jewellery showrooms in Sikar — Ghantaghar and Ramlila Maidan. Call, WhatsApp, get directions or book a private viewing appointment.",
   },
+  showrooms: {
+    title: "Jewellery Showroom in Sikar | MB Jewellers Locations",
+    description:
+      "Find MB Jewellers jewellery showrooms in Sikar: Ghantaghar (Purana Dujod Gate) and Ramlila Maidan. Hours, phone, maps, WhatsApp and appointment details.",
+  },
+} as const;
+
+export const pageIntros = {
+  gold: [
+    "Families looking for a gold jewellery shop in Sikar often want two things at once: hallmarked purity and pieces that feel right for the occasion. MB Jewellers keeps gold selection unhurried — bridal sets, Ranihaar, Rajputi profiles, bangles, chains and rings are presented in private studio light rather than a rushed counter.",
+    "Use this page to shortlist gold jewellery in Sikar, then visit our Ghantaghar or Ramlila Maidan showroom to compare weight, finish and comfort before you buy. Purchases are completed in person.",
+  ],
+  diamond: [
+    "Diamond jewellery in Sikar is best chosen where you can see fire, setting security and proportion on the body. MB Jewellers presents certified diamond sets, diamond rings, earrings, necklaces and bracelets in a jewellery showroom setting — not as an online checkout catalogue.",
+    "Browse diamond jewellery shop collections here, then book a private viewing so consultants can match sparkle, occasion and budget range in person.",
+  ],
+  silver: [
+    "Silver jewellery in Sikar at MB Jewellers covers polished daily-wear pieces, coordinated sets and silver ornaments for gifting. Sterling profiles are shown for finish and comfort; tarnish care and after-care are part of the studio conversation.",
+    "Explore silver jewellery shop sections below, then visit our Sikar showrooms to feel the pieces before purchase.",
+  ],
+  accessories: [
+    "Beyond wearable jewellery, MB Jewellers keeps silver accessories and artefacts for home, hosting and thoughtful gifts. These pieces are selected in the same Sikar showrooms as our gold, diamond and silver jewellery.",
+  ],
 } as const;
 
 /** Visible local SEO copy — written for customers, not keyword stuffing. */
 export const localSeoContent = {
-  eyebrow: "Sikar · Shekhawati · Rajasthan",
-  title: "A trusted jewellery store for Sikar and the Shekhawati region",
+  eyebrow: "Best jewellers in Sikar",
+  title: "Best jewellery shop in Sikar",
   lead:
-    "MB Jewellers is a jewellery showroom based in Sikar, Rajasthan. Families visit us for gold, diamond, silver, and bridal jewellery — whether they live in Sikar or travel from nearby Shekhawati towns.",
+    "MB Jewellers is the jewellery shop families in Sikar visit for gold, diamond, silver, bridal, wedding and daily-wear jewellery. Two showrooms — Ghantaghar and Ramlila Maidan — each have their own Google Business Profile.",
   paragraphs: [
-    "If you are searching for a jewellery shop in Sikar or a reliable jeweller across Shekhawati, look for hallmarked gold, certified diamonds, clear pricing conversations in person, and unhurried selection. MB Jewellers was built around those standards — not online checkout.",
-    "Our two Sikar showrooms — at Ghantaghar (Purana Dujod Gate) and Ramlila Maidan — welcome private, appointment-friendly viewings. Explore collections on this website, then see weight, finish, and movement in person before you buy.",
-    "Customers regularly visit from Fatehpur, Laxmangarh, Neem Ka Thana, Jhunjhunu, Churu, Khandela, Ringas, Danta Ramgarh, and other towns across Shekhawati. Share your occasion and we will help you shortlist the right gold, diamond, silver, or bridal suite.",
+    "If you searched for the best jewellery shop in Sikar or the best jewellers in Sikar, start with hallmark documentation, certified diamonds, and a showroom that lets you try pieces before you buy. MB Jewellers was built around those standards. This website helps you shortlist; purchases happen in the showroom.",
+    "Ghantaghar (Purana Dujod Gate) and Ramlila Maidan (Mahamandir Road) are both in Sikar, PIN 332001. Open either Google listing for hours, directions and reviews, then book a private viewing.",
+    "Customers also visit from Fatehpur, Laxmangarh, Neem Ka Thana, Jhunjhunu, Churu, Khandela, Ringas, Danta Ramgarh and other towns across Shekhawati. Share your occasion and we will help you shortlist gold rings, diamond rings, silver ornaments or a bridal suite.",
   ],
+  faqs: sikarSearchFaqs,
   links: [
     { href: "/collections/gold", label: "Gold jewellery" },
     { href: "/collections/diamond", label: "Diamond jewellery" },
     { href: "/collections/silver", label: "Silver jewellery" },
-    { href: "/bridal", label: "Bridal & wedding jewellery" },
+    { href: "/bridal", label: "Bridal jewellery" },
+    { href: "/wedding", label: "Wedding jewellery" },
+    { href: "/daily-wear", label: "Daily wear" },
+    { href: "/showrooms", label: "Sikar showrooms" },
     { href: "/faq", label: "Jewellery shop FAQ" },
-    { href: "/contact", label: "Visit our store" },
   ],
 } as const;

@@ -61,13 +61,14 @@ export const showrooms: readonly Showroom[] = [
       { display: "01572 250061", e164: "+911572250061" },
     ],
     coordinates: { lat: 27.603889, lng: 75.136667 },
-    // Public listings reference Plus Code J43P+FW Sikar; Place ID TBD once confirmed in GBP.
+    /** Google Business Profile for MB Jewellers, Ramlila Maidan — separate listing from Ghantaghar. */
+    placeId: "ChIJY-lKJm2lbDkRA6ZmhGYDD7I",
     mapEmbedUrl:
-      "https://www.google.com/maps?q=Ramlila+Maidan,+Mahamandir+Road,+Sikar,+Rajasthan+332001&hl=en&z=16&output=embed",
+      "https://www.google.com/maps?q=place_id:ChIJY-lKJm2lbDkRA6ZmhGYDD7I&hl=en&z=16&output=embed",
     directionsUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=Ramlila+Maidan,+Mahamandir+Road,+Sikar,+Rajasthan+332001",
+      "https://www.google.com/maps/dir/?api=1&destination_place_id=ChIJY-lKJm2lbDkRA6ZmhGYDD7I&destination=MB+Jewellers+Ramlila+Maidan+Sikar",
     googleMapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=MB+Jewellers+Ramlila+Maidan+Sikar+332001",
+      "https://www.google.com/maps/search/?api=1&query=MB+Jewellers&query_place_id=ChIJY-lKJm2lbDkRA6ZmhGYDD7I",
   },
 ] as const;
 
@@ -96,6 +97,19 @@ export const openingHours = {
   display: "Mon–Sat, 10:00 AM – 7:00 PM",
   displayShort: "Mon–Sat: 10:00 – 19:00",
   sundayNote: "Closed on Sundays unless a private appointment is confirmed in advance.",
+} as const;
+
+/** Landmarks are derived from verified showroom addresses. Parking is not verified. */
+export const visitorNotes = {
+  landmarks: {
+    ghantaghar: "Near Ghantaghar (Clock Tower) at Purana Dujod Gate, Sikar.",
+    ramlila: "At Ramlila Maidan on Mahamandir Road, Sikar.",
+  },
+  parking: {
+    status: "unverified" as const,
+    label: "Parking (unverified)",
+    text: "Dedicated customer parking has not been independently verified. Visitors commonly use nearby street access around Ghantaghar (Clock Tower / Purana Dujod Gate) and Ramlila Maidan on Mahamandir Road. Please confirm parking with the showroom before you travel.",
+  },
 } as const;
 
 export const socialProfiles = [

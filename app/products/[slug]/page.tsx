@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!product) return {};
 
   return createPageMetadata({
-    title: `${product.name} | MB Jewellers, Sikar`,
-    description: `${product.detail} Available for private viewing at MB Jewellers jewellery showrooms in Sikar.`,
+    title: `${product.name} | ${product.material ?? "Jewellery"} in Sikar | MB Jewellers`,
+    description: `${product.detail} View this ${product.material?.toLowerCase() ?? "jewellery"} piece at MB Jewellers jewellery showrooms in Sikar. Showcase only — purchase in person.`,
     path: `/products/${slug}`,
     image: product.image,
   });

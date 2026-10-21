@@ -87,7 +87,7 @@ export function PremiumFooter() {
   return (
     <footer className="premium-footer">
       <div className="site-max site-px premium-footer__intro" data-reveal>
-        <Image src="/mb-jewellers-logo.png" alt="" width={896} height={768} className="premium-footer__logo" />
+        <Image src="/mb-jewellers-logo.png" alt="MB Jewellers" width={896} height={768} className="premium-footer__logo" />
         <p className="premium-footer__tagline">
           Trusted jewellery showroom in Sikar, Rajasthan — gold, diamond, silver, and bridal collections for families
           across Shekhawati. Showcase site — visit our studio to purchase.
@@ -101,14 +101,23 @@ export function PremiumFooter() {
             <Link href="/collections/gold">Gold jewellery</Link>
             <Link href="/collections/diamond">Diamond jewellery</Link>
             <Link href="/collections/silver">Silver jewellery</Link>
-            <Link href="/bridal">Bridal & wedding</Link>
+            <Link href="/bridal">Bridal jewellery</Link>
+            <Link href="/wedding">Wedding jewellery</Link>
+            <Link href="/rings">Rings</Link>
+            <Link href="/earrings">Earrings</Link>
+            <Link href="/necklaces">Necklaces</Link>
+            <Link href="/bangles">Bangles</Link>
+            <Link href="/daily-wear">Daily wear</Link>
+            <Link href="/new-arrivals">New arrivals</Link>
             <Link href="/heritage">Heritage</Link>
             <Link href="/gallery">Gallery</Link>
-            <Link href="/services">Custom atelier</Link>
+            <Link href="/services">Custom jewellery</Link>
             <Link href="/blog">Journal</Link>
             <Link href="/faq">FAQ</Link>
             <Link href="/testimonials">Testimonials</Link>
             <Link href="/about">About us</Link>
+            <Link href="/#local-seo-heading">Best jewellery shop in Sikar</Link>
+            <Link href="/showrooms">Sikar showrooms</Link>
             <Link href="/contact">Visit our store</Link>
           </div>
         </nav>
@@ -133,11 +142,13 @@ export function PremiumFooter() {
             </p>
           ))}
           <p>Mon–Sat: 10:00 – 19:00</p>
-          <p>
-            <a href={siteConfig.showrooms[0].googleMapsUrl} target="_blank" rel="noopener noreferrer">
-              Find MB Jewellers on Google Maps
-            </a>
-          </p>
+          {siteConfig.showrooms.map((showroom) => (
+            <p key={`${showroom.id}-maps`}>
+              <a href={showroom.googleMapsUrl} target="_blank" rel="noopener noreferrer">
+                {showroom.name} on Google
+              </a>
+            </p>
+          ))}
           {hasWhatsApp() ? (
             <p>
               <a

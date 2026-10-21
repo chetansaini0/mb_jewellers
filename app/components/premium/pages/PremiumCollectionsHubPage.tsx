@@ -25,8 +25,8 @@ export function PremiumCollectionsHubPage() {
     <PremiumPageFrame>
       <PremiumPageHero
         eyebrow="Collections"
-        title="Immersive worlds of diamond, gold, silver, and finishing pieces"
-        lede="Browse cinematic category showcases with calm filtering, depth-rich cards, and private-viewing guidance for every collection."
+        title="Jewellery collections in Sikar"
+        lede="Gold, diamond, silver and accessory collections at MB Jewellers — browse online, then visit our jewellery showroom in Sikar for a private viewing."
       />
 
       <PremiumPageSection

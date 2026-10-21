@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { PremiumBreadcrumbs } from "@/app/components/premium/PremiumBreadcrumbs";
 import { PremiumFeaturedPieceCard } from "@/app/components/premium/PremiumFeaturedPieceCard";
 import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
 import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
@@ -86,6 +87,7 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
   const related = featuredPieces.filter((p) => p.name !== product.name).slice(0, 6);
 
   const slug = slugifyProductName(product.name);
+  const collectionPath = product.material ? `/collections/${product.material.toLowerCase()}` : "/collections";
   const enquiryHref = `/contact?interest=${encodeURIComponent(product.name)}`;
   const whatsappHref = getWhatsAppUrl(
     `Hello MB Jewellers, I would like a private viewing for: ${product.name} (${slug}).`,
@@ -109,6 +111,16 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
 
   return (
     <PremiumPageFrame>
+      <PremiumBreadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Collections", path: "/collections" },
+          ...(product.material
+            ? [{ name: `${product.material} jewellery`, path: collectionPath }]
+            : []),
+          { name: product.name, path: `/products/${slug}` },
+        ]}
+      />
       <section className="premium-section premium-section--warm">
         <div className="site-max site-px">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">

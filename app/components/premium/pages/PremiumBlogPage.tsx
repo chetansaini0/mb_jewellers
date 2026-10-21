@@ -12,8 +12,8 @@ export function PremiumBlogPage() {
     <PremiumPageFrame>
       <PremiumPageHero
         eyebrow="Journal"
-        title="Notes from the MB atelier"
-        lede="Editorial stories on bridal curation, gold language, and the quiet drama of stones in daylight."
+        title="Jewellery buying guides from Sikar"
+        lede="Practical notes on bridal jewellery, gold and diamond buying, daily-wear trends and care — written for families shopping at MB Jewellers in Sikar."
       />
       <section className="premium-section">
         <div className="site-max site-px">

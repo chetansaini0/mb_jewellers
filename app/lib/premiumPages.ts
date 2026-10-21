@@ -1,4 +1,5 @@
 import { galleryItems, premiumTestimonials } from "@/app/lib/premiumContent";
+import { sikarSearchFaqs } from "@/app/lib/seoContent";
 import { getWhatsAppUrl, siteConfig } from "@/app/lib/siteConfig";
 import { categoryShowcase, featuredPieces, socialLinks } from "@/app/lib/siteData";
 
@@ -205,6 +206,7 @@ export const bridalFeaturedQuote = {
 } as const;
 
 export const faqItems = [
+  ...sikarSearchFaqs,
   {
     question: "Where is MB Jewellers located in Sikar?",
     answer:
@@ -269,6 +271,34 @@ export const faqItems = [
     question: "Do you serve customers from outside Sikar?",
     answer:
       "Yes. Families regularly visit from across the Shekhawati region — including towns such as Fatehpur, Laxmangarh, Neem Ka Thana, Jhunjhunu, Churu, Khandela, Ringas, and Danta Ramgarh — for private jewellery viewings in Sikar.",
+  },
+] as const;
+
+export const showroomVisitFaqs = [
+  {
+    question: "Where is the MB Jewellers jewellery showroom in Sikar?",
+    answer:
+      "MB Jewellers has two showrooms in Sikar, Rajasthan: Ghantaghar Showroom at Purana Dujod Gate, Ghantaghar, Sikar 332001, and Ramlila Maidan Showroom at Ramlila Maidan, Mahamandir Road, Sikar 332001.",
+  },
+  {
+    question: "What are the opening hours?",
+    answer:
+      "Both showrooms are open Monday to Saturday, 10:00 AM to 7:00 PM. Sundays are typically closed unless a private appointment is confirmed in advance.",
+  },
+  {
+    question: "Do I need an appointment to visit?",
+    answer:
+      "Walk-in browsing may be possible during opening hours, but private viewings for bridal, wedding and custom jewellery are calmer with an appointment. Use the contact form, call, or WhatsApp to book.",
+  },
+  {
+    question: "Is there customer parking at the showrooms?",
+    answer:
+      "Dedicated customer parking has not been independently verified. Visitors commonly use nearby street access around Ghantaghar (Clock Tower / Purana Dujod Gate) and Ramlila Maidan on Mahamandir Road. Please confirm parking with the showroom before you travel.",
+  },
+  {
+    question: "Which showroom should I visit for bridal jewellery?",
+    answer:
+      "Bridal and wedding jewellery consultations can be arranged at either Sikar showroom. Share your dates when you book so the team can prepare a shortlist and confirm the better studio time for your visit.",
   },
 ] as const;
 
@@ -439,23 +469,131 @@ export const blogPosts = [
   },
   {
     slug: "jewellery-care-guide",
-    title: "Jewellery care guide for daily wear and bridal suites",
+    title: "Jewellery care tips for gold, diamond and silver",
     excerpt:
-      "Simple care habits that protect gold, diamond, and silver jewellery between celebrations — written for families who shop in Sikar.",
+      "Practical jewellery care tips for gold, diamond and silver — storage, cleaning, wedding-week habits and when to visit MB Jewellers in Sikar for after-care.",
     image: "/pics/Bridal/b1.jpg",
     date: "September 2026",
     datePublished: "2026-09-19",
     category: "Care",
     body: [
-      "Good jewellery care starts with storage and chemistry. Keep pieces dry, separate chains from stones to avoid tangling and scratches, and remove jewellery before swimming, heavy cleaning, or applying perfume and lotions.",
-      "Bridal and festive suites need a little extra planning: pack soft pouches for travel between functions, check clasps before ceremonies, and schedule a gentle clean after the wedding week so filigree and settings stay bright.",
-      "Silver can tarnish with air and moisture — a soft cloth and dry storage help between wears. Diamonds look their best when the setting is free of lotion film; a professional clean before major events makes a visible difference.",
-      "MB Jewellers offers cleaning guidance and after-care conversations for pieces purchased at our Sikar showrooms. If a clasp loosens or an heirloom needs assessment, book a private visit rather than forcing a repair at home.",
+      "Jewellery care is mostly about chemistry and friction. Perfume, lotion, chlorine, kitchen steam and stacked storage dull gold, cloud diamond tables and tarnish silver faster than everyday wear itself. Put jewellery on last and take it off first.",
+      "Gold jewellery: store pieces separately in soft pouches, wipe after festive wear, and avoid twisting thin chains. Hallmarked gold still scratches if it rubs against harder metals in a box. Heavy bridal gold benefits from a gentle studio clean after the wedding week.",
+      "Diamond jewellery: sparkle drops when oil film sits on the stone. A lint-free cloth helps between events; do not use household powder cleaners. Check prongs if a ring catches on fabric. MB Jewellers can inspect settings during a Sikar after-care visit.",
+      "Silver jewellery and silver ornaments: air and moisture encourage tarnish. Dry storage and a dedicated silver cloth are enough for most daily-wear pieces. Avoid toothpaste or harsh polish on oxidised or antique finishes — those surfaces are meant to look darker in the recesses.",
+      "If a clasp loosens, a stone feels proud, or an heirloom needs assessment, book a private visit to our Sikar showrooms rather than forcing a repair at home. After-care is part of how we look after jewellery purchased at MB Jewellers.",
     ],
     relatedLinks: [
       { href: "/services", label: "Atelier and after-care" },
-      { href: "/bridal", label: "Bridal jewellery in Sikar" },
+      { href: "/daily-wear", label: "Daily wear jewellery in Sikar" },
       { href: "/contact", label: "Visit MB Jewellers" },
+    ],
+  },
+  {
+    slug: "how-to-choose-bridal-jewellery-in-sikar",
+    title: "How to choose bridal jewellery in Sikar",
+    excerpt:
+      "A calm, practical method for choosing bridal jewellery in Sikar — ceremony mapping, metal mix, comfort and what to bring to an MB Jewellers appointment.",
+    image: "/pics/Bridal/b2.jpg",
+    date: "September 2026",
+    datePublished: "2026-09-19",
+    category: "Bridal",
+    body: [
+      "Choosing bridal jewellery in Sikar works best when you plan by function, not by tray. Write down engagement, wedding day, reception and family rituals. The heaviest necklace usually belongs where photographs and mandap lighting matter most; lighter pieces can rotate through the other events.",
+      "Bring outfit necklines, colour references and any heirloom gold you want to mix. MB Jewellers consultants in Sikar often start with necklace proportion, then add earrings and bangles so the suite feels balanced rather than crowded.",
+      "Ask for hallmark confirmation on gold and certification notes on diamonds during the viewing. Bridal jewellery showroom visits should include a clear conversation about weight, comfort through long ceremonies, and how pieces will be stored between functions.",
+      "If you are travelling from Fatehpur, Laxmangarh, Jhunjhunu or another Shekhawati town, book ahead. A private appointment lets the team shortlist bridal jewellery before you arrive so the visit stays unhurried.",
+      "When you are ready, request a bridal viewing on our contact page. This website is a showcase; the suite is confirmed in person at our Ghantaghar or Ramlila Maidan showroom.",
+    ],
+    relatedLinks: [
+      { href: "/bridal", label: "Bridal jewellery in Sikar" },
+      { href: "/wedding", label: "Wedding jewellery" },
+      { href: "/contact", label: "Book a bridal appointment" },
+    ],
+  },
+  {
+    slug: "latest-gold-jewellery-designs-for-weddings",
+    title: "Latest gold jewellery designs for weddings",
+    excerpt:
+      "How Sikar families are mixing heritage gold — chokars, Ranihaar, temple profiles and lighter layers — for contemporary wedding photography.",
+    image: "/pics/studio/gold-bridal-pendant-set.jpg",
+    date: "September 2026",
+    datePublished: "2026-09-19",
+    category: "Gold",
+    body: [
+      "Latest gold jewellery designs for weddings in Sikar rarely abandon tradition. What has changed is editing: families still want Ranihaar, chokars and temple detailing, but they often pair a strong statement necklace with cleaner earrings so the face stays open in photographs.",
+      "At MB Jewellers you will see heritage filigree and coin motifs alongside layered collars that sit closer to the neck. The right choice depends on the outfit fabric and whether you need one ceremonial set or several looks across functions.",
+      "When you visit our gold jewellery shop in Sikar, try the same silhouette in different finishes if available — high polish reads brighter in flash photography; textured gold holds shadow in daylight. Confirm hallmark and weight before you decide.",
+      "Browse gold collections and new arrivals online, then book a wedding jewellery viewing. Availability of any single design is confirmed in the showroom, not by adding it to a cart.",
+    ],
+    relatedLinks: [
+      { href: "/collections/gold", label: "Gold jewellery shop in Sikar" },
+      { href: "/wedding", label: "Wedding jewellery" },
+      { href: "/new-arrivals", label: "Latest jewellery designs" },
+    ],
+  },
+  {
+    slug: "diamond-jewellery-buying-guide",
+    title: "Diamond jewellery buying guide for first-time buyers",
+    excerpt:
+      "A first-time buyer’s guide to diamond jewellery in Sikar — what to compare in the showroom, how lighting changes sparkle, and questions to ask before you purchase.",
+    image: "/pics/studio/diamond-floral-necklace-set.jpg",
+    date: "September 2026",
+    datePublished: "2026-09-19",
+    category: "Diamond",
+    body: [
+      "First-time diamond jewellery buyers in Sikar are often shopping for an engagement ring, a pair of earrings or a pendant that will be worn for years. Start with how the piece will be used: daily wear needs a secure setting; reception jewellery can carry more presence.",
+      "Showcase lighting can make every diamond look dramatic. Ask to see the piece near a window and on the hand or ear. Fire, spread and how the setting protects the stone matter more than a single photograph.",
+      "At a diamond jewellery shop in Sikar you should expect certification notes, a clear explanation of the setting, and time to compare options without pressure. MB Jewellers presents diamond sets, diamond rings and earrings in private salon light; we do not sell diamonds through online checkout.",
+      "Bring your finger size if you know it, and share your budget range in conversation — not as a public website field. Book a private viewing so consultants can prepare a shortlist before you arrive.",
+    ],
+    relatedLinks: [
+      { href: "/collections/diamond", label: "Diamond jewellery shop in Sikar" },
+      { href: "/rings", label: "Diamond rings in Sikar" },
+      { href: "/contact", label: "Request a diamond viewing" },
+    ],
+  },
+  {
+    slug: "gold-diamond-or-silver-choosing-jewellery",
+    title: "Gold, diamond or silver: choosing the right jewellery",
+    excerpt:
+      "How to choose between gold, diamond and silver jewellery in Sikar — occasion, comfort, care and when a mixed suite makes more sense than a single metal.",
+    image: "/pics/signature-worlds/gold-cinematic-lighting.png",
+    date: "September 2026",
+    datePublished: "2026-09-19",
+    category: "Guide",
+    body: [
+      "Gold, diamond and silver jewellery solve different jobs. Gold remains the centre of most Sikar wedding and festive shopping because of colour, cultural familiarity and hallmarked weight. Diamonds are often chosen for engagement, reception and evening light. Silver works for gifting, daily wear and oxidised traditional suites.",
+      "If you are choosing one starting metal, match it to the occasion: bridal and family gold for ceremonies; diamond for sparkle you will photograph at night; silver ornaments for lighter gifting or contemporary everyday styling.",
+      "Many families mix metals across a wedding week rather than forcing one look. A gold bridal set for pheras and diamond drops for the reception is a common, practical split. MB Jewellers can show combinations in the same appointment so proportions stay consistent.",
+      "There is no single “best” metal. The useful test is comfort, documentation and how the piece will be worn. Visit our jewellery showroom in Sikar with your occasion list and we will help you compare — without treating the website as a storefront.",
+    ],
+    relatedLinks: [
+      { href: "/collections/gold", label: "Gold jewellery" },
+      { href: "/collections/diamond", label: "Diamond jewellery" },
+      { href: "/collections/silver", label: "Silver jewellery" },
+      { href: "/contact", label: "Book a comparison viewing" },
+    ],
+  },
+  {
+    slug: "daily-wear-jewellery-trends-in-sikar",
+    title: "Daily-wear jewellery trends in Sikar",
+    excerpt:
+      "What Sikar clients are choosing for everyday jewellery — lighter gold chains, secure diamond studs, slim bangles and silver pieces that survive a full workday.",
+    image: "/pics/studio/gold-layered-chain.jpg",
+    date: "September 2026",
+    datePublished: "2026-09-19",
+    category: "Daily wear",
+    body: [
+      "Daily-wear jewellery trends in Sikar currently favour pieces you can forget you are wearing: layered but not noisy gold chains, small diamond studs, slim bangles and silver hoops that do not snag on fabric.",
+      "Office and college routines are hard on jewellery. Clients ask for secure clasps, smoother inner bangle surfaces and rings that do not catch. That is a comfort conversation as much as a design one — and it is easier in a jewellery shop than from a product photo.",
+      "Gold still leads everyday festive-to-work rotation in Shekhawati families; silver is growing for younger gifting and lightweight stacks. Diamond daily wear stays selective: studs and slim rings more often than large drops.",
+      "Explore our daily wear jewellery page, then visit MB Jewellers in Sikar to test weight. Trends are a starting point; the piece you keep wearing is the one that survives your actual day.",
+    ],
+    relatedLinks: [
+      { href: "/daily-wear", label: "Daily wear jewellery in Sikar" },
+      { href: "/collections/gold/chains", label: "Gold chains" },
+      { href: "/contact", label: "Book a daily-wear viewing" },
     ],
   },
 ] as const;

@@ -75,17 +75,24 @@ Use these groups for titles, H2s, FAQ, journal topics, and internal links.
 
 ## Mapping to pages
 
-| Intent | Primary page |
-|--------|----------------|
-| Brand / best shop Sikar | `/` |
-| Gold | `/collections/gold` + subsections |
-| Silver | `/collections/silver` |
-| Diamond | `/collections/diamond` |
-| Bridal / wedding | `/bridal` |
-| Visit / NAP | `/contact` |
-| Trust / story | `/about`, `/heritage` |
-| Q&A | `/faq` |
-| Guides | `/blog` + article slugs |
+| Intent / keyword | Primary page | Supporting pages |
+|------------------|--------------|------------------|
+| Best jewellers / best jewellery in Sikar | `/` | `/about`, `/faq` |
+| Jewellery shop / store / showroom in Sikar | `/showrooms` | `/contact`, `/` |
+| Gold jewellery / gold jewellery shop in Sikar | `/collections/gold` | `/collections/gold/*`, `/blog/choosing-gold-jewellery-in-sikar` |
+| Diamond jewellery / diamond jewellery shop in Sikar | `/collections/diamond` | `/rings`, `/blog/diamond-jewellery-buying-guide` |
+| Silver jewellery / silver jewellery shop in Sikar | `/collections/silver` | `/daily-wear` |
+| Bridal jewellery in Sikar | `/bridal` | `/blog/how-to-choose-bridal-jewellery-in-sikar` |
+| Wedding jewellery in Sikar | `/wedding` | `/bridal`, `/blog/latest-gold-jewellery-designs-for-weddings` |
+| Latest jewellery designs in Sikar | `/new-arrivals` | `/collections` |
+| Daily wear jewellery in Sikar | `/daily-wear` | `/blog/daily-wear-jewellery-trends-in-sikar` |
+| Custom jewellery in Sikar | `/services` | `/contact` |
+| Gold / diamond rings in Sikar | `/rings` | `/collections/*/rings` |
+| Earrings in Sikar | `/earrings` | `/collections/*/earrings` |
+| Necklaces in Sikar | `/necklaces` | `/collections/*/necklaces` |
+| Bangles in Sikar | `/bangles` | `/collections/gold/bangles` |
+| Visit / NAP / jewellery store near me | `/contact` | `/showrooms` |
+| Care / buying guides | `/blog` | Individual `/blog/[slug]` articles |
 
 ---
 

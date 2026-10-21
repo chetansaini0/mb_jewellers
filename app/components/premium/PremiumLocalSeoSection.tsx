@@ -20,6 +20,15 @@ export function PremiumLocalSeoSection() {
           </p>
         ))}
 
+        <div className="space-y-5 border-t border-[var(--premium-line)] pt-5">
+          {localSeoContent.faqs.map((item) => (
+            <div key={item.question}>
+              <h3 className="text-lg text-[var(--premium-ink)]">{item.question}</h3>
+              <p className="mt-2 text-base leading-relaxed text-[var(--premium-muted)]">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+
         <div className="flex flex-wrap gap-3 pt-2">
           {localSeoContent.links.map((link) => (
             <Link key={link.href} href={link.href} className="premium-button premium-button--ghost">
@@ -32,14 +41,19 @@ export function PremiumLocalSeoSection() {
           <p>
             <strong className="text-[var(--premium-ink)]">{siteConfig.name}</strong> — {siteConfig.legalName}
           </p>
-          <p className="mt-2">{siteConfig.location.address}</p>
-          <p className="mt-1">
-            {openingHours.display} · {siteConfig.contact.phoneDisplay} · {siteConfig.contact.email}
-          </p>
+          <ul className="mt-3 space-y-2">
+            {siteConfig.showrooms.map((showroom) => (
+              <li key={showroom.id}>
+                <strong className="text-[var(--premium-ink)]">{showroom.name}:</strong> {showroom.address}
+                {" · "}
+                <a href={showroom.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="premium-inline-link">
+                  Google Business Profile
+                </a>
+              </li>
+            ))}
+          </ul>
           <p className="mt-3">
-            <a href={siteConfig.showrooms[0].googleMapsUrl} target="_blank" rel="noopener noreferrer" className="premium-inline-link">
-              Find MB Jewellers on Google Maps
-            </a>
+            {openingHours.display} · {siteConfig.contact.phoneDisplay} · {siteConfig.contact.email}
           </p>
         </div>
       </div>

@@ -15,9 +15,9 @@ export function PremiumFaqPage() {
   return (
     <PremiumPageFrame>
       <PremiumPageHero
-        eyebrow="Questions"
-        title="Everything worth knowing before your visit"
-        lede="Pricing, appointments, custom work, and care — answered with the same transparency you will experience in the atelier."
+        eyebrow="Jewellery shop FAQ"
+        title="Jewellery shop FAQ in Sikar"
+        lede="Locations, hours, bridal appointments, hallmarked gold and in-person jewellery shopping at MB Jewellers — answered with the same transparency you will experience in the atelier."
       />
 
       <PremiumPageSection

@@ -27,7 +27,7 @@ export const diamondCollectionPage: CollectionPageConfig = {
   eyebrow: "Diamond",
   title: "Diamond Jewellery in Sikar",
   description:
-    "Explore diamond sets, necklaces, rings, earrings, and bracelets at MB Jewellers in Sikar — open a section below, then view finishing in a private studio appointment.",
+    "Explore diamond sets, necklaces, rings, earrings and bracelets at a diamond jewellery shop in Sikar — open a section below, then view finishing in a private studio appointment.",
   sections: [
     {
       id: "sets",
@@ -72,7 +72,7 @@ export const goldCollectionPage: CollectionPageConfig = {
   eyebrow: "Gold",
   title: "Gold Jewellery in Sikar",
   description:
-    "Traditional and contemporary gold jewellery for Sikar and Shekhawati families — bridal sets, Ranihaar, Rajputi silhouettes, bangles, chains, and rings.",
+    "Traditional and contemporary gold jewellery for Sikar and Shekhawati families — a gold jewellery shop for bridal sets, Ranihaar, Rajputi silhouettes, bangles, chains and rings.",
   sections: [
     {
       id: "sets",
@@ -145,7 +145,7 @@ export const silverCollectionPage: CollectionPageConfig = {
   eyebrow: "Silver",
   title: "Silver Jewellery in Sikar",
   description:
-    "Sterling silver jewellery at MB Jewellers, Sikar — sets, necklaces, bangles, earrings, bracelets, chains, and rings for everyday wear and gifting.",
+    "Sterling silver jewellery at a silver jewellery shop in Sikar — sets, necklaces, bangles, earrings, bracelets, chains and rings for everyday wear and gifting.",
   sections: [
     {
       id: "sets",

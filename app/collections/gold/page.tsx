@@ -2,7 +2,7 @@
 import { PremiumCategoryCollectionPage } from "@/app/components/premium/pages/PremiumCategoryCollectionPage";
 import { collectionSectionsToCards, goldCollectionPage } from "@/app/lib/collectionPages";
 import { createPageMetadata } from "@/app/lib/seo";
-import { pageSeo } from "@/app/lib/seoContent";
+import { pageIntros, pageSeo } from "@/app/lib/seoContent";
 
 export const metadata: Metadata = createPageMetadata({
   title: pageSeo.gold.title,
@@ -18,6 +18,13 @@ export default function GoldPage() {
       description={goldCollectionPage.description}
       items={collectionSectionsToCards("gold", goldCollectionPage)}
       collectionPath="/collections/gold"
+      intro={pageIntros.gold}
+      related={[
+        { href: "/rings", label: "Gold rings" },
+        { href: "/bangles", label: "Gold bangles" },
+        { href: "/wedding", label: "Wedding jewellery" },
+        { href: "/contact", label: "Visit the showroom" },
+      ]}
     />
   );
 }

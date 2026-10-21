@@ -69,7 +69,7 @@ export default async function CollectionSubsectionPage({ params }: PageProps) {
       backHref={`/collections/${collectionSlug}`}
       backLabel={`Back to ${backLabel}`}
       eyebrow={parent.eyebrow}
-      title={subsection.title}
+      title={`${parent.eyebrow} ${subsection.title} in Sikar`}
       description={subsection.description}
       galleryImages={galleryImages}
       galleryAlts={galleryAlts}
