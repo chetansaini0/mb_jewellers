@@ -4487,6 +4487,8 @@ select.luxe-field {
 .premium-dark-cta__ghost {
   color: #faf7f0;
   border-color: rgba(250, 247, 240, 0.22);
+  /* Ghost on dark: the base ghost style paints a near-white fill, which hid the light label. */
+  background: transparent;
 }
 
 .premium-dark-cta__ghost:hover {
@@ -5048,4 +5050,13 @@ select.luxe-field {
 
 .premium-contact-card__link:hover {
   color: var(--premium-gold, #c8a24d);
+}
+
+/* 24px minimum tap height for inline phone and map links (WCAG 2.5.8). */
+.premium-home-map__showroom-phones a,
+.premium-home-map__showroom > a,
+.premium-contact__map-phones a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
 }
