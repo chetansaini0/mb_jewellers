@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
+import { preload } from "react-dom";
 import { usePremiumReveal } from "@/app/components/premium/motion/premiumMotion";
 import { PremiumAtelierStrip } from "@/app/components/premium/PremiumAtelierStrip";
 import { PremiumDarkCtaSection } from "@/app/components/premium/PremiumDarkCtaSection";
@@ -72,7 +73,11 @@ const PremiumHomeStudioMapSection = dynamic(
   { loading: () => <SectionSkeleton title="Studio location" /> },
 );
 
+// Optimised (WebP/AVIF via next/image) poster for the hero video, which is the LCP element.
+const HERO_POSTER = "/_next/image?url=%2Fpics%2Fsignature-worlds%2Fgold-cinematic-lighting.png&w=1920&q=75";
+
 function HeroSection() {
+  preload(HERO_POSTER, { as: "image", fetchPriority: "high" });
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoFailed, setVideoFailed] = useState(false);
@@ -154,7 +159,7 @@ function HeroSection() {
             muted
             autoPlay
             preload="metadata"
-            poster="/pics/signature-worlds/gold-cinematic-lighting.png"
+            poster={HERO_POSTER}
             aria-label={premiumHero.alt}
             onError={() => setVideoFailed(true)}
           >

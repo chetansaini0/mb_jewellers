@@ -8,6 +8,7 @@ export function PremiumBackdropLogo() {
         alt=""
         width={896}
         height={768}
+        sizes="(max-width: 933px) 30vw, 280px"
         priority={false}
         className="premium-backdrop-logo__image"
       />
