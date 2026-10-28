@@ -7,6 +7,7 @@ import { ConversionTracker } from "@/app/components/analytics/ConversionTracker"
 import { jewelryStoreSchema, organizationSchema, websiteSchema } from "@/app/lib/seo";
 import { siteConfig } from "@/app/lib/siteConfig";
 import "./globals.css";
+import "./premium-enhancement.css";
 
 const display = Playfair_Display({
   variable: "--font-display-luxury",

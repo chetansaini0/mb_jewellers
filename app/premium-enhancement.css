@@ -1,0 +1,540 @@
+/*
+ * MB Jewellers — premium enhancement layer (feat/premium-enhancement)
+ *
+ * Progressive refinements on top of globals.css. Nothing here replaces the brand palette:
+ * it reuses the existing ivory (#faf7f0), ink (#1a1510) and gold (#c8a24d) tokens and adds a
+ * deeper champagne-gold for readable small text, an original ornamental divider, calmer
+ * hover motion, a desktop showroom strip, richer product facts and a compact cookie bar.
+ */
+
+.premium-theme {
+  --premium-ivory: #fbf8f1;
+  --premium-champagne-line: rgba(200, 162, 77, 0.38);
+  /* Champagne gold dark enough for AA small text on ivory (~5.2:1). */
+  --premium-gold-text: #84651f;
+  --premium-ornament: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14'%3E%3Cg fill='none' stroke='%23c8a24d' stroke-width='1'%3E%3Cpath d='M0 7h44M76 7h44'/%3E%3Cpath d='M60 1.5l5.5 5.5-5.5 5.5-5.5-5.5z'/%3E%3C/g%3E%3Cg fill='%23c8a24d'%3E%3Ccircle cx='49' cy='7' r='1.6'/%3E%3Ccircle cx='71' cy='7' r='1.6'/%3E%3Ccircle cx='60' cy='7' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---------- 1. Typography & traditional detailing ---------- */
+
+.premium-section-title__line,
+.premium-ornament {
+  display: block;
+  width: 7.5rem;
+  height: 0.875rem;
+  background: var(--premium-ornament) center / contain no-repeat;
+}
+
+.premium-section-title:not(.is-centered) .premium-section-title__line {
+  background-position: left center;
+}
+
+.premium-section-title__line.is-centered,
+.premium-ornament {
+  margin-inline: auto;
+}
+
+.premium-section-title__eyebrow,
+.premium-eyebrow {
+  font-family: var(--font-cinzel), var(--font-display-luxury), serif;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  color: var(--premium-gold-text);
+}
+
+.premium-section-title.is-dark .premium-section-title__eyebrow,
+.premium-dark-cta .premium-eyebrow,
+.premium-hero__kicker {
+  color: #e2c47c;
+}
+
+.premium-section-title__heading,
+.premium-title {
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.premium-section-title__subtitle,
+.premium-section__lede {
+  text-wrap: pretty;
+}
+
+/* ---------- 2. Calm, usable motion ---------- */
+
+.premium-lift {
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .premium-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 46px rgba(26, 21, 16, 0.1);
+  }
+
+  .premium-featured-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.premium-collection-card__media img {
+  transition-duration: 1.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-lift,
+  .premium-lift:hover,
+  .premium-featured-card:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- 3. Product presentation ---------- */
+
+/* Jharokha-inspired arch on collection covers, with a fine champagne keyline. */
+.premium-collection-card__media {
+  width: calc(100% - 1.2rem);
+  margin: 0.6rem auto 0;
+  /* Percent radii so the browser does not scale the arch flat. */
+  border-radius: 50% 50% 0.75rem 0.75rem / 32% 32% 0.75rem 0.75rem;
+  box-shadow: inset 0 0 0 1px var(--premium-champagne-line);
+}
+
+.premium-collection-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0.45rem;
+  border: 1px solid rgba(232, 197, 109, 0.42);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.premium-collection-card__meta {
+  color: var(--premium-gold-text);
+}
+
+.premium-featured-card {
+  border: 1px solid var(--premium-champagne-line);
+}
+
+.premium-featured-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0.6rem;
+  border: 1px solid rgba(232, 197, 109, 0.3);
+  border-radius: 0.8rem;
+  pointer-events: none;
+}
+
+.premium-featured-card__body h3 {
+  font-family: var(--font-display-luxury), serif;
+}
+
+/* Product page facts */
+.premium-product-facts {
+  display: grid;
+  gap: 0;
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--premium-champagne-line);
+}
+
+.premium-product-facts > div {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 34%) 1fr;
+  gap: 1rem;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid var(--premium-champagne-line);
+}
+
+.premium-product-facts dt {
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--premium-gold-text);
+  padding-top: 0.15rem;
+}
+
+.premium-product-facts dd {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--premium-ink);
+}
+
+.premium-product-facts dd a {
+  text-decoration: underline;
+  text-decoration-color: var(--premium-champagne-line);
+  text-underline-offset: 3px;
+}
+
+.premium-product-facts dd a:hover {
+  color: var(--premium-gold-text);
+}
+
+.premium-product-facts dd small {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  color: var(--premium-muted);
+}
+
+/* Sticky enquiry bar on phones and tablets (product pages only) */
+.premium-product-sticky {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .premium-product-sticky {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 85;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.6rem max(0.9rem, env(safe-area-inset-right)) calc(0.6rem + env(safe-area-inset-bottom))
+      max(0.9rem, env(safe-area-inset-left));
+    border-top: 1px solid var(--premium-champagne-line);
+    background: rgba(251, 248, 241, 0.96);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 -12px 32px rgba(26, 21, 16, 0.08);
+  }
+
+  .premium-product-sticky__name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--font-display-luxury), serif;
+    font-size: 0.95rem;
+  }
+
+  .premium-product-sticky__actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 0.5rem;
+  }
+
+  .premium-product-sticky .premium-button {
+    min-height: 2.75rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+  }
+
+  body:has(.premium-product-sticky) .premium-floating-actions {
+    bottom: calc(4.75rem + env(safe-area-inset-bottom));
+  }
+
+  body:has(.premium-product-sticky) .premium-footer__bar {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+
+  body:has(.premium-product-sticky) .premium-cookie-banner {
+    bottom: calc(4.25rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 380px) {
+  .premium-product-sticky__name {
+    display: none;
+  }
+
+  .premium-product-sticky__actions {
+    flex: 1 1 auto;
+  }
+
+  .premium-product-sticky__actions .premium-button {
+    flex: 1 1 0;
+  }
+}
+
+/* ---------- 4. Navigation ---------- */
+
+.premium-utility-bar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .premium-utility-bar {
+    position: relative;
+    z-index: 51;
+    display: block;
+    background: var(--premium-ink);
+    color: rgba(245, 239, 227, 0.86);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+
+  .premium-utility-bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 2.25rem;
+  }
+
+  .premium-utility-bar__item,
+  .premium-utility-bar__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    white-space: nowrap;
+  }
+
+  .premium-utility-bar svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    color: #e2c47c;
+  }
+
+  .premium-utility-bar__links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .premium-utility-bar__link {
+    min-height: 1.5rem;
+    transition: color 200ms ease;
+  }
+
+  .premium-utility-bar__link:hover {
+    color: #e2c47c;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .premium-utility-bar__item--center {
+    display: none;
+  }
+}
+
+/* Desktop nav: refined active state */
+@media (min-width: 1100px) {
+  .premium-header__link {
+    position: relative;
+    padding-block: 0.35rem;
+  }
+
+  .premium-header__link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -0.1rem;
+    width: 0;
+    height: 1px;
+    background: var(--premium-gold);
+    transform: translateX(-50%);
+    transition: width 260ms ease;
+  }
+
+  .premium-header__link:hover::after,
+  .premium-header__link[aria-current="page"]::after {
+    width: 100%;
+  }
+
+  .premium-header__link[aria-current="page"] {
+    color: var(--premium-ink);
+  }
+
+  .premium-header__menu-extras {
+    display: none !important;
+  }
+}
+
+/* Mobile menu: larger serif links plus quick visit actions */
+.premium-header__menu-extras {
+  display: none;
+}
+
+@media (max-width: 1099px) {
+  .premium-header.is-menu-open .premium-header__nav {
+    gap: 0;
+    padding: 0.5rem 1.1rem 1.1rem;
+  }
+
+  .premium-header.is-menu-open .premium-header__link {
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+    border-bottom: 1px solid rgba(200, 162, 77, 0.18);
+    font-family: var(--font-display-luxury), serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--premium-ink);
+  }
+
+  .premium-header.is-menu-open .premium-header__link[aria-current="page"] {
+    color: var(--premium-gold-text);
+  }
+
+  .premium-header.is-menu-open .premium-header__menu-extras {
+    display: grid;
+    gap: 0.7rem;
+    padding-top: 1rem;
+  }
+
+  .premium-header__menu-label {
+    font-family: var(--font-cinzel), serif;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--premium-gold-text);
+  }
+
+  .premium-header__menu-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .premium-header__menu-action {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    min-height: 3.5rem;
+    border: 1px solid var(--premium-champagne-line);
+    border-radius: 0.85rem;
+    background: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--premium-ink);
+  }
+
+  .premium-header__menu-action svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--premium-gold-text);
+  }
+
+  .premium-header__menu-hours {
+    font-size: 0.78rem;
+    color: var(--premium-muted);
+  }
+}
+
+/* ---------- 5. Enquiry journey: compact consent bar, footer ---------- */
+
+.premium-cookie-banner__inner {
+  max-width: 34rem;
+  padding: 0.85rem 1rem;
+  margin-inline-start: max(0.75rem, env(safe-area-inset-left));
+}
+
+.premium-cookie-banner__title {
+  font-size: 0.98rem;
+}
+
+.premium-cookie-banner__copy {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.premium-cookie-banner__actions {
+  margin-top: 0.65rem;
+  gap: 0.5rem;
+}
+
+.premium-cookie-banner__actions .premium-button {
+  min-height: 2.75rem;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.66rem;
+}
+
+@media (min-width: 768px) {
+  .premium-cookie-banner__inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 1.25rem;
+    max-width: 46rem;
+    margin-inline-start: max(1.5rem, env(safe-area-inset-left));
+  }
+
+  .premium-cookie-banner__title,
+  .premium-cookie-banner__copy {
+    grid-column: 1;
+  }
+
+  .premium-cookie-banner__actions {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 0;
+    flex-wrap: nowrap;
+  }
+}
+
+.premium-footer__intro .premium-ornament {
+  margin-bottom: 1.25rem;
+}
+
+.premium-footer__links--explore {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.25rem;
+}
+
+.premium-footer__contact {
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+}
+
+.premium-footer__showroom {
+  display: grid;
+  gap: 0.15rem;
+  padding-block: 0.65rem;
+  border-bottom: 1px solid rgba(200, 162, 77, 0.2);
+}
+
+.premium-footer__showroom:first-of-type {
+  margin-top: 0.5rem;
+}
+
+.premium-footer__showroom-name {
+  font-family: var(--font-display-luxury), serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--premium-ink);
+}
+
+.premium-footer__showroom-phones a,
+.premium-footer__contact a {
+  display: inline-block;
+  min-height: 1.5rem;
+}
+
+.premium-footer__contact a:hover,
+.premium-footer__links a:hover {
+  color: var(--premium-gold-text);
+}
+
+.premium-footer__hours {
+  margin-top: 0.4rem;
+  color: var(--premium-ink);
+  font-weight: 500;
+}
+
+.premium-footer__whatsapp {
+  font-weight: 600;
+  color: var(--premium-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--premium-champagne-line);
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 1280px) {
+  .premium-footer__grid {
+    grid-template-columns: 1.7fr 1fr 1.5fr 0.7fr 1.3fr;
+  }
+}

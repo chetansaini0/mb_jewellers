@@ -4,7 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Clock, MapPin, MessageCircle, Phone } from "lucide-react";
 import { SocialIconFacebook, SocialIconInstagram } from "@/app/components/SocialIcons";
+import { getWhatsAppUrl, openingHours, siteConfig } from "@/app/lib/siteConfig";
 import { socialLinks } from "@/app/lib/siteData";
 
 const navLinks = [
@@ -34,9 +36,13 @@ export function PremiumHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
+  // Close the mobile menu on navigation (state adjusted during render, per React guidance,
+  // instead of a setState inside an effect).
+  const [menuPathname, setMenuPathname] = useState(pathname);
+  if (menuPathname !== pathname) {
+    setMenuPathname(pathname);
     setMenuOpen(false);
-  }, [pathname]);
+  }
 
   useLayoutEffect(() => {
     if (!menuOpen || !headerRef.current) return;
@@ -68,9 +74,11 @@ export function PremiumHeader() {
   }, [menuOpen]);
 
   const isHomePage = pathname === "/";
+  const whatsappHref = getWhatsAppUrl("Hello MB Jewellers, I would like to know more about your jewellery.");
 
   return (
     <>
+      <UtilityBar whatsappHref={whatsappHref} />
       {menuOpen ? (
         <button
           type="button"
@@ -134,6 +142,31 @@ export function PremiumHeader() {
                 </Link>
               );
             })}
+            <div className="premium-header__menu-extras">
+              <p className="premium-header__menu-label">Visit or reach us</p>
+              <div className="premium-header__menu-actions">
+                <a href={`tel:${siteConfig.contact.phoneE164}`} className="premium-header__menu-action">
+                  <Phone aria-hidden />
+                  Call
+                </a>
+                {whatsappHref ? (
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="premium-header__menu-action"
+                  >
+                    <MessageCircle aria-hidden />
+                    WhatsApp
+                  </a>
+                ) : null}
+                <Link href="/showrooms" className="premium-header__menu-action" onClick={() => setMenuOpen(false)}>
+                  <MapPin aria-hidden />
+                  Showrooms
+                </Link>
+              </div>
+              <p className="premium-header__menu-hours">{openingHours.display}</p>
+            </div>
           </nav>
 
           <HeaderActions closeMenu={() => setMenuOpen(false)} />
@@ -170,6 +203,36 @@ function HeaderActions({ closeMenu }: { closeMenu: () => void }) {
       <Link href="/contact" className="premium-button premium-button--ghost premium-header__cta" onClick={closeMenu}>
         Private viewing
       </Link>
+    </div>
+  );
+}
+
+/** Slim desktop-only strip with verified showroom facts: hours, phone, WhatsApp, showrooms. */
+function UtilityBar({ whatsappHref }: { whatsappHref: string | null }) {
+  return (
+    <div className="premium-utility-bar" role="region" aria-label="Showroom information">
+      <div className="premium-utility-bar__inner site-max site-px">
+        <p className="premium-utility-bar__item">
+          <Clock aria-hidden />
+          {openingHours.display}
+        </p>
+        <p className="premium-utility-bar__item premium-utility-bar__item--center">
+          <MapPin aria-hidden />
+          Two showrooms in Sikar · Ghantaghar &amp; Ramlila Maidan
+        </p>
+        <div className="premium-utility-bar__links">
+          <a href={`tel:${siteConfig.contact.phoneE164}`} className="premium-utility-bar__link">
+            <Phone aria-hidden />
+            {siteConfig.contact.phoneDisplay}
+          </a>
+          {whatsappHref ? (
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="premium-utility-bar__link">
+              <MessageCircle aria-hidden />
+              WhatsApp
+            </a>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }

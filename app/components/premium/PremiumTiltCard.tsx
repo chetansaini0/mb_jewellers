@@ -1,41 +1,10 @@
-"use client";
+import type { ReactNode } from "react";
 
-import { motion, useReducedMotion, useSpring } from "framer-motion";
-import type { MouseEvent, ReactNode } from "react";
-
+/**
+ * Formerly a 3D mouse-tilt card. The premium enhancement pass replaced the tilt with a
+ * calm CSS hover lift (see `.premium-lift` in premium-enhancement.css) so cards feel
+ * refined rather than gimmicky and keep working the same on touch screens.
+ */
 export function PremiumTiltCard({ children, className = "" }: { children: ReactNode; className?: string }) {
-  const reduce = useReducedMotion();
-  const rotateX = useSpring(0, { stiffness: 180, damping: 18 });
-  const rotateY = useSpring(0, { stiffness: 180, damping: 18 });
-  const lift = useSpring(0, { stiffness: 180, damping: 18 });
-
-  if (reduce) {
-    return <div className={className}>{children}</div>;
-  }
-
-  const onMove = (event: MouseEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const px = (event.clientX - rect.left) / rect.width - 0.5;
-    const py = (event.clientY - rect.top) / rect.height - 0.5;
-    rotateX.set(py * -10);
-    rotateY.set(px * 12);
-    lift.set(-8);
-  };
-
-  const onLeave = () => {
-    rotateX.set(0);
-    rotateY.set(0);
-    lift.set(0);
-  };
-
-  return (
-    <motion.div
-      className={className}
-      style={{ rotateX, rotateY, y: lift, transformPerspective: 900 }}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={`premium-lift ${className}`.trim()}>{children}</div>;
 }

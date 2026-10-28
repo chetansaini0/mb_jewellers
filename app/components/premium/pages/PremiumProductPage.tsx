@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PremiumBreadcrumbs } from "@/app/components/premium/PremiumBreadcrumbs";
 import { PremiumFeaturedPieceCard } from "@/app/components/premium/PremiumFeaturedPieceCard";
 import { PremiumPageCtaBand } from "@/app/components/premium/PremiumPageCtaBand";
@@ -11,11 +11,9 @@ import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageSection } from "@/app/components/premium/PremiumPageSection";
 import { PremiumTrustSection } from "@/app/components/premium/PremiumTrustSection";
 import { slugifyProductName } from "@/app/lib/premiumPages";
-import { getWhatsAppUrl } from "@/app/lib/siteConfig";
+import { getWhatsAppUrl, openingHours, siteConfig } from "@/app/lib/siteConfig";
 import type { ProductItem } from "@/app/lib/siteData";
 import { featuredPieces } from "@/app/lib/siteData";
-
-const GALLERY_AUTOPLAY_MS = 3000;
 
 const productGalleryBySlug: Record<string, string[]> = {
   "rajwada-bridal-silver-ensemble": [
@@ -98,16 +96,7 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeImage = galleryImages[activeIndex] ?? product.image;
 
-  useEffect(() => {
-    if (galleryImages.length <= 1) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % galleryImages.length);
-    }, GALLERY_AUTOPLAY_MS);
-
-    return () => window.clearInterval(timer);
-  }, [galleryImages.length]);
+  // No autoplay: the main piece stays in view until the visitor chooses another angle.
 
   return (
     <PremiumPageFrame>
@@ -135,7 +124,7 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1.35, ease: "easeInOut" }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
                   >
                     <Image
                       src={activeImage}
@@ -205,6 +194,38 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
                   </Link>
                 )}
               </div>
+              <dl className="premium-product-facts">
+                {product.material ? (
+                  <div>
+                    <dt>Collection</dt>
+                    <dd>
+                      <Link href={collectionPath}>{product.material} jewellery</Link>
+                    </dd>
+                  </div>
+                ) : null}
+                <div>
+                  <dt>How to buy</dt>
+                  <dd>In person at our Sikar showrooms — not sold online</dd>
+                </div>
+                <div>
+                  <dt>Price &amp; availability</dt>
+                  <dd>Confirmed by our team in the showroom</dd>
+                </div>
+                <div>
+                  <dt>Showrooms</dt>
+                  <dd>
+                    {siteConfig.showrooms.map((showroom, index) => (
+                      <span key={showroom.id}>
+                        {index > 0 ? " · " : null}
+                        <a href={showroom.directionsUrl} target="_blank" rel="noopener noreferrer">
+                          {showroom.name.replace(" Showroom", "")}
+                        </a>
+                      </span>
+                    ))}
+                    <small>{openingHours.display}</small>
+                  </dd>
+                </div>
+              </dl>
               <p className="premium-product-copy__note">
                 This website is a showcase only — we do not sell online. Pricing and availability are confirmed in
                 studio. Reference: <span>{slug}</span>
@@ -234,6 +255,25 @@ export function PremiumProductPage({ product }: { product: ProductItem }) {
         primaryHref={enquiryHref}
         primaryLabel="Request private viewing"
       />
+
+      <div className="premium-product-sticky" role="region" aria-label={`Enquire about ${product.name}`}>
+        <p className="premium-product-sticky__name">{product.name}</p>
+        <div className="premium-product-sticky__actions">
+          {showWhatsApp && whatsappHref ? (
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="premium-button premium-button--ghost"
+            >
+              WhatsApp
+            </a>
+          ) : null}
+          <Link href={enquiryHref} className="premium-button premium-button--primary">
+            Book viewing
+          </Link>
+        </div>
+      </div>
     </PremiumPageFrame>
   );
 }

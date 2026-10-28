@@ -3,11 +3,10 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronDown } from "lucide-react";
-import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { preload } from "react-dom";
 import { usePremiumReveal } from "@/app/components/premium/motion/premiumMotion";
 import { PremiumAtelierStrip } from "@/app/components/premium/PremiumAtelierStrip";
@@ -21,32 +20,6 @@ import { PremiumTiltCard } from "@/app/components/premium/PremiumTiltCard";
 import { PremiumTrustSection } from "@/app/components/premium/PremiumTrustSection";
 import { PremiumLocalSeoSection } from "@/app/components/premium/PremiumLocalSeoSection";
 import { premiumCollections, premiumHero } from "@/app/lib/premiumContent";
-
-function MagneticLink({ href, children, className }: { href: string; children: ReactNode; className?: string }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 220, damping: 18 });
-  const springY = useSpring(y, { stiffness: 220, damping: 18 });
-
-  const onMove = (event: MouseEvent<HTMLAnchorElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    x.set((event.clientX - rect.left - rect.width / 2) * 0.18);
-    y.set((event.clientY - rect.top - rect.height / 2) * 0.18);
-  };
-
-  const onLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div style={{ x: springX, y: springY }} className="inline-flex">
-      <Link href={href} className={className} onMouseMove={onMove} onMouseLeave={onLeave}>
-        {children}
-      </Link>
-    </motion.div>
-  );
-}
 
 function SectionSkeleton({ title }: { title: string }) {
   return (
@@ -81,10 +54,6 @@ function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoFailed, setVideoFailed] = useState(false);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const parallaxX = useSpring(useTransform(mouseX, [-0.5, 0.5], [-18, 18]), { stiffness: 120, damping: 20 });
-  const parallaxY = useSpring(useTransform(mouseY, [-0.5, 0.5], [-12, 12]), { stiffness: 120, damping: 20 });
 
   useEffect(() => {
     const video = videoRef.current;
@@ -102,49 +71,24 @@ function HeroSection() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
+      // Calm, single fade-up for the hero copy (no blur filters: cheaper to paint and easier on the eye).
       gsap.fromTo(
         ".premium-hero__line",
-        { y: 48, opacity: 0, filter: "blur(12px)" },
-        {
-          y: 0,
-          opacity: 1,
-          filter: "blur(0px)",
-          duration: 1.1,
-          stagger: 0.12,
-          ease: "power3.out",
-          delay: 0.35,
-        },
-      );
-      gsap.fromTo(
-        ".premium-hero__copy",
-        { y: 24, opacity: 0, filter: "blur(8px)" },
-        { y: 0, opacity: 1, filter: "blur(0px)", duration: 1, delay: 0.7, ease: "power3.out" },
-      );
-      gsap.fromTo(
-        ".premium-hero__actions",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, delay: 0.95, ease: "power3.out" },
+        { y: 18, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.08, ease: "power2.out", delay: 0.1 },
       );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
 
-  const onHeroMove = (event: MouseEvent<HTMLElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    mouseX.set((event.clientX - rect.left) / rect.width - 0.5);
-    mouseY.set((event.clientY - rect.top) / rect.height - 0.5);
-  };
-
   return (
-    <section ref={sectionRef} className="premium-hero premium-hero--cinematic" onMouseMove={onHeroMove}>
+    <section ref={sectionRef} className="premium-hero premium-hero--cinematic">
       <div className="premium-hero__backdrop" aria-hidden />
       <div className="premium-hero__particles" aria-hidden />
       <div className="premium-hero__cinematic-overlay" aria-hidden />
-      <motion.div
+      <div
         className="premium-hero__media"
         style={{
-          x: parallaxX,
-          y: parallaxY,
           backgroundImage: videoFailed ? "url(/pics/signature-worlds/gold-cinematic-lighting.png)" : undefined,
           backgroundSize: videoFailed ? "cover" : undefined,
           backgroundPosition: videoFailed ? "center" : undefined,
@@ -166,8 +110,8 @@ function HeroSection() {
             <source src={premiumHero.video} type="video/mp4" />
           </video>
         ) : null}
-        <motion.div className="premium-hero__shine" aria-hidden />
-      </motion.div>
+        <div className="premium-hero__shine" aria-hidden />
+      </div>
 
       <div className="premium-hero__content site-max site-px">
         <div className="premium-hero__kicker-row premium-hero__line">
@@ -183,12 +127,12 @@ function HeroSection() {
         </h1>
         <p className="premium-hero__copy premium-hero__line">{premiumHero.subtitle}</p>
         <div className="premium-hero__actions premium-hero__line">
-          <MagneticLink href={premiumHero.primaryCta.href} className="premium-button premium-button--primary">
+          <Link href={premiumHero.primaryCta.href} className="premium-button premium-button--primary">
             {premiumHero.primaryCta.label}
-          </MagneticLink>
-          <MagneticLink href={premiumHero.secondaryCta.href} className="premium-button premium-button--ghost">
+          </Link>
+          <Link href={premiumHero.secondaryCta.href} className="premium-button premium-button--ghost">
             {premiumHero.secondaryCta.label}
-          </MagneticLink>
+          </Link>
         </div>
       </div>
 

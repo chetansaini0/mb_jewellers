@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useClientMounted } from "@/app/hooks/useClientMounted";
 import { legalFooterLinks } from "@/app/lib/legalContent";
-import { formatShowroomPhones, getWhatsAppUrl, hasWhatsApp, siteConfig } from "@/app/lib/siteConfig";
+import { getWhatsAppUrl, hasWhatsApp, openingHours, siteConfig } from "@/app/lib/siteConfig";
 import { socialLinks } from "@/app/lib/siteData";
 
 function PremiumNewsletterForm() {
@@ -87,6 +87,7 @@ export function PremiumFooter() {
   return (
     <footer className="premium-footer">
       <div className="site-max site-px premium-footer__intro" data-reveal>
+        <span className="premium-ornament" aria-hidden />
         <Image src="/mb-jewellers-logo.png" alt="MB Jewellers" width={896} height={768} className="premium-footer__logo" />
         <p className="premium-footer__tagline">
           Trusted jewellery showroom in Sikar, Rajasthan — gold, diamond, silver, and bridal collections for families
@@ -96,7 +97,7 @@ export function PremiumFooter() {
       <div className="site-max site-px premium-footer__grid">
         <nav aria-label="Footer navigation">
           <p className="premium-footer__label">Explore</p>
-          <div className="premium-footer__links">
+          <div className="premium-footer__links premium-footer__links--explore">
             <Link href="/collections">Collections</Link>
             <Link href="/collections/gold">Gold jewellery</Link>
             <Link href="/collections/diamond">Diamond jewellery</Link>
@@ -131,30 +132,38 @@ export function PremiumFooter() {
             ))}
           </div>
         </nav>
-        <div>
-          <p className="premium-footer__label">Contact</p>
-          <p>{siteConfig.contact.email}</p>
+        <div className="premium-footer__contact">
+          <p className="premium-footer__label">Visit &amp; contact</p>
           {siteConfig.showrooms.map((showroom) => (
-            <p key={showroom.id}>
-              <span className="premium-footer__showroom-name">{showroom.name}:</span> {showroom.address}
-              <br />
-              {formatShowroomPhones(showroom)}
-            </p>
+            <div key={showroom.id} className="premium-footer__showroom">
+              <p className="premium-footer__showroom-name">{showroom.name}</p>
+              <p>{showroom.address}</p>
+              <p className="premium-footer__showroom-phones">
+                {showroom.landlines.map((line, index) => (
+                  <span key={line.e164}>
+                    {index > 0 ? " · " : null}
+                    <a href={`tel:${line.e164}`}>{line.display}</a>
+                  </span>
+                ))}
+              </p>
+              <p>
+                <a href={showroom.googleMapsUrl} target="_blank" rel="noopener noreferrer">
+                  {showroom.name} on Google
+                </a>
+              </p>
+            </div>
           ))}
-          <p>Mon–Sat: 10:00 – 19:00</p>
-          {siteConfig.showrooms.map((showroom) => (
-            <p key={`${showroom.id}-maps`}>
-              <a href={showroom.googleMapsUrl} target="_blank" rel="noopener noreferrer">
-                {showroom.name} on Google
-              </a>
-            </p>
-          ))}
+          <p className="premium-footer__hours">{openingHours.display}</p>
+          <p>
+            <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>
+          </p>
           {hasWhatsApp() ? (
             <p>
               <a
                 href={getWhatsAppUrl("Hello MB Jewellers, I need assistance with jewellery selection.") ?? "/contact"}
                 target="_blank"
                 rel="noreferrer"
+                className="premium-footer__whatsapp"
               >
                 WhatsApp concierge
               </a>
