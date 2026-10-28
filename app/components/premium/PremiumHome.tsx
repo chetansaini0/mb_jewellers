@@ -119,8 +119,10 @@ function HeroSection() {
           <p className="premium-hero__kicker">{premiumHero.kicker}</p>
         </div>
         <h1 className="premium-hero__title">
-          {premiumHero.title.map((line) => (
+          {premiumHero.title.map((line, index) => (
             <span key={line} className="premium-hero__line block">
+              {/* Visually each line is a block; the space keeps the accessible/indexed text readable. */}
+              {index > 0 ? " " : null}
               {line}
             </span>
           ))}

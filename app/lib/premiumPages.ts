@@ -450,21 +450,49 @@ export const blogPosts = [
     slug: "how-to-check-gold-purity-hallmark",
     title: "How to check gold purity and hallmark in Sikar",
     excerpt:
-      "What hallmark marks mean, which questions to ask at a jewellery showroom, and how Shekhawati families can shop with more confidence.",
+      "How to read a BIS hallmark and HUID, verify it in the BIS CARE app, and which questions to ask at a Sikar jewellery showroom before you pay.",
     image: "/pics/signature-worlds/gold-cinematic-lighting.png",
     date: "September 2026",
     datePublished: "2026-09-12",
+    dateModified: "2026-10-28",
     category: "Guide",
     body: [
-      "When you visit a jewellery shop in Sikar, purity documentation should be part of the conversation — not an afterthought. Hallmarking helps confirm that gold content matches the karat claimed on the piece.",
-      "Ask to see the hallmark marks and a clear explanation of karat, weight, and making charges. A trustworthy jeweller will walk you through the paperwork calmly and answer exchange or buyback questions without pressure.",
-      "Bring a written list of what you need (bridal suite, daily bangles, gifting) so purity choices stay tied to use. Heavier ceremonial pieces and lighter daily wear may follow different comfort priorities even at the same karat.",
-      "MB Jewellers follows hallmarked gold standards and welcomes private viewings at our two Sikar showrooms. Explore styles on this website, then verify purity and finish in person — especially if you are travelling from Fatehpur, Laxmangarh, Jhunjhunu, or other Shekhawati towns.",
+      "When you visit a jewellery shop in Sikar, purity documentation should be part of the conversation — not an afterthought. Hallmarking is how India certifies that the gold content of a piece matches the karat claimed for it, and since 2023 every hallmarked piece can be checked on your own phone.",
+    ],
+    sections: [
+      {
+        heading: "The three marks on hallmarked gold",
+        paragraphs: [
+          "A current BIS hallmark has three parts, usually laser-marked on the inside of a ring, the clasp of a chain or the back of a pendant: the BIS standard mark (a triangle logo); the purity grade, such as 22K916 (91.6% gold), 18K750 (75%) or 14K585 (58.5%); and a six-character alphanumeric HUID — a Hallmark Unique Identification number specific to that one piece.",
+          "From 1 April 2023, BIS rules require hallmarked gold jewellery offered for sale to carry the six-character HUID; the older four-mark hallmark (with the jeweller's mark and year letter) is no longer accepted on new sales. Very light pieces, under 2 grams, are exempt from mandatory hallmarking.",
+        ],
+      },
+      {
+        heading: "How to verify a HUID in the BIS CARE app",
+        paragraphs: [
+          "Install BIS CARE, the Bureau of Indian Standards' official app, and choose “Verify HUID”. Enter the six characters exactly as they appear on the piece. The result shows the purity, the type of article, and the registered jeweller and hallmarking centre that tested it.",
+          "If the details do not match what you were told — a different purity, or a ring that verifies as a pendant — ask the jeweller to explain before you pay. A loupe or your phone's camera zoom makes the tiny marks much easier to read.",
+        ],
+      },
+      {
+        heading: "Questions to ask before you pay",
+        paragraphs: [
+          "Ask for the karat and HUID to be written on the bill, along with the gross weight, the net gold weight (after any stones are deducted) and the making charges shown separately. That breakdown is what lets you compare two quotes fairly.",
+          "Ask, too, how exchange and buyback are calculated for the piece and get the answer in writing. Bring a short list of what you need — bridal suite, daily bangles, gifting — so purity choices stay tied to how the jewellery will actually be worn.",
+        ],
+      },
+      {
+        heading: "Shopping in Sikar",
+        paragraphs: [
+          "Shortlist styles on this website, then visit our Ghantaghar or Ramlila Maidan showroom and ask the team to show you the hallmark and HUID on any gold piece you are considering — especially useful if you are travelling in from elsewhere in Shekhawati and want to decide in one visit.",
+        ],
+      },
     ],
     relatedLinks: [
       { href: "/faq", label: "Purity and hallmark FAQ" },
+      { href: "/blog/22k-vs-18k-gold-jewellery", label: "22K vs 18K gold explained" },
       { href: "/collections/gold", label: "Gold jewellery collection" },
-      { href: "/blog/trusted-jewellery-shop-in-sikar", label: "Choosing a trusted jeweller" },
+      { href: "/showrooms", label: "Showroom addresses and directions" },
     ],
   },
   {
@@ -594,6 +622,51 @@ export const blogPosts = [
       { href: "/daily-wear", label: "Daily wear jewellery in Sikar" },
       { href: "/collections/gold/chains", label: "Gold chains" },
       { href: "/contact", label: "Book a daily-wear viewing" },
+    ],
+  },
+  {
+    slug: "traditional-rajasthani-jewellery-guide",
+    title: "A guide to traditional Rajasthani bridal jewellery",
+    excerpt:
+      "Borla, aad, timaniya, bajuband and hathphool explained — plus how kundan, meenakari and jadau differ, and how to plan a Shekhawati bridal set.",
+    image: "/pics/studio/gold-kundan-choker-set.jpg",
+    date: "October 2026",
+    datePublished: "2026-10-28",
+    category: "Guide",
+    body: [
+      "Rajputi and Rajasthani bridal jewellery has its own vocabulary, and families in Sikar and across Shekhawati often use the names interchangeably. Knowing what each ornament is — and what it is made with — makes it much easier to plan a set, compare designs, and decide which family heirlooms to bring into the wedding.",
+    ],
+    sections: [
+      {
+        heading: "The core ornaments, head to hand",
+        paragraphs: [
+          "Borla (also called rakhdi) is the round, bell-like ornament worn at the centre of the forehead where the hair parts, held by a chain or thread; for many Rajasthani families it is the defining piece of a married woman's jewellery. A maang tikka with a flatter pendant is the more widely worn alternative.",
+          "Aad is a broad, stiff choker that sits flat around the base of the neck, usually set with stones or kundan and finished with hanging drops. Timaniya is a related choker built from several panels joined together. Both are often paired with a longer necklace or a ranihaar so the neckline is layered rather than crowded.",
+          "Bajuband is an armlet worn on the upper arm, and hathphool (haathphool) is a hand ornament that links a ring to a bracelet across the back of the hand. Together with bangles, they balance the weight of a heavy necklace in photographs.",
+        ],
+      },
+      {
+        heading: "Kundan, meenakari and jadau — what the terms mean",
+        paragraphs: [
+          "Kundan refers to setting stones in highly refined gold foil rather than with prongs, giving the flat, mirror-like look associated with Rajasthani bridal sets. Jadau is the traditional craft of embedding stones into gold in this way, and the two terms are often used together.",
+          "Meenakari is enamel work — coloured enamel fused into engraved gold — and it is frequently found on the reverse of kundan pieces, so a necklace can be worn on either side. When you compare sets, ask which technique is used, what the stones are, and how the weight of gold is stated separately from stones and enamel.",
+        ],
+      },
+      {
+        heading: "Planning a Rajasthani bridal set",
+        paragraphs: [
+          "Start with the ceremony that matters most for photographs and choose its centrepiece first — usually the aad or a heavy necklace — then decide whether the borla, bajuband and hathphool should match it or contrast with it. Lighter functions can reuse the earrings and bangles.",
+          "Mixing new pieces with family jewellery is common. Bring heirlooms to the consultation so proportions, gold tone and stone colours can be checked side by side, and ask for the hallmark and HUID on any new gold piece.",
+          "You can browse Rajputi-style gold, ranihaar and bridal sets online, then book a private viewing at one of our two Sikar showrooms with your function dates and outfit colours ready.",
+        ],
+      },
+    ],
+    relatedLinks: [
+      { href: "/collections/gold/rajputi", label: "Rajputi gold jewellery" },
+      { href: "/collections/gold/ranihaar", label: "Ranihaar designs" },
+      { href: "/bridal", label: "Bridal jewellery consultations in Sikar" },
+      { href: "/blog/bridal-jewellery-buying-guide", label: "Bridal jewellery buying guide" },
+      { href: "/blog/how-to-check-gold-purity-hallmark", label: "How to check a gold hallmark" },
     ],
   },
 ] as const;

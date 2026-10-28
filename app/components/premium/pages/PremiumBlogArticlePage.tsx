@@ -7,6 +7,13 @@ import { PremiumPageFrame } from "@/app/components/premium/PremiumPageFrame";
 import { PremiumPageHero } from "@/app/components/premium/PremiumPageHero";
 import { blogPosts } from "@/app/lib/premiumPages";
 
+function headingId(heading: string) {
+  return heading
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 export function PremiumBlogArticlePage({ slug }: { slug: string }) {
   const post = blogPosts.find((p) => p.slug === slug);
 
@@ -59,10 +66,36 @@ export function PremiumBlogArticlePage({ slug }: { slug: string }) {
                 {post.excerpt}
               </p>
               {post.body.map((para) => (
-                <p key={para.slice(0, 48)} className="mt-6 text-base leading-relaxed text-[var(--premium-muted)]" data-reveal>
+                <p
+                  key={para.slice(0, 48)}
+                  className="mt-6 text-base leading-relaxed text-[var(--premium-muted)]"
+                  data-reveal
+                >
                   {para}
                 </p>
               ))}
+              {"sections" in post
+                ? post.sections.map((section) => (
+                    <section key={section.heading} aria-labelledby={headingId(section.heading)}>
+                      <h2
+                        id={headingId(section.heading)}
+                        className="premium-title mt-12 text-[clamp(1.35rem,1.1rem+0.8vw,1.85rem)]"
+                        data-reveal
+                      >
+                        {section.heading}
+                      </h2>
+                      {section.paragraphs.map((para) => (
+                        <p
+                          key={para.slice(0, 48)}
+                          className="mt-5 text-base leading-relaxed text-[var(--premium-muted)]"
+                          data-reveal
+                        >
+                          {para}
+                        </p>
+                      ))}
+                    </section>
+                  ))
+                : null}
             </div>
             <div className="mx-auto mt-10 max-w-2xl" data-reveal>
               <p className="premium-footer__label">Continue exploring</p>

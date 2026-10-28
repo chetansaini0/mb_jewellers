@@ -10,6 +10,8 @@ export function createPageMetadata(input: {
   image?: string;
   /** When true (default), title is absolute and not doubled by the root `| MB Jewellers` template. */
   absoluteTitle?: boolean;
+  /** Utility routes only (redirect doors, transactional pages). Never set on content pages. */
+  noIndex?: boolean;
 }): Metadata {
   const canonicalPath = input.path ?? "/";
   const canonical = `${siteUrl}${canonicalPath}`;
@@ -20,6 +22,7 @@ export function createPageMetadata(input: {
     title: useAbsolute ? { absolute: input.title } : input.title,
     description: input.description,
     alternates: { canonical },
+    ...(input.noIndex ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title: input.title,
       description: input.description,
@@ -80,7 +83,7 @@ export const organizationSchema = {
     addressLocality: siteConfig.location.city,
     addressRegion: siteConfig.location.region,
     postalCode: siteConfig.location.postalCode,
-    addressCountry: siteConfig.location.country,
+    addressCountry: "IN",
   },
   areaServed: siteConfig.serviceArea.map((place) => ({
     "@type": "AdministrativeArea",
@@ -98,17 +101,18 @@ export const organizationSchema = {
 export const jewelryStoreSchema = {
   "@context": "https://schema.org",
   "@graph": siteConfig.showrooms.map((showroom) => ({
-    "@type": ["JewelryStore", "LocalBusiness"],
+    // JewelryStore is already a LocalBusiness subtype; listing both types is redundant.
+    "@type": "JewelryStore",
     "@id": `${siteUrl}/#store-${showroom.id}`,
     name: siteConfig.name,
     legalName: siteConfig.legalName,
-    branchOf: { "@id": `${siteUrl}/#organization` },
     parentOrganization: { "@id": `${siteUrl}/#organization` },
     alternateName: [showroom.name, "MB Jewellers Sikar", "MB Jewellers Shekhawati"],
     description: `${showroom.name} of ${siteConfig.name} in Sikar. ${siteConfig.description}`,
     slogan: siteConfig.tagline,
     url: `${siteUrl}/showrooms#${showroom.id}`,
-    image: [`${siteUrl}/mb-jewellers-logo.png`, `${siteUrl}/icons/icon-512.png`],
+    logo: `${siteUrl}/mb-jewellers-logo.png`,
+    image: [`${siteUrl}/mb-jewellers-logo.png`],
     telephone: showroom.landlines[0]?.e164,
     email: siteConfig.contact.email,
     address: {
@@ -117,7 +121,7 @@ export const jewelryStoreSchema = {
       addressLocality: siteConfig.location.city,
       addressRegion: siteConfig.location.region,
       postalCode: showroom.postalCode,
-      addressCountry: siteConfig.location.country,
+      addressCountry: "IN",
     },
     geo: {
       "@type": "GeoCoordinates",
@@ -136,9 +140,8 @@ export const jewelryStoreSchema = {
       : {}),
     sameAs: [showroom.googleMapsUrl, ...socialProfiles],
     openingHoursSpecification,
-    priceRange: "₹₹₹",
-    currenciesAccepted: "INR",
-    paymentAccepted: "Cash, UPI, Card",
+    // priceRange / paymentAccepted removed: not verified with the business. Add back only once
+    // MB Jewellers confirms them (see docs/LOCAL-SEO-PLAN.md).
     knowsAbout: [
       "Gold jewellery",
       "Diamond jewellery",
@@ -195,19 +198,11 @@ export function createProductSchema(input: {
       name: siteConfig.name,
     },
     category: input.category ?? input.material ?? "Jewellery",
-    material: input.material,
+    ...(input.material ? { material: input.material } : {}),
     url: canonical,
-    isRelatedTo: {
-      "@type": "JewelryStore",
-      name: siteConfig.name,
-      url: siteUrl,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: siteConfig.location.city,
-        addressRegion: siteConfig.location.region,
-        addressCountry: siteConfig.location.country,
-      },
-    },
+    // No offers, price, availability, rating or review: the site is a showcase and none of
+    // these are published. (The old `isRelatedTo: JewelryStore` was dropped — schema.org expects
+    // a Product or Service there.)
   } as const;
 }
 

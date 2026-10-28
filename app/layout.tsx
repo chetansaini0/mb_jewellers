@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
+import { JsonLd } from "@/app/components/seo/JsonLd";
 import { Cinzel, Playfair_Display, Poppins } from "next/font/google";
 import { PremiumSite } from "@/app/components/premium/PremiumSite";
 import { GoogleAnalytics } from "@/app/components/analytics/GoogleAnalytics";
@@ -127,21 +127,9 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${display.variable} ${sans.variable} ${accent.variable} premium-theme antialiased`}>
       <body suppressHydrationWarning className="premium-body flex min-h-dvh flex-col overflow-x-clip">
-        <Script
-          id="jewelry-store-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jewelryStoreSchema) }}
-        />
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <Script
-          id="website-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
+        <JsonLd id="jewelry-store-schema" data={jewelryStoreSchema} />
+        <JsonLd id="organization-schema" data={organizationSchema} />
+        <JsonLd id="website-schema" data={websiteSchema} />
         <GoogleAnalytics />
         <ConversionTracker />
         <PremiumSite>{children}</PremiumSite>

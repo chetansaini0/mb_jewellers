@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { PremiumBlogArticlePage } from "@/app/components/premium/pages/PremiumBlogArticlePage";
 import { blogPosts } from "@/app/lib/premiumPages";
 import { createCanonicalUrl, createPageMetadata } from "@/app/lib/seo";
+import { clampDescription } from "@/app/lib/seoContent";
 import { siteConfig } from "@/app/lib/siteConfig";
 
 export function generateStaticParams() {
@@ -16,9 +17,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = blogPosts.find((entry) => entry.slug === slug);
   if (!post) return {};
 
+  // Keep the brand suffix only when the full title still fits a search snippet (~62 chars).
+  const brandedTitle = `${post.title} | MB Jewellers`;
   return createPageMetadata({
-    title: `${post.title} | MB Jewellers Journal`,
-    description: post.excerpt,
+    title: brandedTitle.length <= 62 ? brandedTitle : post.title,
+    description: clampDescription(post.excerpt, 160),
     path: `/blog/${post.slug}`,
     image: post.image,
   });
@@ -46,10 +49,11 @@ export default async function BlogArticlePage({ params }: PageProps) {
     image: [post.image.startsWith("http") ? post.image : createCanonicalUrl(post.image)],
     url: canonical,
     datePublished: post.datePublished,
-    dateModified: post.datePublished,
+    dateModified: "dateModified" in post ? post.dateModified : post.datePublished,
     author: {
       "@type": "Organization",
       name: siteConfig.name,
+      url: createCanonicalUrl("/"),
     },
     publisher: {
       "@type": "Organization",

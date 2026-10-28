@@ -7,6 +7,8 @@ export const metadata: Metadata = createPageMetadata({
   title: "Share your experience | MB Jewellers",
   description: "Share an honest Google review for MB Jewellers, Sikar.",
   path: "/review",
+  // A redirect door to an external review tool, not content: keep it out of search results.
+  noIndex: true,
 });
 
 const DEFAULT_LANDING = "https://reviewflow-ai-lime.vercel.app/r/mb-jewellers";

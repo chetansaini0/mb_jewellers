@@ -2,9 +2,9 @@
 
 Use this after Search Console and Google Business Profile are verified. Rankings are not guaranteed.
 
-**Canonical site:** https://mbjewellers.in  
-**Appointment URL:** https://mbjewellers.in/contact?mode=APPOINTMENT  
-**Showrooms:** https://mbjewellers.in/showrooms
+**Canonical site:** https://www.mbjewellers.in (production `NEXT_PUBLIC_SITE_URL`; apex should 308 to www)  
+**Appointment URL:** https://www.mbjewellers.in/contact?mode=APPOINTMENT  
+**Showrooms:** https://www.mbjewellers.in/showrooms
 
 UTM for all GBP links: `utm_source=google&utm_medium=organic&utm_campaign=gbp`
 
@@ -13,7 +13,7 @@ UTM for all GBP links: `utm_source=google&utm_medium=organic&utm_campaign=gbp`
 ## Week 1 — Foundation
 
 **Website**
-- Confirm GSC domain or URL-prefix property and submit `https://mbjewellers.in/sitemap.xml`
+- Confirm GSC domain or URL-prefix property and submit `https://www.mbjewellers.in/sitemap.xml`
 - Request indexing for `/`, `/showrooms`, `/collections/gold`, `/bridal`, `/contact`
 - Confirm `NEXT_PUBLIC_GA_MEASUREMENT_ID` and cookie-consent path so phone, WhatsApp, directions, appointment and enquiry events fire
 

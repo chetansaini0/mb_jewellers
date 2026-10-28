@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import { JsonLd } from "@/app/components/seo/JsonLd";
 import { PremiumFaqPage } from "@/app/components/premium/pages/PremiumFaqPage";
 import { faqItems } from "@/app/lib/premiumPages";
 import { createFaqPageSchema, createPageMetadata } from "@/app/lib/seo";
@@ -16,11 +16,7 @@ export const metadata: Metadata = createPageMetadata({
 export default function FaqPage() {
   return (
     <>
-      <Script
-        id="faq-page-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd id="faq-page-schema" data={faqSchema} />
       <PremiumFaqPage />
     </>
   );

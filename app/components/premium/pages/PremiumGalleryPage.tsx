@@ -39,7 +39,7 @@ export function PremiumGalleryPage() {
     <PremiumPageFrame>
       <PremiumPageHero
         eyebrow="Portfolio"
-        title="Studio gallery"
+        title="Jewellery gallery — MB Jewellers, Sikar"
         lede="Bridal, gold, and diamond studies photographed in natural light — tap any frame to open the lightbox."
       />
 

@@ -124,7 +124,7 @@ const InstagramReelCard = memo(function InstagramReelCard({
               {playing ? "Pause" : "Play"}
             </button>
             <button type="button" onClick={toggleSound} aria-label={soundOn ? "Mute reel audio" : "Unmute reel audio"}>
-              {soundOn ? "Sound on" : "Sound off"}
+              {soundOn ? "Mute" : "Unmute"}
             </button>
           </div>
         ) : null}

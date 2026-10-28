@@ -10,7 +10,15 @@ import {
   SECTION_COVER_PLACEHOLDER,
 } from "@/app/lib/collectionPages";
 import { createPageMetadata } from "@/app/lib/seo";
+import { clampDescription } from "@/app/lib/seoContent";
 import { featuredPieces } from "@/app/lib/siteData";
+
+/** "Gold Ranihaar in Sikar", "Silver Statues in Sikar", "Gold Rajputi Jewellery in Sikar". */
+function sectionHeading(eyebrow: string, sectionTitle: string) {
+  const metal = eyebrow === "Accessories" ? "Silver" : eyebrow;
+  const noun = /^rajputi$/i.test(sectionTitle) ? `${sectionTitle} Jewellery` : sectionTitle;
+  return `${metal} ${noun} in Sikar`;
+}
 
 export function generateStaticParams() {
   return buildCollectionSectionParams();
@@ -27,10 +35,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!subsection) return {};
 
   const parent = collectionPagesBySlug[collectionSlug];
-  const metalLabel = parent.eyebrow;
+  const heading = sectionHeading(parent.eyebrow, subsection.title);
   return createPageMetadata({
-    title: `${subsection.title} ${metalLabel} Jewellery in Sikar | MB Jewellers`,
-    description: `${subsection.description} Explore ${subsection.title.toLowerCase()} from MB Jewellers in Sikar — view online, then visit our showrooms.`,
+    title: `${heading} | MB Jewellers`,
+    description: clampDescription(
+      `${subsection.description} Shortlist ${heading.replace(/ in Sikar$/, "").toLowerCase()} online, then see them at our Sikar showrooms.`,
+    ),
     path: `/collections/${collectionSlug}/${sectionParam}`,
     image: subsection.coverImage ?? SECTION_COVER_PLACEHOLDER,
   });
@@ -69,7 +79,7 @@ export default async function CollectionSubsectionPage({ params }: PageProps) {
       backHref={`/collections/${collectionSlug}`}
       backLabel={`Back to ${backLabel}`}
       eyebrow={parent.eyebrow}
-      title={`${parent.eyebrow} ${subsection.title} in Sikar`}
+      title={sectionHeading(parent.eyebrow, subsection.title)}
       description={subsection.description}
       galleryImages={galleryImages}
       galleryAlts={galleryAlts}

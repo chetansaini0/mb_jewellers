@@ -25,7 +25,7 @@ export function PremiumShowroomsPage() {
         ]}
       />
       <PremiumPageHero
-        eyebrow="Best jewellery shop in Sikar"
+        eyebrow="Visit us in Sikar"
         title="MB Jewellers showrooms in Sikar"
         lede="Two jewellery showrooms in Sikar — Ghantaghar and Ramlila Maidan — each with its own Google Business Profile. Gold, diamond, silver, bridal and daily-wear jewellery. Showcase online; purchases in person."
       />
@@ -38,10 +38,9 @@ export function PremiumShowroomsPage() {
       >
         <div className="premium-glass-card mx-auto mb-10 max-w-3xl space-y-4 p-6 md:p-8" data-reveal>
           <p className="text-base leading-relaxed text-[var(--premium-muted)]">
-            MB Jewellers is a trusted jeweller in Sikar with two showrooms families use for jewellery shopping in Sikar,
-            Rajasthan. Explore collections on this website, then see weight, hallmark documentation and finish during a
-            private viewing. If you searched for a jewellery store near me or a bridal jewellery showroom near me, both
-            addresses below are in Sikar city.
+            Both MB Jewellers showrooms are in Sikar city: one by Ghantaghar (the clock tower) at Purana Dujod Gate, the
+            other on Mahamandir Road near Ramlila Maidan. Shortlist pieces on this website, then check weight, hallmark
+            and finish in person, or book a private viewing for bridal and family occasions.
           </p>
           <div className="premium-dark-cta__actions flex flex-wrap gap-3">
             <a href={`tel:${primaryPhone.e164}`} className="premium-button premium-button--primary">
@@ -49,7 +48,12 @@ export function PremiumShowroomsPage() {
               Call {primaryPhone.display}
             </a>
             {hasWhatsApp() && whatsappUrl ? (
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button premium-button--ghost">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="premium-button premium-button--ghost"
+              >
                 <MessageCircle aria-hidden className="size-4" />
                 WhatsApp enquiry
               </a>
@@ -89,11 +93,21 @@ export function PremiumShowroomsPage() {
                 <p className="mt-2 text-sm">{siteConfig.openingHours.display}</p>
                 <p className="mt-1 text-sm text-[var(--premium-muted)]">{siteConfig.openingHours.sundayNote}</p>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  <Link href={showroom.directionsUrl} target="_blank" rel="noopener noreferrer" className="premium-inline-link">
+                  <Link
+                    href={showroom.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="premium-inline-link"
+                  >
                     <MapPin aria-hidden className="mr-1 inline size-4" />
                     Directions
                   </Link>
-                  <Link href={showroom.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="premium-inline-link">
+                  <Link
+                    href={showroom.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="premium-inline-link"
+                  >
                     Open in Google Maps
                   </Link>
                   <Link href="/contact?mode=APPOINTMENT" className="premium-inline-link">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import { JsonLd } from "@/app/components/seo/JsonLd";
 import { PremiumHome } from "@/app/components/premium/PremiumHome";
 import { createFaqPageSchema, createPageMetadata } from "@/app/lib/seo";
 import { pageSeo, sikarSearchFaqs } from "@/app/lib/seoContent";
@@ -15,11 +15,7 @@ export const metadata: Metadata = createPageMetadata({
 export default function Home() {
   return (
     <>
-      <Script
-        id="home-faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }}
-      />
+      <JsonLd id="home-faq-schema" data={homeFaqSchema} />
       <PremiumHome />
     </>
   );

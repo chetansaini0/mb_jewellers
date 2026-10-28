@@ -21,7 +21,7 @@ export const pageSeo = {
   home: {
     title: "Best Jewellery Shop in Sikar | Best Jewellers in Sikar – MB Jewellers",
     description:
-      "MB Jewellers is a jewellery shop in Sikar with two showrooms — Ghantaghar and Ramlila Maidan. Hallmarked gold, certified diamonds, silver and bridal jewellery. Visit in person.",
+      "Gold, diamond, silver and bridal jewellery at MB Jewellers' two Sikar showrooms — Ghantaghar and Ramlila Maidan. Shortlist online, try pieces in person.",
   },
   collections: {
     title: "Jewellery Collections in Sikar | MB Jewellers",
@@ -155,13 +155,12 @@ export const pageIntros = {
 
 /** Visible local SEO copy — written for customers, not keyword stuffing. */
 export const localSeoContent = {
-  eyebrow: "Best jewellers in Sikar",
-  title: "Best jewellery shop in Sikar",
-  lead:
-    "MB Jewellers is the jewellery shop families in Sikar visit for gold, diamond, silver, bridal, wedding and daily-wear jewellery. Two showrooms — Ghantaghar and Ramlila Maidan — each have their own Google Business Profile.",
+  eyebrow: "Two showrooms in Sikar",
+  title: "Your jewellery shop in Sikar, Rajasthan",
+  lead: "MB Jewellers shows gold, diamond, silver, bridal, wedding and daily-wear jewellery at two showrooms in Sikar — Ghantaghar and Ramlila Maidan. Each has its own Google Business Profile for directions, hours and reviews.",
   paragraphs: [
-    "If you searched for the best jewellery shop in Sikar or the best jewellers in Sikar, start with hallmark documentation, certified diamonds, and a showroom that lets you try pieces before you buy. MB Jewellers was built around those standards. This website helps you shortlist; purchases happen in the showroom.",
-    "Ghantaghar (Purana Dujod Gate) and Ramlila Maidan (Mahamandir Road) are both in Sikar, PIN 332001. Open either Google listing for hours, directions and reviews, then book a private viewing.",
+    "Choosing a jeweller comes down to things you can check: the BIS hallmark and HUID on gold, the paperwork that comes with a diamond, and a bill that shows weight and making charges separately. This website helps you shortlist; you see, try and buy in the showroom.",
+    "Ghantaghar (Purana Dujod Gate) and Ramlila Maidan (Mahamandir Road) are both in Sikar, PIN 332001. Open either Google listing for directions, then book a private viewing if you want a calmer consultation for a wedding or family occasion.",
     "Customers also visit from Fatehpur, Laxmangarh, Neem Ka Thana, Jhunjhunu, Churu, Khandela, Ringas, Danta Ramgarh and other towns across Shekhawati. Share your occasion and we will help you shortlist gold rings, diamond rings, silver ornaments or a bridal suite.",
   ],
   faqs: sikarSearchFaqs,
@@ -176,3 +175,27 @@ export const localSeoContent = {
     { href: "/faq", label: "Jewellery shop FAQ" },
   ],
 } as const;
+
+/**
+ * Product pages whose photo does not show the named piece (it reuses a collection cover or a
+ * different set). They stay published, but no Product JSON-LD is emitted for them until
+ * MB Jewellers supplies a genuine photo — structured data must match the visible page.
+ */
+export const productsPendingPhotoReview = [
+  "luna-cluster-pendant",
+  "moonlight-silver-hoops",
+  "arctic-line-pendant",
+  "silver-dew-bracelet",
+] as const;
+
+export function isProductSchemaEligible(slug: string) {
+  return !(productsPendingPhotoReview as readonly string[]).includes(slug);
+}
+
+/** Keeps meta descriptions inside the ~155-character snippet window without cutting a word. */
+export function clampDescription(text: string, max = 155) {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:—–-]+$/, "")}…`;
+}

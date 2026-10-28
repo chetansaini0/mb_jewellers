@@ -93,10 +93,10 @@ export function PremiumHeader() {
         className={`premium-header ${scrolled ? "is-scrolled" : ""} ${menuOpen ? "is-menu-open" : ""}`}
       >
         <div className="premium-header__inner site-max site-px">
-          <Link href="/" className="premium-header__brand" aria-label="MB Jewellers Home">
+          <Link href="/" className="premium-header__brand">
             <Image
               src="/mb-jewellers-logo.png"
-              alt="MB Jewellers logo"
+              alt="MB Jewellers – home"
               width={896}
               height={768}
               sizes="(max-width: 768px) 120px, 160px"

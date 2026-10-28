@@ -6,6 +6,7 @@ import { siteConfig } from "@/app/lib/siteConfig";
 
 const baseUrl = siteConfig.url.replace(/\/$/, "");
 
+// `/review` is intentionally excluded: it redirects to a third-party review tool and is not a page.
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
@@ -27,7 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/testimonials",
     "/blog",
     "/contact",
-    "/review",
     "/privacy-policy",
     "/terms-and-conditions",
     "/refund-policy",
@@ -37,35 +37,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/disclaimer",
   ].map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.75,
   }));
 
   const collectionRoutes = categoryShowcase.map((collection) => ({
     url: `${baseUrl}${collection.href}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
   const blogRoutes = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(),
+    // Real publish/update dates only. A build-time timestamp on every URL tells crawlers
+    // nothing and erodes trust in lastmod, so other routes omit it.
+    lastModified: "dateModified" in post ? post.dateModified : post.datePublished,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
   const productRoutes = Object.keys(premiumProductsBySlug).map((slug) => ({
     url: `${baseUrl}/products/${slug}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
 
   const subsectionRoutes = buildCollectionSectionParams().map(({ collection, section }) => ({
     url: `${baseUrl}/collections/${collection}/${section}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.72,
   }));

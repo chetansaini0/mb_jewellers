@@ -117,7 +117,7 @@ export function PremiumFooter() {
             <Link href="/faq">FAQ</Link>
             <Link href="/testimonials">Testimonials</Link>
             <Link href="/about">About us</Link>
-            <Link href="/#local-seo-heading">Best jewellery shop in Sikar</Link>
+            <Link href="/#local-seo-heading">Jewellery shop in Sikar</Link>
             <Link href="/showrooms">Sikar showrooms</Link>
             <Link href="/contact">Visit our store</Link>
           </div>
