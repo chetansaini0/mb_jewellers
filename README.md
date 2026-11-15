@@ -1,5 +1,7 @@
 # MB Jewellers Website
 
+**Live:** https://mbjewellers.in
+
 > **Copyright © 2026 MB Jewellers / Chetan Saini. All Rights Reserved.**  
 > This repository is **proprietary**. You may view it on GitHub, but you may **not** copy, fork, modify, deploy, or use any part of this project without **written permission**. See [LICENSE](./LICENSE).
 
